@@ -1,0 +1,242 @@
+/*!
+ * CSS3 2012-01-18
+ * Check Newest Version：https://kumotori.net/strage/scss/_css3.scss
+ * Author:  taku_n, http://kumotori.net/
+ * License: Public domain
+ */
+
+// 課題：説明部分をWebページにまとめてコメント消す
+// （理由：読み込まれてマージされた時にコメント残る → 見にくい & ファイルサイズ増える）
+
+
+/*----------------------------------------------------- */
+/* SCSS MixIn CSS3 */
+/*----------------------------------------------------- */
+
+// IE 6/7/8 に下記プロパティが効くよう、CSS3Pie（JavaScript版のPIE.js） を使用
+// 効果：border-radius, box-shadow, linear-gradient, border-image, multiple background images
+
+
+/*----------------------------------- */
+/* !!角丸 ☆未 */
+/*----------------------------------- */
+// 引数にピクセル値を与えると半径を変えられる（括弧なし：デフォルトの5px）
+// 使用例（#sampleを3pxの角丸に）：#sample { @include rounded_corners(3px); }
+
+@mixin rounded_corners($radius: 5px){//デフォルト値
+	-moz-border-radius: $radius;
+	-webkit-border-radius: $radius;
+	border-radius: $radius;
+}
+/*左側上下*/
+@mixin rounded_corners_left($radius: 5px) {
+	-webkit-border-top-left-radius: $radius;
+	-moz-border-radius-topleft: $radius;
+	border-top-left-radius: $radius;
+	-webkit-border-bottom-left-radius: $radius;
+	-moz-border-radius-bottomleft: $radius;
+	border-bottom-left-radius: $radius;
+}
+/*右側上下*/
+@mixin rounded_corners_right($radius: 5px) {
+	-webkit-border-top-right-radius: $radius;
+	-moz-border-radius-topright: $radius;
+	border-top-right-radius: $radius;
+	-webkit-border-bottom-right-radius: $radius;
+	-moz-border-radius-bottomright: $radius;
+	border-bottom-right-radius: $radius;
+}
+/*上側左右*/
+@mixin rounded_corners_top($radius: 5px) {
+	-webkit-border-top-left-radius: $radius;
+	-moz-border-radius-topleft: $radius;
+	border-top-left-radius: $radius;
+	-webkit-border-top-right-radius: $radius;
+	-moz-border-radius-topright: $radius;
+	border-top-right-radius: $radius;
+}
+/*下側左右*/
+@mixin rounded_corners_bottom($radius: 5px) {
+	-webkit-border-bottom-left-radius: $radius;
+	-moz-border-radius-bottomleft: $radius;
+	border-bottom-left-radius: $radius;
+	-webkit-border-bottom-right-radius: $radius;
+	-moz-border-radius-bottomright: $radius;
+	border-bottom-right-radius: $radius;
+}
+/*右上のみ - 適宜見直*/
+@mixin rounded_corners_topleft($radius: 5px) {
+	-moz-border-radius-topleft: $radius;
+	-webkit-border-top-left-radius: $radius;
+	border-top-left-radius: $radius;
+}
+
+
+
+/* !!透明度 ☆未
+----------------------------------- */
+// 括弧内の数値で透明度を変えられる（括弧なしは、デフォルトの50%になる）
+// 使用例（#sampleの透明度を25%に）：#sample { @include translucent(25); }
+@mixin translucent($transparency: 50){
+	filter: alpha(opacity=$transparency);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=$transparency)";
+	filter: alpha(opacity=$transparency);
+	-moz-opacity: $transparency * 0.01;/*もう不要？*/
+	-khtml-opacity: $transparency * 0.01;/*もう不要？*/
+	opacity: $transparency * 0.01;
+}
+
+
+/*----------------------------------- */
+/* !!透過色の背景（opacyみたいに文字が薄くならない）*/
+/*----------------------------------- */
+//☆IEの箇所は未
+// RGB値で指定
+// 〜IE8用 #AARRGGBB(AAは透明度 00透明〜ff不透明,後はRGBを16進数で)
+// 使用例（#sampleの背景をR66,G66,B66,透明度を70%に）：#sample { @include translucent(66,66,66,0.7); }
+@mixin translucent($rgb_r: 66, $rgb_g: 66, $rgb_b: 66, $transparency: 0.5){
+	background: rgba($rgb_r, $rgb_g, $rgb_b, $transparency) !important;//R,G,B,不透明度
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#66666666', endColorstr='#66666666');
+}
+
+
+/*----------------------------------- */
+/* !!ボックスのドロップシャドウ & 外側の光彩フチ */
+/*----------------------------------- */
+// 横Offset、縦Offset、ぼかし半径、色
+// 縦横Offsetなしで光彩（外側）の効果
+// box幅はOffset分拡がったと解釈されるので注意
+//☆名前空間汚染してないか？→スコープ確認
+// 使用例（#sampleのボックスに光彩）：#sample { @include box-shadow(0,0,5px,#AAA); }
+
+@mixin box_shadow ($x:0,$y:0,$width:7px,$color:#999){
+	-moz-box-shadow: $x $y $width $color;
+	-webkit-box-shadow: $x $y $width $color;
+	box-shadow: $x $y $width $color;
+}
+@mixin box_shadow_none (){
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+
+/*----------------------------------- */
+/* !!ボックスのドロップシャドウ、内側の光彩 */
+/*----------------------------------- */
+// 使用例（#sampleのボックスに光彩）：#sample { @include box-shadow-inner(0,0,2px,rgba(255,255,255,0.7)); }
+@mixin box_shadow_inner ($x:0,$y:0,$width:2px,$color:#FFF){
+	-moz-box-shadow: inset $x $y $width $color;
+	-webkit-box-shadow: inset $x $y $width $color;
+	box-shadow: inset $x $y $width $color;
+}
+
+
+/*----------------------------------- */
+/* !!ドロップシャドウ ボタン用（外側と内側の光彩）*/
+/*----------------------------------- */
+// 使用例（#sampleのボックスに光彩）：#sample { @include box-shadow-button(0,0,2px,#999,0,0,2px,rgba(255,255,255,0.7)); }
+@mixin box_shadow_button ($x:0,$y:1px,$width:2px,$color:rgba(000,000,000,0.5),$x2:0,$y2:0,$width2:2px,$color2:rgba(255,255,255,0.5)){
+	-moz-box-shadow:
+		$x $y $width $color,
+		inset $x2 $y2 $width2 $color2;
+	-webkit-box-shadow:
+		$x $y $width $color,
+		inset $x2 $y2 $width2 $color2;
+	box-shadow:
+		$x $y $width $color,
+		inset $x2 $y2 $width2 $color2;
+}
+
+
+/*----------------------------------- */
+/* !!テキストシャドウ ☆未 */
+/*----------------------------------- */
+//参考：http://kachibito.net/web-design/css3-text-shadow-sample.html
+
+
+/*----------------------------------- */
+/* !!単純なグラデーション
+/*----------------------------------- */
+// 第1引数：開始色、第2引数：終了色(RGBか16進数(三桁O.K.)でカラー指定)
+// 見た目試せるツール CSS3 Gradient Generator : http://gradients.glrzad.com/
+// 使用例(2色 上,下)：#sample { @include vgradient(#E7E7E7,#999); }
+// 使用例(3色 上,下,中)：#sample { @include vgradient(#F0F0F0,#BFBFBF,#666); }
+
+/* タテ方向 */
+@mixin vgradient($start_color:#FFF,$end_color:#000,$middle_color:false){
+	@if $middle_color {//3色
+		background: $start_color;//古いブラウザ
+		background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,$start_color),color-stop(50%,$middle_color),color-stop(100%,$end_color));//Chrome,Safari4+
+		background: -webkit-linear-gradient(top,$start_color 0%,$middle_color 50%,$end_color 100%);//Chrome10+,Safari5.1+
+		background: -moz-linear-gradient(top,$start_color 0%,$middle_color 50%,$end_color 100%);//Firefox3.6+
+		background: -o-linear-gradient(top,$start_color 0%,$middle_color 50%,$end_color 100%);//Opera 11.10+
+		background: -ms-linear-gradient(top,$start_color 0%,$middle_color 50%,$end_color 100%);//IE10+
+		background: linear-gradient(top,$start_color 0%,$middle_color 50%,$end_color 100%);//W3C
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="$start_color",endColorstr="$middle_color",GradientType=0);//IE6-9
+	} @else {//2色
+		background: $start_color;
+		background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,$start_color),color-stop(100%,$end_color));
+		background: -webkit-linear-gradient(top,$start_color 0%,$end_color 100%);
+		background: -moz-linear-gradient(top,$start_color 0%,$end_color 100%);
+		background: -o-linear-gradient(top,$start_color 0%,$end_color 100%);
+		background: -ms-linear-gradient(top,$start_color 0%,$end_color 100%);
+		background: linear-gradient(top,$start_color 0%,$end_color 100%);
+		-pie-background: linear-gradient($start_color, $end_color);//CSS PIE
+		//filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="$start_color",endColorstr="$end_color",GradientType=0);
+	}
+}
+
+/* ヨコ方向 */
+@mixin hgradient($start_color:#FFF,$end_color:#000,$middle_color:false){
+	@if $middle_color {//3色
+		background: $start_color;
+		background: -webkit-gradient(linear,left top,right top,color-stop(0%,$start_color),color-stop(50%,$middle_color),color-stop(100%,$end_color));
+		background: -webkit-linear-gradient(left,$start_color 0%,$middle_color 50%,$end_color 100%);
+		background: -moz-linear-gradient(left,$start_color 0%,$middle_color 50%,$end_color 100%);
+		background: -o-linear-gradient(left,$start_color 0%,$middle_color 50%,$end_color 100%);
+		background: -ms-linear-gradient(left,$start_color 0%,$middle_color 50%,$end_color 100%);
+		background: linear-gradient(left,$start_color 0%,$middle_color 50%,$end_color 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="$start_color",endColorstr="$end_color",GradientType=1);
+	} @else {//2色
+		background: $start_color;
+		background: -webkit-gradient(linear,left top,right top,color-stop(0%,$start_color),color-stop(100%,$end_color));
+		background: -webkit-linear-gradient(left,$start_color 0%,$end_color 100%);
+		background: -moz-linear-gradient(left,$start_color 0%,$end_color 100%);
+		background: -o-linear-gradient(left,$start_color 0%,$end_color 100%);
+		background: -ms-linear-gradient(left,$start_color 0%,$end_color 100%);
+		background: linear-gradient(left,$start_color 0%,$end_color 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="$start_color",endColorstr="$end_color",GradientType=1);
+	}
+}
+
+
+/*----------------------------------- */
+/* !!複雑なグラデーション */
+/*----------------------------------- */
+
+
+
+/*----------------------------------- */
+/* !!アニメーション transition ☆未 */
+/*----------------------------------- */
+// IE は未対応
+// 引数左から、適用する要素、時間、変化の具合
+// :hover などで事後の状態を指定
+// $ease:速度 linear（一定）,ease-in（遅→速）,ease-out（速→遅）,ease（遅→早→遅）
+//       　　 ease-in-out（遅→早→遅）,cubic-bezier()（ベジェ曲線で変化を指定）
+// サンプル：http://kachibito.net/web-design/css3-transition-sample.html
+$range: all;
+$time: 1s;
+$ease: ease-in-out;
+@mixin transition ($range,$time,$ease) {
+	-moz-transition: $range $time $ease;
+	-webkit-transition: $range $time $ease;
+	-o-transition: $range $time $ease;
+	transition: $range $time $ease;
+}
+
+/* !!font-face
+----------------------------------- */
+// compassの css3 > font-face を改良 ★うまくいかない
+//参考：http://compass-style.org/reference/compass/css3/font_face/
