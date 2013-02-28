@@ -62,13 +62,19 @@
         <input type="text" /><button>検索</button>
       </form>
 
+      <nav id="main_menu" role="navigation">
+        nav[role=navigation]。ナビゲーション関連要素の集まり（通常関連ページへのリンク）。
+      </nav>
+
+      <div id="topic_path" class="only_pc">
+        <ul>
+          <li><a href="">ホーム</a></li><li><a href="">カテゴリ名</a></li><li>このページのタイトル</li>
+        </ul>
+      </div>
+
     </header>
 
 
-
-    <nav id="main_menu" role="navigation">
-      nav[role=navigation]ナビゲーション関連要素の集まり（通常関連ページへのリンク）。
-    </nav>
 
 
 
@@ -143,6 +149,7 @@
   <script src="//code.jquery.com/jquery-latest.js">
   <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
   <script src="js/plugins.js"></script>
+    <script src="js/iscroll-lite.js"></script>
   <script src="js/main.js"></script>
 
 </body>
