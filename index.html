@@ -40,7 +40,7 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
 </head>
 
-<body>
+<body id="file_name" class="category_name">
   <!--[if lte IE 8]><p class="chromeframe">お使いのブラウザはバージョンが古いため、サイトを快適にご利用いただけないかもしれません。特別な事情がなければ <a href="http://browsehappy.com/">ブラウザをアップデート</a>、もしくは、<a href="http://www.google.com/chromeframe/?redirect=true">Google Chrome Frame</a>（パフォーマンスの向上がはかれます）をインストールしてください。セキュリティ的にも、常に最新のブラウザをお使いいただくことをおすすめいたします。</p><![endif]-->
 
 ★★スマートフォンでPC表示させるボタン追加する
@@ -49,6 +49,13 @@
 
     <header id="page_header" role="banner">
       <p>header[role=banner]。Webサイトのタイトルや大見出しを含むリージョン情報。ロゴ、サイト主の情報、検索バーなど。ページ中に１つのみ。</p>
+
+      <aside id="unav" class="only_pc">
+        <ul>
+          <li><a href="">utilitynav1</a></li>
+          <li><a href="">utilitynav2</a></li>
+        </ul>
+      </aside>
 
       <form id="search" role="search">
         form[role=search]。検索機能（★★role="search"の中に入れる？）。<br />
@@ -72,13 +79,14 @@
 
         <p>div[role=main]。ページのメインコンテンツ。１ページに１つのみ</p>
 
-
         <article role="article">
           <h2>見出しです(h2)</h2>
           <p>article[role=article] > p。記事。以下ダミーコピーです。何だか今が利用方はぼうっとこの永続ですましなどからなっていましにも失敗申し込んたたいから。</p>
           <h3>見出しです(h3)</h3>
           <p>ダミーコピーです。何だか今が利用方はぼうっとこの永続ですましなどからなっていましにも失敗申し込んたたいから、さっそくにはしですたます。</p>
         </article>
+
+        <p><a href="">» このページのTOPへ</a></p>
 
 
         <article role="article">
