@@ -28,114 +28,19 @@
 
   -->
 
+  <link rel="stylesheet" href="css/main.css" media="all" />
+
   <!-- respond.js を使わずに処理：http://tokkono.cute.coocan.jp/blog/slow/index.php/web-technology/best-practice-of-responsive-design/ -->
-  <link rel="stylesheet" href="css/base.css" media="all" />
+  <!--
+<link rel="stylesheet" href="css/base.css" media="all" />
   <link rel="stylesheet" href="css/style.css" media="all and (min-width: 30em)" />
+-->
   <!--[if (lt IE 9) & (!IEMobile 7)]><link rel="stylesheet" href="style.css" media="all"><![endif]-->
 
-  <style>
-    /* ===================================
-       Common, Smartphone
-     =================================== */
-    /* modernizr で JavaScript ON/OFF で html要素のクラスを切替え */
-    .no-js:before {
-      content: "当Webサイトは、JavaScript を On にしないと適切にご覧いただけません。";
-      color: #FF0;
-      background-color: red;
-      font-weight: bold;
-    }
-    /*ie6で表示させるアップグレードページへの誘導*/
-    .chromeframe {
-      color: #FF0;
-      background-color: red;
-      font-weight: bold;
-    }
-    /*ボックスモデル、border と padding を含んで数値指定できるように
-      サードパーティーのウィジェットを埋め込む場合は、box-sizing: content-box; で戻すと良い
-    */
-    * {
-              box-sizing: border-box;
-         -moz-box-sizing: border-box;
-      -webkit-box-sizing: border-box;
-      *behavior: url(./boxsizing.htc);/*★★要パス設定*/
-    }
-    /* ===================================
-       Common, Smartphone
-     =================================== */
-    body {
-      margin: 0;
-    }
-    #container {}
-    #page_header {
-      background-color: silver;
-    }
-    /* 上記と同じ箇所をCSSセレクタの属性指定で（IE8以下に対応させるなら要Selectivizr）
-    header[role=banner] {
-      background-color: red;
-    }
-    */
-      #search {
-        background-color: gray;
-      }
-    #main_menu {
-      background-color: olive;
-    }
-    #wrapper {}
-      #main {
-        background-color: yellow;
-        padding: 10px;
-      }
-        article {
-          background-color: white;
-        }
-        section[role=region] {
-          background-color: green;
-        }
-      #sidebar {
-        background-color: teal;
-        padding: 15px;
-      }
-
-    #page_footer {
-      clear: both;
-      background-color: silver;
-    }
-
-    /* ===================================
-       Tablet
-     =================================== */
-    @media screen and (min-width: 481px) {
-      #main {
-        float: right;
-        width: 70%;
-      }
-      #sidebar {
-        float: left;
-        width: 30%;
-      }
-    }
-
-    /* ===================================
-      Desktop
-     =================================== */
-    @media screen and (min-width: 960px) {
-      #container {
-        width: 960px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      #main {
-        width: 670px;
-      }
-      #sidebar {
-        width: 290px;
-      }
-    }
-  </style>
   <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
 </head>
 
-<body>ああ
+<body>
   <!--[if lte IE 8]><p class="chromeframe">お使いのブラウザはバージョンが古いため、サイトを快適にご利用いただけないかもしれません。特別な事情がなければ <a href="http://browsehappy.com/">ブラウザをアップデート</a>、もしくは、<a href="http://www.google.com/chromeframe/?redirect=true">Google Chrome Frame</a>（パフォーマンスの向上がはかれます）をインストールしてください。セキュリティ的にも、常に最新のブラウザをお使いいただくことをおすすめいたします。</p><![endif]-->
 
 ★★スマートフォンでPC表示させるボタン追加する
