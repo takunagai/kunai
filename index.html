@@ -37,7 +37,7 @@
 -->
   <!--[if (lt IE 9) & (!IEMobile 7)]><link rel="stylesheet" href="style.css" media="all"><![endif]-->
 
-  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
 </head>
 
 <body id="file_name" class="category_name">
@@ -91,14 +91,14 @@
           <h3>見出しです(h3)</h3>
           <p>ダミーコピーです。何だか今が利用方はぼうっとこの永続ですましなどからなっていましにも失敗申し込んたたいから、さっそくにはしですたます。</p>
         </article>
-
-        <p><a href="">» このページのTOPへ</a></p>
+        <p class="pagetop"><a href="#container">このページTOPへ</a></p>
 
 
         <article role="article">
           <h2>見出しです(h2)</h2>
           <p>ダミーコピーです。何だか今が利用方はぼうっとこの永続ですましなどからなっていましにも失敗申し込んたたいから、さっそくにはしですたます。</p>
         </article>
+        <p class="pagetop"><a href="#container">このページTOPへ</a></p>
 
 
         <section role="region" title="weather">
@@ -146,11 +146,43 @@
 
   <!-- * * * * * * * scripts * * * * * * * -->
 
-  <script src="//code.jquery.com/jquery-latest.js">
+  <script src="//code.jquery.com/jquery-latest.js"></script>
   <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
-  <script src="js/plugins.js"></script>
-    <script src="js/iscroll-lite.js"></script>
-  <script src="js/main.js"></script>
+  <!-- <script src="js/plugins.js"></script> -->
+    <script src="js/vendor/iscroll-lite.js"></script>
+  <script src="js/main.min.js"></script>
+
+  <!--★★リンク修正-->
+  <!--[if lte IE 7]>
+  <script src="../js/imgSizer/imgSizer_min.js"></script>
+  <script src="../js/jquery.exfixed-1.3.2_min.js"></script>
+  <script>
+    $(function(){
+      $('#modal_window_boxes .modal_window_window').exFixed(); //IE6で position: fixed が機能するように実行
+    });
+  </script>
+  <![endif]-->
+
+  <!--[if (gte IE 6)&(lte IE 8)]>
+  <script src="../js/selectivizr-min.js"></script>
+  <script src="../js/respond.min.js"></script>
+  <![endif]-->
+
+
+  <!--CSS PIE のCDNで提供されているもの："//cdnjs.cloudflare.com/ajax/libs/css3pie/1.0.0/PIE.js"-->
+  <!--[if lt IE 10]>
+  <script src="../js/PIE.js"></script>
+  <script>
+    $(function() {
+      if (window.PIE) {
+        $('.button, .label, article h2, .pagetop a').each(function() { PIE.attach(this); });//適用させたい要素を指定
+      }
+    });
+  </script>
+  <![endif]-->
+
+
+  <!--[if IE 6]><script src="../js/minmax-1.0.min.js"></script><![endif]-->
 
 </body>
 </html>
