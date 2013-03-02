@@ -33,6 +33,12 @@ CSS Framework for small scale websites.
   https://github.com/lojjic/PIE
 * iScroll 4  
   http://cubiq.org/iscroll-4
+* font-awesome 3.0 (SIL Open Font License)  
+  http://fortawesome.github.com/Font-Awesome/  
+    
+  See more icon webfont set  
+  10 Super Useful Free Icon Font Sets  
+  http://webdesignledger.com/freebies/10-super-useful-free-icon-font-sets
 
 
 

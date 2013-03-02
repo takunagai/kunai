@@ -3,15 +3,14 @@
 /*!
  * Style.css v0.9.1 2012-02-14
  * http://stack3.com/css/
- * Author:  Oreo, http://stack3.com/
- * License: Public domain
+ * Author:  oreo3, http://stack3.com/
+ * All rights reserved to Stack3.com © 2012
  */
-//上行のような"!"を付けたコメントは、compressed設定でコンパイルしても消去されずに残る。インターポレーションも使える
 
 /*-------------------------------------------------------
 
 　　 　　／⌒ヽ
-＼ ⊂[（_ ＾ν＾）　　　　やってられっか！
+＼ ⊂[（_ ＾ν＾）　　やってられっか！
 　 ＼/　(⌒ﾏ´
 　　（⌒ヽrヘJつ
 　 　 ＞ _）、
@@ -134,7 +133,7 @@ $mq_l:  "only screen and (min-width:769px)";
 /*リセットCSS読み込み */
 /*_reset.scss（.cssじゃなくて.scss）を読み込む。読み込んだものはコメント残る*/
 /*頭にハイフンのあるファイルはコンパイルしない。*/
-@import "normalize","css3","font_awesome";
+@import "normalize","css3","font-awesome";
 
 
 
