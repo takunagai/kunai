@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8" />
+  <title></title>
+  <link rel="stylesheet" href="../scss/_normalize.scss" type="text/css" />
+  <style>
+body {
+  padding: 30px;
+  -webkit-font-smoothing: antialiased;
+}
+b {
+  font-weight: inherit;
+}
+
+.has-pullquote::before {
+	content: attr(data-pullquote);
+	float: right;
+	width: 30%;
+	margin: .5em 0 .5em 1em;
+	font-family:"ヒラギノ明朝 Pro W6", "Hiragino Mincho Pro", "HGS明朝E", "ＭＳ Ｐ明朝", serif;
+	font-weight: bold;
+	font-size: 1.25em;
+	line-height: 1.4;
+	color: maroon;
+	-webkit-font-smoothing: subpixel-antialiased;
+}
+  </style>
+</head>
+
+
+<body>
+
+<h1>data属性を利用して本文の一部を抜き出し表示して目立たせる。要jQuery</h1>
+<p>参考元：<a href="http://miekd.com/articles/pull-quotes-with-html5-and-css/">http://miekd.com/articles/pull-quotes-with-html5-and-css/</a><br />
+参考本：<a href="http://codepen.io/aarongustafson/pen/zxKdh">http://codepen.io/aarongustafson/pen/zxKdh</a></p>
+<p>お客様の声を一部抜き出して目立たせる時などに使えるかも。要IE8以下検証。要jQuery。スマートフォンサイズだと幅が狭くなりすぎて厳しいので非表示の方がいいか（JavaScriptで幅判定が良さそう？）</p>
+
+<hr />
+
+<h2>日本語でやってみた</h2>
+<p data-pullquote="b">おそらく十一月を運動者はいよいよその諷刺だでしかもがしているたにも意味存じたまいて、それほどには致しでたないん。価値に行けれましのも断然場合をどうもでしょですな。まあ大森君で唱道行儀まだ安心からするた人そんな鮒これか料簡でとしてお失敗ましですでたが、その今日しかそれか権利間接で突き抜けるから、嘉納さんのものを事情のそれに初めて肝運動となって私気の毒のご意味と進んようにまあ大病気を</p>
+
+<p data-pullquote="b">おそらく十一月を運動者はいよいよその諷刺だでしかもがしているたにも意味存じたまいて、それほどには致しでたないん。価値に行けれましのも断然場合をどうもでしょですな。まあ大森君で唱道行儀まだ安心からするた人そんな鮒これか料簡でとしてお失敗ましですでたが、その今日しかそれか<b>権利間接で突き抜けるから、嘉納さんのものを事情のそれに初めて</b>肝運動となって私気の毒のご意味と進んようにまあ大病気をおそらく十一月を運動者はいよいよその諷刺だでしかもがしているたにも意味存じたまいて、それほどには致しでたないん。価値に行けれましのも断然場合をどうもでしょですな。</p>
+
+<hr />
+
+<h2>元のサンプル</h2>
+<p>A pull quote is a typographical technique in which an excerpt or quote from an article is duplicated within the article using a different formatting style so that it jumps out at the reader.</p>
+
+<p data-pullquote="b">Blatantly copying the excerpt of the pull quote into it’s own element is not the way to go. <b>A pull quote is a purely visual technique, and therefore should not change the structure of the body.</b> Next to that, a structural representation of the excerpt would be seen twice by people using feed readers or services like <a href="http://www.instapaper.com/">Instapaper</a>, as well as be re-read for people who use screen readers. So how can we best author this into our mark-up?</p>
+
+<h3>Our good friend, the data attribute</h3>
+
+<p><span class="caps">HTML5 </span>introduced the ability for authors to create custom non-visible data-attributes. These attributes can contain data that will not affect layout or presentation.</p>
+
+<blockquote><p>Custom data attributes are intended to store custom data private to the page or application, for which there are no more appropriate attributes or elements.</p></blockquote>
+
+<p>By adding a <code>data-pullquote</code> attribute to an element, we attach the text of the pull quote to it, yet do not add visible content.</p>
+
+<hr/>
+
+<p>Original source: <a href="http://miekd.com/articles/pull-quotes-with-html5-and-css/">http://miekd.com/articles/pull-quotes-with-html5-and-css/</a></p>
+
+
+
+<! * * * * * * * Script * * * * * * * -->
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+
+<script>
+$(function(){
+	var PULLQUOTE = 'data-pullquote';
+	$('[' + PULLQUOTE + ']').each(function(){
+		var $parent = $(this),
+	      $quote = $parent.find( $parent.data('pullquote') );
+		if ( $quote.length > 0 ) {
+			$parent
+				.attr(PULLQUOTE, $quote.eq(0).text())
+				.addClass( 'has-pullquote ');
+		}
+	});
+});
+</script>
+
+</body>
+</html>

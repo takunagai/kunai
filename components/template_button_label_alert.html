@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
+
+<!--★jquery.exfixed-1.3.2_min.js + モーダルウインドウ、IE6で機能しない-->
+<head>
+  <meta charset="utf-8" />
+  <title>ページタイトル - サイトタイトル</title>
+  <meta name="copyright" content="Copyright(C) Your Name" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="requiresActiveX=true" /><![endif]-->
+  <!--[if lt IE 9]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
+  <!--[if IE 9]><meta http-equiv="X-UA-Compatible" content="IE=9" /><![endif]-->
+
+  <!--☆未設定：画像をディスプレイサイズに合わせ最適化する"Adaptive Images"(head内)-->
+
+  <link rel="stylesheet" type="text/css" href="../style.css?v=0.1" media="screen,projection" />
+  <link rel="author" href="../info/profile.html" />
+
+  <!--<script src="//www.google.com/js/gweb/analytics/autotrack.js" /></script>-->
+  <script src="../js/functions_in_head_min.js"></script>
+  <script src="../js/jquery-1.8.0.min.js"></script><!--★公開時に差替<script src="//code.jquery.com/jquery-latest.js"></script>-->
+  <script src="../js/modernizr.custom.27784.js"></script>
+</head>
+
+
+<body id="file_name" class="category_name rayout_pattern">
+
+  <div id="container">
+
+
+    <div id="wrapper">
+
+
+      <div id="page_body">
+
+        <article>
+
+          <header class="article_header">
+            <h1 class="article_title">ボタン、ラベル、アラート</h1>
+          </header>
+
+
+          <div class="article_body">
+
+            <section>
+              <h2>ボタン New</h2>
+              <p>
+                SVGを使用したボタン。ボーダーをグレースケールの RGBA で<br />
+                ★★クラス名や細かい設定など調整。対応はIE９以降。IE8対応できるか？
+              </p>
+              <p>元：<a href="http://terkel.jp/archives/2012/11/gradients-and-borders-using-grayscale-rgba/">http://terkel.jp/archives/2012/11/gradients-and-borders-using-grayscale-rgba/</a></p>
+
+              <button class="default">Default</button>
+              <button class="submit">Submit</button>
+              <button class="delete">Delete</button>
+              <button class="pill">Blue Pill</button>
+              <button class="default large">Large</button>
+              <button class="default small">Small</button>
+              <button class="default disabled">Disabled</button>
+              <button class="submit disabled">Disabled</button>
+              <button class="default block">Block</button>
+
+              <div class="group">
+                  <button class="default">First</button>
+                  <button class="default">Middle</button>
+                  <button class="default">Last</button>
+              </div>
+
+              <div class="group">
+                  <button class="default selected">Selected</button>
+                  <button class="default">Enabled</button>
+                  <button class="default" disabled>Disabled</button>
+              </div>
+
+              <h3>試す</h3>
+              <button class="default large">Large<small>補足説明が入ります(small)</small></button>
+            </section>
+
+
+            <section>
+              <h2>ボタン</h2>
+              <p>ボタンのデザインとCSSコード生成は <a href="http://css3button.net/">CSS3 Button Generator</a> が参考になる。</p>
+              <p>
+                ボタンのサンプルです<br />
+                <a href="#" class="button">ボタン(a.button)</a>
+                <a href="#" class="button">ボタン(a.button)<small>補足説明が入ります(a.button>small)</small></a>
+                <button class="button">ボタン(button.button)</button>
+                <a href="#" class="button strong">ボタン(a.button.strong)</a>
+                <a href="#" class="button strong">ボタン(a.button.strong)<small>補足説明が入ります(a.button.strong>small)</small></a>
+              </p>
+              <p>
+                大きいボタンのサンプルです<br />
+                <a href="#" class="button large">ボタン(a.button.large)</a>
+                <a href="#" class="button large">ボタン(a.button.large)<small>補足説明が入ります(a.button.large>small)</small></a>
+                <a href="#" class="button large strong">ボタン(a.button.large.strong)</a>
+              </p>
+
+              <h3>ボタングループ 横並び</h3>
+              <div class="button_group">
+                <a class="button" href="#">あああ</a>
+                <a class="button" href="#">いいい</a>
+                <a class="button" href="#">ううう</a>
+                <a class="button" href="#">えええ</a>
+              </div>
+
+              <h3>ボタングループ 縦並び</h3>
+              <div class="button_group_vertical">
+                <a class="button" href="#">あああ</a>
+                <a class="button" href="#">いいい</a>
+                <a class="button" href="#">ううう</a>
+                <a class="button" href="#">えええ</a>
+              </div>
+            </section>
+
+
+
+            <section>
+              <h2>ラベル</h2>
+              <p>
+                ラベルのサンプル<span class="label">ラベル</span>です。<br />
+                <span class="label">span.label</span>
+                <span class="label_red">span.label_red</span>
+                <span class="label_orange">span.label_orange</span>
+                <span class="label_yellow">span.label_yellow</span>
+                <span class="label_green">span.label_green</span>
+                <span class="label_blue">span.label_blue</span>
+                <span class="label_color1">span.label_color1</span>
+              </p>
+            </section>
+
+
+
+            <section>
+              <h2>アラート(h2)</h2>
+              <section>
+                <p class="alert">アラートが表示されます。</p>
+                <p class="alert strong">アラートが表示されます。</p>
+              </section>
+            </section>
+
+
+          <!--/.article_body-->
+          </div>
+
+
+        </article>
+
+      <!--/#page_body-->
+      </div>
+
+
+    <!-- /#wrapper -->
+    </div>
+
+
+  <!-- ./#container -->
+  </div>
+
+
+  <!--[if lte IE 7]>
+  <script src="../js/imgSizer/imgSizer_min.js"></script>
+  <script src="../js/jquery.exfixed-1.3.2_min.js"></script>
+  <script>
+    $(function(){
+      $('#modal_window_boxes .modal_window_window').exFixed(); //IE6で position: fixed が機能するように実行
+    });
+  </script>
+  <![endif]-->
+  <!--[if (gte IE 6)&(lte IE 8)]>
+  <script src="../js/selectivizr-min.js"></script><noscript><link rel="stylesheet" href="[fallback css]" /></noscript>
+  <![endif]-->
+  <!--[if lt IE 10]>
+  <script src="../js/PIE.js"></script>
+  <script>
+    $(function() {
+      if (window.PIE) {
+        $('.button, .label, article h2, .pagetop a').each(function() { PIE.attach(this); });//適用させたい要素を指定
+      }
+    });
+  </script>
+  <![endif]-->
+
+
+</body>
+
+</html>

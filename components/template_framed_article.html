@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
+
+<!--★jquery.exfixed-1.3.2_min.js + モーダルウインドウ、IE6で機能しない-->
+<head>
+  <meta charset="utf-8" />
+  <title>ページタイトル - サイトタイトル</title>
+
+  <meta name="Description" content="ページの説明" />
+  <meta name="Keywords" content="キーワード1,キーワード2" />
+  <meta name="copyright" content="Copyright(C) Your Name" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta property="og:title" content="ページタイトル" />
+  <meta property="og:site_name" content="サイト名" />
+  <meta property="og:url" content="このページのURL?id=1" />
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="概要を説明する文章" />
+  <meta property="og:image" content="表示される画像のパス" />
+  <meta property="og:email" content="連絡先メールアドレス" />
+  <meta property="fb:admins" content="ユーザーID" />
+  <meta property="fb:app_id" content="アプリID" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="requiresActiveX=true" /><![endif]-->
+  <!--[if lt IE 9]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
+  <!--[if IE 9]><meta http-equiv="X-UA-Compatible" content="IE=9" /><![endif]-->
+
+  <link rel="stylesheet" type="text/css" href="../style.css?v=0.1" />
+  <link rel="author" href="../info/profile.html" />
+  <link rel="shortcut icon" type="image/x-icon" href="../img_common/favicon.ico" />
+  <link rel="apple-touch-icon" href="../img_common/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="../img_common/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="../img_common/apple-touch-icon-114x114.png" />
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="../atom.xml" />
+  <!--<link rel="canonical" href="//site-name.com/2012/08/23/article-name.html/" />-->
+
+  <!--<script src="//www.google.com/js/gweb/analytics/autotrack.js" /></script>-->
+  <script src="../js/functions_in_head_min.js"></script>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script><!--<script src="../js/jquery-1.9.0.min.js"></script>-->
+  <script src="../js/modernizr.custom.27784.js"></script>
+</head>
+
+
+<body id="file_name" class="category_name rayout_pattern">
+
+  <div id="container">
+
+    <header id="page_header" role="banner">
+      <hgroup>
+        <h1 id="site_title"><a href="#">サイトタイトル(h1#site_title)</a></h1>
+        <h2 id="site_tag_line">タグライン(#site_tag_line)</h2>
+      </hgroup>
+
+      <aside id="unav" class="only_pc">
+        <ul>
+          <li><a href="">サイトマップ</a></li>
+          <li><a href="">お問合せ</a></li>
+        </ul>
+        <form id="search_form" name="search_form" method="get" action="#">
+          <input name="search_keywords" placeholder="サイト内検索" type="text" /><button type="submit">検索</button>
+        </form>
+      </aside>
+
+      <nav id="gnav">
+        <ul>
+          <li id="gnav_1"><a href="">メニュー1 <small>Menu</small></a></li
+          ><li id="gnav_2"><a href="">メニュー2 <small>Menu</small></a></li
+          ><li id="gnav_3"><a href="">メニュー3 <small>Menu</small></a></li
+          ><li id="gnav_4"><a href="">メニュー4 <small>Menu</small></a></li
+          ><li id="gnav_5"><a href="">メニュー5 <small>Menu</small></a></li
+          ><li id="gnav_6"><a href="">メニュー6 <small>Menu</small></a></li>
+        </ul>
+      </nav>
+
+      <div id="topic_path">
+        <ul>
+          <li><a href="">ホーム</a></li><li><a href="">カテゴリ名</a></li><li>このページのタイトル</li>
+        </ul>
+      </div>
+    </header>
+
+
+
+    <div id="wrapper">
+
+
+      <div id="page_body">
+
+        <article>
+
+          <header class="article_header">
+            <h1 class="article_title">枠に囲まれた記事</h1>
+            <p>
+              ★手書き風の枠、テープ、押しピン、クリップなどで貼ったような枠<br />
+              ★紙の切れ目に差し込んだような枠、斜めに傾いた枠
+            </p>
+          </header>
+
+          <div class="article_body">
+
+
+            <section class="framed_a">
+              <h1>枠記事のサンプル(h1)</h1>
+              <h2>小見出しです(h2)</h2>
+              <h3>小見出しです(h3)★要スタイリング</h3>
+              <p>ここに文章が入ります(p)</p>
+            </section>
+
+            <section class="framed_b">
+              <h1>枠記事のサンプル(h1)</h1>
+              <h2>小見出しです(h2)</h2>
+              <h3>小見出しです(h3)★要スタイリング</h3>
+              <p>ここに文章が入ります(p)</p>
+            </section>
+
+            <section class="framed_c">
+              <h1>枠記事のサンプル(h1)</h1>
+              <h2>小見出しです(h2)</h2>
+              <h3>小見出しです(h3)★要スタイリング</h3>
+              <p>ここに文章が入ります(p)</p>
+            </section>
+
+            <section class="framed_d">
+              <h1>枠記事のサンプル(h1)</h1>
+              <h2>小見出しです(h2)</h2>
+              <h3>小見出しです(h3)★要スタイリング</h3>
+              <p>ここに文章が入ります(p)</p>
+            </section>
+
+            <section class="framed_e">
+              <h1>枠記事のサンプル(h1)</h1>
+              <h2>小見出しです(h2)</h2>
+              <h3>小見出しです(h3)★要スタイリング</h3>
+              <p>ここに文章が入ります(p)</p>
+            </section>
+
+
+            <hr />
+
+
+            <section class="framed_a">
+              <h1>枠記事と画像配置レイアウトの組合せ 1/2</h1>
+              <p>ブラウザ幅よりも小さい画像は左揃えになる。スマートフォンなどでブラウザ幅より大きい画像は幅一杯に縮小される</p>
+              <div class="img_text_parallel">
+							   <img class="img_area" src="tmp/dummy_image.png" alt="代替えテキスト" width="400" height="150" />
+							   <p class="text_area">写真の下に文字が回り込まないレイアウトです。ここに文章が入ります。ここに文章が入ります。ここに文章が入ります。</p>
+							</div>
+            </section>
+
+
+            <section class="framed_a">
+              <h1>枠記事と画像配置レイアウトの組合せ 2/2</h1>
+              <p>ブラウザ幅よりも小さい画像をセンター表示</p>
+              <div class="img_text_parallel">
+							   <img class="img_area" src="tmp/dummy_image.png" alt="代替えテキスト" width="200" height="150" />
+							   <p class="text_area">写真の下に文字が回り込まないレイアウトです。ここに文章が入ります。ここに文章が入ります。ここに文章が入ります。</p>
+							</div>
+            </section>
+
+
+            <section class="framed_a">
+              <h1>枠記事と画像配置レイアウトの組合せ 2/2</h1>
+              <p>画像が小さく（目安120px以下）２段組を維持したい場合</p>
+              <div class="img_text_parallel">
+							   <img class="img_area small" src="tmp/dummy_image.png" alt="代替えテキスト" width="120" height="120" />
+							   <p class="text_area">写真の下に文字が回り込まないレイアウトです。ここに文章が入ります。ここに文章が入ります。ここに文章が入ります。</p>
+							</div>
+            </section>
+
+
+            <section class="framed_a">
+              <h1>枠記事と画像配置レイアウトの組合せ 2/2</h1>
+              <p>クラス名変更で左右逆に</p>
+              <div class="text_img_parallel">
+							   <img class="img_area" src="tmp/dummy_image.png" alt="代替えテキスト" width="200" height="150" />
+							   <p class="text_area">写真の下に文字が回り込まないレイアウトです。ここに文章が入ります。ここに文章が入ります。ここに文章が入ります。</p>
+							</div>
+            </section>
+
+
+            <section class="framed_a">
+              <h1>枠記事と段組レイアウトの組合せ</h1>
+              <div class="col_horizontal col4 heightLineParent">
+								<section class="col">
+									<h1>見出し(.col_horizontal.col4>section.col>h1)</h1>
+									<p>本文です(.col_horizontal.col4>section.col>p)</p>
+								</section>
+								<section class="col">
+									<h1>見出し(h1)</h1>
+									<p>本文です。ここに文章が入ります。ここに文章が入ります。ここに文章が入ります。(p)</p>
+								</section>
+								<section class="col">
+									<h1>見出し(h1)</h1>
+									<h2>見出し(h2)</h2>
+									<p>本文です(p)</p>
+								</section>
+								<section class="col">
+									<h1>見出し。ここに文章が入ります。(h1)</h1>
+									<p>本文です(p)</p>
+									<ul>
+										<li>リスト項目1</li>
+										<li>リスト項目2</li>
+									</ul>
+								</section>
+							</div>
+            </section>
+
+
+
+            <section>
+              <h2>リストと枠記事の組合せ</h2>
+              <p><a href="template_list.html">リストのページ参照</a></p>
+              <section class="framed_a">
+                <h1>よくある質問</h1>
+                <p>説明文がここに入ります。説明文がここに入ります。説明文がここに入ります。</p>
+                <dl class="faq">
+                  <dt class="faq_question">質問です(dl>dt.faq_question)</dt>
+                  <dd class="faq_answer">答えです(dl>dd.faq_answer)</dd>
+                  <dd class="faq_answer">答えです(dl>dd.faq_answer)</dd>
+                  <dt class="faq_question">質問です(dl>dt.faq_question)</dt>
+                  <dd class="faq_answer">答えです(dl>dd.faq_answer)</dd>
+                </dl>
+                <h2>注意です</h2>
+                <ul class="caution">
+                  <li>項目1(ul.caution>li)</li>
+                  <li>項目2</li>
+                  <li>項目3</li>
+                </ul>
+                <h1>よくある質問</h1>
+                <ul class="check">
+                  <li>項目1(ul.check>li)</li>
+                  <li>項目2</li>
+                  <li>項目3</li>
+                </ul>
+                <ol start="99">
+                  <li>項目1(ol>li)</li>
+                  <li>項目2</li>
+                  <li>項目3</li>
+                </ol>
+                <ol start="9" class="emphasize">
+                  <li>項目1(ol>li)</li>
+                  <li>項目2</li>
+                  <li>項目3</li>
+                </ol>
+              </section>
+            </section>
+
+
+          <!--/.article_body-->
+          </div>
+
+          <footer class="article_footer">
+            <p>記事フッターです。1つめの artile ここまで</p>
+            <p class="pagetop"><a href="#container">このページTOPへ</a></p>
+          </footer>
+
+        </article>
+
+
+
+        <article>
+
+          <header class="article_header">
+            <h1 class="article_title">２つ目の記事（複数記事がある場合に備え、記事関連の指定セレクタはIDでなくクラス指定）</h1>
+          </header>
+
+          <div class="article_body">
+
+            <p>本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。
+            本文がここに入ります。本文がここに入ります。本文がここに入ります。 本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。
+            本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。</p>
+
+          <!-- /.article_body -->
+          </div>
+
+          <footer class="article_footer">
+            <p>記事フッターです。2つめの artile ここまで</p>
+            <p class="pagetop"><a href="#container">このページTOPへ</a></p>
+          </footer>
+
+        </article>
+
+      <!--/#page_body-->
+      </div>
+
+
+      <aside id="sidebar">
+        <h2>サイドバーメニュー(h2)</h2>
+        <p>サイドバーなど。サイドバーなど。サイドバーなど。サイドバーなど。サイドバーなど。サイドバーなど。サイドバーなど。サイドバーなど。サイドバーなど。サイドバーなど。</p>
+      </aside>
+
+
+    <!-- /#wrapper -->
+    </div>
+
+
+
+    <footer id="page_footer">
+      <p>ページのフッターです</p>
+      <p>Copyright 2009 名前</p>
+    </footer>
+
+
+  <!-- ./#container -->
+  </div>
+
+
+  <!-- * * * * * * * * * * * * * * * * Scripts * * * * * * * * * * * * * * * * -->
+  <script src="../js/jquery.tile_min.js"></script>
+  <script src="../js/functions_min.js"></script>
+
+
+  <!--[if lte IE 7]>
+  <script src="../js/imgSizer/imgSizer_min.js"></script>
+  <script src="../js/jquery.exfixed-1.3.2_min.js"></script>
+  <script>
+    $(function(){
+      $('#modal_window_boxes .modal_window_window').exFixed(); //IE6で position: fixed が機能するように実行
+    });
+  </script>
+  <![endif]-->
+
+
+  <!--[if (gte IE 6)&(lte IE 8)]>
+  <script src="../js/selectivizr-min.js"></script><noscript><link rel="stylesheet" href="[fallback css]" /></noscript>
+  <![endif]-->
+
+
+  <!--[if lt IE 10]>
+  <script src="../js/PIE.js"></script>
+  <script>
+    $(function() {
+      if (window.PIE) {
+        $('.button, .label, article h2, .pagetop a').each(function() { PIE.attach(this); });//適用させたい要素を指定
+      }
+    });
+  </script>
+  <![endif]-->
+
+</body>
+
+</html>

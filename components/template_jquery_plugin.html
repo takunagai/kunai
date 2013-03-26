@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
+
+<!--★jquery.exfixed-1.3.2_min.js + モーダルウインドウ、IE6で機能しない-->
+<head>
+  <meta charset="utf-8" />
+  <title>ページタイトル - サイトタイトル</title>
+
+  <meta name="Description" content="ページの説明" />
+  <meta name="Keywords" content="キーワード1,キーワード2" />
+  <meta name="copyright" content="Copyright(C) Your Name" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta property="og:title" content="ページタイトル" />
+  <meta property="og:site_name" content="サイト名" />
+  <meta property="og:url" content="このページのURL?id=1" />
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="概要を説明する文章" />
+  <meta property="og:image" content="表示される画像のパス" />
+  <meta property="og:email" content="連絡先メールアドレス" />
+  <meta property="fb:admins" content="ユーザーID" />
+  <meta property="fb:app_id" content="アプリID" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="requiresActiveX=true" /><![endif]-->
+  <!--[if lt IE 9]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
+  <!--[if IE 9]><meta http-equiv="X-UA-Compatible" content="IE=9" /><![endif]-->
+
+  <!--☆未設定：画像をディスプレイサイズに合わせ最適化する"Adaptive Images"(head内)-->
+
+  <link rel="stylesheet" type="text/css" href="../style.css?v=0.1" media="screen,projection" />
+  <link rel="author" href="../info/profile.html" />
+  <link rel="shortcut icon" type="image/x-icon" href="../img_common/favicon.ico" />
+  <link rel="apple-touch-icon" href="../img_common/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="../img_common/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="../img_common/apple-touch-icon-114x114.png" />
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="../atom.xml" />
+  <!--<link rel="canonical" href="//site-name.com/2012/08/23/article-name.html/" />-->
+
+  <!--<script src="//www.google.com/js/gweb/analytics/autotrack.js" /></script>-->
+  <script src="../js/functions_in_head_min.js"></script>
+  <script src="../js/jquery-1.8.0.min.js"></script><!--★公開時に差替<script src="//code.jquery.com/jquery-latest.js"></script>-->
+  <script src="../js/modernizr.custom.27784.js"></script>
+</head>
+
+
+<body id="file_name" class="category_name rayout_pattern">
+
+  <div id="container">
+
+    <header id="page_header" role="banner">
+      <hgroup>
+				<h1 id="site_title"><a href="#">サイトタイトル(h1#site_title)</a></h1>
+				<h2 id="site_tag_line">タグライン(#site_tag_line)</h2>
+			</hgroup>
+
+			<aside id="unav" class="only_pc">
+				<ul>
+					<li><a href="">サイトマップ</a></li>
+					<li><a href="">お問合せ</a></li>
+				</ul>
+				<form id="search_form" name="search_form" method="get" action="#">
+					<input name="search_keywords" placeholder="サイト内検索" type="text" /><button type="submit">検索</button>
+				</form>
+			</aside>
+
+			<nav id="gnav">
+				<ul>
+					<li id="gnav_1"><a href="">メニュー1 <small>Menu</small></a></li
+					><li id="gnav_2"><a href="">メニュー2 <small>Menu</small></a></li
+					><li id="gnav_3"><a href="">メニュー3 <small>Menu</small></a></li
+					><li id="gnav_4"><a href="">メニュー4 <small>Menu</small></a></li
+					><li id="gnav_5"><a href="">メニュー5 <small>Menu</small></a></li
+					><li id="gnav_6"><a href="">メニュー6 <small>Menu</small></a></li>
+				</ul>
+			</nav>
+
+			<div id="topic_path">
+				<ul>
+					<li><a href="">ホーム</a></li><li><a href="">カテゴリ名</a></li><li>このページのタイトル</li>
+				</ul>
+			</div>
+    </header>
+
+
+
+    <div id="wrapper">
+
+
+      <div id="page_body">
+
+
+        <article>
+
+          <header class="article_header">
+            <h1 class="article_title">サンプル</h1>
+          </header>
+
+
+          <div class="article_body">
+            <h2>jquery.balloon.js のサンプル（ツールチップ）</h2>
+            <p>★ return false でアンカーリンク作動しないように。あと、CSSで？マークみたいなものを付ける</p>
+            <p id="sample_jquery_balloon_1">jquery.balloon.js の<a title="吹き出しが表示されます">サンプル</a>です。<a href="#" title="デフォルトではtitle要素が表示されます">テストサンプル</a>です。</p>
+            <p>オプションcontentsで<a href="#" id="sample_jquery_balloon_2">HTMLも表示</a>できます。</p>
+
+
+            <h2>font-awesome のサンプル（アイコンフォント）</h2>
+            <p>
+              <a href="http://fortawesome.github.com/Font-Awesome/">» ダウンロード、解説</a><br />
+              ★icon-largeクラス付けたらアイコンがフォントサイズの133%で表示されるはずだがされない</p>
+            <div style="font-size: 24px;">
+              <i class="icon-camera-retro"></i> i.icon-camera-retro <br />
+              <i class="icon-info-sign icon-large"></i> i.icon-info-sign + .icon-large（x33%）
+            </div>
+
+
+            <h2>モーダルウインドウ（jQuery非使用、functions.js、style.cssに記述）</h2>
+            <p>
+              jQueryプラグインではなく、finction.js に記述。カスタマイズも容易。幅と高さを%表示でスマートフォン対応<br />
+              <a href="http://www.queness.com/post/77/simple-jquery-modal-window-tutorial">本家チュートリアル</a>
+            </p>
+
+            <p>
+              <a href="#modal_window_dialog1" name="modal">モーダルウインドウ1を開く</a><br />
+              <a href="#modal_window_dialog2" name="modal">モーダルウインドウ2を開く</a>
+            </p>
+
+
+            <!-- 各モーダルウインドウは、ここにまとめて格納。各モーダルウインドウをスタイリングするならID付ける -->
+            <div id="modal_window_boxes">
+
+              <!--画面全体を覆うマスク-->
+              <div id="modal_window_mask"></div>
+
+              <!-- 各モーダルウインドウID付 -->
+              <div id="modal_window_dialog1" class="modal_window_window">
+                <p>モーダルウインドウ1の内容です</p>
+                <p class="modal_window_close"><a class="button">閉じる</a></p>
+              </div>
+
+              <div id="modal_window_dialog2" class="modal_window_window">
+                <p>モーダルウインドウ2の内容です</p>
+                <p class="modal_window_close"><a class="button">閉じる</a></p>
+              </div>
+
+            </div>
+
+
+            <h2>prettyprint.js のサンプル（デバッグ用）</h2>
+            <div id="prettyprint"></div>
+
+            <p class="pagetop"><a href="#container">このページTOPへ</a></p>
+          <!-- /.article_body -->
+          </div>
+
+
+        </article>
+
+      <!--/#page_body-->
+      </div>
+
+
+      <aside id="sidebar">
+        <h2>サイドバーメニュー(h2)</h2>
+        <p>サイドバーなど。サイドバーなど。サイドバーなど。サイドバーなど。サイドバーなど。サイドバーなど。サイドバーなど。サイドバーなど。サイドバーなど。サイドバーなど。</p>
+      </aside>
+
+
+    <!-- /#wrapper -->
+    </div>
+
+
+
+    <footer id="page_footer">
+      <p>ページのフッターです</p>
+      <p>Copyright 2009 名前</p>
+    </footer>
+
+
+  <!-- ./#container -->
+  </div>
+
+
+  <!-- * * * * * * * * * * * * * * * * Scripts * * * * * * * * * * * * * * * * -->
+  <script src="../js/functions_min.js"></script>
+  <script src="../js/jquery.tile_min.js"></script>
+  <script>//jquery.tile を適用させたい要素を指定して実行。引数は段ごとに高さを揃えたい場合の列数。なしだと前要素が同じ高さになる
+    $('.col2 .col').tile(2);
+    $('.col3 .col').tile(3);
+    $('.col4 .col').tile(4);
+    $('.col5 .col').tile(5);
+    $('.col6 .col').tile(6);
+  </script>
+
+  <script src="../js/jquery.balloon.min.js"></script>
+  <script>//オプション：http://file.urin.take-uma.net/jquery.balloon.js-Demo.html
+    $(function() {
+      $('#sample_jquery_balloon_1 > a').balloon();//オプションにcontentsがなければtitle要素を使用
+      $('#sample_jquery_balloon_2').balloon({
+        contents: '<a href="#">Any HTML!</a><br />'
+        +'<input type="text" size="40" />'
+        +'<input type="submit" value="Search" />'
+      });
+    });
+  </script>
+
+
+  <!--[if lte IE 7]>
+  <script src="../js/imgSizer/imgSizer_min.js"></script>
+  <script src="../js/jquery.exfixed-1.3.2_min.js"></script>
+  <script>
+    $(function(){
+      $('#modal_window_boxes .modal_window_window').exFixed(); //IE6で position: fixed が機能するように実行
+    });
+  </script>
+  <![endif]-->
+  <!--[if (gte IE 6)&(lte IE 8)]>
+  <script src="../js/selectivizr-min.js"></script><noscript><link rel="stylesheet" href="[fallback css]" /></noscript>
+  <![endif]-->
+  <!--[if lt IE 10]>
+  <script src="../js/PIE.js"></script>
+  <script>
+    $(function() {
+      if (window.PIE) {
+        $('.button, .label, article h2, .pagetop a').each(function() { PIE.attach(this); });//適用させたい要素を指定
+      }
+    });
+  </script>
+  <![endif]-->
+
+  <script src="../js/prettyprint.js"></script><!--★公開時に削除-->
+  <script>
+    //サンプル表示用オブジェクト
+    var obj = {
+      "primitive": "foo",
+      "arrObj": ["alpha", "beta", "omega"],
+      "objObj": {
+        "color": "red",
+        "number": 129
+      },
+      "func": function(str){
+        alert(str);
+        return str;
+      }
+    };
+    $(function(){
+      $('#prettyprint').html(prettyPrint(obj));//調べたいobjectを指定
+    });
+  </script>
+
+</body>
+
+</html>

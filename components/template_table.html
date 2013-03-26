@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
+
+<!--★jquery.exfixed-1.3.2_min.js + モーダルウインドウ、IE6で機能しない-->
+<head>
+  <meta charset="utf-8" />
+  <title>ページタイトル - サイトタイトル</title>
+  <meta name="copyright" content="Copyright(C) Your Name" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="requiresActiveX=true" /><![endif]-->
+  <!--[if lt IE 9]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
+  <!--[if IE 9]><meta http-equiv="X-UA-Compatible" content="IE=9" /><![endif]-->
+
+  <!--☆未設定：画像をディスプレイサイズに合わせ最適化する"Adaptive Images"(head内)-->
+
+  <link rel="stylesheet" type="text/css" href="../style.css?v=0.1" media="screen,projection" />
+  <link rel="author" href="../info/profile.html" />
+
+  <!--<script src="//www.google.com/js/gweb/analytics/autotrack.js" /></script>-->
+  <script src="../js/functions_in_head_min.js"></script>
+  <script src="../js/jquery-1.8.0.min.js"></script><!--★公開時に差替<script src="//code.jquery.com/jquery-latest.js"></script>-->
+  <script src="../js/modernizr.custom.27784.js"></script>
+</head>
+
+
+<body id="file_name" class="category_name rayout_pattern">
+
+  <div id="container">
+
+
+    <div id="wrapper">
+
+
+      <div id="page_body">
+
+        <article>
+
+          <header class="article_header">
+            <h1 class="article_title">テーブル</h1>
+          </header>
+
+
+          <div class="article_body">
+
+            <p>★課題：モバイル表示</p>
+
+
+						<section>
+							<h2>テーブルのサンプル(h2)</h2>
+
+							<h3>単純なテーブル(h3)</h3>
+							<table>
+								<caption>キャプション</caption>
+								<tr>
+									<th>見出し 1(tr > th)</th>
+									<th>見出し 2</th>
+									<th>見出し 3</th>
+								</tr>
+								<tr>
+								 	<td>セル 1-1(tr > td)</td>
+								 	<td>セル 1-2<br />２行目</td>
+								 	<td>セル 1-3</td>
+								</tr>
+								<tr>
+								 	<td>セル 2-1</td>
+								 	<td>セル 2-2</td>
+								 	<td>セル 2-3</td>
+								</tr>
+								<tr>
+								 	<td>セル 3-1</td>
+								 	<td>セル 3-2</td>
+								 	<td>セル 3-3</td>
+								</tr>
+								<tr>
+								 	<td>セル 4-1</td>
+								 	<td>セル 4-2</td>
+								 	<td>セル 4-3</td>
+								</tr>
+							</table>
+
+							<h3>ハイライト(h3)</h3>
+							<table border="1">
+								<caption>キャプション</caption>
+								<tr>
+									<th>見出し 1(tr > th)</th>
+									<th>見出し 2</th>
+									<th class="cell_highlight">見出し 3（trのハイライト）</th>
+								</tr>
+								<tr>
+								 	<td>セル 1-1(tr > td)</td>
+								 	<td>セル 1-2<br />２行目</td>
+								 	<td>セル 1-3</td>
+								</tr>
+								<tr class="row_highlight">
+								 	<td>セル 2-1（trのハイライト）</td>
+								 	<td>セル 2-2</td>
+								 	<td>セル 2-3</td>
+								</tr>
+								<tr>
+								 	<td>セル 3-1</td>
+								 	<td>セル 3-2</td>
+								 	<td>セル 3-3</td>
+								</tr>
+								<tr>
+								 	<td>セル 4-1</td>
+								 	<td class="cell_highlight">セル 4-2（tdのハイライト）</td>
+								 	<td>セル 4-3</td>
+								</tr>
+							</table>
+
+							<h3>thead, tfoot 使用(h3)</h3>
+							<table border="1">
+								<caption>キャプション</caption>
+								<thead>
+									<tr>
+										<th>見出し 1(thead > tr > th)</th>
+										<th>見出し 2</th>
+										<th>見出し 3</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>セル 1-1(tbody > tr > td)</td>
+										<td>セル 1-2</td>
+										<td>セル 1-3</td>
+									</tr>
+									<tr>
+										<td>セル 2-1</td>
+										<td>セル 2-2</td>
+										<td>セル 2-3</td>
+									</tr>
+									<tr>
+										<td>セル 3-1</td>
+										<td>セル 3-2</td>
+										<td>セル 3-3</td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<td>セル f-1(tfoot > tr > td)</td>
+									<td>セル f-2</td>
+									<td>セル f-3</td>
+								</tfoot>
+							</table>
+						</section>
+
+
+
+					<!--/.article_body-->
+					</div>
+
+
+        </article>
+
+      <!--/#page_body-->
+      </div>
+
+
+    <!-- /#wrapper -->
+    </div>
+
+
+  <!-- ./#container -->
+  </div>
+
+
+  <!--[if lte IE 7]>
+  <script src="../js/imgSizer/imgSizer_min.js"></script>
+  <script src="../js/jquery.exfixed-1.3.2_min.js"></script>
+  <script>
+    $(function(){
+      $('#modal_window_boxes .modal_window_window').exFixed(); //IE6で position: fixed が機能するように実行
+    });
+  </script>
+  <![endif]-->
+  <!--[if (gte IE 6)&(lte IE 8)]>
+  <script src="../js/selectivizr-min.js"></script><noscript><link rel="stylesheet" href="[fallback css]" /></noscript>
+  <![endif]-->
+  <!--[if lt IE 10]>
+  <script src="../js/PIE.js"></script>
+  <script>
+    $(function() {
+      if (window.PIE) {
+        $('.button, .label, article h2, .pagetop a').each(function() { PIE.attach(this); });//適用させたい要素を指定
+      }
+    });
+  </script>
+  <![endif]-->
+
+
+</body>
+
+</html>

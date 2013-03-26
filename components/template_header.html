@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<!--★jquery.exfixed-1.3.2_min.js + モーダルウインドウ、IE6で機能しない-->
+<head>
+  <meta charset="utf-8" />
+  <title>ページタイトル - サイトタイトル</title>
+  <meta name="copyright" content="Copyright(C) Your Name" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="requiresActiveX=true" /><![endif]-->
+  <!--[if lt IE 9]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
+  <!--[if IE 9]><meta http-equiv="X-UA-Compatible" content="IE=9" /><![endif]-->
+
+  <!--☆未設定：画像をディスプレイサイズに合わせ最適化する"Adaptive Images"(head内)-->
+
+  <link rel="stylesheet" type="text/css" href="../style.css?v=0.1" media="screen,projection" />
+  <link rel="author" href="../info/profile.html" />
+
+  <!--<script src="//www.google.com/js/gweb/analytics/autotrack.js" /></script>-->
+  <script src="../js/functions_in_head_min.js"></script>
+  <script src="../js/jquery-1.8.0.min.js"></script><!--★公開時に差替<script src="//code.jquery.com/jquery-latest.js"></script>-->
+  <script src="../js/modernizr.custom.27784.js"></script>
+</head>
+
+
+<body id="file_name" class="category_name rayout_pattern">
+
+  <div id="container">
+
+
+    <div id="wrapper">
+
+
+      <div id="page_body">
+
+        <article>
+
+          <header class="article_header">
+            <h1 class="article_title">ヘッダー（article>header.article_header>h1.article_title）</h1>
+          </header>
+
+          <div class="article_body">
+
+						<hgroup>
+							<h1>見出しの見本です(.articele_body>h1 ※以下同)</h1>
+							<h2>見出しの見本です(h2)</h2>
+							<h3>見出しの見本です(h3)</h3>
+							<h4>見出しの見本です(h4)</h4>
+							<h5>見出しの見本です(h5)</h5>
+							<h6>見出しの見本です(h6)</h6>
+						</hgroup>
+
+						<hgroup>
+							<h1>補足付き見出し(h1)<small>補足です(h1>small)</small></h1>
+							<h2>補足付き見出し(h2)<small>補足です(h2>small)</small></h2>
+							<h3>補足付き見出し(h3)<small>補足です(h3>small)</small></h3>
+							<h4>補足付き見出し(h4)<small>補足です(h4>small)</small></h4>
+							<h5>補足付き見出し(h5)<small>補足です(h5>small)</small></h5>
+							<h6>補足付き見出し(h6)<small>補足です(h6>small)</small></h6>
+						</hgroup>
+
+						<section class="framed_a">
+							<h1>見出しデザインの参考サイト(.framed_a>h1)</h1>
+							<ul>
+								<li><a href="http://midashi-design.com/">見出しデザイン.com</a></li>
+								<li><a href="http://www.designwalker.com/2008/10/headline.html">タイトル・見出しに使えるデザインまとめ - Design Walker</a></li>
+								<li><a href="http://bubundesignarchive.jp/mid/">見出し - ブブンデザインアーカイブ</a></li>
+								<li><a href="http://toshiiy.blog22.fc2.com/blog-entry-95.html">見出しデザインの参考にしたい CSSで作るhタグのサンプル集 - 日刊ウェブログ式</a></li>
+							</ul>
+						</section>
+
+
+					<!--/.article_body-->
+					</div>
+
+
+        </article>
+
+      <!--/#page_body-->
+      </div>
+
+
+    <!-- /#wrapper -->
+    </div>
+
+
+  <!-- ./#container -->
+  </div>
+
+
+  <!--[if lte IE 7]>
+  <script src="../js/imgSizer/imgSizer_min.js"></script>
+  <script src="../js/jquery.exfixed-1.3.2_min.js"></script>
+  <script>
+    $(function(){
+      $('#modal_window_boxes .modal_window_window').exFixed(); //IE6で position: fixed が機能するように実行
+    });
+  </script>
+  <![endif]-->
+  <!--[if (gte IE 6)&(lte IE 8)]>
+  <script src="../js/selectivizr-min.js"></script><noscript><link rel="stylesheet" href="[fallback css]" /></noscript>
+  <![endif]-->
+  <!--[if lt IE 10]>
+  <script src="../js/PIE.js"></script>
+  <script>
+    $(function() {
+      if (window.PIE) {
+        $('.button, .label, article h2, .pagetop a').each(function() { PIE.attach(this); });//適用させたい要素を指定
+      }
+    });
+  </script>
+  <![endif]-->
+
+
+</body>
+
+</html>

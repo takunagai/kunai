@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="../scss/_normalize.scss" type="text/css" />
+
+    <style>
+/*★★IDでメニュー全体囲んで指定*/
+.nav {
+  width: 100%;
+  margin: 10px auto;
+}
+.toggleMenu {
+  display: none;
+  background: #272727;
+  padding: 10px 15px;
+  color: #fff;
+  font-weight: bold;
+}
+.nav {
+  list-style: none;
+  *zoom: 1;
+  background-color: #333;
+}
+.nav:before,
+.nav:after {
+  content: " ";
+  display: table;
+}
+.nav:after { clear: both }
+.nav ul {
+  list-style: none;
+  width: 9em;
+}
+.nav a {
+  margin-right: 1px;
+  padding: 5px 25px 5px 10px;
+  color: #fff;
+  text-decoration: none;
+  border-right: 1px solid #999;
+}
+
+.nav ul, .nav li {
+  margin: 0;
+  padding: 0;
+}
+.nav li { position: relative }
+.nav > li { float: left }
+ .nav > li > .parent {
+   background-image: url("http://webdesigntutsplus.s3.amazonaws.com/tuts/378_tessa/tessa-lt-dropdowns-21c7868/images/downArrow.png");
+   background-repeat: no-repeat;
+   background-position: right;
+ }
+ .nav > li > a { display: block }
+.nav li ul {
+  position: absolute;
+  left: -9999px;
+}
+.nav > li.hover > ul { left: 0 }
+.nav li li.hover ul {
+  left: 100%;
+  top: 0;
+}
+.nav li li a {
+  display: block;
+  background-color: #999;
+  position: relative;
+  z-index: 100;
+  border-top: 1px solid #F00;
+}
+.nav li li a:hover {
+  background-color: #666;
+}
+@media screen and (max-width: 768px) {
+    .active { display: block }
+    .nav > li { float: none }
+     .nav > li > .parent { background-position: 95% 50% }
+     .nav > li > .parent { background-image: none }
+    .nav li .more {
+      background-image: url("http://webdesigntutsplus.s3.amazonaws.com/tuts/378_tessa/tessa-lt-dropdowns-21c7868/images/downArrow.png");
+      background-repeat: no-repeat;
+      background-position: 95% 50%;
+      width: 10%;
+      float: right;
+      border-left: 1px solid rgba(255,255,255,.3);
+      padding: 8px 15px;
+      margin: 2px 13% 2px 0px;
+      cursor: pointer;
+      z-index: 200;
+      position: relative;
+    }
+    .nav li .more:before {
+      content: "";
+      background: rgba(0,0,0,.3);
+      width: 1px;
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -2px;
+    }
+    .nav ul {
+      display: block;
+      width: 100%;
+    }
+    .nav > li.hover > ul,
+    .nav li li.hover ul { position: static }
+}
+    </style>
+  </head>
+  <body>
+    <h1>レスポンシブ対応 ドロップダウンメインメニュー</h1>
+    <p>参考元：<a href="http://codepen.io/soupala/pen/krqBm">http://codepen.io/soupala/pen/krqBm</a></p>
+    <div class="mica">
+      <a class="toggleMenu" href="#" style="display: none;">MENU</a>
+      <ul class="nav" style="">
+        <li class="test">
+          <a href="#" class="parent">Sharing Food</a>
+          <ul>
+            <li class="">
+              <a href="#">Hunger Changes Everything</a>
+            </li>
+            <li class="">
+              <a href="#">The Gift of Food</a>
+            </li>
+            <li class="">
+              <a href="#">A Week Without Worry</a>
+            </li>
+          </ul>
+        </li>
+        <li class="test">
+          <a href="#" class="parent">We Make It Easy</a>
+          <ul>
+            <li class="">
+              <a href="#">How to Help</a>
+            </li>
+            <li class="">
+              <a href="#" class="parent">Food Donors</a>
+            </li>
+            <li class="">
+              <a href="#">Neighborhood Coordinators</a>
+            </li>
+            <li class="">
+              <a href="#">One Green Bag</a>
+            </li>
+          </ul>
+        </li>
+        <li class="test">
+          <a href="#" class="parent">Get Involved</a>
+          <ul>
+            <li class="">
+              <a href="#">Take the Tour</a>
+            </li>
+            <li class="">
+              <a href="#">Sign Up Now</a>
+            </li>
+            <li class="">
+              <a href="#">Donate</a>
+            </li>
+            <li class="">
+              <a href="#">Tools</a>
+            </li>
+          </ul>
+        </li>
+        <li class="test">
+          <a href="#" class="parent">Building Community</a>
+          <ul>
+            <li class="">
+              <a href="#">Power of Community</a>
+            </li>
+            <li class="">
+              <a href="#">It Starts With Your Neighborhood</a>
+            </li>
+            <li class="">
+              <a href="#">Students, Seniors, and Families</a>
+            </li>
+          </ul>
+        </li>
+        <li class="test">
+          <a href="#" class="parent">About Us</a>
+          <ul>
+            <li class="">
+              <a href="#">Latest News</a>
+            </li>
+            <li class="">
+              <a href="#">Who We Are</a>
+            </li>
+            <li class="">
+              <a href="#">Founders</a>
+            </li>
+            <li class="">
+              <a href="#">Personal Stories</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+
+
+<! * * * * * * * Script * * * * * * * -->
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+
+<script>
+var ww = document.body.clientWidth;
+
+$(function(){
+  $(".nav li a").each(function() {
+    if ($(this).next().length > 0) {
+    	$(this).addClass("parent");
+		};
+	})
+
+	$(".toggleMenu").click(function(e) {
+		e.preventDefault();
+		$(this).toggleClass("active");
+		$(".nav").toggle();
+	});
+	adjustMenu();
+})
+
+$(window).bind('resize orientationchange', function() {
+	ww = document.body.clientWidth;
+	adjustMenu();
+});
+
+var adjustMenu = function() {
+	if (ww < 768) {
+    // if "more" link not in DOM, add it
+    if (!$(".more")[0]) {
+    $('<div class="more">&nbsp;</div>').insertBefore($('.parent'));
+    }
+		$(".toggleMenu").css("display", "inline-block");
+		if (!$(".toggleMenu").hasClass("active")) {
+			$(".nav").hide();
+		} else {
+			$(".nav").show();
+		}
+		$(".nav li").unbind('mouseenter mouseleave');
+		$(".nav li a.parent").unbind('click');
+    $(".nav li .more").unbind('click').bind('click', function() {
+
+			$(this).parent("li").toggleClass("hover");
+		});
+	}
+	else if (ww >= 768) {
+    // remove .more link in desktop view
+    $('.more').remove();
+		$(".toggleMenu").css("display", "none");
+		$(".nav").show();
+		$(".nav li").removeClass("hover");
+		$(".nav li a").unbind('click');
+		$(".nav li").unbind('mouseenter mouseleave').bind('mouseenter mouseleave', function() {
+		 	// must be attached to li so that mouseleave is not triggered when hover over submenu
+		 	$(this).toggleClass('hover');
+		});
+	}
+}
+</script>
+
+
+  </body>
+</html>

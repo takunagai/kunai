@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8" />
+  <title>ページタイトル - サイトタイトル</title>
+  <meta name="copyright" content="Copyright(C) Your Name" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="requiresActiveX=true" /><![endif]-->
+  <!--[if lt IE 9]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
+  <!--[if IE 9]><meta http-equiv="X-UA-Compatible" content="IE=9" /><![endif]-->
+
+  <!--☆未設定：画像をディスプレイサイズに合わせ最適化する"Adaptive Images"(head内)-->
+
+  <!-- <link rel="stylesheet" type="text/css" href="../style.css?v=0.1" /> -->
+  <link rel="author" href="../info/profile.html" />
+
+  <!--<script src="//www.google.com/js/gweb/analytics/autotrack.js" /></script>-->
+  <script src="../js/functions_in_head_min.js"></script>
+  <script src="//code.jquery.com/jquery-latest.js"></script><!-- <script src="../js/jquery-1.9.0.min.js"></script> -->
+  <script src="../js/modernizr.custom.27784.js"></script>
+
+  <style>
+.col {outline:  1px dotted red;}
+@media only screen and (max-width: 767px) {
+  .col {
+    clear: both;
+  }
+  .col .photo {
+  	float: left;
+  	margin-right: 20px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+	.cols {
+		display: table;
+		width: 100%;
+	}
+	.col {
+		display: table-cell;
+		-webkit-box-sizing: border-box;
+		   -moz-box-sizing: border-box;
+		    -ms-box-sizing: border-box;
+		        box-sizing: border-box;
+		padding: 15px;
+	}
+	.cols-three .col {
+		width: 33.33%;
+	}
+	.cols-three .col:nth-child(4n) {
+  	clear: left !important;/*floatじゃないから効かない*/
+  	color: red;
+  }
+}
+  </style>
+
+</head>
+
+
+<body id="file_name" class="category_name rayout_pattern">
+
+  <div id="container">
+
+
+    <div id="wrapper">
+
+
+      <div id="page_body">
+
+        <article>
+
+          <header class="article_header">
+            <h1 class="article_title">レスポンシブなレイアウトパターン</h1>
+          </header>
+
+          <div class="article_body">
+
+
+            <section>
+              <h2>３列等幅 → 1列（画像左、テキスト右）</h2>
+              <p>display: table;を使用なので1段のみ。IE6は非対応</p>
+
+              <div class="cols cols-three">
+
+                <div class="col">
+                  <p class="photo"><a href="#"><img src="" alt="" width="175" height="250" /></a></p>
+                  <h3>Designing Web Accessibility</h3>
+                  <p>How using a modern workflow can eliminate common accessibility problems.</p>
+                  <p class="label label_green">Available on Amazon.</p>
+                </div>
+
+                <div class="col">
+                  <p class="photo"><a href="#"><img src="" alt="" width="175" height="250" /></a></p>
+                  <h3>Designing Web Accessibility</h3>
+                  <p>How using a modern workflow can eliminate common accessibility problems.</p>
+                  <p class="label label_green">Available on Amazon.</p>
+                </div>
+
+                <div class="col">
+                  <p class="photo"><a href="#"><img src="" alt="" width="175" height="250" /></a></p>
+                  <h3>Designing Web Accessibility</h3>
+                  <p>How using a modern workflow can eliminate common accessibility problems.</p>
+                  <p class="label label_green">Available on Amazon.</p>
+                </div>
+
+              <!-- / cols -->
+              </div>
+
+            </section>
+
+
+
+
+            <section>
+              <h2>見出しが入ります</h2>
+
+              <div class="cols cols-three">
+
+                <div class="col">
+                  <p class="photo"><a href="#"><img src="" alt="" width="175" height="250" /></a></p>
+                  <h3>Designing Web Accessibility</h3>
+                  <p>How using a modern workflow can eliminate common accessibility problems.</p>
+                  <p class="label label_green">Available on Amazon.</p>
+                </div>
+
+                <div class="col">
+                  <p class="photo"><a href="#"><img src="" alt="" width="175" height="250" /></a></p>
+                  <h3>Designing Web Accessibility</h3>
+                  <p>How using a modern workflow can eliminate common accessibility problems.</p>
+                  <p class="label label_green">Available on Amazon.</p>
+                </div>
+
+                <div class="col">
+                  <p class="photo"><a href="#"><img src="" alt="" width="175" height="250" /></a></p>
+                  <h3>Designing Web Accessibility</h3>
+                  <p>How using a modern workflow can eliminate common accessibility problems.</p>
+                  <p class="label label_green">Available on Amazon.</p>
+                </div>
+
+                <div class="col">
+                  <p class="photo"><a href="#"><img src="" alt="" width="175" height="250" /></a></p>
+                  <h3>Designing Web Accessibility</h3>
+                  <p>How using a modern workflow can eliminate common accessibility problems.</p>
+                  <p class="label label_green">Available on Amazon.</p>
+                </div>
+
+                <div class="col">
+                  <p class="photo"><a href="#"><img src="" alt="" width="175" height="250" /></a></p>
+                  <h3>Designing Web Accessibility</h3>
+                  <p>How using a modern workflow can eliminate common accessibility problems.</p>
+                  <p class="label label_green">Available on Amazon.</p>
+                </div>
+
+              <!-- / cols -->
+              </div>
+
+            </section>
+
+
+          <!--/.article_body-->
+          </div>
+
+
+        </article>
+
+      <!--/#page_body-->
+      </div>
+
+
+    <!-- /#wrapper -->
+    </div>
+
+
+  <!-- ./#container -->
+  </div>
+
+
+  <!--[if lte IE 7]>
+  <script src="../js/imgSizer/imgSizer_min.js"></script>
+  <script src="../js/jquery.exfixed-1.3.2_min.js"></script>
+  <script>
+    $(function(){
+      $('#modal_window_boxes .modal_window_window').exFixed(); //IE6で position:  fixed が機能するように実行
+    });
+  </script>
+  <![endif]-->
+  <!--[if (gte IE 6)&(lte IE 8)]>
+  <script src="../js/selectivizr-min.js"></script><noscript><link rel="stylesheet" href="[fallback css]" /></noscript>
+  <![endif]-->
+  <!--[if lt IE 10]>
+  <script src="../js/PIE.js"></script>
+  <script>
+    $(function() {
+      if (window.PIE) {
+        $('.button, .label, article h2, .pagetop a').each(function() { PIE.attach(this); });//適用させたい要素を指定
+      }
+    });
+  </script>
+  <![endif]-->
+
+
+</body>
+
+</html>

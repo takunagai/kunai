@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
+
+<!--★jquery.exfixed-1.3.2_min.js + モーダルウインドウ、IE6で機能しない-->
+<head>
+  <meta charset="utf-8" />
+  <title>ページタイトル - サイトタイトル</title>
+  <meta name="copyright" content="Copyright(C) Your Name" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="requiresActiveX=true" /><![endif]-->
+  <!--[if lt IE 9]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
+  <!--[if IE 9]><meta http-equiv="X-UA-Compatible" content="IE=9" /><![endif]-->
+
+  <!--☆未設定：画像をディスプレイサイズに合わせ最適化する"Adaptive Images"(head内)-->
+
+  <link rel="stylesheet" type="text/css" href="../style.css?v=0.1" media="screen,projection" />
+  <link rel="author" href="../info/profile.html" />
+
+  <!--<script src="//www.google.com/js/gweb/analytics/autotrack.js" /></script>-->
+  <script src="../js/functions_in_head_min.js"></script>
+  <script src="../js/jquery-1.8.0.min.js"></script><!--★公開時に差替<script src="//code.jquery.com/jquery-latest.js"></script>-->
+  <script src="../js/modernizr.custom.27784.js"></script>
+</head>
+
+
+<body id="file_name" class="category_name rayout_pattern">
+
+  <div id="container">
+
+
+    <div id="wrapper">
+
+
+      <div id="page_body">
+
+        <article>
+
+          <header class="article_header">
+            <h1 class="article_title">フォーム</h1>
+          </header>
+
+
+          <div class="article_body">
+
+
+						<section>
+							<h2>フォーム(h2)</h2>
+							<p>説明が入ります。(p)</p>
+							<fieldset>
+								<legend>グループのタイトル(fieldset>legend)</legend>
+								<form>
+									<label for="text_field">テキストフィールド:</label>
+									<input id="text_field" type="text" />
+									<br />
+									<label for="text_area">テキストエリア:</label>
+									<textarea name="name" cols="30" rows="3">ここに入力して下さい。</textarea>
+									<br />
+									<label for="select_element">セレクトボックス:</label>
+									<select name="blood">
+										<option value="A">A型</option>
+										<option value="B">B型</option>
+										<option value="AB">AB型</option>
+										<option value="O">O型</option>
+									</select>
+									<br />
+									<label for="radio_buttons">ラジオボタン:</label>
+									<input class="radio" type="radio" name="radio_button" value="radio_1" /> ラジオボタン 1
+									<input class="radio" type="radio" name="radio_button" value="radio_2" /> ラジオボタン 2
+									<input class="radio" type="radio" name="radio_button" value="radio_3" /> ラジオボタン 3
+									<br />
+									<label for="checkboxes">チェックボックス:</label>
+									<input class="checkbox" type="checkbox" name="checkboxes" value="check_1" /> チェックボックス 1
+									<input class="checkbox" type="checkbox" name="checkboxes" value="check_2" /> チェックボックス 2
+									<input class="checkbox" type="checkbox" name="checkboxes" value="check_3" /> チェックボックス 3
+									<br />
+									<label for="password">パスワード:</label>
+									<input class="password" type="password" name="password" />
+									<br />
+									<label for="file">ファイル送信:</label>
+									<input class="file" type="file" name="file" />
+									<br />
+									<input class="button" type="reset" value="Clear" />
+									<input class="button" type="submit" value="Submit" />
+								</form>
+							</fieldset>
+						</section>
+
+
+					<!--/.article_body-->
+					</div>
+
+
+        </article>
+
+      <!--/#page_body-->
+      </div>
+
+
+    <!-- /#wrapper -->
+    </div>
+
+
+  <!-- ./#container -->
+  </div>
+
+
+  <!--[if lte IE 7]>
+  <script src="../js/imgSizer/imgSizer_min.js"></script>
+  <script src="../js/jquery.exfixed-1.3.2_min.js"></script>
+  <script>
+    $(function(){
+      $('#modal_window_boxes .modal_window_window').exFixed(); //IE6で position: fixed が機能するように実行
+    });
+  </script>
+  <![endif]-->
+  <!--[if (gte IE 6)&(lte IE 8)]>
+  <script src="../js/selectivizr-min.js"></script><noscript><link rel="stylesheet" href="[fallback css]" /></noscript>
+  <![endif]-->
+  <!--[if lt IE 10]>
+  <script src="../js/PIE.js"></script>
+  <script>
+    $(function() {
+      if (window.PIE) {
+        $('.button, .label, article h2, .pagetop a').each(function() { PIE.attach(this); });//適用させたい要素を指定
+      }
+    });
+  </script>
+  <![endif]-->
+
+
+</body>
+
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
+
+<!--★jquery.exfixed-1.3.2_min.js + モーダルウインドウ、IE6で機能しない-->
+<head>
+  <meta charset="utf-8" />
+  <title>ページタイトル - サイトタイトル</title>
+  <meta name="copyright" content="Copyright(C) Your Name" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="requiresActiveX=true" /><![endif]-->
+  <!--[if lt IE 9]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
+  <!--[if IE 9]><meta http-equiv="X-UA-Compatible" content="IE=9" /><![endif]-->
+
+  <!--☆未設定：画像をディスプレイサイズに合わせ最適化する"Adaptive Images"(head内)-->
+
+  <link rel="stylesheet" type="text/css" href="../style.css?v=0.1" media="screen,projection" />
+  <link rel="author" href="../info/profile.html" />
+
+  <!--<script src="//www.google.com/js/gweb/analytics/autotrack.js" /></script>-->
+  <script src="../js/functions_in_head_min.js"></script>
+  <script src="../js/jquery-1.8.0.min.js"></script><!--★公開時に差替<script src="//code.jquery.com/jquery-latest.js"></script>-->
+  <script src="../js/modernizr.custom.27784.js"></script>
+</head>
+
+
+<body id="file_name" class="category_name rayout_pattern">
+
+  <div id="container">
+
+
+    <div id="wrapper">
+
+
+      <div id="page_body">
+
+        <article>
+
+          <header class="article_header">
+            <h1 class="article_title">画像を含むレイアウト</h1>
+          </header>
+
+
+          <div class="article_body">
+
+
+						<section>
+							<h2>写真の下に文字が回り込まないレイアウト(h3)</h2>
+
+							<h3>画像が左&1つの場合</h3>
+							<div class="img_text_parallel">
+							    <img class="img_area" src="http://wpdotorg.files.wordpress.com/2008/11/boat.jpg" alt="代替えテキスト" width="200" height="150" />
+							    <p class="text_area">写真の下に文字が回り込まないレイアウトです。ここに文章が入ります。ここに文章が入ります。ここに文章が入ります。</p>
+							</div>
+
+							<div class="img_text_parallel">
+							    <img class="img_area" src="http://wpdotorg.files.wordpress.com/2008/11/boat.jpg" alt="代替えテキスト" width="200" height="150" />
+							    <div class="text_area">
+							    	<p>写真の下に文字が回り込まないレイアウトです。ここに文章が入ります。ここに文章が入ります。ここに文章が入ります。</p>
+							    </div>
+							</div>
+
+							<h3>画像が右&複数&テキストブロックにも画像がある場合</h3>
+							<div class="img_text_parallel">
+								<div class="img_area">
+									<img src="tmp/dummy_image.png" alt="代替えテキスト" width="200" height="150" />
+									<img src="tmp/dummy_image.png" alt="代替えテキスト" width="200" height="150" /><br />
+									<img src="tmp/dummy_image.png" alt="代替えテキスト" width="200" height="150" />
+									<img src="tmp/dummy_image.png" alt="代替えテキスト" width="200" height="150" />
+								</div>
+							    <div class="text_area">
+							    	<p><img class="img_area" src="tmp/dummy_image.png" alt="代替えテキスト" width="60" height="40" />写真の下に文字が回り込まないレイアウトです。ここに文章が入ります。ここに文章が入ります。ここに文章が入ります。</p>
+							    	<p>2つめの段落です。ここに文章が入ります。ここに文章が入ります。</p>
+							    </div>
+							</div>
+						</section>
+
+
+						<section>
+							<h2>画像配置(h2)</h2>
+							<section>
+								<h3>キャプション付画像 - figureを使わない例(h3)</h3>
+								<p>divで囲う(p)</p>
+								<div class="wp-caption alignnone" style="width: 445px;">
+									<img src="http://wpdotorg.files.wordpress.com/2008/11/boat.jpg" alt="代替えテキスト" width="435" height="288" />
+									<p>WordPressの投稿ではこんな感じになる(p)</p>
+								</div>
+
+								<h3>キャプション付画像 - figureを使った例(h3)</h3>
+								<p>figureはなくても通じる構成にしなければならない。その部分がリンクで別ページに飛ぶ用な感じ(p)</p>
+								<figure>
+									<img src="http://wpdotorg.files.wordpress.com/2008/11/boat.jpg" alt="代替えテキスト" width="435" height="288" />
+									<figcaption>キャプション(figure>figcaption)</figcaption>
+								</figure>
+							</section>
+						</section>
+
+
+
+						<section>
+							<h2>リンクを設定した画像（簡易ロールオーバー&押下効果）</h2>
+							<p>カーソルONで80%の不透明度に（色が明るくなったような効果） & クリックで1pxずれて押したような効果</p>
+							<p><a href="#"><img src="../img_common/dummy_image.png" alt="dummy_image" width="100" height="100" /></a></p>
+						</section>
+
+
+					<!--/.article_body-->
+					</div>
+
+
+        </article>
+
+      <!--/#page_body-->
+      </div>
+
+
+    <!-- /#wrapper -->
+    </div>
+
+
+  <!-- ./#container -->
+  </div>
+
+
+  <!--[if lte IE 7]>
+  <script src="../js/imgSizer/imgSizer_min.js"></script>
+  <script src="../js/jquery.exfixed-1.3.2_min.js"></script>
+  <script>
+    $(function(){
+      $('#modal_window_boxes .modal_window_window').exFixed(); //IE6で position: fixed が機能するように実行
+    });
+  </script>
+  <![endif]-->
+  <!--[if (gte IE 6)&(lte IE 8)]>
+  <script src="../js/selectivizr-min.js"></script><noscript><link rel="stylesheet" href="[fallback css]" /></noscript>
+  <![endif]-->
+  <!--[if lt IE 10]>
+  <script src="../js/PIE.js"></script>
+  <script>
+    $(function() {
+      if (window.PIE) {
+        $('.button, .label, article h2, .pagetop a').each(function() { PIE.attach(this); });//適用させたい要素を指定
+      }
+    });
+  </script>
+  <![endif]-->
+
+
+</body>
+
+</html>

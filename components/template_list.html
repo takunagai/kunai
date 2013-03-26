@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
+
+<!--★jquery.exfixed-1.3.2_min.js + モーダルウインドウ、IE6で機能しない-->
+<head>
+  <meta charset="utf-8" />
+  <title>ページタイトル - サイトタイトル</title>
+  <meta name="copyright" content="Copyright(C) Your Name" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="requiresActiveX=true" /><![endif]-->
+  <!--[if lt IE 9]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
+  <!--[if IE 9]><meta http-equiv="X-UA-Compatible" content="IE=9" /><![endif]-->
+
+  <!--☆未設定：画像をディスプレイサイズに合わせ最適化する"Adaptive Images"(head内)-->
+
+  <link rel="stylesheet" type="text/css" href="../style.css?v=0.1" media="screen,projection" />
+  <link rel="author" href="../info/profile.html" />
+
+  <!--<script src="//www.google.com/js/gweb/analytics/autotrack.js" /></script>-->
+  <script src="../js/functions_in_head_min.js"></script>
+  <script src="../js/jquery-1.8.0.min.js"></script><!--★公開時に差替<script src="//code.jquery.com/jquery-latest.js"></script>-->
+  <script src="../js/modernizr.custom.27784.js"></script>
+</head>
+
+
+<body id="file_name" class="category_name rayout_pattern">
+
+  <div id="container">
+
+
+    <div id="wrapper">
+
+
+      <div id="page_body">
+
+        <article>
+
+          <header class="article_header">
+            <h1 class="article_title">リスト & リストマーカー</h1>
+          </header>
+
+
+          <div class="article_body">
+
+
+            <section>
+              <h2>リストマーカーのサンプル(h2)</h2>
+
+              <h3>p要素にリストマーカー(h3)</h3>
+              <p class="listmarker_a">サンプルです(p)</p>
+              <p class="listmarker_b">サンプルです(p)</p>
+              <p class="check">サンプルです(p)</p>
+              <p class="pdf">サンプルです(p)</p>
+              <p class="caution">サンプルです(p)</p>
+
+              <h3>箇条書きリスト 初期設定(h3)</h3>
+              <ul>
+                <li>項目1(ul>li)
+                  <ul>
+                    <li>項目1-1(ul>li>ul>li)</li>
+                    <li>項目1-2</li>
+                    <li>項目1-3</li>
+                  </ul>
+                </li>
+                <li><a href="#">☆項目2 リンク(ul>li>a)</a>
+                  <ul>
+                    <li><a href="#">項目2-1 リンク(ul>li>ul>li>a)</a></li>
+                    <li><a href="#">項目2-2 リンク</a></li>
+                    <li><a href="#">項目2-3 リンク</a></li>
+                  </ul>
+                </li>
+                <li>項目3</li>
+              </ul>
+
+              <h3>箇条書きリスト リストマーカー変更(h3)</h3>
+              <h4>タイプB と タイプA（初期設定）の組み合わせて階層で使用(h4)</h4>
+              <p>ul要素やol要素にクラスをつけることで、用途にあったリストマーカーを表示させるようにしました。</p>
+              <ul class="listmarker_parent">
+                <li>項目1(ul.listmarker_b>li)
+                  <ul class="default">
+                    <li>項目1-1(ul.parent>li>ul.default>li)</li>
+                    <li>項目1-2</li>
+                    <li>項目1-3</li>
+                  </ul>
+                </li>
+                <li><a href="#">項目2 リンク(ul>li>a)</a></li>
+              </ul>
+
+              <h4>チェック(h4)</h4>
+              <ul class="check">
+                <li>項目1(ul.check>li)</li>
+                <li>項目2</li>
+                <li>項目3</li>
+              </ul>
+
+              <h4>PDF(h4)</h4>
+              <ul class="pdf">
+                <li>項目1(ul.pdf>li)</li>
+                <li>項目2</li>
+                <li>項目3</li>
+              </ul>
+
+              <h4>警告(h4)</h4>
+              <ul class="caution">
+                <li>項目1(ul.caution>li)</li>
+                <li>項目2</li>
+                <li>項目3</li>
+              </ul>
+
+              <h4>関連リスト デフォルト設定(h4)</h4>
+              <dl>
+                <dt>名前です(dl>dt)</dt>
+                <dd>値です(dl>dd)</dd>
+                <dd>値です。"dd"は複数個でもO.K.(dl>dd)</dd>
+                <dt>名前です(dl>dt)</dt>
+                <dd>値です(dl>dd</dd>
+              </dl>
+
+              <h4>関連リスト使用 よくある質問(h4)</h4>
+              <dl class="faq">
+                <dt class="faq_question">質問です(dl>dt.faq_question)</dt>
+                <dd class="faq_answer">答えです(dl>dd.faq_answer)</dd>
+              </dl>
+
+
+
+              <h3>番号リスト(h3)</h3>
+              <h4>デフォルト設定</h4>
+              <ol>
+                <li>項目1(ol>li)</li>
+                <li>項目2</li>
+                <li>項目3</li>
+              </ol>
+
+              <h4>ナンバリングを強調(h4)</h4>
+              <ol start="4" class="emphasize">
+                <li>項目1(ol>li)</li>
+                <li>項目2</li>
+                <li>項目3</li>
+              </ol>
+
+              <h3>定義リスト(h3)</h3>
+              <dl>
+                <dt>定義したいキーワード(dl>dt)</dt>
+                <dd>上のキーワードの定義1(dl>dd)</dd>
+                <dd>上のキーワードの定義2(dl>dd)</dd>
+                <dt>定義したいキーワード(dl>dt)</dt>
+                <dd>上のキーワードの定義(dl>dd)</dd>
+              </dl>
+            </section>
+
+
+
+            <section>
+              <h2>リストと枠記事の組合せ</h2>
+              <p>説明文がここに入ります。説明文がここに入ります。説明文がここに入ります。</p>
+              <section class="framed_a">
+                <h1>よくある質問</h1>
+                <p>説明文がここに入ります。説明文がここに入ります。説明文がここに入ります。</p>
+                <dl class="faq">
+                  <dt class="faq_question">質問です(dl>dt.faq_question)</dt>
+                  <dd class="faq_answer">答えです(dl>dd.faq_answer)</dd>
+                  <dd class="faq_answer">答えです(dl>dd.faq_answer)</dd>
+                  <dt class="faq_question">質問です(dl>dt.faq_question)</dt>
+                  <dd class="faq_answer">答えです(dl>dd.faq_answer)</dd>
+                </dl>
+                <h2>注意です</h2>
+                <ul class="caution">
+                  <li>項目1(ul.caution>li)</li>
+                  <li>項目2</li>
+                  <li>項目3</li>
+                </ul>
+                <h1>よくある質問</h1>
+                <ul class="check">
+                  <li>項目1(ul.check>li)</li>
+                  <li>項目2</li>
+                  <li>項目3</li>
+                </ul>
+                <ol start="99">
+                  <li>項目1(ol>li)</li>
+                  <li>項目2</li>
+                  <li>項目3</li>
+                </ol>
+                <ol start="9" class="emphasize">
+                  <li>項目1(ol>li)</li>
+                  <li>項目2</li>
+                  <li>項目3</li>
+                </ol>
+              </section>
+            </section>
+
+
+          <!--/.article_body-->
+          </div>
+
+
+        </article>
+
+      <!--/#page_body-->
+      </div>
+
+
+    <!-- /#wrapper -->
+    </div>
+
+
+  <!-- ./#container -->
+  </div>
+
+
+  <!--[if lte IE 7]>
+  <script src="../js/imgSizer/imgSizer_min.js"></script>
+  <script src="../js/jquery.exfixed-1.3.2_min.js"></script>
+  <script>
+    $(function(){
+      $('#modal_window_boxes .modal_window_window').exFixed(); //IE6で position: fixed が機能するように実行
+    });
+  </script>
+  <![endif]-->
+  <!--[if (gte IE 6)&(lte IE 8)]>
+  <script src="../js/selectivizr-min.js"></script><noscript><link rel="stylesheet" href="[fallback css]" /></noscript>
+  <![endif]-->
+  <!--[if lt IE 10]>
+  <script src="../js/PIE.js"></script>
+  <script>
+    $(function() {
+      if (window.PIE) {
+        $('.button, .label, article h2, .pagetop a').each(function() { PIE.attach(this); });//適用させたい要素を指定
+      }
+    });
+  </script>
+  <![endif]-->
+
+
+</body>
+
+</html>

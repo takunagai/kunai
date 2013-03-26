@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8" />
+  <title>ページタイトル - サイトタイトル</title>
+  <meta name="copyright" content="Copyright(C) Your Name" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="requiresActiveX=true" /><![endif]-->
+  <!--[if lt IE 9]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
+  <!--[if IE 9]><meta http-equiv="X-UA-Compatible" content="IE=9" /><![endif]-->
+
+  <link rel="stylesheet" type="text/css" href="../style.css?v=0.1" />
+  <link rel="stylesheet" type="text/css" href="template_responsive_rayout2.css" /><!--★統合すること-->
+  <link rel="author" href="../info/profile.html" />
+
+  <script src="../js/functions_in_head_min.js"></script>
+  <script src="http://code.jquery.com/jquery-latest.js"></script><!-- <script src="../js/jquery-1.9.0.min.js"></script> -->
+  <script src="../js/modernizr.custom.27784.js"></script>
+</head>
+
+
+<body id="file_name" class="category_name rayout_pattern">
+
+  <div id="container">
+
+
+    <div id="wrapper">
+
+
+      <div id="page_body">
+
+        <article>
+
+          <header class="article_header">
+            <h1 class="article_title">レスポンシブな画像とテキストの組合せのグリッド・ブロック・レイアウト。IE7/8も対応</h1>
+          </header>
+
+          <div class="article_body">
+
+
+            <section>
+
+              <p>リード文が入りますリード文が入りますリード文が入りますリード文が入ります</p>
+
+              <p class="align_center"><img src="responsive_grid_block_2x.png" alt="responsive_grid_block" width="600" height="400"></p>
+
+              <p class="align_center pc_only"><img src="qr_code.png" alt="qr_code" width="100" height="100"></p>
+              <p class="align_center"><a href="http://stack3.com/samples/2013-02-04_responsive_grid_block/" class="button">Demo(Simple HTML)</a><br />
+              <a href="http://codepen.io/oreo3/pen/CILov" target="_blank" class="button">Demo(CodePen)</a><br />
+
+
+              <h2>特徴</h2>
+
+              <ul>
+                <li>多段組O.K.（table-displayでなくfloatを使用）</li>
+                <li>クロスブラウザ。IE7〜8も対応（respond.js、Selectivizr、imgSizer.js、CSSハック）</li>
+                <li>セルを増やす時、HTMLのメンテナンスが楽（列ごとにDivタグで囲みclearfixなど不要）</li>
+                <li>カラム数の変更は、外枠のクラス名の数字を変更するだけ</li>
+                <li>画像とテキストの組合せ対応。もちろんテキストや画像のみでもO.K.</li>
+                <li>レスポンシブ対応。ブラウザ幅でレイアウト切替え。480px以下だと１段組、以上だと多段組（2〜4段対応）になる</li>
+                <li>1段組み表示の時は、画像は右、テキスト左のレイアウトになる</li>
+                <li>イメージサイズはブラウザ幅で可変。1段組になったときは40%以下にはならない（状況によりバランスを見て調整）</li>
+                <li>画像サイズは最大幅に合わせて作っとくといい</li>
+                <li>横一列に並んだ要素の高さを揃えるJavaScript（要jQuery）を使用（実際の使用時は統合JSに組み込んで圧縮が良い）</li>
+                <li>&lt;div class="cell"&gt;の箇所、リストや section にしてもO.K.</li>
+                <li>div.grid_block_inner は、グループ外部に余白を取りたい時やリストにする場合用。不要なら省いてもO.K.</li>
+              </ul>
+
+              <h2>確認済ブラウザ</h2>
+              <ul>
+                <li>IE7/8/9</li>
+                <li>Safari</li>
+                <li>Firefox</li>
+                <li>Chrome</li>
+                <li>Mobile Safari</li>
+                <li>Android標準ブラウザ</li>
+              </ul>
+
+              <h2>注意</h2>
+              <ul>
+                <li>Selectivizr は、v1.0.3 を使う。v1.0.2 だとIE7/8で機能しない</li>
+                <li>Selectivizr は、同一ドメインに置いた外部CSSしか機能しない</li>
+                <li>CSS Trick が出元の横一列に並んだ要素の高さを揃えるスクリプトは、IE7/8で動くよう改変されたもの</li>
+              </ul>
+
+
+            </section>
+
+
+          <!--/.article_body-->
+          </div>
+
+
+        </article>
+
+      <!--/#page_body-->
+      </div>
+
+
+    <!-- /#wrapper -->
+    </div>
+
+
+  <!-- ./#container -->
+  </div>
+
+
+  <!--
+<script src="../js/jquery.tile_min.js"></script>
+  <script>
+    window.onload = function(){
+      if($('body').width() >= 481){
+        $('.col3 .col').tile(3);
+      }
+    };
+  </script>
+-->
+  <script>
+    //列ごとに高さを揃える。IE7/8も対応
+    /* Equal Height Blocks in Rows by CHRIS COYIER(CSS Tricks)
+    http://css-tricks.com/equal-height-blocks-in-rows/
+    http://codepen.io/micahgodbolt/full/FgqLc
+    It's been modified into a function called at page load and then each time the page is resized.
+    One large modification was to remove the set height before each new calculation. */
+    equalheight = function(container) {
+
+      var currentTallest = 0,
+        currentRowStart = 0,
+        rowDivs = new Array(),
+        $el,
+        topPosition = 0;
+
+      $(container).each(function() {
+
+        $el = $(this);
+        $($el).height('auto'); // added
+        topPostion = $el.position().top;
+
+        if (currentRowStart != topPostion) {
+
+          // we just came to a new row.  Set all the heights on the completed row
+          for (currentDiv = 0; currentDiv < rowDivs.length; currentDiv++) {
+            rowDivs[currentDiv].height(currentTallest);
+          }
+
+          // set the variables for the new row
+          rowDivs.length = 0; // empty the array
+          currentRowStart = topPostion;
+          currentTallest = $el.height();
+          rowDivs.push($el);
+        }
+        else {
+          // another div on the current row.  Add it to the list and check if it's taller
+          rowDivs.push($el);
+          currentTallest = (currentTallest < $el.height()) ? ($el.height()) : (currentTallest);
+        }
+        // do the last row
+        for (currentDiv = 0; currentDiv < rowDivs.length; currentDiv++) {
+          rowDivs[currentDiv].height(currentTallest);
+        }
+      });
+    }
+
+    // excute when the page is roaded/resized
+    // 適用したい要素をセット
+    $(window).load(function() {
+      if($('body').width() >= 481){
+        equalheight('.grid_block .cell');
+      }
+    });
+    $(window).resize(function() {
+      if($('body').width() >= 481){
+        equalheight('.grid_block .cell');
+      }
+    });
+  </script>
+
+
+  <!--[if lte IE 7]>
+  <script src="../js/imgSizer/imgSizer_min.js"></script>
+  <script src="../js/jquery.exfixed-1.3.2_min.js"></script>
+  <script>
+    $(function(){
+      $('#modal_window_boxes .modal_window_window').exFixed(); //IE6で position:  fixed が機能するように実行
+    });
+  </script>
+  <![endif]-->
+
+  <!--[if (gte IE 6)&(lte IE 8)]>
+  <script src="../js/selectivizr-min.js"></script>
+  <script src="../js/respond.min.js"></script>
+  <![endif]-->
+
+  <!--[if lt IE 10]>
+  <script src="../js/PIE.js"></script>
+  <script>
+    $(function() {
+      if (window.PIE) {
+        $('.button, .label, article h2, .pagetop a').each(function() { PIE.attach(this); });
+      }
+    });
+  </script>
+  <![endif]-->
+
+
+</body>
+
+</html>

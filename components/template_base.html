@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
+
+<!--★★jquery.exfixed-1.3.2_min.js + モーダルウインドウ、IE6で機能しない-->
+<!--★★minmax-1.0.min.js 要動作テスト -->
+<!--★★未設定：画像をディスプレイサイズに合わせ最適化する"Adaptive Images"(head内)-->
+<!--★★↑ga.jsの新バージョン。申し込みしないと無効。発リンクまで計測できる。body直前がいい？ http://www.kagua.biz/tracking/autotrack.html -->
+
+<head>
+  <meta charset="utf-8" />
+  <title>ページタイトル - サイトタイトル</title>
+
+  <meta name="Description" content="ページの説明" />
+  <meta name="Keywords" content="キーワード1,キーワード2" />
+  <meta name="copyright" content="Copyright(C) Your Name" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta property="og:title" content="ページタイトル" />
+  <meta property="og:site_name" content="サイト名" />
+  <meta property="og:url" content="このページのURL?id=1" />
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="概要を説明する文章" />
+  <meta property="og:image" content="表示される画像のパス" />
+  <meta property="og:email" content="連絡先メールアドレス" />
+  <meta property="fb:admins" content="ユーザーID" />
+  <meta property="fb:app_id" content="アプリID" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="requiresActiveX=true" /><![endif]-->
+  <!--[if lt IE 9]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
+  <!--[if IE 9]><meta http-equiv="X-UA-Compatible" content="IE=9" /><![endif]-->
+
+  <link rel="stylesheet" type="text/css" href="../style.css?v=0.1" />
+  <link rel="author" href="../info/profile.html" />
+  <link rel="shortcut icon" type="image/x-icon" href="../img_common/favicon.ico" />
+  <link rel="apple-touch-icon" href="../img_common/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="../img_common/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="../img_common/apple-touch-icon-114x114.png" />
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="../atom.xml" />
+  <!--<link rel="canonical" href="//site-name.com/2012/08/23/article-name.html/" />-->
+
+  <!--<script src="//www.google.com/js/gweb/analytics/autotrack.js" /></script>-->
+  <script src="../js/functions_in_head_min.js"></script>
+  <script src="http://code.jquery.com/jquery-latest.js"></script><!-- <script src="../js/jquery-1.8.0.min.js"></script> -->
+  <script src="../js/modernizr.custom.27784.js"></script>
+</head>
+
+
+<body id="file_name" class="category_name rayout_pattern">
+
+  <div id="container">
+
+    <header id="page_header" role="banner">
+      <hgroup>
+        <h1 id="site_title"><a href="#">サイトタイトル(h1#site_title)</a></h1>
+        <h2 id="site_tag_line">タグライン(#site_tag_line)</h2>
+      </hgroup>
+
+      <aside id="unav" class="only_pc">
+        <ul>
+          <li><a href="">サイトマップ</a></li>
+          <li><a href="">お問合せ</a></li>
+        </ul>
+      </aside>
+
+      <nav id="gnav">
+        <ul>
+          <li id="gnav_1"><a href="">メニュー1 <small>Menu</small></a></li
+          ><li id="gnav_2"><a href="">メニュー2 <small>Menu</small></a></li
+          ><li id="gnav_3"><a href="">メニュー3 <small>Menu</small></a></li
+          ><li id="gnav_4"><a href="">メニュー4 <small>Menu</small></a></li
+          ><li id="gnav_5"><a href="">メニュー5 <small>Menu</small></a></li
+          ><li id="gnav_6"><a href="">メニュー6 <small>Menu</small></a></li>
+        </ul>
+      </nav>
+
+      <div id="topic_path">
+        <ul>
+          <li><a href="">ホーム</a></li><li><a href="">カテゴリ名</a></li><li>このページのタイトル</li>
+        </ul>
+      </div>
+    </header>
+
+
+
+    <div id="wrapper">
+
+
+      <div id="page_body">
+
+        <article>
+
+          <header class="article_header">
+            <h1 class="article_title">記事タイトル(記事タイトルがここに入ります。(article>header.article-header>h1) - sectionをなるべく使わない方針</h1>
+            <p>更新：<time pubdate="pubdate" datetime="2009-09-04T16:31:24+02:00">2011年00月00日</time>（投稿日：2012年4月17日） by <a href="#">投稿者名</a> - <a href="#comments">6 comments</a></p>
+            <div class="social_media_buttons">
+              <!--★要設定 ソーシャルボタン Analytics,Social buttons(Tw,FB,G+1,Hatebu) 2/2-->
+              <div class="fb-like" data-href="http://aaaa.com/bbbb★★★.html" data-layout="button_count" data-send="false" data-width="200"></div>
+              <a class="twitter-share-button" data-count="horizontal">Tweet</a>
+              <div class="g-plusone" data-size="medium"></div>
+              <a class="hatena-bookmark-button" href="http://b.hatena.ne.jp/entry/http://★★★site-name.com/" data-hatena-bookmark-title="★★★ページタイトルです" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" /></a>
+            </div>
+          </header>
+
+          <div class="article_body">
+
+            <div class="img_text_parallel">
+						    <img class="img_area" src="../img/denim.jpg" alt="代替えテキスト" width="200" height="150" />
+						    <p class="text_area lead">本文がここに入ります。本文がここに入ります。本文がここに入ります。
+						    本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。
+						    本文がここに入ります。本文がここに入ります。</p>
+						</div>
+
+
+            <div id="table_of_contents"></div>
+
+
+
+            <section>
+              <h2>小見出し1（h2）</h2>
+              <p>本文がここに入ります。<img src="../img_common/logo.png" alt="logo" width="170" height="40">本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。</p>
+              <h3>小見出し（h3）</h3>
+              <p>本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。</p>
+
+              <blockquote cite="">
+                <p>引用がここに入ります。引用がここに入ります。引用がここに入ります。引用がここに入ります。引用がここに入ります。引用がここに入ります。引用がここに入ります。</p>
+              </blockquote>
+
+
+
+              <h3>小見出し（h3）</h3>
+              <p>本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。</p>
+
+              <section class="aaaaa">
+                  <h1>枠内記事タイトル(h1)</h1>
+                  <p>枠内記は見出しを付けたい時が多い。枠記事のフレームをdiv要素で表現しようとすると見出しのレベルを決定するのが難しい。現在いるアウトラインの影響で見出しレベルが変わってくるからだ。よって、sectionを使って明示的にアウトラインを一段階下げ、ヘッダーにh1を使用するのが無難だと考える。</p>
+              </section>
+
+              <p class="pagetop"><a href="#container">このページTOPへ</a></p>
+            </section>
+
+
+
+            <section>
+              <h2>小見出し2（h2）</h2>
+              <p>本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。</p>
+              <h3>小見出し3（h3）</h3>
+              <p>本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。</p>
+
+              <p class="pagetop"><a href="#container">このページTOPへ</a></p>
+            </section>
+
+
+
+            <section>
+              <h2>小見出し3 - 引用(h2)</h2>
+              <p>引用文のサンプルです。引用文のサンプルです。</p>
+              <blockquote cite="http://site-url.com/article-name.html">
+<!--code-->
+<pre class="prettyprint linenums"><code class="language-scss">//引用中のコード表示
+/*基本*/
+.button {
+  display: inline-block;
+  margin: 0.5em 0;
+  padding: 5px 10px;
+}</code></pre>
+<!--/code-->
+                <p>引用がここに入ります。引用は属性"cite"に引用元サイトのURLをセットします。引用がここに入ります。引用がここに入ります。引用がここに入ります。引用がここに入ります。（blockquote>p）</p>
+                <small><a href="http://site-url.com/article-name.html">引用元タイトルがここに入ります - 引用元サイト名（blockquote>small）</a></small>
+              </blockquote>
+
+              <p>文中に入れるインラインの引用は"q"タグに。これも属性"cite"に引用元サイトのURLをセット。→<q cite="http://site-url.com/article-name.html">引用です。</q>←ここまで引用。</p>
+            </section>
+
+          <!-- /.article_body -->
+          </div>
+
+          <footer class="article_footer">
+            <p>記事フッターです。1つめの artile ここまで</p>
+            <p class="pagetop"><a href="#container">このページTOPへ</a></p>
+          </footer>
+
+        </article>
+
+
+
+        <article>
+
+          <header class="article_header">
+            <h1 class="article_title">２つ目の記事（複数記事がある場合に備え、記事関連の指定セレクタはIDでなくクラス指定）</h1>
+          </header>
+
+          <div class="article_body">
+
+            <p>本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。
+            本文がここに入ります。本文がここに入ります。本文がここに入ります。 本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。
+            本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。本文がここに入ります。</p>
+
+          <!-- /.article_body -->
+          </div>
+
+          <footer class="article_footer">
+            <p>記事フッターです。2つめの artile ここまで</p>
+            <p class="pagetop"><a href="#container">このページTOPへ</a></p>
+          </footer>
+
+        </article>
+
+      <!--/#page_body-->
+      </div>
+
+
+
+      <aside id="sidebar">
+
+        <section class="framed_e">
+          <h1>枠記事見出し</h1>
+          <p>ここにサイドバーの枠記事が入ります。</p>
+          <p class="align_center"><a class="button" href="cgi-bin/form/pgdmailform.cgi">ボタン</a></p>
+        </section>
+
+        <!-- メニューを開くボタン（#menu_modal_window_button）は読み込み最後に表示されるようbody直前に配置してある -->
+        <div id="menu_modal_window_boxes">
+          <div id="menu_modal_window_mask"></div><!--画面全体を覆うマスク-->
+          <div id="menu_modal_window_dialog"><!-- 各モーダルウインドウID付 -->
+
+            <nav id="side_menu">
+              <ul>
+                <li>
+                  <h1>カテゴリA</h1>
+                  <ul>
+                    <li><a href="#">ページA1</a></li>
+                    <li><a href="#">ページA2</a></li>
+                    <li><a href="#">ページA3</a></li>
+                    <li><a href="#">ページA4</a></li>
+                    <li><a href="#">ページA5</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <h1>カテゴリB</h1>
+                  <ul>
+                    <li><a href="#">ページB1</a></li>
+                    <li><a href="#">ページB2</a></li>
+                    <li><a href="#">ページB3</a></li>
+                    <li><a href="#">ページB4</a></li>
+                    <li><a href="#">ページB5</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <h1>カテゴリC</h1>
+                  <ul>
+                    <li><a href="#">ページC1</a></li>
+                    <li><a href="#">ページC2</a></li>
+                    <li><a href="#">ページC3</a></li>
+                    <li><a href="#">ページC4</a></li>
+                    <li><a href="#">ページC5</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+
+            <button id="menu_modal_window_close">閉じる</button>
+          </div>
+        </div>
+
+        <section class="new_articles framed_a">
+          <h1>最新の記事</h1>
+          <ul>
+            <li><img src="../img_common/dummy_image.png" alt="" width="50" height="50"><a href="">記事Aのタイトルです</a></li>
+            <li><img src="../img_common/dummy_image.png" alt="" width="50" height="50"><a href="">記事Bのタイトルです記事Bのタイトルです</a></li>
+            <li><img src="../img_common/dummy_image.png" alt="" width="50" height="50"><a href="">記事Cのタイトルタイトルです</a></li>
+            <li><img src="../img_common/dummy_image.png" alt="" width="50" height="50"><a href="">記事Dのタイトルです</a></li>
+            <li><img src="../img_common/dummy_image.png" alt="" width="50" height="50"><a href="">記事Eのタイトルです</a></li>
+          </ul>
+        </section>
+
+        <section class="framed_a">
+          <h1>サイト内検索</h1>
+          <form id="search_form" name="search_form" method="get" action="#">
+          <input name="search_keywords" placeholder="サイト内検索" type="text" /><button type="submit">検索</button>
+        </form>
+        </section>
+
+        <section class="framed_a">
+          <p><a href="#" target="_blank"><img src="img_common/bn_aaa.png" width="220" height="70" /></a></p>
+          <p>サイドバーのメニュー以外のパーツ。</p>
+        </section>
+
+        <section class="framed_a">
+          <p><a href="#" target="_blank"><img src="img_common/bn_aaa.png" width="220" height="70" /></a></p>
+          <p>サイドバーのメニュー以外のパーツ。</p>
+        </section>
+
+      <!--/#sidebar-->
+      </aside>
+
+
+    <!-- /#wrapper -->
+    </div>
+
+
+
+    <footer id="page_footer">
+      <p>ページのフッターです</p>
+      <p>Copyright 2009 名前</p>
+    </footer>
+
+  <!-- ./#container -->
+  </div>
+
+
+<!-- * * * * * * * * * * * * * * * * Scripts * * * * * * * * * * * * * * * * -->
+
+<div id="fb-root"></div>
+<script>
+//Analytics,Social buttons(Tw,FB,G+1,Hatebu) 2/2
+//http://tokkono.cute.coocan.jp/blog/slow/index.php/xhtmlcss/asynchronous-loading-of-major-social-buttons/
+(function(e,c){e._gaq=[["_setAccount","UA-XXXXXXXX-X"],["_trackPageview"]];e.___gcfg={lang:"ja"};var b,f=c.getElementsByTagName("script")[0],a=function(a,d){c.getElementById(d)||(b=c.createElement("script"),b.src=a,d&&(b.id=d),f.parentNode.insertBefore(b,f))};a(("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js","ga");a("https://apis.google.com/js/plusone.js");a("//b.st-hatena.com/js/bookmark_button.js");a("//platform.twitter.com/widgets.js","twitter-wjs");a("//connect.facebook.net/ja_JP/all.js#xfbml=1",
+"facebook-jssdk")})(this,document);
+</script>
+
+
+<script src="../js/jquery.tile_min.js"></script>
+<script>
+  //Androidの場合のみ iscroll-lite.js を読みこませる
+  if(/Android/.test(navigator.userAgent)){
+    $('script').attr('src','../js/iscroll-lite.js').appendTo('head');
+    alert('Android。iscroll-lite.jsを読み込み。');
+  }
+</script>
+<script src="../js/iscroll-lite.js"></script>
+<script src="../js/functions_min.js"></script>
+
+
+<!--[if lte IE 7]>
+<script src="../js/imgSizer/imgSizer_min.js"></script>
+<script src="../js/jquery.exfixed-1.3.2_min.js"></script>
+<script>
+  $(function(){
+    $('#modal_window_boxes .modal_window_window').exFixed(); //IE6で position: fixed が機能するように実行
+  });
+</script>
+<![endif]-->
+
+<!--[if (gte IE 6)&(lte IE 8)]>
+<script src="../js/selectivizr-min.js"></script>
+<script src="../js/respond.min.js"></script>
+<![endif]-->
+
+
+<!--CSS PIE のCDNで提供されているもの："//cdnjs.cloudflare.com/ajax/libs/css3pie/1.0.0/PIE.js"-->
+<!--[if lt IE 10]>
+<script src="../js/PIE.js"></script>
+<script>
+  $(function() {
+    if (window.PIE) {
+      $('.button, .label, article h2, .pagetop a').each(function() { PIE.attach(this); });//適用させたい要素を指定
+    }
+  });
+</script>
+<![endif]-->
+
+
+<!--[if IE 6]><script src="../js/minmax-1.0.min.js"></script><![endif]-->
+
+
+<button id="menu_modal_window_button" class="button">メニューを開く</button>
+</body>
+
+</html>

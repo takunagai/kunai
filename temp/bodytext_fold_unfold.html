@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8" />
+  <title></title>
+  <link rel="stylesheet" href="../scss/_normalize.scss" type="text/css" />
+  <style>
+p:first-child {
+  margin-top: 0;/* overflow: hidden でマージンの相殺がなくなり一行分拡がるのでその対策 */
+}
+p:last-child {
+  margin-bottom: 0;
+}
+@media screen and (max-width:480px) {
+  .mobile_height {
+    height: 3em;
+    overflow: hidden;
+  }
+  .read_more {
+    display: block;
+    text-align: right;
+    text-decoration: underline;
+    font-size: small;
+  }
+}
+@media screen and (min-width:481px) {
+  .read_more {
+    display: none;
+  }
+}
+  </style>
+</head>
+
+
+<body>
+
+<h1>スマートフォン表示なら、長い本文を折りたたんで開閉リンクを表示させる</h1>
+
+<h2>サンプル</h2>
+<section>
+  <div class="summary_text mobile_height">
+    <p>内容が入ります。スマートフォン（このサンプルではブレークポイントは480px）では折りたたまれます。テキストブロックの高さがスマートフォン高さ以上になった場合わかりにくいかも。</p>
+    <p>開閉させるリンクテキスト、折りたたみ時は「開く」で展開時は「閉じる」としても良いかも。あえて「続きを展開/閉じる」固定がいいか？（開く操作前に閉じれることが伝わるから）</p>
+  </div>
+  <a class="read_more">» 続きを展開/閉じる</a>
+</section>
+
+<p>その後に続くテキスト</p>
+
+<hr />
+
+<p>参考元：<a href="http://lanyrd.com/2012/sxsw-interactive/sqgqw/#link-hcbr">Responsive Content: Build a Website that Kicks App</a></p>
+<ul>
+  <li>課題：</li>
+  <li>展開時はRead moreをcloseに変える</li>
+  <li>開閉時に位置がずれる問題解消しなければならない → O.K. overflow: hidden; だとマージンの相殺が無くなるのが原因だった</li>
+  <li>要旧IEテスト</li>
+  <li>slideToggle();みたいなアニメーション</li>
+  <li>◯行以上「…」となるCSS指定を利用したものも別に考えてみる</li>
+</ul>
+
+
+
+<! * * * * * * * Script * * * * * * * -->
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+
+<script>
+$(function(){
+  $('.read_more').click(function(){
+    $(this).siblings('.summary_text').toggleClass('mobile_height');
+  });
+});
+</script>
+
+</body>
+</html>

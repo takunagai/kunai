@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8" />
+  <title></title>
+  <link rel="stylesheet" href="../../../common/normalize_and_clearfix.css" type="text/css" />
+  <script src="http://code.jquery.com/jquery-latest.js"></script><!--<script src="file://localhost/Volumes/Data%20HD/htdocs/common/jquery.js"></script>-->
+  <style>
+    /*共通*/
+    section {
+      width: 400px;
+      padding: 30px;
+      border: 1px solid #CCC;
+    }
+    h2 {
+      margin: 2em 0 1em;
+    }
+      h2:first-child {
+        margin-top: 0 !important;
+      }
+    p {
+      margin: 1em 0;
+    }
+    p:first-child,
+    small:first-child {
+      margin-top: 0 !important;
+    }
+    p:last-child,
+    small:last-child {
+      margin-bottom: 0 !important;
+    }
+    a {
+      color: #00f;
+    }
+
+    /*STARBUCKS*/
+    #starbucks {
+      color: #5f4e44;
+      font-family: メイリオ, Meiryo, 'ＭＳ Ｐゴシック', 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', sans-serif;
+    }
+    #starbucks .catch {
+      font-size: 14px;
+      line-height: 1.714285714;/*24px*/
+      font-weight: bold;
+      margin-bottom: 17px;
+    }
+    #starbucks h2, p {
+      font-size: 12px;
+      line-height: 1.666666667;/*20px*/
+      margin-bottom: 10px;
+    }
+    #starbucks small {
+      font-size: 10px;
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+
+    /*Yahoo!ニュース*/
+    #yahoo_news {
+      font-family: 'MS PGothic', 'Hiragino Kaku Gothic Pro', Helvetica, Arial, sans-serif;
+    }
+    #yahoo_news h2 {
+      font-size: 22px;
+      line-height: 1;/*22px*/
+      margin-bottom: 5px;
+    }
+    #yahoo_news .update {
+      margin-top: 0;
+      font-size: 13px;
+      line-height: 1.230769231;/*16px*/
+      color: #666;
+    }
+    #yahoo_news p {
+      font-size: 16px;
+      line-height: 1.375;/*16px*/
+      margin-bottom: 1em;
+    }
+
+    /*Apple*/
+    #apple {
+      font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', メイリオ, Meiryo, 'ＭＳ Ｐゴシック', Helvetica, Arial, Verdana, sans-serif;
+    }
+    #apple .catch {
+      font-size: 28px;
+      line-height: 50px;
+    }
+    #apple h2 {
+      font-size: 14px;
+      line-height: 1.357142857;/*19px*/
+      margin-bottom: 7px;
+    }
+    #apple p {
+      font-size: 14px;
+      line-height: 1.571428571;/*22px*/
+      margin-bottom: 18px;
+    }
+    #apple small {
+      font-size: 12px;
+      line-height: 1.416666667;/*17px*/
+    }
+
+    /*Google Search*/
+    #google_search {
+      font-family: arial, sans-serif;
+    }
+    #google_search h2 {
+      font-size: 16px;
+      line-height: 1.5625;/*25px*/
+      font-weight: normal;
+    }
+    #google_search p {
+      font-size: 12px;
+      line-height: 1.666666667;/*20px*/
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <section id="starbucks">
+    <h1>STARBUCKS</h1>
+
+    <p class="catch">厳選された香り高いドリップコーヒー（14px）</p>
+    <h2>チョコレートのほろ苦い風味を感じることのできるカプチーノ（12px）</h2>
+    <p>世界中のコーヒー産地から厳選された高品質のアラビカ種コーヒー豆を使用したスターバックスの定番商品です。バラエティあふれるコーヒー豆を通して、スターバックスのコーヒージャーニーをお楽しみください。（12px）</p>
+
+
+    <small>オートチャージなどのサービスのご利用、限定キャンペーンへの参加が可能になります（10px）</small>
+  </section>
+
+
+
+  <section id="yahoo_news">
+    <h1>Yahoo!ニュース</h1>
+
+    <h2>原因究明へ現場検証（22px）</h2>
+    <p class="update"><a href="#">2月8日</a>配信(13px)</p>
+    <p>火災は8日午後7時半ごろ発生。当時建物にいた高齢者10人と職員ら2人が病院に搬送され、入所者の女性4人が死亡した。他に2人が集中治療室で治療を受けている。(16px)</p>
+  </section>
+
+
+
+  <section id="apple">
+    <h1>Apple</h1>
+
+    <p class="catch">まったく新しいデザイン(28px/カーニング→画像)</p>
+    <h2>薄く、磨かれたボディ（14px）</h2>
+    <p>優れた音質をさらに高めるために、アコースティックベントも綿密な計算をもとに配置されています。(14px)</p>
+    <small>最新のアクセサリでiPhoneをさらに便利に。さらに楽しく。(12px)</small>
+  </section>
+
+
+  <section id="google_search">
+    <h1>Google検索</h1>
+    <h2><a href="#"><b>関西</b> - Wikipedia(16px）</a></h2>
+    <p>関西（かんさい、かんせい）とは、日本の地方を指す言葉である。現在、関西の範囲は大阪、京都、兵庫、滋賀、奈良、和歌山の2府4県とされることが多い。(12px）</p>
+  </section>
+
+
+</body>
+</html>

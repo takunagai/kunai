@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
+
+<!--★jquery.exfixed-1.3.2_min.js + モーダルウインドウ、IE6で機能しない-->
+<head>
+  <meta charset="utf-8" />
+  <title>ページタイトル - サイトタイトル</title>
+  <meta name="copyright" content="Copyright(C) Your Name" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="requiresActiveX=true" /><![endif]-->
+  <!--[if lt IE 9]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
+  <!--[if IE 9]><meta http-equiv="X-UA-Compatible" content="IE=9" /><![endif]-->
+
+  <!--☆未設定：画像をディスプレイサイズに合わせ最適化する"Adaptive Images"(head内)-->
+
+  <link rel="stylesheet" type="text/css" href="../style.css?v=0.1" />
+  <link rel="author" href="../info/profile.html" />
+
+  <!--<script src="//www.google.com/js/gweb/analytics/autotrack.js" /></script>-->
+  <script src="../js/functions_in_head_min.js"></script>
+  <script src="http://code.jquery.com/jquery-latest.js"></script><!-- <script src="../js/jquery-1.8.0.min.js"></script> -->
+  <script src="../js/modernizr.custom.27784.js"></script>
+
+  <script src="../js/prettify/prettify.js"></script>
+</head>
+
+
+<body id="file_name" class="category_name rayout_pattern">
+
+  <div id="container">
+
+
+    <div id="wrapper">
+
+
+      <div id="page_body">
+
+        <article>
+
+          <header class="article_header">
+            <h1 class="article_title">コード</h1>
+            <p class="lead">Google Prettify 使用。要 prettyPrint(); 実行</p>
+          </header>
+
+
+          <div class="article_body">
+
+
+            <section>
+              <h2>コード(h2)</h2>
+              <p>ブロックで使う場合はインデントを反映させるため、タブや改行をそのまま表示できるpre要素で囲む。マークアップで使われる "&lt;" や "&gt;"などは、実体参照（エンティティとも言う）で記述する。(p)</p>
+              <h3>p>code</h3>
+              <p>インライン中で使う例 → <code>&lt;html&gt;</code> ← codeタグで囲まれてる。ブロックで使う場合はインデントを反映させるため、タブや改行をそのまま表示できるpre要素で囲む。マークアップで使われる "&lt;" や "&gt;"などは、実体参照（エンティティとも言う）で記述する。</p>
+
+              <h3>pre>code</h3>
+<!--code-->
+<pre><code class="language_css">/*pre>code.language-css*/
+p.notes {
+    font-size: 0.8em;
+}</code></pre>
+<!--/code-->
+
+              <h3>figure をつかった例(h3)</h3>
+              <p>CSS3では角丸を表現するプロパティが追加されました。</p>
+              <figure>
+                <figcaption>figure>figcaption 角丸にするborder-radiusプロパティの使用方法</figcaption>
+<!--code-->
+<pre><code class="language_css">/*figre>pre>code.language-css*/
+p.notes {
+    font-size: 0.8em;
+}</code></pre>
+<!--/code-->
+              </figure>
+              <p>また、その他にもグラデーションやボックスシャドウなど多数のプロパティが追加されています。</p>
+
+              <h3>Google Prettifier を使用してシンタックスハイライト</h3>
+              <p>code タグのクラスに language_html のように言語指定。目立たせたい箇所は mark タグで囲む</p>
+<!--code-->
+<pre class="prettyprint"><code class="language_html">&lt;!--HTML--&gt;
+&lt;head&gt;
+  &lt;title&gt;タイトルです&lt;/title&gt;
+  &lt;script src=&quot;js/prettify/prettify.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+  <mark>&lt;link href=&quot;js/prettify/prettify.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;/&gt;</mark>
+  &lt;link href=&quot;js/prettify/sunburst.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;/&gt;
+&lt;/head&gt;
+</code></pre>
+<!--/code-->
+
+<!--code-->
+<pre class="prettyprint"><code class="language_javascript">&lt;script&gt;
+$(function(){
+  $('textarea').keyup(function(){
+  var counter = $(this).val().length;
+  $('#countUp').text(counter);
+  if(counter === 0){
+    $("#countUp").text('0');
+  }
+  if(counter >= 10){
+    $('#countUp').css('color', 'red');
+  }
+  else {
+    $('#countUp').css('color', '#333');
+  }
+  });
+});
+&lt;/script&gt;
+</code></pre>
+<!--/code-->
+
+              <p>クラス"linenums"を付けると、行番号を表示する</p>
+<!--code-->
+<pre class="prettyprint linenums"><code class="language_scss">//参考：CSS3 Button Generator - http://css3button.net/
+/*基本*/
+.button {
+  display: inline-block;
+  margin: 0.5em 0;
+  padding: 5px 10px;
+  text-align: center;
+  border: 1px solid rgba(0,0,0,.4);
+  color: #333;
+  text-shadow:
+    0px -1px 0px rgba(0,0,0,0.4),
+    0px 1px 0px rgba(255,255,255,0.3);//横ズレ、下ズレ、ぼかし幅、影の色（複数指定可）
+  text-decoration: none !important;
+  -webkit-user-select:none;-moz-user-select:none;
+  -ms-user-select:none;user-select:none;
+  @include rounded-corners(5px);//角丸半径
+  @include vgradient(#FFF,#CCC);//開始色、終了色
+  @include box-shadow-button;
+  &:hover,&:focus {//ロールオーバー
+    @include vgradient(#CCC,#999);
+    color: #333 !important;
+  }
+  &:active {
+    @include box-shadow-inner(0,1px,4px,rgba(0, 0, 0, 0.5));
+  }
+}</code></pre>
+<!--/code-->
+            </section>
+
+
+            <section>
+              <h2>コードの引用</h2>
+              <p>Google prettify 使用</p>
+
+              <blockquote cite="http://site-url.com/article-name.html">
+<!--code-->
+<pre class="prettyprint linenums"><code class="language-scss">//引用中のコード表示
+/*基本*/
+.button {
+  display: inline-block;
+  margin: 0.5em 0;
+  padding: 5px 10px;
+}</code></pre>
+<!--/code-->
+                <p>引用がここに入ります。引用は属性"cite"に引用元サイトのURLをセットします。引用がここに入ります。引用がここに入ります。引用がここに入ります。引用がここに入ります。（blockquote>p）</p>
+                <small><a href="http://site-url.com/article-name.html">引用元タイトルがここに入ります - 引用元サイト名（blockquote>small）</a></small>
+              </blockquote>
+
+              <p>文中に入れるインラインの引用は"q"タグに。これも属性"cite"に引用元サイトのURLをセット。→<q cite="http://site-url.com/article-name.html">引用です(qタグ)。</q>←ここまで引用。</p>
+            </section>
+
+
+          <!--/.article_body-->
+          </div>
+
+
+        </article>
+
+      <!--/#page_body-->
+      </div>
+
+
+    <!-- /#wrapper -->
+    </div>
+
+
+  <!-- ./#container -->
+  </div>
+
+
+  <script>
+    $(function(){
+      prettyPrint();
+    });
+
+  </script>
+
+  <!--[if lte IE 7]>
+  <script src="../js/imgSizer/imgSizer_min.js"></script>
+  <script src="../js/jquery.exfixed-1.3.2_min.js"></script>
+  <script>
+    $(function(){
+      $('#modal_window_boxes .modal_window_window').exFixed(); //IE6で position: fixed が機能するように実行
+    });
+  </script>
+  <![endif]-->
+  <!--[if (gte IE 6)&(lte IE 8)]>
+  <script src="../js/selectivizr-min.js"></script><noscript><link rel="stylesheet" href="[fallback css]" /></noscript>
+  <![endif]-->
+  <!--[if lt IE 10]>
+  <script src="../js/PIE.js"></script>
+  <script>
+    $(function() {
+      if (window.PIE) {
+        $('.button, .label, article h2, .pagetop a').each(function() { PIE.attach(this); });//適用させたい要素を指定
+      }
+    });
+  </script>
+  <![endif]-->
+
+
+</body>
+
+</html>

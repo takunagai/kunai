@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
+
+<!--★jquery.exfixed-1.3.2_min.js + モーダルウインドウ、IE6で機能しない-->
+<head>
+  <meta charset="utf-8" />
+  <title>ページタイトル - サイトタイトル</title>
+  <meta name="copyright" content="Copyright(C) Your Name" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="requiresActiveX=true" /><![endif]-->
+  <!--[if lt IE 9]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
+  <!--[if IE 9]><meta http-equiv="X-UA-Compatible" content="IE=9" /><![endif]-->
+
+  <link rel="stylesheet" type="text/css" href="../style.css?v=0.1" media="screen,projection" />
+  <link rel="author" href="../info/profile.html" />
+
+  <!--<script src="//www.google.com/js/gweb/analytics/autotrack.js" /></script>-->
+  <script src="../js/functions_in_head_min.js"></script>
+  <script src="http://code.jquery.com/jquery-latest.js"></script><!-- <script src="../js/jquery-1.8.0.min.js"></script> -->
+  <script src="../js/modernizr.custom.27784.js"></script>
+</head>
+
+
+<body id="file_name" class="category_name rayout_pattern">
+
+  <div id="container">
+
+
+    <div id="wrapper">
+
+
+      <div id="page_body">
+
+        <article>
+
+          <header class="article_header">
+            <h1 class="article_title">グリッド状に並ぶレイアウト</h1>
+            <p>function.js に記述した、高さを揃えるスクリプトを使う（実行が必要）。段違いでも全てのブロックの高さを揃えたい時は jquery.tile.js で</p>
+            <p>分岐処理で、スマートフォンなど、1段になる時は、上記スクリプトは動かさないように</p>
+            <p>スマートフォン表示時には、3段以下は1段、4段以上は2段になる。</p>
+          </header>
+
+
+          <div class="article_body">
+
+
+						<section>
+							<h2>段組レイアウト(h2)</h2>
+							<h3>section使用 2段</h3>
+							<div class="col_horizontal col2">
+								<section class="col">
+									<h1>見出し(.col_horizontal.col4>section.col>h1)</h1>
+									<p>本文です(.col_horizontal.col4>section.col>p)</p>
+								</section>
+								<section class="col">
+									<h1>見出し(h1)</h1>
+									<p>本文です。ここに文章が入ります。ここに文章が入ります。ここに文章が入ります。(p)</p>
+								</section>
+								<section class="col">
+									<h1>見出し(h1)</h1>
+									<h2>見出し(h2)</h2>
+									<p>本文です(p)</p>
+								</section>
+								<section class="col">
+									<h1>見出し。ここに文章が入ります。(h1)</h1>
+									<p>本文です(p)</p>
+									<ul>
+										<li>リスト項目1</li>
+										<li>リスト項目2</li>
+									</ul>
+								</section>
+							</div>
+
+							<section>
+							<h2>段組レイアウト(h2)</h2>
+							<h3>section使用 4段</h3>
+							<div class="col_horizontal col4">
+								<section class="col">
+									<h1>見出し(.col_horizontal.col4>section.col>h1)</h1>
+									<p>本文です(.col_horizontal.col4>section.col>p)</p>
+								</section>
+								<section class="col">
+									<h1>見出し(h1)</h1>
+									<p>本文です。ここに文章が入ります。ここに文章が入ります。ここに文章が入ります。(p)</p>
+								</section>
+								<section class="col">
+									<h1>見出し(h1)</h1>
+									<h2>見出し(h2)</h2>
+									<p>本文です(p)</p>
+								</section>
+								<section class="col">
+									<h1>見出し。ここに文章が入ります。(h1)</h1>
+									<p>本文です(p)</p>
+									<ul>
+										<li>リスト項目1</li>
+										<li>リスト項目2</li>
+									</ul>
+								</section>
+							</div>
+
+							<h3>サンプル_画像サムネイル風</h3>
+							<p>★色々と問題</p>
+							<div class="col_horizontal col4">
+								<section class="col">
+									<p><img src="../img_common/dummy_image.png" width="150" height="100" /></p>
+									<p>説明文です</p>
+								</section>
+								<section class="col">
+									<p><img src="../img_common/dummy_image.png" width="150" height="100" /></p>
+									<p>説明文です説明文です説明文です</p>
+								</section>
+								<section class="col">
+									<img src="../img_common/dummy_image.png" width="150" height="100" />
+									<p>説明文です</p>
+								</section>
+								<section class="col">
+									<img src="../img_common/dummy_image.png" width="150" height="100" />
+									<p>説明文です</p>
+								</section>
+								<section class="col">
+									<img src="../img_common/dummy_image.png" width="150" height="100" />
+									<p>説明文です</p>
+								</section>
+								<section class="col">
+									<img src="../img_common/dummy_image.png" width="150" height="100" />
+									<p>説明文です</p>
+								</section>
+								<section class="col">
+									<img src="../img_common/dummy_image.png" width="150" height="100" />
+									<p>説明文です</p>
+								</section>
+								<section class="col">
+									<img src="../img_common/dummy_image.png" width="150" height="100" />
+									<p>説明文です</p>
+								</section>
+							</div>
+
+							<h3>section使用 5段</h3>
+							<div class="col_horizontal col5">
+								<section class="col">
+									<h1>見出し(.col_horizontal.col4>section.col>h1)</h1>
+									<p>本文です(.col_horizontal.col4>section.col>p)</p>
+								</section>
+								<section class="col">
+									<h1>見出し(h1)</h1>
+									<p>本文です。ここに文章が入ります。ここに文章が入ります。ここに文章が入ります。(p)</p>
+								</section>
+								<section class="col">
+									<h1>見出し(h1)</h1>
+									<h2>見出し(h2)</h2>
+									<p>本文です(p)</p>
+								</section>
+								<section class="col">
+									<h1>見出し。ここに文章が入ります。(h1)</h1>
+									<p>本文です(p)</p>
+									<ul>
+										<li>リスト項目1</li>
+										<li>リスト項目2</li>
+									</ul>
+								</section>
+								<section class="col">
+									<h1>見出し(h1)</h1>
+									<p>本文です(p)</p>
+								</section><section class="col">
+									<h1>見出し(.col_horizontal.col4>section.col>h1)</h1>
+									<p>本文です(.col_horizontal.col4>section.col>p)</p>
+								</section>
+								<section class="col">
+									<h1>見出し(h1)</h1>
+									<p>本文です。ここに文章が入ります。ここに文章が入ります。ここに文章が入ります。(p)</p>
+								</section>
+								<section class="col">
+									<h1>見出し(h1)</h1>
+									<h2>見出し(h2)</h2>
+									<p>本文です(p)</p>
+								</section>
+								<section class="col">
+									<h1>見出し。ここに文章が入ります。(h1)</h1>
+									<p>本文です(p)</p>
+									<ul>
+										<li>リスト項目1</li>
+										<li>リスト項目2</li>
+									</ul>
+								</section>
+								<section class="col">
+									<h1>見出し(h1)</h1>
+									<p>本文です(p)</p>
+								</section>
+							</div>
+
+
+
+							<div class="img_text_parallel">
+							    <img class="img_area" src="http://wpdotorg.files.wordpress.com/2008/11/boat.jpg" alt="代替えテキスト" width="200" height="150" />
+							    <p class="text_area">写真の下に文字が回り込まないレイアウトです。ここに文章が入ります。ここに文章が入ります。ここに文章が入ります。</p>
+							</div>
+
+							<h3>リスト使用 3段(h2)</h3>
+							<div class="col_horizontal col3 img_text_parallel">
+								<ul class="col_horizontal_inner">
+									<li class="col">
+  								  <p class="img_area"><a href="#"><img src="" alt="" width="175" height="250" /></a></p>
+  								  <div class="text_area">
+										  <h1>見出し(h1)</h1>
+										  <p>本文です。本文です。ここに文章が入ります。ここに文章が入ります。ここに文章が入ります。(p)</p>
+  								  </div>
+									</li>
+									<li class="col">
+  								  <p class="img_area"><a href="#"><img src="" alt="" width="175" height="250" /></a></p>
+  								  <div class="text_area">
+										  <h1>見出し(h1)</h1>
+										  <p>本文です。本文です。ここに文章が入ります。ここに文章が入ります。ここに文章が入ります。(p)</p>
+  								  </div>
+									</li>
+								</ul>
+							</div>
+						</section>
+
+
+					<!--/.article_body-->
+					</div>
+
+
+        </article>
+
+      <!--/#page_body-->
+      </div>
+
+
+    <!-- /#wrapper -->
+    </div>
+
+
+  <!-- ./#container -->
+  </div>
+
+
+  <!-- * * * * * * * * * * * * * * * * Scripts * * * * * * * * * * * * * * * * -->
+  <script src="../js/jquery.tile_min.js"></script>
+  <script src="../js/functions_min.js"></script>
+
+
+  <!--[if lte IE 7]>
+  <script src="../js/imgSizer/imgSizer_min.js"></script>
+  <script src="../js/jquery.exfixed-1.3.2_min.js"></script>
+  <script>
+    $(function(){
+      $('#modal_window_boxes .modal_window_window').exFixed(); //IE6で position: fixed が機能するように実行
+    });
+  </script>
+  <![endif]-->
+  <!--[if (gte IE 6)&(lte IE 8)]>
+  <script src="../js/selectivizr-min.js"></script><noscript><link rel="stylesheet" href="[fallback css]" /></noscript>
+  <![endif]-->
+  <!--[if lt IE 10]>
+  <script src="../js/PIE.js"></script>
+  <script>
+    $(function() {
+      if (window.PIE) {
+        $('.button, .label, article h2, .pagetop a').each(function() { PIE.attach(this); });//適用させたい要素を指定
+      }
+    });
+  </script>
+  <![endif]-->
+
+
+</body>
+
+</html>
