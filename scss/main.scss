@@ -4,17 +4,17 @@
  * Style.css v0.9.1 2012-02-14
  * http://stack3.com/css/
  * Author:  oreo3, http://stack3.com/
- * All rights reserved to Stack3.com © 2012
+ * All rights reserved to Stack3.com © 2013
  */
 
 /*-------------------------------------------------------
 
 　　 　　／⌒ヽ
-＼ ⊂[（_ ＾ν＾）　　やってられっか！
+＼ ⊂[（_ ＾ν＾）　　やってられっか！！
 　 ＼/　(⌒ﾏ´
 　　（⌒ヽrヘJつ
 　 　 ＞ _）、
-　 　 し' ＼_） ヽヾ＼
+　 　 し' ＼_） ヽヾ＼　　バシッ！
 　　　　　　　　　　丶_ｎ.＿_
 　　　　　　　　　　　[I_　三ｦ　(
 　　　　　　　　　　　　 ￣ 　 （⌒
@@ -32,27 +32,40 @@
   4.★★が付いてるとこは未解決の課題。不具合あるかも
   5.コーティング規約 http://stack3.com/tools/coding_rule.html
  -------------------------------------------------------
- [IE対策で以下のPolifilを使用]★★自分のサイトのページ作ってリンク
+ [使用Polifil（IE対策など）]★★自分のサイトのページ作ってリンク
+  1.modernizr：ブラウザのCSS3やHTML5の機能、JavaScriptメソッドの対応状況を判定し処理を手助けしてくれる（下記参照）
+    -> http://modernizr.com/
   1.html5shiv（modernizr.js に含む）：IE9未満でHTML5の新要素をを使えるようにする
     -> http://code.google.com/p/html5shiv/
   2.selectivizr.js : IE6～8でCSS3セレクタ使えるようにする
     -> http://selectivizr.com/
   3.CSS3 PIE : IE6～8をCSS3対応にする。JavaScript版使用。使用するセレクタをhead内で要attach
     -> http://css3pie.com/
- - 以下、ie9の代替えとなるもの（ここでは未使用） -
-   0.ie9.js : IE6～8をモダンブラウザに近づける（※うまく機能しないので却下）
-     -> http://code.google.com/p/ie7-js/
  -------------------------------------------------------
 　[目次]
-  ・Coda 2 のコードナビゲータで確認のこと
+  ・Coda 2 のコードナビゲータで確認
  ------------------------------------------------------*/
 
 
 /*====================================*/
 /* !!Modernizr */
 /*====================================*/
-//そのブラウザが対応してないものには no- が付く
-//JavaScript でイベントの対応状況を判定し分岐処理も可能 if(Modernizr.touch){//対応時の処理} else {//非対応時の処理}
+//CSS使用例：
+//そのブラウザが対応してないCSSプロパティやの機能にはに no- が付く
+//.rgba #foo {
+//  color: rgba(0,0,0,0.6);//対応時の記述
+//}
+//.no-rgba #foo {
+//  color: #666;//非対応時の記述
+//}
+//
+//JavaScript使用例：
+//if(Modernizr.touch){
+//  対応時の処理
+//} else {
+//  非対応時の処理
+//}
+//
 /* audio */
 /* applicationcache */
 /* backgroundsize */
@@ -100,11 +113,11 @@
 /*====================================*/
 //変数名は、Media Queries S -> $mq_s とした
 //★★ em 指定に変更する
-$mq_s:  "only screen and (max-width:480px)";
-$mq_sm: "only screen and (max-width:768px)";
-$mq_m:  "only screen and (min-width:481px) and (max-width:768px)";
-$mq_ml: "only screen and (min-width:481px)";
-$mq_l:  "only screen and (min-width:769px)";
+$mq_s:  "only screen and (max-width:568px)";
+$mq_sm: "only screen and (max-width:800px)";
+$mq_m:  "only screen and (min-width:569px) and (max-width:800px)";
+$mq_ml: "only screen and (min-width:569px)";
+$mq_l:  "only screen and (min-width:801px)";
 
 //使用
 //@media #{$mq_s} {}  → @media only screen and (max-width:480px) {}
@@ -112,6 +125,18 @@ $mq_l:  "only screen and (min-width:769px)";
 //@media #{$mq_m} {}  → @media only screen and (min-width:481px) and (max-width:768px) {}
 //@media #{$mq_ml} {} → @media only screen and (min-width:481px) {}
 //@media #{$mq_l} {}  → @media only screen and (min-width:769px) {}
+
+//orientation を使うとうまく工夫できるかも
+//タテ：@media all and (orientation:portrait) { ... }
+//ヨコ：@media all and (orientation:landscape) { ... }
+// → only screen and (max-width:800px) and (orientation:portrait);
+
+//旧
+//$mq_s:  "only screen and (max-width:480px)";
+//$mq_sm: "only screen and (max-width:768px)";
+//$mq_m:  "only screen and (min-width:481px) and (max-width:768px)";
+//$mq_ml: "only screen and (min-width:481px)";
+//$mq_l:  "only screen and (min-width:769px)";
 
 
 
@@ -133,7 +158,8 @@ $mq_l:  "only screen and (min-width:769px)";
 /*リセットCSS読み込み */
 /*_reset.scss（.cssじゃなくて.scss）を読み込む。読み込んだものはコメント残る*/
 /*頭にハイフンのあるファイルはコンパイルしない。*/
-@import "normalize","css3","font-awesome";
+@import "bourbon";
+@import "normalize","css3","mfglabs_iconset";//"mfglabs_iconset"は、設置済の"font-awesome"と差替え可能
 
 
 
@@ -150,17 +176,12 @@ $mq_l:  "only screen and (min-width:769px)";
   font-weight: bold;
 }
 
-/*ie6で表示させるアップグレードページへの誘導*/
-.chromeframe {
-  color: #FF0;
-  background-color: red;
-  font-weight: bold;
-}
-
 /*ボックスモデル、border と padding を含んで数値指定できるように
   サードパーティーのウィジェットを埋め込む場合は、box-sizing: content-box; で戻すと良い
 */
-* {
+*,
+*:before,
+*:after {
           box-sizing: border-box;
      -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -176,7 +197,7 @@ $mq_l:  "only screen and (min-width:769px)";
 /* 色指定（3桁でもO.K.） */
 /*====================================*/
 //基本：濃灰
-$color_base: #444;
+$color_base: #333;
 
 //グレー（普通、薄い、濃い）
 $color_gray: #666;
@@ -239,7 +260,7 @@ div#container
  ----------------------------------- */
 body {
   background: #EFEFEF url(../img_common/bg.png);
-  text-align: center\;//IE6-8
+  text-align: center\9;//IE6-8
 }
   #container {
     margin: 0 auto;
@@ -268,7 +289,8 @@ body {
         background-color: yellow;
         padding: 10px;
       }
-        article {
+        article,
+        section.article_summary {
           background-color: white;
         }
         section[role=region] {
@@ -285,20 +307,26 @@ body {
     }
 
 
+/* Tablet, Desktop
+ ----------------------------------- */
+@media #{$mq_ml} {
+  #main {
+    float: right;
+    width: 73%;
+  }
+  #sidebar {
+    float: left;
+    width: 25%;
+  }
+}
+
+
 /* Tablet portrait
  ----------------------------------- */
 // 768 / 1024 = 0.75
 @media #{$mq_m} {
   body {
     zoom: 0.75;//★★数値 & 範囲検討
-  }
-  #main {
-    float: right;
-    width: 70%;
-  }
-  #sidebar {
-    float: left;
-    width: 30%;
   }
 }
 
@@ -307,19 +335,27 @@ body {
  ----------------------------------- */
 @media #{$mq_l} {
   #container {
-    width: 68em;
+    max-width: 68em;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
   }
-  #main {
-    float: right;
-    width: 75%;
-  }
-  #sidebar {
-    float: left;
-    width: 25%;
+}
+
+
+
+
+/*====================================*/
+/* !!メイン部以外のリスト余白除去 */
+/*====================================*/
+#page_header, #sidebar, #page_footer {
+  ul {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
   }
 }
+
 
 
 
@@ -353,35 +389,29 @@ th,td,dt,dd,label {
 
 /*フォントサイズ
 ----------------------------------- */
-/*参考：http://coliss.com/articles/build-websites/operation/css/font-size-with-rem-by-snook-ca.html*/
-/*参考（rem)：http://hail2u.net/blog/webdesign/rem-unit.html*/
+/*参考：
+http://codeboxers.com/font-sizing-with-rems-mixin/
+http://coliss.com/articles/build-websites/operation/css/font-size-with-rem-by-snook-ca.html
+http://hail2u.net/blog/webdesign/rem-unit.html
+*/
 
-/*サイズ設定*/
-//使用例：p {@include font_size_16px;}
+/*フォントサイズ指定*/
+//使用例：p {@include font_size(16);}
 html {
   -webkit-text-size-adjust: 100%;//★★OS側でフォントサイズを自動的に調整するプロパティ。iPhoneランドスケープ表示で拡大を防ぐため、しかしMac Safariにも効いてしまう問題
   font-size: 62.5%;
 }
-@mixin font_size_10px {font-size:10px; font-size:1.0rem;}
-@mixin font_size_11px {font-size:11px; font-size:1.1rem;}
-@mixin font_size_12px {font-size:12px; font-size:1.2rem;}
-@mixin font_size_13px {font-size:13px; font-size:1.3rem;}
-@mixin font_size_14px {font-size:14px; font-size:1.4rem;}
-@mixin font_size_16px {font-size:16px; font-size:1.6rem;}
-@mixin font_size_18px {font-size:18px; font-size:1.8rem;}
-@mixin font_size_20px {font-size:20px; font-size:2.0rem;}
-@mixin font_size_24px {font-size:24px; font-size:2.4rem;}
-@mixin font_size_28px {font-size:28px; font-size:2.8rem;}
-@mixin font_size_32px {font-size:32px; font-size:3.2rem;}
-@mixin font_size_48px {font-size:48px; font-size:4.8rem;}
-@mixin font_size_60px {font-size:60px; font-size:6.0rem;}
+@mixin font_size($sizeValue){
+  font-size: $sizeValue + px;
+  font-size: ($sizeValue / 10) + rem;
+}
 
 /*文字指定*/
 body {
-  @include font_size_14px;
+  @include font_size(14);
   font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', 'MS PGothic', 'Roboto', 'Droid Sans', sans-serif;
   color: $color_base;
-  letter-spacing: 0;
+  -webkit-font-smoothing: antialiased;//Safari(Mac,iOS)で文字を細めに
 }
 #page_body, #sidebar {//★★
   p,li,dt,dd {
@@ -391,7 +421,7 @@ body {
   }
 }
 #sidebar {
-  font-size: 92.8571429%;//13px
+  font-size: font_size(13);
   line-height: 1.5;
 }
 
@@ -419,7 +449,7 @@ a {
 /*外部リンクのマーカー（記事部のみ、画像は除く）*/
 article a[href^="http"] {
   padding-right: 14px;
-  background: url(img_common/ico_external_link.png) no-repeat right top;
+  background: url(../img_common/ico_external_link.png) no-repeat right top;
 }
 article a[href^="http"] img {
   padding-right: 0;
@@ -489,6 +519,15 @@ s {}
 }
 legend.skip {
   display: none;
+}
+
+/*省略*/
+.ellipsis {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
 }
 
 
@@ -602,36 +641,36 @@ a:active img {
 //リストマーカー A（グレーのドット）
 %listmarker_a {
   padding-left: 12px;
-  background: url(img_common/lm_dot_1.png) no-repeat left 0.5em;
+  background: url(../img_common/lm_dot_1.png) no-repeat left 0.5em;
 }
 //リストマーカー B
 %listmarker_b {
   padding-left: 14px;
-  background: url(img_common/lm_arrow_2.png) no-repeat left 0.4em;
+  background: url(../img_common/lm_arrow_2.png) no-repeat left 0.4em;
 }
 //チェック
 %listmarker_check {
   padding-left: 14px;
-  background: url(img_common/lm_check_1.png) no-repeat left 0.4em;
+  background: url(../img_common/lm_check_1.png) no-repeat left 0.4em;
 }
 //PDF
 %listmarker_pdf {
   padding-left: 16px;
-  background: url(img_common/ico_pdf.gif) no-repeat left 0.3em;
+  background: url(../img_common/ico_pdf.gif) no-repeat left 0.3em;
 }
 //よくある質問（FAQ,Q&A）
 %listmarker_faq_question {
   padding-left: 16px;
-  background: url(img_common/lm_faq_q.png) no-repeat left 0.5em;
+  background: url(../img_common/lm_faq_q.png) no-repeat left 0.5em;
 }
 %listmarker_faq_answer {
   padding-left: 16px;
-  background: url(img_common/lm_faq_a.png) no-repeat left 0.5em;
+  background: url(../img_common/lm_faq_a.png) no-repeat left 0.5em;
 }
 /*警告*/
 %listmarker_caution {
   padding-left: 16px;
-  background: url(img_common/ico_caution.png) no-repeat left 0.4em;
+  background: url(../img_common/ico_caution.png) no-repeat left 0.4em;
 }
 /*リストマーカー無しリスト*/
 %no_listmarker {
@@ -726,7 +765,7 @@ article {
 //★★できない（新ファイルではできた）
 .paper_shadow {
   position: relative;
-  background: #FFE url(img_common/bg2.png) repeat;
+  background: #FFE url(../img_common/bg2.png) repeat;
   -webkit-box-shadow:
     0 0 5px rgba(0, 0, 0, 0.2),
     inset 0 0 50px rgba(0, 0, 0, 0.1);
@@ -823,7 +862,6 @@ $width_column_padding: 2%;
      min-height: 100px; _height: 100px;
      //@extend .framed_a;
      //@extend .paper_shadow;
-     //@include rounded_corners(5px);
      h1,h2 {
        &:first-child {
          margin-top: 0;
@@ -833,13 +871,13 @@ $width_column_padding: 2%;
        background: none;
        margin-bottom: 0.5em;
        padding-left: 0;
-       @include font_size_14px;
+       @include font_size(14);
      }
      h2 {
        background: none;
        margin-bottom: 0.3em;
        padding-left: 10px;
-       @include font_size_14px;
+       @include font_size(14);
      }
      p,li {
        &:last-child {
@@ -984,8 +1022,8 @@ blockquote {
   margin: 1em 0;
   padding: 15px;
   background-image:
-    url(img_common/bg_blockquote.png),
-    url(img_common/bg2.png) !important;
+    url(../img_common/bg_blockquote.png),
+    url(../img_common/bg2.png) !important;
   background-position: 5px 5px, left top !important;
   background-repeat: no-repeat, repeat !important;
 }
@@ -1187,7 +1225,7 @@ q {
   a {color: #333;}
   small {//補足付き
     display: block;
-    @include font_size_12px;
+    @include font_size(12);
     font-weight: normal;
     text-shadow: none;
   }
@@ -1280,7 +1318,7 @@ q {
   vertical-align: text-top;
   background-color: #CCC;
   color: #333;
-  @include font_size_11px;
+  @include font_size(11);
   line-height: 1;
   text-decoration: none;
 }
@@ -1343,7 +1381,7 @@ q {
   width: 0px;
   height: 0px;
   display: inline;
-  background-image: url(img_common/bg_gnav_over.png);
+  background-image: url(../img_common/bg_gnav_over.png);
   background-image: url(path/to/image2.png);//複数の場合
 }
 */
@@ -1369,7 +1407,7 @@ code {
   vertical-align: text-bottom;
   background-color: #393939;
   font-family: monospace;
-  @include font_size_16px;
+  @include font_size(16);
   color: $color_gray_pale;
   white-space: nowrap;
   margin-left: .25em;
@@ -1686,7 +1724,7 @@ hr.style_c {//中央に記号文字
             padding: 0;
             background: none;
             background-color: #F4CECD;
-            @include font_size_10px;
+            @include font_size(10);
             color: #E33525;
             text-decoration: underline;
           }
@@ -1698,7 +1736,7 @@ hr.style_c {//中央に記号文字
   }
   .hatena-bookmark-widget-footer {
     text-align: right;
-    @include font_size_10px;
+    @include font_size(10);
 
     &:before {
       content: "by ";
@@ -1743,6 +1781,26 @@ textarea {
 }
 
 
+
+/*====================================*/
+/* !!ページ基本 */
+/*====================================*/
+
+/*ie6で表示させるアップグレードページへの誘導*/
+.chromeframe {
+  color: #FF0;
+  background-color: red;
+  font-weight: bold;
+}
+
+/*PCとモバイル表示切替えボタン*/
+button.pc_mobile_switch {
+  width: 100%;
+  text-decoration: underline;
+}
+
+
+
 /*====================================*/
 /* !!ヘッダー部 */
 /*====================================*/
@@ -1752,28 +1810,25 @@ textarea {
 ----------------------------------- */
 #page_header {
   position: relative;
-  margin-top: 40px;
-  @media screen and (max-width: 480px){
+  @media #{$mq_s} {
     text-align: center;
   }
 }
   #site_title {//サイトロゴ
-    @include font_size_32px;
-    text-shadow: 0px 1px 1px #FFF;
-    @media screen and (max-width: 480px){@include font_size_24px;}
-    font-family: serif;
+    @include font_size(32);
+    @media #{$mq_s} {@include font_size(24);}
     a {
       color: $color_logo;
       text-decoration: none;
     }
   }
   #site_tag_line {//ロゴ下のタグライン
-    @include font_size_14px;
+    @include font_size(14);
     font-weight: normal;
     margin-bottom: 5px;
     padding-bottom: 10px;
-    @media screen and (max-width: 480px){
-      @include font_size_12px;
+    @media #{$mq_s} {
+      @include font_size(12);
       margin-bottom: 20px;
     }
   }
@@ -1790,7 +1845,7 @@ textarea {
   @extend .clearfix;
   li {
     @include inline_block;
-    @include font_size_13px;
+    @include font_size(13);
     a {
       margin-left: 10px;
       text-decoration: none;
@@ -1801,44 +1856,75 @@ textarea {
 
 /*グローバルナビゲーション
 ----------------------------------- */
-#gnav {
-  margin-top: 5px;
+
+#main_menu  {
   @extend .clearfix;
   li {
-    @include inline_block;
-    width: 16.55%;
-    margin: 0 1px 1px 0;
-    text-align: center;
-    vertical-align: middle;
-    &:last-child {margin-right: 0 !important;}
-    &:first-child a {@include rounded_corners_left(5px);}
-    &:last-child a {@include rounded_corners_right(5px);}
     a {
-      padding: 5px;
+      display: block;
       background-color: $color_1;
       color: #FFF;
-      font-weight: bold;
       text-decoration: none;
       @include vgradient($color_1,$color_1_deep);
       text-shadow: -1px -1px 0 $color_gray_deep;
       @extend %user_select_none;
-      &:hover  {background-color: $color_1_deep;}
-      &:active {background-color: $color_1_pale;}
-      small {
-        display: block;
-        margin-top: -3px;
-        font-weight: normal;
-        color: $color_1_pale;
-        @include font_size_11px;
-        letter-spacing: .1em;
+      &:hover  {@include vgradient($color_1_pale,$color_1);}
+      &:active {@include vgradient($color_1_deep,$color_1_deep);}
+    }
+  }
+}
+
+@media #{$mq_s} {
+  #main_menu  {
+    li {
+      @include inline_block;
+      width: 49.75%;
+      margin-right: .5%;
+      margin-bottom: 1px;
+      &:nth-child(2n+1) {
+        clear: left;
+      }
+      &:nth-child(2n) {
+        margin-right: 0 !important;
+      }
+      a {
+        padding: 5px;
+        small {
+          display: none;
+        }
       }
     }
   }
-  *:first-child+html #gnav li {//IE7用
-    width: 16%;
-  }
-  *:first-child+html #gnav li a {//IE7用
-    border: 1px solid red !important;
+}
+
+@media #{$mq_ml} {
+  #main_menu {
+    li {
+      @include inline_block;
+      width: 16.55%;
+      margin: 0 1px 1px 0;
+      text-align: center;
+      &:last-child {margin-right: 0 !important;}
+      &:first-child a {@include rounded_corners_left(5px);}
+      &:last-child a {@include rounded_corners_right(5px);}
+      a {
+        padding: 5px;
+        small {
+          display: block;
+          margin-top: -3px;
+          font-weight: normal;
+          color: $color_1_pale;
+          @include font_size(11);
+          letter-spacing: .1em;
+        }
+      }
+    }
+    *:first-child+html #gnav li {//IE7用
+      width: 16%;
+    }
+    *:first-child+html #gnav li a {//IE7用
+      border: 1px solid red !important;
+    }
   }
 }
 
@@ -1848,10 +1934,10 @@ textarea {
   @extend .clearfix;
   li {
     @include inline_block;
-    @include font_size_12px;
+    @include font_size(12);
     a {
       padding-right: 10px;
-      background: url(img_common/ar_topicpath.png) no-repeat right center;
+      background: url(../img_common/ar_topicpath.png) no-repeat right center;
     }
   }
 }
@@ -1866,17 +1952,20 @@ textarea {
   margin-top: 0;
 }
 
-article {
+article,
+section.article_summary {
   /*見出し*/
   h1,h2,h3,h4,h5,h6 {
-    margin: 1em 0;
+    margin: 1em -10px 0.75em;
     line-height: 1.3;
+    -webkit-font-smoothing: subpixel-antialiased;
     small {//補足付き見出しの補足文字
       display: inline-block;
       margin-left: 0.5em;
-      @include font_size_12px;
+      @include font_size(12);
       font-weight: normal;
       color: $color_gray_deep;
+      -webkit-font-smoothing: antialiased;
     }
   }
   //h1は.article_header内
@@ -1884,21 +1973,27 @@ article {
     padding: 7px 10px;
     background-color: $color_1;
     color: #FFF;
-    @include font_size_16px;
+    @include font_size(16);
     @include rounded_corners(3px);
   }
   h3 {
     border-bottom: 4px solid $color_1;
     padding-left: 1em;
-    background: url(img_common/lm_dot_1.png) no-repeat left 0.4em;
+    background: url(../img_common/lm_dot_1.png) no-repeat left 0.4em;
   }
   h4 {
     border-bottom: 1px dotted $color_gray;
     padding-left: 1em;
-    background: url(img_common/lm_dot_1.png) no-repeat left
+    background: url(../img_common/lm_dot_1.png) no-repeat left;
   }
-  h5 {}
-  h6 {}
+  h5 {
+    @include font_size(14);
+    padding-left: 1em;
+    background: url(../img_common/lm_dot_1.png) no-repeat left;
+  }
+  h6 {
+    @include font_size(12);
+  }
 
   /*リード文*/
   .lead {
@@ -1907,15 +2002,16 @@ article {
 
   /*段落*/
   p {
+    margin-top: 0.75em;
     margin-bottom: 1em;
   }
 
   /*リストマーカー*/
   p.listmarker_a {@extend %listmarker_a;}
   p.listmarker_b {@extend %listmarker_b;}
-  p.check       {@extend %listmarker_check;}
-  p.pdf         {@extend %listmarker_pdf;}
-  p.caution     {@extend %listmarker_caution;}
+  p.check        {@extend %listmarker_check;}
+  p.pdf          {@extend %listmarker_pdf;}
+  p.caution      {@extend %listmarker_caution;}
 
   /*リスト*/
   ul,ol,dl      {margin: 1em 0;}
@@ -1994,7 +2090,7 @@ article {
     margin-top: 20px;
     padding-top: 20px;
     border-top: 1px solid $color_1;
-    @include font_size_28px;
+    @include font_size(28);
     color: $color_logo;
     text-shadow: 0px 1px 1px #FFF;
     &:first-child {//★★first-child以降も効いてしまう
@@ -2003,13 +2099,13 @@ article {
       border-top: none;
     }
     @media screen and (max-width: 480px){
-      @include font_size_20px;
+      @include font_size(20);
     }
   }
   .article_header time {}
   .meta,.meta2 {
     padding-left: 5px;
-    @include font_size_11px;
+    @include font_size(11);
     border: solid $color_1;
   }
   .meta {
@@ -2067,10 +2163,10 @@ $first_section_margin_width: 10px;//本文の左右外の余白
 
 .article_footer {
   margin-top: 1em;
-  margin-bottom: 3em;
+  margin-bottom: 1em;
 }
-  #pages_of_reference {@extend .framed_a;}
-  .reactions {@extend .framed_a;}
+  #pages_of_reference {@extend .framed_b;}
+  .reactions {@extend .framed_b;}
     #reaction_links {
       .twitter_follow,.rss_feed,.facebook_page {
         display: inline;
@@ -2083,7 +2179,7 @@ $first_section_margin_width: 10px;//本文の左右外の余白
     }
   .next_previous,
   .related_articles {
-    @extend .framed_a;
+    @extend .framed_b;
   }
   .next_previous {
     @media screen and (max-width: 480px){
@@ -2092,7 +2188,7 @@ $first_section_margin_width: 10px;//本文の左右外の余白
   }
   .related_articles {}
   .related_books {
-    @extend .framed_a;
+    @extend .framed_b;
     li {
       display: inline;
       @extend %no_listmarker;
@@ -2116,12 +2212,13 @@ $first_section_margin_width: 10px;//本文の左右外の余白
 /*ページTOPへリンク*/
 .pagetop {
   text-align: right;
+  margin-top: 0;
   margin-bottom: 0;
-  @include font_size_12px;
+  @include font_size(12);
   a {
     padding: 2px 10px 2px 24px;
     @include rounded_corners(10px);
-    background: $color_1_pale url(img_common/lm_pagetop.png) no-repeat 10px 0.1em;
+    background: $color_1_pale url(../img_common/lm_pagetop.png) no-repeat 10px 0.1em;
     color: $color_1 !important;
     text-decoration: none;
     &:hover {
@@ -2161,24 +2258,38 @@ $first_section_margin_width: 10px;//本文の左右外の余白
 /* !!サイドバー */
 /*====================================*/
 //モバイル表示は、モーダルウインドウ表示。デザインは別個に設定
-@media #{$mq_l} {
+@media #{$mq_s} {
+  #sidebar {
+    text-align: center;
+    nav, section {
+      text-align: left !important;
+    }
+  }
+}
+@media #{$mq_ml} {
 
   #sidebar {}
     /*メニュー*/
     #side_menu {
+      ul {
+        margin: 0;
+        padding-left: 0;
+      }
       //1階層
       > ul {
         margin-bottom: 15px;
         > li {
           border: 1px solid $color_1;
-          @include translucent(255,255,255,0.4);
-          margin-bottom: 7px;
+          @include translucent(255,255,255,0.7);
           @include rounded_corners(3px);
+          margin-bottom: 10px;
         }
       }
         h1 {
+          margin: 0;
           padding: 3px 3px 3px 6px;
           background-color: $color_1;
+          @include font_size(14);
           color: #FFF;
           font-weight: normal;
           @include rounded_corners_top(2px);
@@ -2220,6 +2331,7 @@ $first_section_margin_width: 10px;//本文の左右外の余白
       margin: 0 0 15px !important;
       >h1 {
         margin: 0 0 .5em;
+        @include font_size(14);
       }
     }
 
@@ -2271,7 +2383,7 @@ $first_section_margin_width: 10px;//本文の左右外の余白
       width: 140px;
       margin-right: 7px;
       padding: 2px 3px 3px 23px;
-      background: url(img_common/ico_lupe.png) no-repeat 3px center;
+      background: url(../img_common/ico_lupe.png) no-repeat 3px center;
       border:1px solid #CCC;
       background-color:#FFF;
     }
@@ -2301,7 +2413,7 @@ $first_section_margin_width: 10px;//本文の左右外の余白
 /*====================================*/
 #page_footer {
   margin-top: 25px;
-  padding: 10px 0;
+  padding: 0;
   border-top: 1px solid $color_1;;
 }
   #footer_sections {
@@ -2318,7 +2430,7 @@ $first_section_margin_width: 10px;//本文の左右外の余白
         margin-right: 0;
       }
       h1 {
-        @include font_size_13px;
+        @include font_size(13);
         color: $color_1_deep;
         margin: 1em 0 0.5em;
         &:first-child {
@@ -2328,7 +2440,7 @@ $first_section_margin_width: 10px;//本文の左右外の余白
       ul {
         _zoom: 1;overflow: hidden;
       }
-      li,p {@include font_size_12px;}
+      li,p {@include font_size(12);}
       li {
         @extend %listmarker_a;
         border-top: 1px dotted $color_1;
@@ -2369,19 +2481,19 @@ $first_section_margin_width: 10px;//本文の左右外の余白
       background-repeat: no-repeat;
     }
     #address_mail {
-      background-image: url(img_common/ico_search_lupe.gif);
+      background-image: url(../img_common/ico_search_lupe.gif);
     }
     #address_facebook {
-      background-image: url(img_common/ico_lock.png);
+      background-image: url(../img_common/ico_lock.png);
     }
     #address_twitter {
-      background-image: url(img_common/icon_print.png);
+      background-image: url(../img_common/icon_print.png);
     }
 
 
 #copyright {
   margin-top: 20px;
-  @include font_size_12px;
+  @include font_size(12);
   color: $color_1;
   background-color: $color_1_deep;
 }
@@ -2407,7 +2519,7 @@ $first_section_margin_width: 10px;//本文の左右外の余白
   width: 100%;
   top: 0;
   background-color: $color_1_deep;
-  @include font_size_12px;
+  @include font_size(12);
   color: #CCC;
   text-align: center;
   p,ul,li {display: inline;}
@@ -2571,14 +2683,6 @@ $first_section_margin_width: 10px;//本文の左右外の余白
     background-color: green;
   }
 
-  #container {max-width: 100%;}
-  #wrapper {padding: 7px;}
-  #page_body {
-    float: none;
-    width: auto;
-  }
-  #sidebar {}
-
   /* モーダルウインドウ メニュー用（functions.jsとセットで使用） */
     //開くボタン
     #menu_modal_window_button {
@@ -2648,7 +2752,7 @@ $first_section_margin_width: 10px;//本文の左右外の余白
 @media #{$mq_s} {
   body {
     -webkit-text-size-adjust: none;/*MobileSafariが勝手にフォントサイズ調整するのをOFF*/
-    @include font_size_14px;//文字を少し小さく
+    @include font_size(14);//文字を少し小さく
     /*
     背景画像を横幅いっぱいに表示　body{background-size: 100% auto;}
     背景画像1枚で全体を覆う指定　body{background-size:cover;}
@@ -2670,33 +2774,12 @@ $first_section_margin_width: 10px;//本文の左右外の余白
     width: 100% !important;
     height: auto !important;
   }
-
-  #gnav {
-    li {
-      width: 49.9%;
-      &:nth-child(2n+1) {
-        margin-left: 0 !important;
-        clear: left;
-      }
-      &:nth-child(2n) {
-        margin-right: 0;
-      }
-      a {
-        padding: 3px;
-      }
-    }
-  }
   .social_media_buttons {
     li {//★
       display: inline;
     }
   }
-  #sidebar {
-    text-align: center;
-    nav, section {
-      text-align: left !important;
-    }
-  }
+
 }
 
 /*RETINAディスプレイの設定をオーバーライド*/

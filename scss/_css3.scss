@@ -64,11 +64,29 @@
 	-moz-border-radius-bottomright: $radius;
 	border-bottom-right-radius: $radius;
 }
-/*右上のみ - 適宜見直*/
+/*右上のみ*/
 @mixin rounded_corners_topleft($radius: 5px) {
 	-moz-border-radius-topleft: $radius;
 	-webkit-border-top-left-radius: $radius;
 	border-top-left-radius: $radius;
+}
+/*左上のみ*/
+@mixin rounded_corners_topright($radius: 5px) {
+	-moz-border-radius-topright: $radius;
+	-webkit-border-top-right-radius: $radius;
+	border-top-right-radius: $radius;
+}
+/*右上のみ*/
+@mixin rounded_corners_bottomright($radius: 5px) {
+	-moz-border-radius-bottomright: $radius;
+	-webkit-border-bottom-right-radius: $radius;
+	border-bottom-right-radius: $radius;
+}
+/*右上のみ*/
+@mixin rounded_corners_bottomleft($radius: 5px) {
+	-moz-border-radius-bottomleft: $radius;
+	-webkit-border-bottom-left-radius: $radius;
+	border-bottom-left-radius: $radius;
 }
 
 
@@ -107,7 +125,9 @@
 // 縦横Offsetなしで光彩（外側）の効果
 // box幅はOffset分拡がったと解釈されるので注意
 //☆名前空間汚染してないか？→スコープ確認
-// 使用例（#sampleのボックスに光彩）：#sample { @include box-shadow(0,0,5px,#AAA); }
+// 使用例（#sampleのボックスに光彩）：
+// #sample { @include box-shadow(0,0,5px,#AAA); }
+// カラーの部分をHLS色空間で hsla(0,0%,0%,0.65)
 
 @mixin box_shadow ($x:0,$y:0,$width:7px,$color:#999){
 	-moz-box-shadow: $x $y $width $color;
@@ -235,8 +255,3 @@ $ease: ease-in-out;
 	-o-transition: $range $time $ease;
 	transition: $range $time $ease;
 }
-
-/* !!font-face
------------------------------------ */
-// compassの css3 > font-face を改良 ★うまくいかない
-//参考：http://compass-style.org/reference/compass/css3/font_face/

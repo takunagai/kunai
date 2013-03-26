@@ -8,9 +8,15 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="viewport" content="width=device-width" />
+  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="requiresActiveX=true" /><![endif]-->
+  <!--[if lt IE 9]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
+  <!--[if IE 9]><meta http-equiv="X-UA-Compatible" content="IE=9" /><![endif]-->
+
   <title>Page Name - Website Name</title>
   <meta name="description" content="" />
   <meta name="author" content="taku_nagai" />
+  <meta name="copyright" content="Copyright(C) Your Name" />
+  <meta name="format-detection" content="telephone=no" />
 
   <!--
 
@@ -24,11 +30,10 @@
     　　　　　　　　　　　[I_　三ｦ　(
     　　　　　　　　　　　　 ￣ 　 （⌒
     　　　　　　　　　　　　⌒Y⌒
-
-
   -->
 
   <link rel="stylesheet" href="css/main.css" media="all" />
+  <link rel="author" href="../info/profile.html" />
 
   <!-- respond.js を使わずに処理：http://tokkono.cute.coocan.jp/blog/slow/index.php/web-technology/best-practice-of-responsive-design/ -->
   <!--
@@ -37,18 +42,23 @@
 -->
   <!--[if (lt IE 9) & (!IEMobile 7)]><link rel="stylesheet" href="style.css" media="all"><![endif]-->
 
+  <!--<script src="//www.google.com/js/gweb/analytics/autotrack.js" /></script>-->
   <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
 </head>
 
-<body id="file_name" class="category_name">
-  <!--[if lte IE 8]><p class="chromeframe">お使いのブラウザはバージョンが古いため、サイトを快適にご利用いただけないかもしれません。特別な事情がなければ <a href="http://browsehappy.com/">ブラウザをアップデート</a>、もしくは、<a href="http://www.google.com/chromeframe/?redirect=true">Google Chrome Frame</a>（パフォーマンスの向上がはかれます）をインストールしてください。セキュリティ的にも、常に最新のブラウザをお使いいただくことをおすすめいたします。</p><![endif]-->
 
-  <p>★★スマートフォンでPC表示させるボタン追加する</p>
+<body id="file_name" class="category_name rayout_pattern">
+  <!--[if lt IE 8]><p class="chromeframe">お使いのブラウザはバージョンが古いため、サイトを快適にご利用いただけないかもしれません。特別な事情がなければ <a href="http://browsehappy.com/">ブラウザをアップデート</a>、もしくは、<a href="http://www.google.com/chromeframe/?redirect=true">Google Chrome Frame</a>（パフォーマンスの向上がはかれます）をインストールしてください。セキュリティ的にもサポートの切れた古いブラウザは危険です。常に最新のブラウザをお使いいただくことをおすすめいたします。</p><![endif]-->
+
+  <button class="pc_mobile_switch"><i class="icon-display_screen"></i> PC表示に切替え</button>
+
   <div id="container">
 
 
     <header id="page_header" role="banner">
       <p>header[role=banner]。Webサイトのタイトルや大見出しを含むリージョン情報。ロゴ、サイト主の情報、検索バーなど。ページ中に１つのみ。</p>
+      <h1 id="site_title">ロゴ</h1>
+      <p id="site_tag_line">サイトタグライン</p>
 
       <aside id="unav" class="only_pc">
         <ul>
@@ -64,6 +74,22 @@
 
       <nav id="main_menu" role="navigation">
         nav[role=navigation]。ナビゲーション関連要素の集まり（通常関連ページへのリンク）。
+        <ul>
+          <li><a href="#">メニューA<small>menu a</small></a>
+            <!--
+            <ul>
+              <li><a href="#">2階層目a</a></li>
+              <li><a href="#">2階層目b</a></li>
+              <li><a href="#">2階層目c</a></li>
+            </ul>
+            -->
+          </li
+          ><li><a href="#">メニューB<small>menu b</small></a></li
+          ><li><a href="#">メニューC<small>menu c</small></a></li
+          ><li><a href="#">メニューD<small>menu d</small></a></li
+          ><li><a href="#">メニューE<small>menu e</small></a></li
+          ><li><a href="#">メニューF<small>menu f</small></a></li>
+        </ul>
       </nav>
 
       <div id="topic_path" class="only_pc">
@@ -83,23 +109,97 @@
 
       <div id="main" role="main">
 
-        <p>div[role=main]。ページのメインコンテンツ。１ページに１つのみ</p>
+
+        <p>
+          div[role=main]。ページのメインコンテンツ。１ページに１つのみ<br />
+          ↓article[role=article]
+        </p>
 
         <article role="article">
-          <h2>見出しです(h2)</h2>
-          <p>article[role=article] > p。記事。以下ダミーコピーです。何だか今が利用方はぼうっとこの永続ですましなどからなっていましにも失敗申し込んたたいから。</p>
-          <h3>見出しです(h3)</h3>
-          <p>ダミーコピーです。何だか今が利用方はぼうっとこの永続ですましなどからなっていましにも失敗申し込んたたいから、さっそくにはしですたます。</p>
-          <h4>見出しです(h4)</h4>
-          <p>ダミーコピーです。何だか今が利用方はぼうっとこの永続ですましなどからなっていましにも失敗申し込んたたいから、さっそくにはしですたます。</p>
+
+          <header class="article_header">
+            <h1 class="article_title">テキストのスタイリング article header.article_header > h1</h1>
+            <p>更新：<time pubdate="pubdate" datetime="2013-03-22T16:31:24+02:00">2013年3月22日</time>（投稿日：2013年3月20日） by <a href="#">投稿者名</a> - <a href="#comments">6 comments</a></p>
+            <p class="lead">article header.article_header > p.lead。記事。リードコピーです。
+            記事として独立している場合のみ article タグを使用。カテゴリ一覧などで記事の概要や冒頭だけを
+            載せる場合は section タグを使うこと</p>
+          </header>
+
+          <div class="article_body">
+            <h2>見出しです(h2)</h2>
+            <p>article > div.article_body > p。記事。本文コピーです。ダミーコピーです。
+            何だか今が利用方はぼうっとこの永続ですましなどから
+            なっていましにも失敗申し込んたたいから、さっそくにはしですたます。</p>
+            <p>ダミーコピーです。何だか今が利用方はぼうっとこの永続ですましなどから
+            なっていましにも失敗申し込んたたいから、さっそくにはしですたます。</p>
+            <p class="ellipsis">一行を越すと … で省略させるCSS指定。ダミーコピーです。
+            何だか今が利用方はぼうっとこの永続ですましなどからなっていましにも失敗申し込んたたいから、
+            さっそくにはしですたます。</p>
+            <p class="framed_e"><i class="icon-warning" style="color: red;"></i> p.framed_e > i.icon-warning (MFG Labs icon)</p>
+            <blockquote>引用文です。ダミーコピーです。何だか今が利用方はぼうっと
+            なっていましにも失敗申し込んたたいから、さっそくにはしですたます。</blockquote>
+            <p>ダミーコピーです。何だか今が利用方はぼうっとこの永続ですましなどから
+            なっていましにも失敗申し込んたたいから、さっそくにはしですたます。</p>
+            <h3>見出しです(h3)</h3>
+            <p>ダミーコピーです。何だか今が利用方はぼうっとこの永続ですましなどから
+            なっていましにも失敗申し込んたたいから、さっそくにはしですたます。</p>
+            <p>ダミーコピーです。何だか今が利用方はぼうっとこの永続ですましなどから
+            なっていましにも失敗申し込んたたいから、さっそくにはしですたます。</p>
+            <h4>見出しです(h4)</h4>
+            <p>ダミーコピーです。何だか今が利用方はぼうっとこの永続ですましなどから
+            なっていましにも失敗申し込んたたいから、さっそくにはしですたます。</p>
+            <h5>見出しです(h5)</h5>
+            <p>ダミーコピーです。何だか今が利用方はぼうっとこの永続ですましなどから
+            なっていましにも失敗申し込んたたいから、さっそくにはしですたます。</p>
+            <h6>見出しです(h6)</h6>
+            <p>ダミーコピーです。何だか今が利用方はぼうっとこの永続ですましなどから
+            なっていましにも失敗申し込んたたいから、さっそくにはしですたます。</p>
+          <!-- /.article_body -->
+          </div>
+
+          <footer class="article_footer">
+            <p>footer.article_footer > p</p>
+            <div id="reaction_links">
+              <ul>
+                <li class="facebook_page">facebook_page</li>
+                <li class="twitter_follow">twitter_follow</li>
+                <li class="tweet">tweet</li>
+                <li class="rss_feed">rss_feed</li>
+              </ul>
+            </div>
+            <div class="next_previous">
+              <a href="#">« 前の記事へ</a> <span class="separator">|</span>
+              <a href="#">次の記事へ »</a>
+            </div>
+            <div class="related_articles">
+              <ul>
+                <li><a href="#">関連記事1タイトル</a></li>
+                <li><a href="#">関連記事2タイトル</a></li>
+                <li><a href="#">関連記事3タイトル</a></li>
+              </ul>
+            </div>
+          </footer>
+
         </article>
         <p class="pagetop"><a href="#container">このページTOPへ</a></p>
 
 
-        <article role="article">
-          <h2>見出しです(h2)</h2>
+        <section class="article_summary">
+          <h1>見出しです(section.article_summary > h1)</h1>
           <p>ダミーコピーです。何だか今が利用方はぼうっとこの永続ですましなどからなっていましにも失敗申し込んたたいから、さっそくにはしですたます。</p>
-        </article>
+        </section>
+        <p class="pagetop"><a href="#container">このページTOPへ</a></p>
+
+        <section class="article_summary">
+          <h1>アイコンWebフォント mfglabsiconset(section.article_summary > h1)</h1>
+          その要素と子孫要素が、どんなユーザーにも表示されない、または知覚されないということを示すために使用される<br />
+          http://memolog.org/2012/05/aria-hidden.php<br />
+          つまり、テキストとアイコンが同じ意味示すなら"aria-hidden="true"と付けると良い<br />
+          <i class="icon-paperplane"></i> あああ<br />
+          <i class="icon-mail icon2x" aria-hidden="true"></i> 2倍（CSSでサイズ調整可能）<br />
+          <i class="icon-globe gradient icon3x" aria-hidden="true"></i> グラデーションx3倍（CSSでカラー調整可）<br />
+          http://mfglabs.github.com/mfglabs-iconset/
+        </section>
         <p class="pagetop"><a href="#container">このページTOPへ</a></p>
 
 
@@ -112,6 +212,35 @@
 
       <aside id="sidebar" role="complementary">
         <p>aside[role=complementary]。文書の補足的なセクション</p>
+
+        <section id="side_menu">
+          <ul>
+            <li>
+              <h1>メニュータイトル</h1>
+              <ul>
+                <li><a href="#">メニュー1A</a></li>
+                <li><a href="#">メニュー1B</a></li>
+                <li><a href="#">メニュー1C</a></li>
+                <li><a href="#">メニュー1D</a></li>
+                <li><a href="#">メニュー1E</a></li>
+              </ul>
+            </li>
+            <li>
+              <h1>メニュータイトル2</h1>
+              <ul>
+                <li><a href="#">メニュー2A</a></li>
+                <li><a href="#">メニュー2B</a></li>
+                <li><a href="#">メニュー2C</a></li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>見出しです(h1)</h1>
+          <p>本文ですダミーコピーです。本文ですダミーコピーです。本文ですダミーコピーです。</p>
+        </section>
+
 
         <div id="form_name" role="form">
           [role=form]。フォーム。aria-labelledbyで参照を付けること<br />
@@ -145,25 +274,38 @@
   <!-- /#container -->
   </div>
 
+  <button class="pc_mobile_switch"><i class="icon-display_screen"></i> PC表示に切替え</button>
+
 
   <!-- * * * * * * * scripts * * * * * * * -->
 
   <script src="//code.jquery.com/jquery-latest.js"></script>
   <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
   <!-- <script src="js/plugins.js"></script> -->
-    <script src="js/vendor/iscroll-lite.js"></script>
+
+  <script>
+    //Androidの場合のみ iscroll-lite.js を読みこませる
+    if(/Android/.test(navigator.userAgent)){
+      $('script').attr('src','js/vendor/iscroll-lite.js').appendTo('head');
+      //alert('テスト：Androidなのでiscroll-lite.jsを読み込みました。');
+    }
+  </script>
+  <!--全ての端末で読み込ませる場合は <script src="js/vendor/iscroll-lite.js"></script> -->
+
   <script src="js/main.min.js"></script>
 
-  <!--★★リンク修正-->
-  <!--[if lte IE 7]>
-  <script src="js/vendor/imgSizer/imgSizer_min.js"></script>
-  <script src="js/vendor/jquery.exfixed-1.3.2_min.js"></script>
+
+  <!--[if IE 9]>
+  <script src="js/vendor/PIE_IE9.js"></script>
   <script>
-    $(function(){
-      $('#modal_window_boxes .modal_window_window').exFixed(); //IE6で position: fixed が機能するように実行
+    $(function() {
+      if (window.PIE) {
+        //$('.class_name').each(function() { PIE.attach(this); }); //適用させたい要素を指定
+      }
     });
   </script>
   <![endif]-->
+
 
   <!--[if (gte IE 6)&(lte IE 8)]>
   <script src="js/vendor/selectivizr-min.js"></script>
@@ -172,21 +314,21 @@
   <script>
     $(function() {
       if (window.PIE) {
-        $('.button, .label, article h2, .pagetop a').each(function() { PIE.attach(this); });//適用させたい要素を指定
+        $('.button, .label, article h2, .pagetop a').each(function() { //適用させたい要素を指定
+          PIE.attach(this);
+        });
       }
     });
   </script>
   <![endif]-->
 
 
-  <!--CSS PIE のCDNで提供されているもの："//cdnjs.cloudflare.com/ajax/libs/css3pie/1.0.0/PIE.js"-->
-  <!--[if lt IE 10]>
-  <script src="js/vendor/PIE_IE9.js"></script>
+  <!--[if lte IE 7]>
+  <script src="js/vendor/imgSizer/imgSizer_min.js"></script>
+  <script src="js/vendor/jquery.exfixed-1.3.2_min.js"></script>
   <script>
-    $(function() {
-      if (window.PIE) {
-        $('.button, .label, article h2, .pagetop a').each(function() { PIE.attach(this); });//適用させたい要素を指定
-      }
+    $(function(){
+      $('#modal_window_boxes .modal_window_window').exFixed(); //IE6で position: fixed が機能するように実行
     });
   </script>
   <![endif]-->

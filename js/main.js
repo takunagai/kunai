@@ -466,16 +466,16 @@ $(function(){
 // -------------------------------------
 /* 更新は php で */
 
-  jQuery.ajax({
-    url : "http://nigaoe-yui.com/cgi-bin/date_of_delivery/data.txt",
-    type : "get",
-    success : function(data){
-      var data_sitei = parseInt(data,10) + 3;//指定日
-      $('#date_of_delivery').text(data);
-      $('#date_of_delivery2').text(data);
-      $('#date_of_delivery_sitei').text(data_sitei);
-    }
-  });
+//  jQuery.ajax({
+//    url : "http://nigaoe-yui.com/cgi-bin/date_of_delivery/data.txt",
+//    type : "get",
+//    success : function(data){
+//      var data_sitei = parseInt(data,10) + 3;//指定日
+//      $('#date_of_delivery').text(data);
+//      $('#date_of_delivery2').text(data);
+//      $('#date_of_delivery_sitei').text(data_sitei);
+//    }
+//  });
 
 
 
