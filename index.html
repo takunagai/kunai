@@ -57,7 +57,7 @@
 
     <header id="page_header" role="banner">
       <p>header[role=banner]。Webサイトのタイトルや大見出しを含むリージョン情報。ロゴ、サイト主の情報、検索バーなど。ページ中に１つのみ。</p>
-      <h1 id="site_title">ロゴ</h1>
+      <h1 id="site_title">Site Logo</h1>
       <p id="site_tag_line">サイトタグライン</p>
 
       <aside id="unav" class="only_pc">
@@ -277,35 +277,37 @@
   <button class="pc_mobile_switch"><i class="icon-display_screen"></i> PC表示に切替え</button>
 
 
-  <!-- * * * * * * * scripts * * * * * * * -->
 
+  <!-- * * * * * * * * * * * * * Scripts * * * * * * * * * * * * * -->
+  <!-- ★★本番アップ時は plugins.js に統合する -->
+  <!-- ★★より軽量のzepto.js を使う手もある 比較記事：http://openweb.co.jp/2013/01/17/jquery-2-0-size-compared/ -->
+  <!-- jQuery1.9で廃止された機能の影響で動かないプラグインなどがある場合は http://code.jquery.com//jquery-migrate-git.min.js を追加-->
   <script src="//code.jquery.com/jquery-latest.js"></script>
   <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
-  <!-- <script src="js/plugins.js"></script> -->
+  <script src="js/plugins.js"></script>
+  <script src="js/main.min.js"></script>
 
   <script>
     //Androidの場合のみ iscroll-lite.js を読みこませる
     if(/Android/.test(navigator.userAgent)){
       $('script').attr('src','js/vendor/iscroll-lite.js').appendTo('head');
-      //alert('テスト：Androidなのでiscroll-lite.jsを読み込みました。');
+      //alert('テスト：iscroll-lite.jsを読み込みました。');
     }
   </script>
-  <!--全ての端末で読み込ませる場合は <script src="js/vendor/iscroll-lite.js"></script> -->
 
-  <script src="js/main.min.js"></script>
 
+  <!-- * * * Polyfils for old IE * * * -->
 
   <!--[if IE 9]>
   <script src="js/vendor/PIE_IE9.js"></script>
   <script>
     $(function() {
       if (window.PIE) {
-        //$('.class_name').each(function() { PIE.attach(this); }); //適用させたい要素を指定
+        //$('.class_name').each(function() { PIE.attach(this); }); //★★適用させたい要素を指定
       }
     });
   </script>
   <![endif]-->
-
 
   <!--[if (gte IE 6)&(lte IE 8)]>
   <script src="js/vendor/selectivizr-min.js"></script>
@@ -314,7 +316,7 @@
   <script>
     $(function() {
       if (window.PIE) {
-        $('.button, .label, article h2, .pagetop a').each(function() { //適用させたい要素を指定
+        $('.button, .label, article h2, .pagetop a').each(function() { //★★適用させたい要素を指定
           PIE.attach(this);
         });
       }
@@ -322,19 +324,20 @@
   </script>
   <![endif]-->
 
-
   <!--[if lte IE 7]>
   <script src="js/vendor/imgSizer/imgSizer_min.js"></script>
-  <script src="js/vendor/jquery.exfixed-1.3.2_min.js"></script>
-  <script>
-    $(function(){
-      $('#modal_window_boxes .modal_window_window').exFixed(); //IE6で position: fixed が機能するように実行
-    });
-  </script>
+  <script src="js/vendor/minmax-1.0.min.js"></script>
   <![endif]-->
 
 
-  <!--[if IE 6]><script src="js/vendor/minmax-1.0.min.js"></script><![endif]-->
+  <!--[if IE 6]>
+  <script src="js/vendor/jquery.exfixed-1.3.2.js"></script>
+  <script>
+    $(function(){
+      $('#modal_window_boxes .modal_window_window').exFixed(); //★★適用させたい要素を指定
+    });
+  </script>
+  <![endif]-->
 
 </body>
 </html>

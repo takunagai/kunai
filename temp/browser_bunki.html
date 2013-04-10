@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8" />
+  <title>条件付きコメントでブラウザごとに分岐させる旧IE対策</title>
+  <!--[if (gte IE 6)&(lte IE 8)]>
+    <script src="//code.jquery.com/jquery-latest.js"></script>
+  <![endif]-->
+  <!--[if (!IE)|(IE 9)]><!-->
+    <script src="//code.jquery.com/jquery-2.0.0b2.min.js"></script>
+  <!--<![endif]-->
+</head>
+
+
+<body>
+
+  <h1>条件付きコメントでブラウザごとに分岐させる旧IE対策</h1>
+  <p>実用的なもののみ載せた。サンプルコード下のグレー枠の箇所に表示される。テストはIE10のF12開発者メニューのブラウザモードでバージョンを切り替えることで行った（実ブラウザは未検証）</p>
+  <p>IE10の標準モードとQuirksモードは条件付きコメントをサポートしておらず、IEとはみなさず他のモダンブラウザ扱いとみなすこと。IEではないという条件にも関わらず、IE10は真となるのでややこしい。[if gte IE 9]としても適用されないので注意。</p>
+  <p>IE以外のブラウザのみ適用させる場合の記述は形式が異なっているので注意。<a href="http://ja.wikipedia.org/wiki/条件付きコメント">条件付きコメント - Wikipedia</a> のダウンレベルから見える条件付きコメントの項が参考になった。</p>
+  <p>★★<a href="">» 条件付きコメントとPolyfill</a></p>
+
+  <h2>IE10とその他モダンブラウザにはjQuery2.0、旧いIEにはjQuery1.9xを読みこませる</h2>
+  <pre><code>&lt;!--[if (gte IE 6)&amp;(lte IE 8)]&gt;
+  &lt;script src=&quot;//code.jquery.com/jquery-latest.js&quot;&gt;&lt;/script&gt;
+&lt;![endif]--&gt;
+&lt;!--[if (!IE)|(IE 9)]&gt;&lt;!--&gt;
+  &lt;script src=&quot;//code.jquery.com/jquery-2.0.0b2.min.js&quot;&gt;&lt;/script&gt;
+&lt;!--&lt;![endif]--&gt;</code></pre>
+
+
+  <h2>IE8以下（IE6/7/8）のみ適用</h2>
+  <pre><code>&lt;!--[if lte IE 8]&gt;IE8以下のみ表示されます&lt;![endif]--&gt;</code></pre>
+  <div style="border: 1px solid silver;min-height:1em;">
+    <!--[if lte IE 8]>IE8以下のみ表示されます<![endif]-->
+  </div>
+
+  <h2>IE6〜8のみ適用</h2>
+  <pre><code>&lt;!--[if (gte IE 6)&amp;(lte IE 8)]&gt;IE6〜8のみ表示されます&lt;![endif]--&gt;</code></pre>
+  <div style="border: 1px solid silver;min-height:1em;">
+    <!--[if (gte IE 6)&(lte IE 8)]>IE6〜8のみ表示されます<![endif]-->
+  </div>
+
+  <h2>IE6のみ適用</h2>
+  <pre><code>&lt;!--[if IE 6]&gt;IE6のみ表示されます&lt;![endif]--&gt;</code></pre>
+  <div style="border: 1px solid silver;min-height:1em;">
+    <!--[if IE 6]>IE6〜8のみ表示されます<![endif]-->
+  </div>
+
+  <h2>IE9のみ適用</h2>
+  <pre><code>&lt;!--[if IE 9]&gt;IE9のみ表示されます&lt;![endif]--&gt;</code></pre>
+  <div style="border: 1px solid silver;min-height:1em;">
+    <!--[if IE 9]>IE9のみ表示されます<![endif]-->
+  </div>
+
+  <h2>"IE10"と"IE以外のブラウザ"でのみ適用</h2>
+  <pre><code>&lt;!--[if !IE]&gt;&lt;!--&gt;IE10とIE以外のブラウザにのみ表示されます&lt;!--&lt;![endif]--&gt;</code></pre>
+  <div style="border: 1px solid silver;min-height:1em;">
+    <!--[if !IE]><!-->IE10とIE以外のブラウザにのみ表示されます<!--<![endif]-->
+  </div>
+
+  <h2>IE以外のブラウザとIE9にのみ適用</h2>
+  <pre><code>&lt;!--[if (!IE)|(IE 9)]&gt;&lt;!--&gt;IE以外のブラウザ（IE10含む）とIE9にのみ表示されます&lt;!--&lt;![endif]--&gt;</code></pre>
+  <div style="border: 1px solid silver;min-height:1em;">
+    <!--[if (!IE)|(IE 9)]><!-->IE以外のブラウザとIE9にのみ表示されます<!--<![endif]-->
+  </div>
+
+</body>
+</html>

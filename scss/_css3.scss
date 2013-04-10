@@ -24,69 +24,69 @@
 // 使用例（#sampleを3pxの角丸に）：#sample { @include rounded_corners(3px); }
 
 @mixin rounded_corners($radius: 5px){//デフォルト値
-	-moz-border-radius: $radius;
-	-webkit-border-radius: $radius;
-	border-radius: $radius;
+	-moz-border-radius:                 $radius;
+	-webkit-border-radius:              $radius;
+	border-radius:                      $radius;
 }
 /*左側上下*/
 @mixin rounded_corners_left($radius: 5px) {
-	-webkit-border-top-left-radius: $radius;
-	-moz-border-radius-topleft: $radius;
-	border-top-left-radius: $radius;
-	-webkit-border-bottom-left-radius: $radius;
-	-moz-border-radius-bottomleft: $radius;
-	border-bottom-left-radius: $radius;
+	-webkit-border-top-left-radius:     $radius;
+	-moz-border-radius-topleft:         $radius;
+	border-top-left-radius:             $radius;
+	-webkit-border-bottom-left-radius:  $radius;
+	-moz-border-radius-bottomleft:      $radius;
+	border-bottom-left-radius:          $radius;
 }
 /*右側上下*/
 @mixin rounded_corners_right($radius: 5px) {
-	-webkit-border-top-right-radius: $radius;
-	-moz-border-radius-topright: $radius;
-	border-top-right-radius: $radius;
+	-webkit-border-top-right-radius:    $radius;
+	-moz-border-radius-topright:        $radius;
+	border-top-right-radius:            $radius;
 	-webkit-border-bottom-right-radius: $radius;
-	-moz-border-radius-bottomright: $radius;
-	border-bottom-right-radius: $radius;
+	-moz-border-radius-bottomright:     $radius;
+	border-bottom-right-radius:         $radius;
 }
 /*上側左右*/
 @mixin rounded_corners_top($radius: 5px) {
-	-webkit-border-top-left-radius: $radius;
-	-moz-border-radius-topleft: $radius;
-	border-top-left-radius: $radius;
-	-webkit-border-top-right-radius: $radius;
-	-moz-border-radius-topright: $radius;
-	border-top-right-radius: $radius;
+	-webkit-border-top-left-radius:     $radius;
+	-moz-border-radius-topleft:         $radius;
+	border-top-left-radius:             $radius;
+	-webkit-border-top-right-radius:    $radius;
+	-moz-border-radius-topright:        $radius;
+	border-top-right-radius:            $radius;
 }
 /*下側左右*/
 @mixin rounded_corners_bottom($radius: 5px) {
-	-webkit-border-bottom-left-radius: $radius;
-	-moz-border-radius-bottomleft: $radius;
-	border-bottom-left-radius: $radius;
+	-webkit-border-bottom-left-radius:  $radius;
+	-moz-border-radius-bottomleft:      $radius;
+	border-bottom-left-radius:          $radius;
 	-webkit-border-bottom-right-radius: $radius;
-	-moz-border-radius-bottomright: $radius;
-	border-bottom-right-radius: $radius;
+	-moz-border-radius-bottomright:     $radius;
+	border-bottom-right-radius:         $radius;
 }
 /*右上のみ*/
 @mixin rounded_corners_topleft($radius: 5px) {
-	-moz-border-radius-topleft: $radius;
-	-webkit-border-top-left-radius: $radius;
-	border-top-left-radius: $radius;
+	-moz-border-radius-topleft:         $radius;
+	-webkit-border-top-left-radius:     $radius;
+	border-top-left-radius:             $radius;
 }
 /*左上のみ*/
 @mixin rounded_corners_topright($radius: 5px) {
-	-moz-border-radius-topright: $radius;
-	-webkit-border-top-right-radius: $radius;
-	border-top-right-radius: $radius;
+	-moz-border-radius-topright:        $radius;
+	-webkit-border-top-right-radius:    $radius;
+	border-top-right-radius:            $radius;
 }
 /*右上のみ*/
 @mixin rounded_corners_bottomright($radius: 5px) {
-	-moz-border-radius-bottomright: $radius;
+	-moz-border-radius-bottomright:     $radius;
 	-webkit-border-bottom-right-radius: $radius;
-	border-bottom-right-radius: $radius;
+	border-bottom-right-radius:         $radius;
 }
 /*右上のみ*/
 @mixin rounded_corners_bottomleft($radius: 5px) {
-	-moz-border-radius-bottomleft: $radius;
-	-webkit-border-bottom-left-radius: $radius;
-	border-bottom-left-radius: $radius;
+	-moz-border-radius-bottomleft:      $radius;
+	-webkit-border-bottom-left-radius:  $radius;
+	border-bottom-left-radius:          $radius;
 }
 
 
@@ -99,9 +99,9 @@
 	filter: alpha(opacity=$transparency);
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=$transparency)";
 	filter: alpha(opacity=$transparency);
-	-moz-opacity: $transparency * 0.01;/*もう不要？*/
-	-khtml-opacity: $transparency * 0.01;/*もう不要？*/
-	opacity: $transparency * 0.01;
+	-moz-opacity:   $transparency * 0.01;//もう不要？
+	-khtml-opacity: $transparency * 0.01;//もう不要？
+	opacity:        $transparency * 0.01;
 }
 
 
@@ -130,14 +130,14 @@
 // カラーの部分をHLS色空間で hsla(0,0%,0%,0.65)
 
 @mixin box_shadow ($x:0,$y:0,$width:7px,$color:#999){
-	-moz-box-shadow: $x $y $width $color;
+	-moz-box-shadow:    $x $y $width $color;
 	-webkit-box-shadow: $x $y $width $color;
-	box-shadow: $x $y $width $color;
+	box-shadow:         $x $y $width $color;
 }
 @mixin box_shadow_none (){
-	-moz-box-shadow: none;
+	-moz-box-shadow:    none;
 	-webkit-box-shadow: none;
-	box-shadow: none;
+	box-shadow:         none;
 }
 
 
@@ -146,9 +146,9 @@
 /*----------------------------------- */
 // 使用例（#sampleのボックスに光彩）：#sample { @include box-shadow-inner(0,0,2px,rgba(255,255,255,0.7)); }
 @mixin box_shadow_inner ($x:0,$y:0,$width:2px,$color:#FFF){
-	-moz-box-shadow: inset $x $y $width $color;
+	-moz-box-shadow:    inset $x $y $width $color;
 	-webkit-box-shadow: inset $x $y $width $color;
-	box-shadow: inset $x $y $width $color;
+	box-shadow:         inset $x $y $width $color;
 }
 
 
@@ -189,19 +189,19 @@
 		background: $start_color;//古いブラウザ
 		background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,$start_color),color-stop(50%,$middle_color),color-stop(100%,$end_color));//Chrome,Safari4+
 		background: -webkit-linear-gradient(top,$start_color 0%,$middle_color 50%,$end_color 100%);//Chrome10+,Safari5.1+
-		background: -moz-linear-gradient(top,$start_color 0%,$middle_color 50%,$end_color 100%);//Firefox3.6+
-		background: -o-linear-gradient(top,$start_color 0%,$middle_color 50%,$end_color 100%);//Opera 11.10+
-		background: -ms-linear-gradient(top,$start_color 0%,$middle_color 50%,$end_color 100%);//IE10+
-		background: linear-gradient(top,$start_color 0%,$middle_color 50%,$end_color 100%);//W3C
+		background:    -moz-linear-gradient(top,$start_color 0%,$middle_color 50%,$end_color 100%);//Firefox3.6+
+		background:      -o-linear-gradient(top,$start_color 0%,$middle_color 50%,$end_color 100%);//Opera 11.10+
+		background:     -ms-linear-gradient(top,$start_color 0%,$middle_color 50%,$end_color 100%);//IE10+
+		background:         linear-gradient(top,$start_color 0%,$middle_color 50%,$end_color 100%);//W3C
 		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="$start_color",endColorstr="$middle_color",GradientType=0);//IE6-9
 	} @else {//2色
 		background: $start_color;
 		background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,$start_color),color-stop(100%,$end_color));
 		background: -webkit-linear-gradient(top,$start_color 0%,$end_color 100%);
-		background: -moz-linear-gradient(top,$start_color 0%,$end_color 100%);
-		background: -o-linear-gradient(top,$start_color 0%,$end_color 100%);
-		background: -ms-linear-gradient(top,$start_color 0%,$end_color 100%);
-		background: linear-gradient(top,$start_color 0%,$end_color 100%);
+		background:    -moz-linear-gradient(top,$start_color 0%,$end_color 100%);
+		background:      -o-linear-gradient(top,$start_color 0%,$end_color 100%);
+		background:     -ms-linear-gradient(top,$start_color 0%,$end_color 100%);
+		background:         linear-gradient(top,$start_color 0%,$end_color 100%);
 		-pie-background: linear-gradient($start_color, $end_color);//CSS PIE
 		//filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="$start_color",endColorstr="$end_color",GradientType=0);
 	}
@@ -213,19 +213,19 @@
 		background: $start_color;
 		background: -webkit-gradient(linear,left top,right top,color-stop(0%,$start_color),color-stop(50%,$middle_color),color-stop(100%,$end_color));
 		background: -webkit-linear-gradient(left,$start_color 0%,$middle_color 50%,$end_color 100%);
-		background: -moz-linear-gradient(left,$start_color 0%,$middle_color 50%,$end_color 100%);
-		background: -o-linear-gradient(left,$start_color 0%,$middle_color 50%,$end_color 100%);
-		background: -ms-linear-gradient(left,$start_color 0%,$middle_color 50%,$end_color 100%);
-		background: linear-gradient(left,$start_color 0%,$middle_color 50%,$end_color 100%);
+		background:    -moz-linear-gradient(left,$start_color 0%,$middle_color 50%,$end_color 100%);
+		background:      -o-linear-gradient(left,$start_color 0%,$middle_color 50%,$end_color 100%);
+		background:     -ms-linear-gradient(left,$start_color 0%,$middle_color 50%,$end_color 100%);
+		background:         linear-gradient(left,$start_color 0%,$middle_color 50%,$end_color 100%);
 		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="$start_color",endColorstr="$end_color",GradientType=1);
 	} @else {//2色
 		background: $start_color;
 		background: -webkit-gradient(linear,left top,right top,color-stop(0%,$start_color),color-stop(100%,$end_color));
 		background: -webkit-linear-gradient(left,$start_color 0%,$end_color 100%);
-		background: -moz-linear-gradient(left,$start_color 0%,$end_color 100%);
-		background: -o-linear-gradient(left,$start_color 0%,$end_color 100%);
-		background: -ms-linear-gradient(left,$start_color 0%,$end_color 100%);
-		background: linear-gradient(left,$start_color 0%,$end_color 100%);
+		background:    -moz-linear-gradient(left,$start_color 0%,$end_color 100%);
+		background:      -o-linear-gradient(left,$start_color 0%,$end_color 100%);
+		background:     -ms-linear-gradient(left,$start_color 0%,$end_color 100%);
+		background:         linear-gradient(left,$start_color 0%,$end_color 100%);
 		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="$start_color",endColorstr="$end_color",GradientType=1);
 	}
 }
@@ -250,8 +250,8 @@ $range: all;
 $time: 1s;
 $ease: ease-in-out;
 @mixin transition ($range,$time,$ease) {
-	-moz-transition: $range $time $ease;
+	-moz-transition:    $range $time $ease;
 	-webkit-transition: $range $time $ease;
-	-o-transition: $range $time $ease;
-	transition: $range $time $ease;
+	-o-transition:      $range $time $ease;
+	transition:         $range $time $ease;
 }

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <!-- <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0" /> -->
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+  <title>View Full Site for Responsive Web Design | Creative and Code</title>
+  <style>
+    a {
+      text-decoration: underline;
+    }
+		ul {
+		  margin:0;
+		  padding:0;
+		  list-style:none;
+		}
+		ul li {
+		  background-color:#CCC;
+		  min-height:150px;
+		  margin-bottom:15px;
+		}
+		/*PC表示に切替ボタン, モバイル表示に切替ボタン*/
+		#view-full {
+		}
+		#view-responsive {
+		  display:none;
+		}
+
+		@media screen and (min-width: 800px) {
+		  ul li {
+		  	float:left;
+		  	width:30%;
+		  	margin-left:5%;
+		  }
+		  ul li:first-child {
+		  	margin-left:0;
+		  }
+		  #view-full {
+		  	display:none;
+		  }
+		  #view-responsive {
+		  	display:inline;
+		  }
+		}
+  </style>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script src="../js/modernizr.custom.27784.js"></script>
+</head>
+
+<body>
+  <div id="view-options">
+    <a id="view-full">PC表示に切替える</a>
+  </div>
+
+  <article>
+    <h1>スマートフォン表示とPC用表示を切り替えるボタン</h1>
+    <p>metaタグの viewport を書き換えることにより、スマートフォンでも切替えボタンでPC用表示ができるようにする（スマートフォンやタブレットでのみ確認可能）</p>
+    <p>要 jQuery, modernizr.js。localStorageで設定記憶（modernizrで判定）</p>
+    <p>localStorageに状態保存</p>
+    <p>Android の各ブラウザ と Windows Phone でうまくいかない問題（http://creativeandcode.com/responsive-view-full-site/ のコメント最後の方）</p>
+    <p>参考：http://css-tricks.com/user-opt-out-responsive-design/</p>
+    <p>参考：http://neilcarpenter.com/2012/05/creating-a-faux-view-full-site-button-for-responsive-sites/</p>
+    <p>参考：http://creativeandcode.com/responsive-view-full-site/（このサンプルの元）</p>
+    <p>参考：http://responsiveviewport.com（viewportを切り替えるjavascriptライブラリ）</p>
+
+    <ul>
+      <li>
+        <h2>Content</h2>
+      </li>
+      <li>
+        <h2>Content</h2>
+      </li>
+      <li>
+        <h2>Content</h2>
+      </li>
+    </ul>
+  </article>
+
+
+  <script>
+    $(function(){
+      /*!
+       * View Full Site Link for Responsive Web Design - Creative and Code
+       * http://creativeandcode.com/responsive-view-full-site/
+       */
+
+      // viewport stuff
+      var targetWidth = 980;
+      var deviceWidth = 'device-width';
+      var viewport = $('meta[name="viewport"]');
+
+      // check to see if local storage value is set on page load
+      localStorage.isResponsive = (localStorage.isResponsive === undefined) ? 'true' : localStorage.isResponsive;
+
+      //デスクトップ表示
+      var showFullSite = function(){
+        viewport.attr('content', 'width=' + targetWidth + 'initial-scale=0.5,maximum-scale=1.0,user-scalable=yes');
+
+        if(!$('#view-responsive').length){
+          $('#view-options').append('<a id="view-responsive">スマートフォン表示に切替える</a>');
+        }
+
+        localStorage.isResponsive = 'false';
+      }
+
+      //モバイル表示
+      var showMobileOptimized = function(){
+        viewport.attr('content', 'width=' + deviceWidth + 'initial-scale=1.0,maximum-scale=1.0,user-scalable=no');
+        localStorage.isResponsive = 'true';
+      }
+
+      //前回訪問時にlocalStrageでPC表示指定してた場合、PC表示に切替え（modernizr.js 使用）
+      if(Modernizr.localstorage){
+        if(localStorage.isResponsive === 'false'){
+          showFullSite();
+        }
+      }
+
+      //モバイル表示時、PC表示に切り替えるボタン
+      $('#view-full').on('click', function(){
+        showFullSite();
+      });
+
+      //モバイルでPC表示時、モバイル表示に切り替えるボタン
+      $('#view-options').on('click', '#view-responsive', function(){
+        showMobileOptimized();
+      });
+    });
+  </script>
+</body>
+</html>

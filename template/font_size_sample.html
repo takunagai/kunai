@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8" />
+  <title>有名サイトのフォント指定サンプル</title>
+  <link rel="stylesheet" href="http://necolas.github.io/normalize.css/2.1.1/normalize.css" type="text/css" />
+  <style>
+    /*共通*/
+    *,
+    *:before,
+    *:after {
+      -webkit-box-sizing: border-box;
+         -moz-box-sizing: border-box;
+              box-sizing: border-box;
+      *behavior: url(../js/vendor/boxsizing.htc);
+    }
+    section {
+      margin-bottom: 1em;
+      padding: 30px;
+      outline: 2px dotted green;
+    }
+    h2 {
+      margin: 2em 0 1em;
+    }
+      h2:first-child {
+        margin-top: 0 !important;
+      }
+    p {
+      margin: 1em 0;
+    }
+    p:first-child,
+    small:first-child {
+      margin-top: 0 !important;
+    }
+    p:last-child,
+    small:last-child {
+      margin-bottom: 0 !important;
+    }
+    a {
+      color: #00f;
+    }
+    pre {
+      padding: 20px;
+      background-color: #E7E7E7;
+    }
+
+    /*STARBUCKS*/
+    #starbucks {
+      font-family: メイリオ, Meiryo, 'ＭＳ Ｐゴシック', 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', sans-serif;
+    }
+    #starbucks .catch {
+      font-size: 14px;
+      line-height: 1.714285714;/*24px*/
+      font-weight: bold;
+      margin-bottom: 17px;
+    }
+    #starbucks h2, #starbucks p, #starbucks small {
+      color: #5f4e44;
+    }
+    #starbucks h2, #starbucks p {
+      font-size: 12px;
+      line-height: 1.666666667;/*20px*/
+      margin-bottom: 10px;
+    }
+    #starbucks small {
+      font-size: 10px;
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+
+    /*Yahoo!ニュース*/
+    #yahoo_news {
+      font-family: 'MS PGothic', 'Hiragino Kaku Gothic Pro', Helvetica, Arial, sans-serif;
+    }
+    #yahoo_news h2 {
+      font-size: 22px;
+      line-height: 1;/*22px*/
+      margin-bottom: 5px;
+    }
+    #yahoo_news .update {
+      margin-top: 0;
+      font-size: 13px;
+      line-height: 1.230769231;/*16px*/
+      color: #666;
+    }
+    #yahoo_news p {
+      font-size: 16px;
+      line-height: 1.375;/*16px*/
+      margin-bottom: 1em;
+    }
+
+    /*Apple*/
+    #apple {
+      font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', メイリオ, Meiryo, 'ＭＳ Ｐゴシック', Helvetica, Arial, Verdana, sans-serif;
+    }
+    #apple .catch {
+      font-size: 28px;
+      line-height: 50px;
+    }
+    #apple h2 {
+      font-size: 14px;
+      line-height: 1.357142857;/*19px*/
+      margin-bottom: 7px;
+    }
+    #apple p {
+      font-size: 14px;
+      line-height: 1.571428571;/*22px*/
+      margin-bottom: 18px;
+    }
+    #apple small {
+      font-size: 12px;
+      line-height: 1.416666667;/*17px*/
+    }
+
+    /*Google Search*/
+    #google_search {
+      font-family: arial, sans-serif;
+    }
+    #google_search h2 {
+      font-size: 16px;
+      line-height: 1.5625;/*25px*/
+      font-weight: normal;
+    }
+    #google_search p {
+      font-size: 12px;
+      line-height: 1.666666667;/*20px*/
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <h1>有名サイトの基本フォント設定いくつか</h1>
+  <p>フォントサイズなど検証する際の目安として、有名サイトいくつかの小見出しと本文をピックアップして並べた。
+  <a href="http://necolas.github.io/normalize.css/">normarize.css v2.0</a>を使用</p>
+
+  <section id="starbucks">
+    <h1>STARBUCKS</h1>
+
+    <p class="catch">厳選された香り高いドリップコーヒー（14px）</p>
+    <h2>チョコレートのほろ苦い風味を感じることのできるカプチーノ（12px）</h2>
+    <p>世界中のコーヒー産地から厳選された高品質のアラビカ種コーヒー豆を使用したスターバックスの定番商品です。バラエティあふれるコーヒー豆を通して、スターバックスのコーヒージャーニーをお楽しみください。ダミーです私は同年同時にこういう理解通りというはずの末になるだでし。ついに生涯が経過院は同時にこういんうないて、同時にこういう理解通（12px）</p>
+
+
+    <small>オートチャージなどのサービスのご利用、限定キャンペーンへの参加が可能になります（10px）</small>
+
+<pre><code>#starbucks {
+  color: #5f4e44;
+  font-family: メイリオ, Meiryo, 'ＭＳ Ｐゴシック', 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', sans-serif;
+}
+#starbucks .catch {
+  font-size: 14px;
+  line-height: 1.714285714;/*24px*/
+  font-weight: bold;
+  margin-bottom: 17px;
+}
+#starbucks h2, p {
+  font-size: 12px;
+  line-height: 1.666666667;/*20px*/
+  margin-bottom: 10px;
+}
+#starbucks small {
+  font-size: 10px;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}</code></pre>
+  </section>
+
+
+
+  <section id="yahoo_news">
+    <h1>Yahoo!ニュース</h1>
+
+    <h2>原因究明へ現場検証（22px）</h2>
+    <p class="update"><a href="#">2月8日</a>配信(13px)</p>
+    <p>火災は8日午後7時半ごろ発生。当時建物にいた高齢者10人と職員ら2人が病院に搬送され、入所者の女性4人が死亡した。他に2人が集中治療室で治療を受けている。ダミーです私は同年同時にこういう理解通りというはずの末になるだでし。ついに生涯は同時にこういう理解通りとすこぶる。(16px)</p>
+<pre><code>#yahoo_news {
+  font-family: 'MS PGothic', 'Hiragino Kaku Gothic Pro', Helvetica, Arial, sans-serif;
+}
+#yahoo_news h2 {
+  font-size: 22px;
+  line-height: 1;/*22px*/
+  margin-bottom: 5px;
+}
+#yahoo_news .update {
+  margin-top: 0;
+  font-size: 13px;
+  line-height: 1.230769231;/*16px*/
+  color: #666;
+}
+#yahoo_news p {
+  font-size: 16px;
+  line-height: 1.375;/*16px*/
+  margin-bottom: 1em;
+}</code></pre>
+  </section>
+
+
+
+  <section id="apple">
+    <h1>Apple</h1>
+
+    <p class="catch">まったく新しいデザイン(28px/カーニング→画像)</p>
+    <h2>薄く、磨かれたボディ（14px）</h2>
+    <p>優れた音質をさらに高めるために、アコースティックベントも綿密な計算をもとに配置されています。ダミーです私は同年同時にこういう理解通りというはずの末になるだでし。ついに生涯が経過院は同時にこういう理解通りとすこぶるそんな安住なますまでがしてならたからも所有かい摘んうないて、同時にこういう理解通(14px)</p>
+    <small>最新のアクセサリでiPhoneをさらに便利に。さらに楽しく。(12px)</small>
+<pre><code>#apple {
+  font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', メイリオ, Meiryo, 'ＭＳ Ｐゴシック', Helvetica, Arial, Verdana, sans-serif;
+}
+#apple .catch {
+  font-size: 28px;
+  line-height: 50px;
+}
+#apple h2 {
+  font-size: 14px;
+  line-height: 1.357142857;/*19px*/
+  margin-bottom: 7px;
+}
+#apple p {
+  font-size: 14px;
+  line-height: 1.571428571;/*22px*/
+  margin-bottom: 18px;
+}
+#apple small {
+  font-size: 12px;
+  line-height: 1.416666667;/*17px*/
+}</code></pre>
+  </section>
+
+
+  <section id="google_search">
+    <h1>Google検索</h1>
+    <h2><a href="#"><b>関西</b> - Wikipedia(16px）</a></h2>
+    <p>関西（かんさい、かんせい）とは、日本の地方を指す言葉である。現在、関西の範囲は大阪、京都、兵庫、滋賀、奈良、和歌山の2府4県とされることが多い。ダミーです私は同年同時にこういう理解通りというはずの末になるだでし。ついに生涯が経過院は同時にこういう理解通りとすこぶるそんな安住なますまでがしてならたからも所有かい摘んうないて、同時にこういう理解通お(12px）</p>
+<pre><code>#google_search {
+  font-family: arial, sans-serif;
+}
+#google_search h2 {
+  font-size: 16px;
+  line-height: 1.5625;/*25px*/
+  font-weight: normal;
+}
+#google_search p {
+  font-size: 12px;
+  line-height: 1.666666667;/*20px*/
+}</code></pre>
+  </section>
+
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8" />
+  <title>コメントなどに使える CSS3 の吹き出し（CSS3、ボーダーを利用、レスポンシブ対応）</title>
+  <style>
+/*ボックスモデル、border と padding を含んで数値指定できるように*/
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/*吹き出しボックス*/
+.balloon {
+  margin: 1em 10px 1em 30px;
+  border-left:   10px solid #999;
+  border-bottom: 10px solid transparent;
+  _border-bottom-color: white;/*IE6用 背景色を設定（画像背景なら対応不可）*/
+  outline: 2px dotted red;/*表示確認用*/
+}
+  .balloon_inner {
+    padding: 10px 20px;
+    margin-left: -30px;/*線幅10pxなので親要素より-20pxとなる*/
+    -webkit-border-radius: 10px;
+       -moz-border-radius: 10px;
+            border-radius: 10px;
+    background-color: #999;
+    _position: relative;/*IE6用*/
+    outline: 2px dotted green;/*表示確認用*/
+  }
+  </style>
+</head>
+
+
+<body>
+
+  <h1>コメントなどに使える CSS3 の吹き出し（CSS3、ボーダーを利用、レスポンシブ対応）</h1>
+  <p>参考：<a href="http://terkel.jp/archives/2009/12/css-only-speech-bubbles/">CSS のみで吹き出し - Terkel.jp</a></p>
+  <p><a href="http://grad3.ecoloniq.jp">CSS3グラデーション指定は、CSSグラデーションのジェネレーター</a>を使うと直感的に指定できて便利</p>
+  <p>★★IE、スマートフォンなどで要表示テスト</p>
+
+  <section class="balloon">
+    <div class="balloon_inner">
+      <p>ダミーです私は同年同時にこういう理解通りというはずの末になるだでし。ついに生涯が経過院は同時にこういう理解通りとすこぶるそんな安住なますまでがしてならたからも所有かい摘んうないて、同時にこういう理解通</p>
+    </div>
+  </section>
+
+  <p>要IE，スマートフォンで表示テスト</p>
+
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>     <html lang="ja" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>        <html lang="ja" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>        <html lang="ja" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--><html lang="ja" class="no-js"><!--<![endif]-->
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width" />
+  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="requiresActiveX=true" /><![endif]-->
+  <!--[if lt IE 9]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
+  <!--[if IE 9]><meta http-equiv="X-UA-Compatible" content="IE=9" /><![endif]-->
+
+  <title>Page Name - Website Name</title>
+  <meta name="description" content="" />
+  <meta name="author" content="taku_nagai" />
+  <meta name="copyright" content="Copyright(C) Your Name" />
+  <meta name="format-detection" content="telephone=no" />
+  <link rel="stylesheet" href="../css/main.css" media="all" />
+  <link rel="author" href="../info/profile.html" />
+
+  <!-- respond.js を使わずに処理：http://tokkono.cute.coocan.jp/blog/slow/index.php/web-technology/best-practice-of-responsive-design/ -->
+  <!--
+<link rel="stylesheet" href="../css/base.css" media="all" />
+  <link rel="stylesheet" href="../css/style.css" media="all and (min-width: 30em)" />
+-->
+  <!--[if (lt IE 9) & (!IEMobile 7)]><link rel="stylesheet" href="../style.css" media="all"><![endif]-->
+
+  <!--<script src="//www.google.com/../js/gweb/analytics/autotrack.js" /></script>-->
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+</head>
+
+
+<body id="file_name" class="category_name rayout_pattern">
+  <!--[if lt IE 8]><p class="chromeframe">お使いのブラウザはバージョンが古いため、サイトを快適にご利用いただけないかもしれません。特別な事情がなければ <a href="http://browsehappy.com/">ブラウザをアップデート</a>、もしくは、<a href="http://www.google.com/chromeframe/?redirect=true">Google Chrome Frame</a>（パフォーマンスの向上がはかれます）をインストールしてください。セキュリティ的にもサポートの切れた古いブラウザは危険です。常に最新のブラウザをお使いいただくことをおすすめいたします。</p><![endif]-->
+
+  <button class="pc_mobile_switch"><i class="icon-display_screen"></i> PC表示に切替え</button>
+
+  <div id="container">
+
+    <div id="wrapper">
+
+
+      <div id="main" role="main">
+
+
+        <article>
+
+          <header class="article_header">
+            <h1 class="article_title">区切り線 hr</h1>
+          </header>
+
+
+          <div class="article_body">
+
+
+						<section>
+							<h2>区切り線(h2)</h2>
+							<p>クラスなし(hr)</p>
+							<hr />
+							<p>透過グラデーション(hr.style_a)</p>
+							<hr class="style_a" />
+							<p>ベベル(hr.style_b)※背景白以外で使用すると凹んで見える</p>
+							<hr class="style_b" />
+							<p>中央に記号文字(hr.style_c)</p>
+							<hr class="style_c" />
+						</section>
+
+
+					<!--/.article_body-->
+					</div>
+
+
+        </article>
+
+
+      <!-- /#main -->
+      </div>
+
+    <!-- /#wrapper -->
+    </div>
+
+
+  <!-- /#container -->
+  </div>
+
+  <button class="pc_mobile_switch"><i class="icon-display_screen"></i> PC表示に切替え</button>
+
+
+
+  <!-- * * * * * * * * * * * * * Scripts * * * * * * * * * * * * * -->
+  <!-- ★★本番アップ時は plugins.js に統合する -->
+  <!-- ★★より軽量のzepto.js を使う手もある 比較記事：http://openweb.co.jp/2013/01/17/jquery-2-0-size-compared/ -->
+  <!-- jQuery1.9で廃止された機能の影響で動かないプラグインなどがある場合は http://code.jquery.com//jquery-migrate-git.min.js を追加-->
+  <script src="//code.jquery.com/jquery-latest.js"></script>
+  <script>window.jQuery || document.write('<script src="../js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+  <script src="../js/plugins.js"></script>
+  <script src="../js/main.min.js"></script>
+
+  <script>
+    //Androidの場合のみ iscroll-lite.js を読みこませる
+    if(/Android/.test(navigator.userAgent)){
+      $('script').attr('src','../js/vendor/iscroll-lite.js').appendTo('head');
+      //alert('テスト：iscroll-lite.jsを読み込みました。');
+    }
+  </script>
+
+
+  <script>
+    //列ごとに高さを揃える。IE7/8も対応
+    /* Equal Height Blocks in Rows by CHRIS COYIER(CSS Tricks)
+    http://css-tricks.com/equal-height-blocks-in-rows/
+    http://codepen.io/micahgodbolt/full/FgqLc
+    It's been modified into a function called at page load and then each time the page is resized.
+    One large modification was to remove the set height before each new calculation. */
+    equalheight = function(container) {
+
+      var currentTallest = 0,
+        currentRowStart = 0,
+        rowDivs = new Array(),
+        $el,
+        topPosition = 0;
+
+      $(container).each(function() {
+
+        $el = $(this);
+        $($el).height('auto'); // added
+        topPostion = $el.position().top;
+
+        if (currentRowStart != topPostion) {
+
+          // we just came to a new row.  Set all the heights on the completed row
+          for (currentDiv = 0; currentDiv < rowDivs.length; currentDiv++) {
+            rowDivs[currentDiv].height(currentTallest);
+          }
+
+          // set the variables for the new row
+          rowDivs.length = 0; // empty the array
+          currentRowStart = topPostion;
+          currentTallest = $el.height();
+          rowDivs.push($el);
+        }
+        else {
+          // another div on the current row.  Add it to the list and check if it's taller
+          rowDivs.push($el);
+          currentTallest = (currentTallest < $el.height()) ? ($el.height()) : (currentTallest);
+        }
+        // do the last row
+        for (currentDiv = 0; currentDiv < rowDivs.length; currentDiv++) {
+          rowDivs[currentDiv].height(currentTallest);
+        }
+      });
+    }
+
+    // excute when the page is roaded/resized
+    // 適用したい要素をセット
+    $(window).load(function() {
+      if($('body').width() >= 481){
+        equalheight('.col_horizontal .col');
+      }
+    });
+    $(window).resize(function() {
+      if($('body').width() >= 481){
+        equalheight('.col_horizontal .col');
+      }
+    });
+  </script>
+
+
+  <!-- * * * Polyfils for old IE * * * -->
+
+  <!--[if IE 9]>
+  <script src="../js/vendor/PIE_IE9.js"></script>
+  <script>
+    $(function() {
+      if (window.PIE) {
+        //$('.class_name').each(function() { PIE.attach(this); }); //★★適用させたい要素を指定
+      }
+    });
+  </script>
+  <![endif]-->
+
+  <!--[if (gte IE 6)&(lte IE 8)]>
+  <script src="../js/vendor/selectivizr-min.js"></script>
+  <script src="../js/vendor/respond.min.js"></script>
+  <script src="../js/vendor/PIE_IE678.js"></script>
+  <script>
+    $(function() {
+      if (window.PIE) {
+        $('.button, .label, article h2, .pagetop a').each(function() { //★★適用させたい要素を指定
+          PIE.attach(this);
+        });
+      }
+    });
+  </script>
+  <![endif]-->
+
+  <!--[if lte IE 7]>
+  <script src="../js/vendor/imgSizer/imgSizer_min.js"></script>
+  <script src="../js/vendor/minmax-1.0.min.js"></script>
+  <![endif]-->
+
+
+  <!--[if IE 6]>
+  <script src="../js/vendor/jquery.exfixed-1.3.2.js"></script>
+  <script>
+    $(function(){
+      $('#modal_window_boxes .modal_window_window').exFixed(); //★★適用させたい要素を指定
+    });
+  </script>
+  <![endif]-->
+
+</body>
+</html>

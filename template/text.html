@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>     <html lang="ja" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>        <html lang="ja" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>        <html lang="ja" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--><html lang="ja" class="no-js"><!--<![endif]-->
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width" />
+  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="requiresActiveX=true" /><![endif]-->
+  <!--[if lt IE 9]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
+  <!--[if IE 9]><meta http-equiv="X-UA-Compatible" content="IE=9" /><![endif]-->
+
+  <title>Page Name - Website Name</title>
+  <meta name="description" content="" />
+  <meta name="author" content="taku_nagai" />
+  <meta name="copyright" content="Copyright(C) Your Name" />
+  <meta name="format-detection" content="telephone=no" />
+  <link rel="stylesheet" href="../css/main.css" media="all" />
+  <link rel="author" href="../info/profile.html" />
+
+  <!-- respond.js を使わずに処理：http://tokkono.cute.coocan.jp/blog/slow/index.php/web-technology/best-practice-of-responsive-design/ -->
+  <!--
+<link rel="stylesheet" href="../css/base.css" media="all" />
+  <link rel="stylesheet" href="../css/style.css" media="all and (min-width: 30em)" />
+-->
+  <!--[if (lt IE 9) & (!IEMobile 7)]><link rel="stylesheet" href="../style.css" media="all"><![endif]-->
+
+  <!--<script src="//www.google.com/../js/gweb/analytics/autotrack.js" /></script>-->
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+</head>
+
+
+<body id="file_name" class="category_name rayout_pattern">
+  <!--[if lt IE 8]><p class="chromeframe">お使いのブラウザはバージョンが古いため、サイトを快適にご利用いただけないかもしれません。特別な事情がなければ <a href="http://browsehappy.com/">ブラウザをアップデート</a>、もしくは、<a href="http://www.google.com/chromeframe/?redirect=true">Google Chrome Frame</a>（パフォーマンスの向上がはかれます）をインストールしてください。セキュリティ的にもサポートの切れた古いブラウザは危険です。常に最新のブラウザをお使いいただくことをおすすめいたします。</p><![endif]-->
+
+  <button class="pc_mobile_switch"><i class="icon-display_screen"></i> PC表示に切替え</button>
+
+  <div id="container">
+
+    <div id="wrapper">
+
+
+      <div id="main" role="main">
+
+
+        <article>
+
+          <header class="article_header">
+            <h1 class="article_title">テキストのスタイリング</h1>
+          </header>
+
+
+          <div class="article_body">
+
+
+						<section>
+							<h2>テキスト（h2)</h2>
+							<h3>文字修飾タグ（h3)</h3>
+							<ul>
+								<li>em：<em>強調したい場合に使用。<em>ネストでより強く</em>強調。</em></li>
+								<li>strong：<strong><strong>emより強く強調したい場合に使用。</strong>ネストでより強く</strong>強調</li>
+								<li>b：<b>他と区別したいテキスト(重要、強調ではない)。キーワード、本文中の製品名などに使用</b></li>
+								<li>i：<i>他と区別したいテキスト(重要、強調ではない)。技術用語などに使用</i></li>
+								<li>mark：ユーザーに関連性を示すテキストを<mark>ハイライト</mark>して関心を引く。強調ではない（例：ユーザーが検索した言葉をハイライト）</li>
+								<li>small：<small>注釈・細目に使用。重要性を強めたり弱めたりはしない。</small></li>
+								<li>abbr：<abbr title="National Basketball Association">NBA</abbr> ←略語。カーソル重ねると略してないものを表示 ※"acronym"は非推奨</li>
+								<li>time：<time datetime="2012-01-14T15:08:00+09:00"  pubdate="pubdate" >この記事の投稿日時</time></li>
+								<li>cite：<cite>作品のタイトル</cite>（書籍、新聞、エッセイ、詩、歌、映画、テレビ番組、ゲーム、彫刻、絵画、演劇、展覧会など）</li>
+								<li>abbr：<abbr title="Avenue">AVE</abbr></li>
+								<li>sup：<sup>上付き文字。特定の意味を持った印刷慣例をマークアップ。なくても意味が変わらない場合は使わない</sup></li>
+								<li>sub：<sub>下付き文字。使用方法はsupと同じ</sub></li>
+								<li>del：<del>削除された内容</del></li>
+								<li>ins：<ins>追記された内容</ins></li>
+								<li>s：<s>もう正確ではない、または、もう関連性がない内容。削除の意味ならdelを使うこと</s></li>
+							</ul>
+
+							<h3>リンク</h3>
+							<p>CSS<code>a[href^="http"]{}</code>でURLが"http"から始まる外部リンクにはマークが付く設定</p>
+							<ul>
+								<li><a href="basic-template.html">内部リンク</a></li>
+								<li><a href="http://www.yahoo.co.jp/">外部リンク</a></li>
+							</ul>
+
+							<h3>文字クラス</h3>
+							<p class="align_left" style="border:1px solid gray;">左揃え(.align_left)</p>
+							<p class="align_right" style="border:1px solid gray;">右揃え(align_right)</p>
+							<p class="align_center" style="border:1px solid gray;">横中央揃え(.align_center)</p>
+							<p class="valign_top" style="height:5em;border:1px solid gray;">上揃え(.valign_top)<br /><a href="http://www.yomotsu.net/wp/?p=387">»参考</a></p>
+							<p class="valign_middle" style="height:5em;border:1px solid gray;">縦中央揃え(.valign_middle)</p>
+							<p class="valign_bottom" style="height:5em;border:1px solid gray;">下揃え(.valign_bottom)</p>
+							<p><strong>強制的に<span class="font_weight_normal">細字にする(.font_weight_normal)</span>クラスです。</strong></p>
+							<p>区切り文字：文字列 <span class="separator">|(.separator)</span> 文字列</p>
+							<p>スキップで非表示。→<span class="skip">テキスト</span>←アクセシビリティ用など必要があれば</p>
+
+							<h3>整形済テキスト(h3)</h3>
+<pre>整形済テキストです。(pre)
+		テキストの内容をそのまま表示します。</pre>
+						</section>
+
+
+					<!--/.article_body-->
+					</div>
+
+
+        </article>
+
+
+      <!-- /#main -->
+      </div>
+
+    <!-- /#wrapper -->
+    </div>
+
+
+  <!-- /#container -->
+  </div>
+
+  <button class="pc_mobile_switch"><i class="icon-display_screen"></i> PC表示に切替え</button>
+
+
+
+  <!-- * * * * * * * * * * * * * Scripts * * * * * * * * * * * * * -->
+  <!-- ★★本番アップ時は plugins.js に統合する -->
+  <!-- ★★より軽量のzepto.js を使う手もある 比較記事：http://openweb.co.jp/2013/01/17/jquery-2-0-size-compared/ -->
+  <!-- jQuery1.9で廃止された機能の影響で動かないプラグインなどがある場合は http://code.jquery.com//jquery-migrate-git.min.js を追加-->
+  <script src="//code.jquery.com/jquery-latest.js"></script>
+  <script>window.jQuery || document.write('<script src="../js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+  <script src="../js/plugins.js"></script>
+  <script src="../js/main.min.js"></script>
+
+  <script>
+    //Androidの場合のみ iscroll-lite.js を読みこませる
+    if(/Android/.test(navigator.userAgent)){
+      $('script').attr('src','../js/vendor/iscroll-lite.js').appendTo('head');
+      //alert('テスト：iscroll-lite.jsを読み込みました。');
+    }
+  </script>
+
+
+  <!-- * * * Polyfils for old IE * * * -->
+
+  <!--[if IE 9]>
+  <script src="../js/vendor/PIE_IE9.js"></script>
+  <script>
+    $(function() {
+      if (window.PIE) {
+        //$('.class_name').each(function() { PIE.attach(this); }); //★★適用させたい要素を指定
+      }
+    });
+  </script>
+  <![endif]-->
+
+  <!--[if (gte IE 6)&(lte IE 8)]>
+  <script src="../js/vendor/selectivizr-min.js"></script>
+  <script src="../js/vendor/respond.min.js"></script>
+  <script src="../js/vendor/PIE_IE678.js"></script>
+  <script>
+    $(function() {
+      if (window.PIE) {
+        $('.button, .label, article h2, .pagetop a').each(function() { //★★適用させたい要素を指定
+          PIE.attach(this);
+        });
+      }
+    });
+  </script>
+  <![endif]-->
+
+  <!--[if lte IE 7]>
+  <script src="../js/vendor/imgSizer/imgSizer_min.js"></script>
+  <script src="../js/vendor/minmax-1.0.min.js"></script>
+  <![endif]-->
+
+
+  <!--[if IE 6]>
+  <script src="../js/vendor/jquery.exfixed-1.3.2.js"></script>
+  <script>
+    $(function(){
+      $('#modal_window_boxes .modal_window_window').exFixed(); //★★適用させたい要素を指定
+    });
+  </script>
+  <![endif]-->
+
+</body>
+</html>

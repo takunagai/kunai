@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8" />
+  <title>コメントなどに使える CSS3 の吹き出し（CSS3、ボーダーを利用、レスポンシブ対応）</title>
+  <style>
+/*ボックスモデル、border と padding を含んだ数値指定に*/
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+/*font*/
+body {
+  font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', 'MS PGothic', 'Roboto', 'Droid Sans', sans-serif;
+  color: #666;
+  font-size: .8em;
+}
+
+/* - - - ここまで表示調整のための記述。コアな部分ではないので無くてもいい - - - */
+
+/*吹き出しボックス*/
+.baloon_frame {
+  margin: 1em 10px 1em 30px;
+  border-left:   15px solid #b8e7ff;/*吹き出しの三角の大きさ*/
+  border-bottom: 15px solid transparent;
+  _border-bottom-color: white;/*IE6用 背景色を設定（画像背景なら対応不可）*/
+}
+  .baloon_frame_inner {
+    padding: 20px;
+    margin-left: -35px;/*線幅15pxなので親要素より-20pxとなる*/
+    -webkit-border-radius: 15px;
+       -moz-border-radius: 15px;
+            border-radius: 15px;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1.00, #b8e7ff), color-stop(0.00, #dbf3ff));
+    background: -webkit-linear-gradient(top, #dbf3ff 0%, #b8e7ff 100%);
+    background:    -moz-linear-gradient(top, #dbf3ff 0%, #b8e7ff 100%);
+    background:      -o-linear-gradient(top, #dbf3ff 0%, #b8e7ff 100%);
+    background:     -ms-linear-gradient(top, #dbf3ff 0%, #b8e7ff 100%);
+    background:   linear-gradient(to bottom, #dbf3ff 0%, #b8e7ff 100%);
+    _position: relative;/*IE6用*/
+  }
+    .baloon_frame h1:first-child {
+      margin-top: 0;
+    }
+    .baloon_frame p:last-child {
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <h1>コメントなどに使える CSS3 の吹き出し（CSS3、ボーダーを利用、レスポンシブ対応）</h1>
+
+  <h2>サンプル</h2>
+  <section class="baloon_frame">
+    <div class="baloon_frame_inner">
+      <h1>見出しです <small>section.baloon_frame > div.baloon_frame_inner > h1</small></h1>
+      <p>ダミーです私は同年同時にこういう理解通りというはずの末になるだでし。ついに生涯が経過院は同時にこういう理解通りとすこぶるそんな安住なますまでがしてならたからも所有かい摘んうないて、同時にこういう理解通</p>
+    </div>
+  </section>
+
+  <section class="baloon_frame">
+    <div class="baloon_frame_inner">
+      <h1>見出しです</h1>
+      <p>ダミーです私は同年同時にこういう理解通りというはずの末になるだでし。ついに生涯が経過院は同時にこういう理解通りとすこぶるそんな安住なますまでがしてならたからも所有かい摘んうないて、同時にこういう理解通</p>
+    </div>
+  </section>
+
+
+  <hr />
+
+
+  <h2>解説</h2>
+
+  <ul>
+    <li><a href="http://terkel.jp/archives/2009/12/css-only-speech-bubbles/">CSS のみで吹き出し - Terkel.jp</a> を大いに参考にさせていただいた</li>
+    <li>CSS3グラデーション指定は、<a href="http://grad3.ecoloniq.jp">grad3</a> で直感的に指定できて便利</li>
+    <li>ボーダーを付けたり、きれいにボックスシャドウ付けたりはできない（吹き出しの三角と句形の三角の境界に線やシャドウがかかってしまう）。後者は <a href="#">fukidasi1c.html</a>の方法を使えばできる（HTMLに空divタグを増やす必要がありHTMLは汚くなる）。</li>
+    <li>★★課題：SCSS化</li>
+    <li>★★課題：IE、スマートフォンなどで要表示テスト</li>
+  </ul>
+
+</body>
+</html>

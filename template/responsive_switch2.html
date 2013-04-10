@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8" />
+  <title></title>
+  <link rel="stylesheet" href="../../../common/normalize_and_clearfix.css" type="text/css" />
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <!--<script src="file://localhost/Volumes/Data%20HD/htdocs/common/jquery.js"></script>-->
+</head>
+
+
+<body>
+  <h1>レスポンシブWebデザイン、モバイル用表示 / PC表示 を切り替えるボタン</h1>
+
+  <script>
+  $('#view-full-site').click(function(e) {
+    // prevent default link action
+    e.preventDefault();
+    // remove css file from head
+    $('link[href*=media-queries]').remove();
+  });
+
+
+  // if full-site cookie has been set
+  if($.cookie('full-site')) {
+    // add class to button, and change button text
+    $('#view-full-site').addClass('full-site').text('View mobile site');
+    // remove stylesheet from head
+    $('link[href*=media-queries]').remove();
+  }
+  else {
+    // run the 'mobile-site' JS
+  }
+
+  $('#view-full-site').click(function(e) {
+    // prevent default link action
+    e.preventDefault();
+    // if the page is already displaying 'full-site' design
+    if $(this).hasClass('full-site') {
+      // remove the cookie (set the full-site cookie value to 'null')
+      $.cookie('full-site', null, {expires: 365, path: '/'});
+    }
+    else {
+      // create the cookie (set the full-site cookie to 'active')
+      $.cookie('full-site', 'active', {expires: 365, path: '/'});
+    }
+    // reload the page
+    location.reload();
+  });
+  </script>
+
+</body>
+</html>

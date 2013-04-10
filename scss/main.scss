@@ -33,14 +33,28 @@
   5.コーティング規約 http://stack3.com/tools/coding_rule.html
  -------------------------------------------------------
  [使用Polifil（IE対策など）]★★自分のサイトのページ作ってリンク
-  1.modernizr：ブラウザのCSS3やHTML5の機能、JavaScriptメソッドの対応状況を判定し処理を手助けしてくれる（下記参照）
+  01.modernizr：ブラウザのCSS3やHTML5の機能、JavaScriptメソッドの対応状況を判定し処理を手助けしてくれる（下記参照）
     -> http://modernizr.com/
-  1.html5shiv（modernizr.js に含む）：IE9未満でHTML5の新要素をを使えるようにする
+  02.html5shiv（modernizr.js に含む）：IE9未満でHTML5の新要素をを使えるようにする
     -> http://code.google.com/p/html5shiv/
-  2.selectivizr.js : IE6～8でCSS3セレクタ使えるようにする
+  03.selectivizr.js : IE6～8でCSS3セレクタ使えるようにする
     -> http://selectivizr.com/
-  3.CSS3 PIE : IE6～8をCSS3対応にする。JavaScript版使用。使用するセレクタをhead内で要attach
+  04.respond.js : IE6〜8で CSS3 Media Queries が効くようにする
+    -> https://github.com/scottjehl/Respond
+  05.PIE_IE678.js, PIE_IE9.js : CSS3 PIE(v2)。IE6～9をCSS3対応にする。適用させるセレクタを要attach
     -> http://css3pie.com/
+  06.boxsizing.htc : IE6/7でboxsizingが効くようにする
+    -> https://github.com/Schepp/box-sizing-polyfill
+  07.iscroll-lite.js : iOSやAndroidのスクロール関連ライブラリ。軽量版を使用
+    -> http://cubiq.org/iscroll-4
+  08.imgSizer.js : IE7以下で縮小された画像が粗く見える問題を解消。要1px透過Gif & スクリプト内パス設定
+    -> http://www.keyton-co.jp/demo/demo25/index.htm
+  09.jquery.exfixed.js : IE6で position:fixed; の諸問題を解決。適用させるセレクタを要attach
+    -> http://d.hatena.ne.jp/cyokodog/20090323/jQueryExFixed
+  10.minmax-1.0.min.js : IE6&7で min/max-width/height が効くようにする。読みこむだけでO.K.
+    -> http://www.doxdesk.com/software/js/minmax.html
+
+
  -------------------------------------------------------
 　[目次]
   ・Coda 2 のコードナビゲータで確認
@@ -113,10 +127,10 @@
 /*====================================*/
 //変数名は、Media Queries S -> $mq_s とした
 //★★ em 指定に変更する
-$mq_s:  "only screen and (max-width:568px)";
+$mq_s:  "only screen and (max-width:532px)";
 $mq_sm: "only screen and (max-width:800px)";
-$mq_m:  "only screen and (min-width:569px) and (max-width:800px)";
-$mq_ml: "only screen and (min-width:569px)";
+$mq_m:  "only screen and (min-width:533px) and (max-width:800px)";
+$mq_ml: "only screen and (min-width:533px)";
 $mq_l:  "only screen and (min-width:801px)";
 
 //使用
@@ -130,6 +144,13 @@ $mq_l:  "only screen and (min-width:801px)";
 //タテ：@media all and (orientation:portrait) { ... }
 //ヨコ：@media all and (orientation:landscape) { ... }
 // → only screen and (max-width:800px) and (orientation:portrait);
+
+//旧2
+//$mq_s:  "only screen and (max-width:568px)";
+//$mq_sm: "only screen and (max-width:800px)";
+//$mq_m:  "only screen and (min-width:569px) and (max-width:800px)";
+//$mq_ml: "only screen and (min-width:569px)";
+//$mq_l:  "only screen and (min-width:801px)";
 
 //旧
 //$mq_s:  "only screen and (max-width:480px)";
@@ -159,8 +180,7 @@ $mq_l:  "only screen and (min-width:801px)";
 /*_reset.scss（.cssじゃなくて.scss）を読み込む。読み込んだものはコメント残る*/
 /*頭にハイフンのあるファイルはコンパイルしない。*/
 @import "bourbon";
-@import "normalize","css3","mfglabs_iconset";//"mfglabs_iconset"は、設置済の"font-awesome"と差替え可能
-
+@import "normalize","css3","mfglabs_iconset";//Webアイコンフォントは"font-awesome"も設置済
 
 
 
@@ -182,12 +202,27 @@ $mq_l:  "only screen and (min-width:801px)";
 *,
 *:before,
 *:after {
-          box-sizing: border-box;
-     -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  *behavior: url(../js/vendor/boxsizing.htc);/*★★要パス設定*/
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  *behavior: url(../js/vendor/boxsizing.htc);//※★★CSSからでなくHTMLからのパス
+  //IE6&7, サーバーによっては.htaccessに'AddType text/x-component .htc'を追記
 }
 
+/*ページ基本
+----------------------------------- */
+//アップグレード推奨ページへの誘導サイン（旧IE閲覧時でのみ表示）
+.chromeframe {
+  color: #FF0;
+  background-color: red;
+  font-weight: bold;
+}
+
+/*PCとモバイル表示切替えボタン*/
+button.pc_mobile_switch {
+  width: 100%;
+  text-decoration: underline;
+}
 
 
 /*====================================*/
@@ -243,7 +278,7 @@ a {-webkit-tap-highlight-color: rgba(255,255,0,0.6);}
 
 
 /*====================================*/
-/* !!レイアウト */
+/* !!ページ基本構成レイアウト */
 /*====================================*/
 
 /* レイアウト構成----------------------
@@ -320,16 +355,15 @@ body {
   }
 }
 
-
 /* Tablet portrait
  ----------------------------------- */
 // 768 / 1024 = 0.75
+// 800 / 1024 = 0.78125
 @media #{$mq_m} {
   body {
     zoom: 0.75;//★★数値 & 範囲検討
   }
 }
-
 
 /* Tablet landscape, Desktop
  ----------------------------------- */
@@ -343,11 +377,9 @@ body {
 }
 
 
-
-
-/*====================================*/
-/* !!メイン部以外のリスト余白除去 */
-/*====================================*/
+/*=======================================*/
+/* !!メインコンテンツエリア以外のリストの余白除去 */
+/*=======================================*/
 #page_header, #sidebar, #page_footer {
   ul {
     margin-top: 0;
@@ -355,9 +387,6 @@ body {
     padding-left: 0;
   }
 }
-
-
-
 
 
 /*====================================*/
@@ -468,8 +497,9 @@ pre {
 }
 
 
-/*タグ
+/*HTMLタグ
 ----------------------------------- */
+//必要なら指定
 em {}
 strong {}
 b {}
@@ -582,8 +612,16 @@ a:active img {
     color: $active; } } }
 */
 
+//テキストのエンボス効果
+@mixin letterpress_dark ($alpha: 0.5) {
+  text-shadow: 0 1px rgba(255, 255, 255, $alpha);
+}
+@mixin letterpress_light ($alpha: 0.25) {
+  text-shadow: 0 -1px rgba(0, 0, 0, $alpha);
+}
 
-/* ミックスインのサンプル */
+
+/* ミックスインのサンプル（不要） */
 /*====================================*/
 #mixin_sample_1 {
   @include vgradient(#999,#333);
@@ -758,6 +796,7 @@ article {
   }
 }
 
+
 /*★★紙がめくれたようなドロップシャドウ*/
 //スタイルのみの指定、前後のマージン等は要素にスタイリングすること
 //http://coliss.com/articles/build-websites/operation/css/css-tutorial-peper-curl-by-sitepointstatic.html
@@ -803,6 +842,42 @@ article {
     transform:         skew(5deg) rotate(5deg);
   }
 }
+
+
+/*吹き出し（ふき出し）ボックス*/
+//開始色と終了色を設定
+$color_balloon_frame_begin: #dbf3ff;
+$color_balloon_frame_end:   #b8e7ff;
+
+.balloon_frame {
+  margin: 1em 0;
+}
+.balloon_frame:after {
+  //三角の位置
+  margin-left: 5%;
+  //三角のDataURI（終了色の画像を http://websemantics.co.uk/online_tools/image_to_data_uri_convertor/ で変換）
+  content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAMAAAAM7l6QAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABVQTFRFu+j/uuf/uuj/uOf/uOb/uef/////1b9bHgAAAAd0Uk5T////////ABpLA0YAAADZSURBVHjafJELEsQgCEO1wdz/yAtBrd1anU79PBIRivloMeBTrCz/8assJhIIcabPzGOBRsex1Fmo4JEYLnTcLP0yRjufXFIZOC8etCE3qZX5bd1s5idtmKdlD8ooH1xx97PpwxvPOzGdOLHM7OFdyUVtWbGeesNCQ23zMSrXxRXLWLWCglZtf7eXElF4XxY+8d2moE9tPkxXI7z/tGmOUZMXVceyHHg5d3Nkzhc3ePTKCre4Z125x3nznkq9zXlJ7ZNmvz+p+l15wPjWhvlB6/hIWY6UPwEGAD6TEhch7k2WAAAAAElFTkSuQmCC");
+}
+  .balloon_frame_inner {
+    padding: 20px;
+    border: 1px solid $color_balloon_frame_end;//終了色
+            border-radius: 15px;//角丸半径
+    -webkit-border-radius: 15px;
+       -moz-border-radius: 15px;
+    box-shadow: inset 0 2px 2px rgba(255,255,255,1), 0 0 5px #CCC;//横、下、ボケ、影色
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1.00, $color_balloon_frame_end), color-stop(0.00, #{$color_balloon_frame_begin}));
+    background: -webkit-linear-gradient(top, $color_balloon_frame_begin 0%, $color_balloon_frame_end 100%);
+    background:    -moz-linear-gradient(top, $color_balloon_frame_begin 0%, $color_balloon_frame_end 100%);
+    background:      -o-linear-gradient(top, $color_balloon_frame_begin 0%, $color_balloon_frame_end 100%);
+    background:     -ms-linear-gradient(top, $color_balloon_frame_begin 0%, $color_balloon_frame_end 100%);
+    background:   linear-gradient(to bottom, $color_balloon_frame_begin 0%, $color_balloon_frame_end 100%);
+  }
+    .balloon_frame h1:first-child {
+      margin-top: 0;
+    }
+    .balloon_frame p:last-child {
+      margin-bottom: 0;
+    }
 
 
 /*====================================*/
@@ -998,23 +1073,6 @@ $bottom_margin_width: 3px;//画像の下余白
 
 
 /*====================================*/
-/* !!アラート */
-/*====================================*/
-.alert {
-  margin: 1em 0 2em;
-  padding: 10px;
-  outline: double 4px $color_1_deep;
-  background-color: $color_1_pale;
-  color: $color_1_deep;
-  font-weight: bold;
-}
-.alert.strong {
-  outline-color:  $color_warning;
-  background-color: $color_warning_pale;
-  color: $color_warning;
-}
-
-/*====================================*/
 /* !!引用 blockquote */
 /*====================================*/
 blockquote {
@@ -1052,18 +1110,16 @@ q {
 /* !!ボタン */
 /*====================================*/
 
-//新 ★要自分用に調整
-@mixin letterpress-dark ($alpha: 0.5) {
-  text-shadow: 0 1px rgba(255, 255, 255, $alpha);
-}
+//参照元：http://terkel.jp/archives/2012/11/gradients-and-borders-using-grayscale-rgba/
+//SVGが効くのはIE9+、Android2.xは非対応（ブラウザ対応状況：http://caniuse.com/#search=svg）
+//DataURI対応ブラウザ：IE8 (32KBまで)、Chrome、Firefox2+ (100KBまで)、Safari、Opera7.2+ (4100Bまで)
 
-@mixin letterpress-light ($alpha: 0.25) {
-  text-shadow: 0 -1px rgba(0, 0, 0, $alpha);
-}
+
 
 %button {
   // Grayscale gradient
   background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%3F%3E%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20version%3D%221.0%22%3E%3Cdefs%3E%3ClinearGradient%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%22100%25%22%20id%3D%22g%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22rgb%28255%2C255%2C255%29%22%20stop-opacity%3D%220.1%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22rgb%280%2C0%2C0%29%22%20stop-opacity%3D%220.1%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20fill%3D%22url%28%23g%29%22%20width%3D%22100%25%22%20height%3D%22100%25%22/%3E%3C/svg%3E");
+  //デコード：<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.0"><defs><linearGradient x1="0" y1="0" x2="0" y2="100%" id="g"><stop offset="0" stop-color="rgb(128,128,128)" stop-opacity="0.1"/><stop offset="1" stop-color="rgb(0,0,0)" stop-opacity="0.1"/></linearGradient></defs><rect x="0" y="0" fill="url(#g)" width="100%" height="100%"/></svg>
   background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
   background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
 
@@ -1073,20 +1129,19 @@ q {
   // RGBa border
   border: 1px solid rgba(0, 0, 0, 0.1);
 
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px rgba(255, 255, 255, 0.1) inset;
-  border-radius: 0.25em;
-  cursor: pointer;
-  display: inline-block;
-  font-size: 87.5%;
-  line-height: 1.5;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(255, 255, 255, 0.3) inset;//横、下、ぼけ、影色
+  @include rounded_corners(3px);
+  @include inline-block;
   margin: 0.5em 0.5em 0 0;
   padding: 0.25em 1em;
   text-align: center;
   white-space: nowrap;
+  cursor: pointer;
 
   &:hover,
   &:focus {
     background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%3F%3E%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20version%3D%221.0%22%3E%3Cdefs%3E%3ClinearGradient%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%22100%25%22%20id%3D%22g%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22rgb%28128%2C128%2C128%29%22%20stop-opacity%3D%220.1%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22rgb%280%2C0%2C0%29%22%20stop-opacity%3D%220.1%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20fill%3D%22url%28%23g%29%22%20width%3D%22100%25%22%20height%3D%22100%25%22/%3E%3C/svg%3E");
+    //デコード：<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.0"><defs><linearGradient x1="0" y1="0" x2="0" y2="100%" id="g"><stop offset="0" stop-color="rgb(128,128,128)" stop-opacity="0.1"/><stop offset="1" stop-color="rgb(0,0,0)" stop-opacity="0.1"/></linearGradient></defs><rect x="0" y="0" fill="url(#g)" width="100%" height="100%"/></svg>
     background-image: -webkit-linear-gradient(rgba(128, 128, 128, 0.1), rgba(0, 0, 0, 0.1));
     background-image: linear-gradient(rgba(128, 128, 128, 0.1), rgba(0, 0, 0, 0.1));
   }
@@ -1095,53 +1150,83 @@ q {
   }
 }
 
-.default {
+.button,
+.button_colored,
+.button_strong,
+.button_pill,
+a.button,
+a.button_colored,
+a.button_strong,
+a.button_pill {
+  small {
+    display: block;
+    @include font_size(10);
+    font-weight: normal;
+  }
+}
+
+a.button,
+a.button_colored,
+a.button_strong,
+a.button_pill {
+  text-decoration: none;
+}
+
+.button {
   @extend %button;
-  @include letterpress-dark(1);
+  @include letterpress_dark(1);
   background-color: white;
   color: black;
 }
 
-.submit {
+.button_colored {
   @extend %button;
-  @include letterpress-light();
-  background-color: #00c000;
+  @include letterpress_light();
+  background-color: #690;
   color: white;
 }
 
-.delete {
+.button_strong {
   @extend %button;
-  @include letterpress-light();
-  background-color: #c00000;
+  @include letterpress_light();
+  background-color: #C00;
   color: white;
 }
 
-.pill {
+.button_pill {
   @extend %button;
-  @include letterpress-light();
-  background-color: #0080ff;
+  @include letterpress_light();
+  background-color: #09F;
   border-radius: 99em;
   color: white;
 }
 
-.large {
+.button.large,
+.button_colored.large,
+.button_strong.large,
+.button_pill.large {
   font-size: 125%;
 }
 
-.small {
-  font-size: 75%;
+.button.small,
+.button_colored.small,
+.button_strong.small,
+.button_pill.small {
+  font-size: .8em;
 }
 
-.block {
-  @extend %button;
+.button.fullwidth,
+.button_colored.fullwidth,
+.button_strong.fullwidth,
+.button_pill.fullwidth {
   display: block;
   width: 100%;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
 }
 
-.selected {
+.button.selected,
+.button_colored.selected,
+.button_strong.selected,
+.button_pill.selected {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset, 0 -1px rgba(255, 255, 255, 0.1) inset;
   font-weight: bold;
   &,
@@ -1154,8 +1239,11 @@ q {
 }
 
 [disabled],
-.disabled {
-  @include letterpress-dark();
+.button.disabled,
+.button_colored.disabled,
+.button_strong.disabled,
+.button_pill.disabled {
+  @include letterpress_dark();
   background-color: gainsboro;
   color: gray;
   cursor: default;
@@ -1170,7 +1258,9 @@ q {
   }
 }
 
-.group {
+//ボタングループ（a タグでなく button タグで）
+//横並び
+.button_group {
   display: table;
   margin-top: 0.5em;
   white-space: nowrap;
@@ -1191,134 +1281,40 @@ q {
   }
 }
 
-
-
-//旧
-//参考：CSS3 Button Generator - http://css3button.net/
-/*基本*/
-.button {
-  display: inline-block; _display: inline; _zoom: 1;
-  margin: 0.5em 0;
-  padding: 5px 10px;
-  text-align: center;
-  border: 1px solid rgba(0,0,0,.3);
-  color: #333;
-  line-height: 1.4;
-  text-shadow:
-    0px -1px 0px rgba(0,0,0,0.4),
-    0px 1px 0px rgba(255,255,255,0.3);//横ズレ、下ズレ、ぼかし幅、影の色（複数指定可）
-  text-decoration: none !important;
-  @extend %user_select_none;
-  @include rounded_corners(5px);
-  @include vgradient(#EEE,#CCC);//開始色、終了色
-  @include box-shadow-button;
-  &:hover,&:focus {//ロールオーバー
-    @include vgradient(#CCC,#999);
-    color: #333 !important;
-  }
-  &:active {
-    @include box-shadow-inner(0,1px,4px,rgba(0, 0, 0, 0.5));
-  }
-  &:visited {
-    color: #333 !important;
-  }
-  a {color: #333;}
-  small {//補足付き
-    display: block;
-    @include font_size(12);
-    font-weight: normal;
-    text-shadow: none;
-  }
-}
-/*目立たせたいボタン*/
-.button.strong {
-  color: #FFF;
-  @include vgradient(#ec422e,#9e2016);
-  &:hover {//ロールオーバー
-    @include vgradient(#f16959,#b14d45);
-    color: #FFF !important;
-  }
-}
-/*大きいボタン*/
-.button.large {
-  padding: 10px 20px;
-}
-
-/* ボタングループ */
-/* ------------------------------- */
-/* 縦横共通 */
-.button_group,.button_group_vertical {
-  .button {
-    margin: 0;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    border-radius: 0;
-    @include box-shadow(1px,0,2px,rgba(000,000,000,0.3));
-  }
-}
-/* 横並び */
-.button_group {
-  @extend .clearfix;
-  .button {
-    float: left;
-    margin-left: -1px;
-    @extend .clearfix;
-    &:first-child {
-      margin-left: 0;
-      @include rounded_corners_left(5px);
-    }
-    &:last-child {
-      @include rounded_corners_right(5px);
-    }
-  }
-}
-/* 縦並び */
+//縦並び
 .button_group_vertical {
-  .button {
+  margin: 1em 0;
+  button {
+    margin: 0;
     display: block;
-    margin-top: -1px;
+    width: 100%;
     text-align: left;
-    &:first-child {
-      @include rounded_corners_top(5px);
+    &:not(:first-child) {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
     }
-    &:last-child {
-      @include rounded_corners_bottom(5px);
+    &:not(:last-child) {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
     }
   }
 }
 
 
-
 /*====================================*/
-/* !!パーツ */
+/* !!ラベル */
 /*====================================*/
-
-/*タブナビゲーション
------------------------------------ */
-
-
-
-
-/*ツールチップ
------------------------------------ */
-
-
-
-
-/*ラベル
------------------------------------ */
 
 //デフォルト(グレー)
 .label {
   display: inline-block; _display: inline; _zoom: 1;
   margin: 0px 2px 3px;
-  padding: 1px 3px;
-  @include rounded_corners(2px);
-  @include box-shadow(1px,1px,1px,#999);
+  padding: 2px 4px;
+  @include box-shadow(0px,1px,2px,#999);
   vertical-align: text-top;
   background-color: #CCC;
   color: #333;
-  @include font_size(11);
+  @include font_size(10);
   line-height: 1;
   text-decoration: none;
 }
@@ -1349,13 +1345,32 @@ q {
   @extend .label;
   background-color: $color_1_pale;
   color: $color_1_deep;
-  border: 1px solid $color_1_deep;
   &:hover {background-color: $color_1;}
   &:active {background-color: $color_1_deep;}
 }
 
-/*ページナビゲーション
------------------------------------ */
+
+/*====================================*/
+/* !!アラート */
+/*====================================*/
+.alert {
+  margin: 1em 0;
+  padding: 10px;
+  outline: solid 1px $color_2_deep;
+  background-color:  $color_2_pale;
+  color:             $color_2_deep;
+  font-weight: bold;
+}
+.alert.strong {
+  outline-color:     $color_warning;
+  background-color:  $color_warning_pale;
+  color:             $color_warning;
+}
+
+
+/*====================================*/
+/* !!ページナビゲーション */
+/*====================================*/
 .page_nav {
   margin: 1em inherit;
   ul {
@@ -1372,6 +1387,14 @@ q {
   }
 }
 
+/*====================================*/
+/* !!タブナビゲーション */
+/*====================================*/
+
+/*====================================*/
+/* !!ツールチップ */
+/*====================================*/
+
 
 /*====================================*/
 /* !!画像のプリロード */
@@ -1385,17 +1408,6 @@ q {
   background-image: url(path/to/image2.png);//複数の場合
 }
 */
-
-
-/*====================================*/
-/* !!サイト基本構成レイアウト */
-/*====================================*/
-
-
-
-/*====================================*/
-/* !!基本設定 */
-/*====================================*/
 
 
 
@@ -1626,7 +1638,7 @@ hr.style_c {//中央に記号文字
   overflow: hidden;
   height: 24px;//ボタン高さ20px + 余白 を設定
 
-  @media screen and (max-width: 480px){
+  @media #{$mq_s} {
     text-align: center;
     overflow: visible;
     height: auto;
@@ -1642,7 +1654,7 @@ hr.style_c {//中央に記号文字
   .line-send-button img {
     vertical-align: top !important;
     padding-bottom: 4px !important;
-    @media screen and (max-width: 480px){
+    @media #{$mq_s} {
       padding-bottom: 10px !important;
     }
   }
@@ -1783,20 +1795,33 @@ textarea {
 
 
 /*====================================*/
-/* !!ページ基本 */
+/* !!ページ最上部の帯 */
 /*====================================*/
-
-/*ie6で表示させるアップグレードページへの誘導*/
-.chromeframe {
-  color: #FF0;
-  background-color: red;
-  font-weight: bold;
+//★★不要？
+#menu_button {
+  display: none;
+  @media #{$mq_sm} {
+    display: block;
+  }
 }
 
-/*PCとモバイル表示切替えボタン*/
-button.pc_mobile_switch {
+#top_bar {
+  position: absolute;
   width: 100%;
-  text-decoration: underline;
+  top: 0;
+  background-color: $color_1_deep;
+  @include font_size(12);
+  color: #CCC;
+  text-align: center;
+  p,ul,li {display: inline;}
+  p {width: 6em;}
+  li {
+    margin-right: 1em;
+    &:last-child {margin-right: 0}
+    a {
+      color: $color_1_pale;
+    }
+  }
 }
 
 
@@ -1815,8 +1840,9 @@ button.pc_mobile_switch {
   }
 }
   #site_title {//サイトロゴ
-    @include font_size(32);
+    @include font_size(28);
     @media #{$mq_s} {@include font_size(24);}
+    margin-bottom: 0;
     a {
       color: $color_logo;
       text-decoration: none;
@@ -1825,8 +1851,7 @@ button.pc_mobile_switch {
   #site_tag_line {//ロゴ下のタグライン
     @include font_size(14);
     font-weight: normal;
-    margin-bottom: 5px;
-    padding-bottom: 10px;
+    margin: 0 0 5px 0;
     @media #{$mq_s} {
       @include font_size(12);
       margin-bottom: 20px;
@@ -2098,7 +2123,7 @@ section.article_summary {
       padding-top: 0;
       border-top: none;
     }
-    @media screen and (max-width: 480px){
+    @media #{$mq_s} {
       @include font_size(20);
     }
   }
@@ -2182,7 +2207,7 @@ $first_section_margin_width: 10px;//本文の左右外の余白
     @extend .framed_b;
   }
   .next_previous {
-    @media screen and (max-width: 480px){
+    @media #{$mq_s} {
       a {display: block;}
     }
   }
@@ -2455,7 +2480,7 @@ $first_section_margin_width: 10px;//本文の左右外の余白
       }
     }
   }
-  @media screen and (max-width: 480px){
+  @media #{$mq_s} {
     #footer_sections {
       section {
         width: 40% !important;
@@ -2500,43 +2525,9 @@ $first_section_margin_width: 10px;//本文の左右外の余白
 
 
 /*====================================*/
-/* !!ページ最上部の帯記事 */
-/*====================================*/
-#menu_button {
-  display: none;
-  @media screen and (max-width: 768px) {
-    display: block;
-  }
-}
-
-
-
-/*====================================*/
-/* !!ページ最上部の帯記事 */
-/*====================================*/
-#top_bar {
-  position: absolute;
-  width: 100%;
-  top: 0;
-  background-color: $color_1_deep;
-  @include font_size(12);
-  color: #CCC;
-  text-align: center;
-  p,ul,li {display: inline;}
-  p {width: 6em;}
-  li {
-    margin-right: 1em;
-    &:last-child {margin-right: 0}
-    a {
-      color: $color_1_pale;
-    }
-  }
-}
-
-
-/*====================================*/
 /* !!ページスクロール（functions.jsとセットで使用） */
 /*====================================*/
+//★★不要？
 #page_scroll {
   position: fixed;
   top: 40px;
@@ -2568,7 +2559,7 @@ $first_section_margin_width: 10px;//本文の左右外の余白
     }
   }
 
-@media screen and (max-width: 480px){
+@media #{$mq_s} {
   #page_scroll {
     #page_scroll_top,#page_scroll_bottom {
       display: none;
@@ -2609,7 +2600,7 @@ $first_section_margin_width: 10px;//本文の左右外の余白
   padding: 20px;
   width: 440px;
   background-color: #FFF;
-  @media screen and (max-width: 480px) {//スマートフォン
+  @media #{$mq_s} {
     padding: 10px;
     width: 70%;
     height: 75%;
@@ -2626,7 +2617,7 @@ $first_section_margin_width: 10px;//本文の左右外の余白
 #modal_window_boxes #modal_window_dialog1 {}
 #modal_window_boxes #modal_window_dialog2 {
   width: 375px;
-  @media screen and (max-width: 480px) {//スマートフォン
+  @media #{$mq_s} {
     padding: 10px;
     width: 70%;
     height: 75%;
@@ -2637,53 +2628,47 @@ $first_section_margin_width: 10px;//本文の左右外の余白
 }
 
 
+
 /*====================================*/
-/* !!メディアクエリ */
+/* !!メディアクエリー */
 /*====================================*/
 
-
-/* PC、タブレット・ランドスケープ用（2カラム）
+/* スマートフォンのみ
 --------------------------------------------------------- */
-@media #{$mq_l} {
-  .only_pc {display: block;}
-  .only_sp {display: none;}
+@media #{$mq_s} {
 
-  #container:before {
-    content:"PC用レイアウトです";
-    background-color: yellow;
-  }
-
-  // モーダルウインドウ メニュー用 開く/閉じるボタン、マスク
-  #menu_modal_window_button,
-  #menu_modal_window_close,
-  #menu_modal_window_mask {
-    display: none;
-  }
-}
-
-/* タブレット・ポートレート以下用（1カラム）
---------------------------------------------------------- */
-
-@media #{$mq_sm} {
-  /*スマートフォン、タブレット縦のみ表示させるクラス設定*/
+  /*スマートフォンのみ表示させるクラス設定*/
   .only_pc {display: none;}
   .only_sp {display: block;}
 
-  #gnav {
-    li {
-      width: 33.2%;
-      &:last-child {
-        //width: 159px;//幅調整
-      }
+  body {
+    -webkit-text-size-adjust: 100%;/*MobileSafariが勝手にフォントサイズ調整するのをOFF*/
+    -ms-text-size-adjust: 100%;/*Windows Phone IEが勝手にフォントサイズ調整するのをOFF*/
+    @include font_size(13);//文字を少し小さく
+    /*
+    背景画像を横幅いっぱいに表示　body{background-size: 100% auto;}
+    背景画像1枚で全体を覆う指定　body{background-size:cover;}
+    */
+  }
+  img {/* 画像をフレキシブルに → モバイル用画像を用意して処理：http://www.yasuhisa.com/could/article/responsive-design/ */
+    max-width: 100% !important;
+    height: auto !important;
+    width: auto\9; /*ie8*/
+    /*or -ms-interpolation-mode: bicubic;*/
+  }
+  .video embed,
+  .video object,
+  .video iframe {/*埋込動画の最適化*/
+    width: 100% !important;
+    height: auto !important;
+  }
+  .social_media_buttons {
+    li {//★★
+      display: inline;
     }
   }
 
-  #container:before {
-    content:"モバイル用レイアウトです";
-    background-color: green;
-  }
-
-  /* モーダルウインドウ メニュー用（functions.jsとセットで使用） */
+  /* ★★モーダルウインドウ メニュー用（functions.jsとセットで使用） */
     //開くボタン
     #menu_modal_window_button {
       display: block;
@@ -2744,45 +2729,47 @@ $first_section_margin_width: 10px;//本文の左右外の余白
       right: -7px;
       @include rounded_corners(10px);
     }
+  /* モーダルウインドウ メニュー用 ここまで */
 }
 
 
-/* スマートフォンのみ
+/* スマートフォンとタブレット（ポートレート）
 --------------------------------------------------------- */
-@media #{$mq_s} {
-  body {
-    -webkit-text-size-adjust: none;/*MobileSafariが勝手にフォントサイズ調整するのをOFF*/
-    @include font_size(14);//文字を少し小さく
-    /*
-    背景画像を横幅いっぱいに表示　body{background-size: 100% auto;}
-    背景画像1枚で全体を覆う指定　body{background-size:cover;}
-    */
-  }
+@media #{$mq_sm} {}
+
+
+/* タブレット（ポートレート）
+--------------------------------------------------------- */
+@media #{$mq_m} {}
+
+
+/* タブレット、PC
+--------------------------------------------------------- */
+@media #{$mq_ml} {
+  .only_pc {display: block;}
+  .only_sp {display: none;}
+
   #container:before {
-    content:"スマートフォンのみ用のレイアウトです";
-    background-color: aqua;
-  }
-  img {/* 画像をフレキシブルに → モバイル用画像を用意して処理：http://www.yasuhisa.com/could/article/responsive-design/ */
-    max-width: 100% !important;
-    height: auto !important;
-    width: auto\9; /*ie8*/
-    /*or -ms-interpolation-mode: bicubic;*/
-  }
-  .video embed,
-  .video object,
-  .video iframe {/*埋込動画の最適化*/
-    width: 100% !important;
-    height: auto !important;
-  }
-  .social_media_buttons {
-    li {//★
-      display: inline;
-    }
+    display: block;
+    content:"PC用レイアウトです";
+    background-color: yellow;
   }
 
+  // モーダルウインドウ メニュー用 開く/閉じるボタン、マスク
+  #menu_modal_window_button,
+  #menu_modal_window_close,
+  #menu_modal_window_mask {
+    display: none;
+  }
 }
 
-/*RETINAディスプレイの設定をオーバーライド*/
+/* PC
+--------------------------------------------------------- */
+@media #{$mq_l} {}
+
+
+/*RETINAディスプレイの設定をオーバーライド
+--------------------------------------------------------- */
 //http://stackoverflow.com/questions/11961481/updated-media-queries-for-high-resolution-devices
 @media
 only screen and (-webkit-min-device-pixel-ratio: 2),
@@ -2795,9 +2782,8 @@ only screen and (                min-resolution: 2dppx) {
 }
 
 
-/*====================================*/
-/* !!印刷用 */
-/*====================================*/
+/* 印刷用
+--------------------------------------------------------- */
 //参考：http://seesparkbox.com/
 @media print {
   * {

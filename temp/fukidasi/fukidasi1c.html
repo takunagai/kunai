@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8" />
+  <title>コメントなどに使える吹き出し（CSS3、DataURI、レスポンシブ対応）</title>
+  <style>
+/*ボックスモデル、border と padding を含んだ数値指定に*/
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+/*font*/
+body {
+  font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', 'MS PGothic', 'Roboto', 'Droid Sans', sans-serif;
+  color: #666;
+  font-size: .8em;
+}
+
+/* - - - ここまで表示調整のための記述。コアな部分ではないので無くてもいい - - - */
+
+/*吹き出しボックス*/
+.balloon_frame {
+  margin: 1em 0;
+}
+.balloon_frame:after {
+  margin-left: 5%;
+  content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAMAAAAM7l6QAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABVQTFRFu+j/uuf/uuj/uOf/uOb/uef/////1b9bHgAAAAd0Uk5T////////ABpLA0YAAADZSURBVHjafJELEsQgCEO1wdz/yAtBrd1anU79PBIRivloMeBTrCz/8assJhIIcabPzGOBRsex1Fmo4JEYLnTcLP0yRjufXFIZOC8etCE3qZX5bd1s5idtmKdlD8ooH1xx97PpwxvPOzGdOLHM7OFdyUVtWbGeesNCQ23zMSrXxRXLWLWCglZtf7eXElF4XxY+8d2moE9tPkxXI7z/tGmOUZMXVceyHHg5d3Nkzhc3ePTKCre4Z125x3nznkq9zXlJ7ZNmvz+p+l15wPjWhvlB6/hIWY6UPwEGAD6TEhch7k2WAAAAAElFTkSuQmCC");
+}
+  .balloon_frame_inner {
+    padding: 20px;
+    border: 1px solid #b8e7ff;
+            border-radius: 15px;
+    -webkit-border-radius: 15px;
+       -moz-border-radius: 15px;
+    box-shadow: inset 0 2px 2px rgba(255,255,255,1), 0 0 5px #CCC;/*横、下、ボケ、影色*/
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1.00, #b8e7ff), color-stop(0.00, #dbf3ff));
+    background: -webkit-linear-gradient(top, #dbf3ff 0%, #b8e7ff 100%);
+    background:    -moz-linear-gradient(top, #dbf3ff 0%, #b8e7ff 100%);
+    background:      -o-linear-gradient(top, #dbf3ff 0%, #b8e7ff 100%);
+    background:     -ms-linear-gradient(top, #dbf3ff 0%, #b8e7ff 100%);
+    background:   linear-gradient(to bottom, #dbf3ff 0%, #b8e7ff 100%);
+  }
+    .balloon_frame h1:first-child {
+      margin-top: 0;
+    }
+    .balloon_frame p:last-child {
+      margin-bottom: 0;
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+  <h1>コメントなどに使える CSS3 の吹き出し</h1>
+
+  <h2>サンプル</h2>
+
+  <section class="balloon_frame">
+    <div class="balloon_frame_inner">
+      <h1>見出しです <small>section.baloon_frame > div.baloon_frame_inner > h1</small></h1>
+      <p>ダミーです私は同年同時にこういう理解通りというはずの末になるだでし。ついに生涯が経過院は同時にこういう理解通りとすこぶるそんな安住なますまでがしてならたからも所有かい摘んうないて、同時にこういう理解通</p>
+    </div>
+  </section>
+
+  <section class="balloon_frame">
+    <div class="balloon_frame_inner">
+      <h1>2つ目の吹き出し記事の見出しです</h1>
+      <p>ダミーです私は同年同時にこういう理解通りというはずの末になるだでし。ついに生涯が経過院は同時にこういう理解通りとすこぶるそんな安住なますまでがしてならたからも所有かい摘んうないて、同時にこういう理解通</p>
+    </div>
+  </section>
+
+
+  <hr />
+
+
+  <h2>解説</h2>
+  <ul>
+    <li>吹き出しの三角の部分はdataURIスキームの画像。画像ファイル要らずでHTTPリクエストも減らせる。また、HTMLに余計な空タグなどなくシンプル</li>
+    <li>IE8以上対応</li>
+    <li>DataURIスキームの画像は72dpiのサイズとなる。retina用に倍の解像度で作った画像などは倍のサイズになる</li>
+    <li>画像をDataURIスキームに変換するには <a href="http://websemantics.co.uk/online_tools/image_to_data_uri_convertor/">Image To Data URI Convertor</a> などを使うと良い</li>
+    <li>CSS3グラデーション指定は、<a href="http://grad3.ecoloniq.jp">grad3</a> を使うと直感的に指定できて便利</li>
+    <li>SCSS化 → kunaiに入れた</li>
+    <li>★★課題：IE、スマートフォンなどで要表示テスト</li>
+  </ul>
+
+</body>
+</html>

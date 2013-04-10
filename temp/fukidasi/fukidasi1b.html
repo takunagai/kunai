@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8" />
+  <title>コメントなどに使える吹き出し（CSS3、DataURI、レスポンシブ対応）</title>
+  <style>
+/*吹き出しボックス*/
+.balloon_frame {
+  position:relative;
+  margin-bottom:50px;
+  padding-bottom: 20px;
+  background:
+    url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAMAAAANIilAAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADBQTFRF9Pv/u+j/uuf/8/r/8/v/uuj/ueb/8vn+8Pf78fj98fn98Pf8uOf/uOb/uef/////zp+7xgAAABB0Uk5T////////////////////AOAjXRkAAALBSURBVHjapJaJYuMgDERjmnSvkfj/vy2SRoK0OWxv0jSY8NA1yL5ANN7Q8YKMLxkvG9soLv1ja+xP4JP6+fsyxg7bctthvKG+0ubiJxv7JPf12favX9RfAjcU4zEMY6BLfh2GxfFx9fmnD1gCMH/C3QiBV0KnGRps4Ib+doPHBWyyVlbQ4Qe9Do7+if7qBo8UuX8Rm20Cxhj5Q0yne8yFs/1CG2Kb8Jv5gzALS/Qx0z56wP5jrIj8xpd6FTTj0KyeXSdrlukSl3qx0kt+CUvHBdeecMyi1qXdqLJXZ/7iqik2LEvsSFkAXCUSCstsWpWgH/0OLmu0JxmFohxOfbWFndkmkBrxoiClyHyOPF/7HaxTTVofSSEylNxyteulAk+QQ6AKbZRsnpp7n11hmUatpVV40dW+6rX375ZZVpUpl6qUTKF89zlijjNLYaBEnEcrd/zJmkgcAMPisZiI+jkU2X6yFEkKUWailyv7qV37AxgpnrXQUrLg1CO7HjPy8KG6yppmm28PWe8kS8NINaEOms09thudRKtXKFKHoZHI3+0JO9xGZUeqg1bh7d927U/hWU3k0RQsemvP7Ia2ayVmjtn4FNtz1o8kO7wHjwo8Zl+xoe2oEtejajxGL9k8zyExyGwZ7n279pewB5i9JyXF0/+GDZFAly7rd1kXyWufHcZyU0J5PfZo79hwO5KTR5mZ2y79LczcYOoqBN7es3Gvqg4idEGwhyWcGY67t2lyD1s9DKjuO7a47WKjVDI7Z2hjHxvaXm43VqRtJxtua1bYG/Bulk9DFKfLtO1mGXM9Be3Sxl3MqOOoesCuu43su3b2j7DWPackD7IGS3X5gyw7idcIR1k+9bq6DrMUiff2wywTdspuPQFKO8H6LXbgtzOsW8Ypn/PxsZ1jPdtnWavzdpYdlk/bHfB5uwP+D7Z/CTAA+QHCwp1H+9wAAAAASUVORK5CYII=)
+    no-repeat
+    10% bottom;
+}
+  .balloon_frame_inner {
+    padding: 20px;
+    border: 1px solid #b8e7ff;
+
+            border-radius: 15px;
+    -webkit-border-radius: 15px;
+       -moz-border-radius: 15px;
+
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1.00, #b8e7ff), color-stop(0.00, #dbf3ff));
+    background: -webkit-linear-gradient(top, #dbf3ff 0%, #b8e7ff 100%);
+    background:    -moz-linear-gradient(top, #dbf3ff 0%, #b8e7ff 100%);
+    background:      -o-linear-gradient(top, #dbf3ff 0%, #b8e7ff 100%);
+    background:     -ms-linear-gradient(top, #dbf3ff 0%, #b8e7ff 100%);
+    background:   linear-gradient(to bottom, #dbf3ff 0%, #b8e7ff 100%);
+
+    box-shadow: inset 0 2px 2px rgba(255,255,255,1), 0 0 5px #CCC;/*横、下、ボケ、影色*/
+  }
+  </style>
+</head>
+
+
+<body>
+
+  <h1>コメントなどに使える CSS3 の吹き出し</h1>
+  <p>参考：<a href="http://liginc.co.jp/designer/archives/4888">画像を一切使わずに、CSS3だけでスタイリッシュな吹き出しをつくろう！- 株式会社LIC</a></p>
+  <p><a href="http://grad3.ecoloniq.jp">CSS3グラデーション指定は、CSSグラデーションのジェネレーター</a>を使うと直感的に指定できて便利</p>
+  <p>三角の部分、dataURIスキームの画像にした。HTMLに余計な空タグはない</p>
+  <p>★★ふきだしの三角は親要素の背景にしているので、ボックスシャドウが吹き出しにかぶる問題</p>
+  <p>★★要素:after {content:"dataURIスキーム";}とかで解決できるかも？できないかも？</p>
+  <p>★★IE、スマートフォンなどで要表示テスト</p>
+
+  <section class="balloon_frame">
+    <div class="balloon_frame_inner">
+      <h1>見出しです <small>section.baloon_frame > div.baloon_frame_inner > h1</small></h1>
+      <p>ダミーです私は同年同時にこういう理解通りというはずの末になるだでし。ついに生涯が経過院は同時にこういう理解通りとすこぶるそんな安住なますまでがしてならたからも所有かい摘んうないて、同時にこういう理解通</p>
+    </div>
+  </section>
+
+  <section class="balloon_frame">
+    <div class="balloon_frame_inner">
+      <h1>2つ目の吹き出し記事の見出しです</h1>
+      <p>ダミーです私は同年同時にこういう理解通りというはずの末になるだでし。ついに生涯が経過院は同時にこういう理解通りとすこぶるそんな安住なますまでがしてならたからも所有かい摘んうないて、同時にこういう理解通</p>
+    </div>
+  </section>
+
+</body>
+</html>

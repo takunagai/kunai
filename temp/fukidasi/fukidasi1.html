@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8" />
+  <title>条件付きコメントでブラウザごとに分岐させる旧IE対策</title>
+  <style>
+/*吹き出しボックス*/
+.balloon_frame {
+  margin-bottom:50px;
+  position:relative;
+}
+  .balloon_frame_inner {
+    padding: 20px;
+    border: 1px solid #b8e7ff;
+
+            border-radius: 15px;
+    -webkit-border-radius: 15px;
+       -moz-border-radius: 15px;
+
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.88, #b8e7ff), color-stop(0.01, #dbf3ff));
+    background: -webkit-linear-gradient(top, #dbf3ff 1%, #b8e7ff 88%);
+    background:    -moz-linear-gradient(top, #dbf3ff 1%, #b8e7ff 88%);
+    background:      -o-linear-gradient(top, #dbf3ff 1%, #b8e7ff 88%);
+    background:     -ms-linear-gradient(top, #dbf3ff 1%, #b8e7ff 88%);
+    background:   linear-gradient(to bottom, #dbf3ff 1%, #b8e7ff 88%);
+
+    box-shadow: inset 0 2px 2px rgba(255,255,255,1), 0 0 5px #CCC;/*横、下、ボケ、影色*/
+  }
+
+  /*吹き出し三角*/
+  .balloon_frame_triangle{
+    position:absolute;
+    width: 0;
+    height: 0;
+    left: 10%;
+    bottom:-60px;/*下の線幅（三角のサイズ）の倍を指定*/
+    border-top:    30px solid #b8e7ff;/*下向き三角*/
+    border-right:  30px solid transparent;/*左向き三角*/
+    /* border-left:   30px solid transparent; *//*右向き三角*/
+    border-bottom: 30px solid transparent;/*上向き三角*/
+  }
+  </style>
+</head>
+
+
+<body>
+
+  <h1>コメントなどに使える CSS3 の吹き出し</h1>
+  <p>参考：<a href="http://liginc.co.jp/designer/archives/4888">画像を一切使わずに、CSS3だけでスタイリッシュな吹き出しをつくろう！- 株式会社LIC</a></p>
+  <p><a href="http://grad3.ecoloniq.jp">CSS3グラデーション指定は、CSSグラデーションのジェネレーター</a>を使うと直感的に指定できて便利</p>
+  <p>三角の部分、dataURIの画像なら空タグ省けてすっきり書けるかも → fukidasi1b.html 参照</p>
+  <p>★★IE、スマートフォンなどで要表示テスト</p>
+
+  <section class="balloon_frame">
+    <div class="balloon_frame_inner">
+      <h1>見出しです <small>section.baloon_frame > div.baloon_frame_inner > h1</small></h1>
+      <p>ダミーです私は同年同時にこういう理解通りというはずの末になるだでし。ついに生涯が経過院は同時にこういう理解通りとすこぶるそんな安住なますまでがしてならたからも所有かい摘んうないて、同時にこういう理解通</p>
+    </div>
+    <div class="balloon_frame_triangle"></div>
+  </section>
+
+  <section class="balloon_frame">
+    <div class="balloon_frame_inner">
+      <h1>2つ目の吹き出し記事の見出しです</h1>
+      <p>ダミーです私は同年同時にこういう理解通りというはずの末になるだでし。ついに生涯が経過院は同時にこういう理解通りとすこぶるそんな安住なますまでがしてならたからも所有かい摘んうないて、同時にこういう理解通</p>
+    </div>
+    <div class="balloon_frame_triangle"></div>
+  </section>
+
+</body>
+</html>
