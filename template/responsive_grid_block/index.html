@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8" />
+  <title>サンプル：レスポンシブでフレキシブルなグリッド・ブロック・レイアウト</title>
+  <meta name="copyright" content="Copyright(C) Stack Stack!" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="requiresActiveX=true" /><![endif]-->
+  <!--[if lt IE 9]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
+  <!--[if IE 9]><meta http-equiv="X-UA-Compatible" content="IE=9" /><![endif]-->
+
+  <link id="deco_css" rel="stylesheet" type="text/css" href="deco.css" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+
+<body>
+
+  <div id="container">
+
+
+    <div id="wrapper">
+
+
+      <div id="page_body">
+
+        <article>
+
+          <header class="article_header">
+            <h1 class="article_title">サンプル：レスポンシブでフレキシブルなグリッド・ブロック・レイアウト</h1>
+          </header>
+
+          <div class="article_body">
+
+            <ul>
+              <li>解説：<a href="http://stack3.com/web-design/responsive_grid_block.html">レスポンシブな画像とテキストの組合せのグリッド・ブロック・レイアウト。IE7/8も対応 - Stack Stack!</a></li>
+              <li><a href="http://codepen.io/oreo3/pen/CILov" class="button">CodePenでソースを見る</a></li>
+              <li>基本CSS（style.css）と装飾用CSS（deco.css）に分けてある <button id="deco_css_toggle_button" class="button">装飾CSSのON/OFF</button></li>
+              <li>★★IEやスマートフォンで表示確認</li>
+              <li>★★メインと統合、クラス名など考える、ずれなど直す</li>
+            </ul>
+
+
+            <section>
+              <h2>基本（テキストのみ）</h2>
+
+              <h3>2段組（テキストのみ） Text only, 2colomn</h3>
+              <div class="grid_block cells2">
+
+                <div class="cell">
+                  <h1>header(h1)</h1>
+                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum(p)</p>
+                </div>
+
+                <div class="cell">
+                  <h1>header(h1)</h1>
+                  <p>ever since the 1500s, when an unknown(p)</p>
+                </div>
+
+              </div>
+
+
+
+              <h3>３段組（テキストのみ） Text only, 3colomn</h3>
+              <div class="grid_block cells3">
+
+                <div class="cell">
+                  <h1>header(h1)</h1>
+                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum(p)</p>
+                </div>
+
+                <div class="cell">
+                  <h1>header(h1)</h1>
+                  <p>ever since the 1500s, when an unknown(p)</p>
+                </div>
+
+                <div class="cell">
+                  <h1>header(h1)</h1>
+                  <p>ever since the 1500s, when an unknown(p)</p>
+                </div>
+
+              </div>
+
+
+
+              <h3>４段組（テキストのみ） Text only, 4colomn</h3>
+              <div class="grid_block cells4">
+
+                <div class="cell">
+                  <h1>header(h1)</h1>
+                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum(p)</p>
+                </div>
+
+                <div class="cell">
+                  <h1>header(h1)</h1>
+                  <p>ever since the 1500s, when an unknown(p)</p>
+                </div>
+
+                <div class="cell">
+                  <h1>header(h1)</h1>
+                  <p>ever since the 1500s, when an unknown(p)</p>
+                </div>
+
+                <div class="cell">
+                  <h1>header(h1)</h1>
+                  <p>ever since the 1500s, when an unknown(p)</p>
+                </div>
+
+              </div>
+
+
+
+              <h3>５段組（テキストのみ） Text only, 5colomn</h3>
+              <div class="grid_block cells5">
+
+                <div class="cell">
+                  <h1>header(h1)</h1>
+                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum(p)</p>
+                </div>
+
+                <div class="cell">
+                  <h1>header(h1)</h1>
+                  <p>ever since the 1500s, when an unknown(p)</p>
+                </div>
+
+                <div class="cell">
+                  <h1>header(h1)</h1>
+                  <p>ever since the 1500s, when an unknown(p)</p>
+                </div>
+
+                <div class="cell">
+                  <h1>header(h1)</h1>
+                  <p>ever since the 1500s, when an unknown(p)</p>
+                </div>
+
+                <div class="cell">
+                  <h1>header(h1)</h1>
+                  <p>ever since the 1500s, when an unknown(p)</p>
+                </div>
+
+              </div>
+
+
+
+              <h3>divタグではなくリストでもO.K.</h3>
+              <ul class="grid_block cells3">
+                <li class="cell">
+                  <h1>header(h1)</h1>
+                  <p><mark>ul.grid_block cells3 > li.cell > p</mark><br />Lorem Ipsum is simply</p>
+                </li>
+
+                <li class="cell">
+                  <h1>header(h1)</h1>
+                  <p>ever since the 1500s, when an unknown(p)</p>
+                </li>
+
+                <li class="cell">
+                  <h1>header(h1)</h1>
+                  <p>ever since the 1500s, when an unknown(p)</p>
+                </li>
+              </ul>
+
+
+              <h3>全体にsectionタグでもO.K.</h3>
+              <section class="grid_block cells3">
+
+                <div class="cell">
+                  <h1>header(h1)</h1>
+                  <p><mark>section.grid_block.cells3 > div.cell > p</mark><br />Lorem Ipsum is simply</p>
+                </div>
+
+                <div class="cell">
+                  <h1>header(h1)</h1>
+                  <p>ever since the 1500s, when an unknown(p)</p>
+                </div>
+
+                <div class="cell">
+                  <h1>header(h1)</h1>
+                  <p>ever since the 1500s, when an unknown(p)</p>
+                </div>
+
+              </section>
+
+
+              <h3>各ボックスにsectionタグでもO.K.</h3>
+              <div class="grid_block cells3">
+
+                <section class="cell">
+                  <h1>header(h1)</h1>
+                  <p><mark>div.grid_block.cells3 > section.cell > p</mark><br />Lorem Ipsum is simply</p>
+                </section>
+
+                <section class="cell">
+                  <h1>header(h1)</h1>
+                  <p>ever since the 1500s, when an unknown(p)</p>
+                </section>
+
+                <section class="cell">
+                  <h1>header(h1)</h1>
+                  <p>ever since the 1500s, when an unknown(p)</p>
+                </section>
+
+              </div>
+
+
+            </section>
+
+
+
+            <section>
+              <h2>ボックスを融合して色んな組合せ</h2>
+
+              <h3>２つのボックスを融合</h3>
+              <p>2個分にしたいボックスに、クラス .cellx2 を付ける。.cellx2 を付けたものは２つのボックスとみなし数を調整する</p>
+              <div class="grid_block cells3">
+
+                <div class="cell">
+                  <h1>header(h1)</h1>
+                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum(p)</p>
+                </div>
+
+                <div class="cell cellx2">
+                  <h1>header(h1)</h1>
+                  <p>ever since the 1500s, when an unknown(p)</p>
+                </div>
+
+              </div>
+
+
+
+              <div class="grid_block cells4">
+
+                <div class="cell">
+                  <h1>header(h1)</h1>
+                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum(p)</p>
+                </div>
+
+                <div class="cell">
+                  <h1>header(h1)</h1>
+                  <p>ever since the 1500s, when an unknown(p)</p>
+                </div>
+
+                <div class="cell cellx2">
+                  <h1>header(h1)</h1>
+                  <p>ever since the 1500s, when an unknown(p)</p>
+                </div>
+
+              </div>
+
+
+
+              <div class="grid_block cells5">
+
+                <div class="cell cellx2">
+                  <h1>header(h1)</h1>
+                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum(p)</p>
+                </div>
+
+                <div class="cell cellx2">
+                  <h1>header(h1)</h1>
+                  <p>ever since the 1500s, when an unknown(p)</p>
+                </div>
+
+                <div class="cell">
+                  <h1>header(h1)</h1>
+                  <p>ever since the 1500s, when an unknown(p)</p>
+                </div>
+
+              </div>
+
+
+
+              <h3>３つのボックスを融合</h3>
+              <p>2つの場合と同様。クラス .cellx3 を付加</p>
+
+              <div class="grid_block cells4">
+
+                <div class="cell cellx3">
+                  <h1>header(h1)</h1>
+                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum(p)</p>
+                </div>
+
+                <div class="cell">
+                  <h1>header(h1)</h1>
+                  <p>ever since the 1500s, when an unknown(p)</p>
+                </div>
+
+              </div>
+
+
+
+              <h3>５段組（テキストのみ） Text only, 5colomn</h3>
+              <div class="grid_block cells5">
+
+                <div class="cell">
+                  <h1>header(h1)</h1>
+                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum(p)</p>
+                </div>
+
+                <div class="cell cellx3">
+                  <h1>header(h1)</h1>
+                  <p>ever since the 1500s, when an unknown(p)</p>
+                </div>
+
+                <div class="cell">
+                  <h1>header(h1)</h1>
+                  <p>ever since the 1500s, when an unknown(p)</p>
+                </div>
+
+              </div>
+
+
+            </section>
+
+
+
+            <section>
+              <h2>画像とテキストを含むグリッド</h2>
+              <p>３タイプを用意した。</p>
+
+              <h3>モバイル表示時、段替えして画像の大きさをキープするタイプ</h3>
+              <div class="grid_block cells3">
+
+                <div class="cell">
+                  <p class="img_area"><img src="http://dummyimage.com/300x200/999/fff.png" width="240" height="160" /></p>
+                  <div class="text_area">
+                    <h1>header(h1)</h1>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text(p)</p>
+                  </div>
+                </div>
+
+                <div class="cell">
+                  <p class="img_area"><img src="http://dummyimage.com/300x200/999/fff.png" width="240" height="160" /></p>
+                  <div class="text_area">
+                    <h1>header(h1)</h1>
+                    <p>ever since the 1500s, when an unknown printer took a galley of type(p)</p>
+                  </div>
+                </div>
+
+                <div class="cell">
+                  <p class="img_area"><img src="http://dummyimage.com/300x200/999/fff.png" width="240" height="160" /></p>
+                  <div class="text_area">
+                    <h1>header(h1)</h1>
+                    <p>ever since the 1500s, when an unknown printer took a galley of type(p)</p>
+                  </div>
+                </div>
+
+              </div>
+
+
+
+              <h3>モバイル表示時、1ブロック内が"画像左/テキストブロック右"のレイアウトになるタイプ</h3>
+              <p>前項サンプルに、クラス .minimize_img を付けるだけ。デバイス幅に応じ画像が縮小する</p>
+              <div class="grid_block minimize_img cells3">
+
+                <div class="cell">
+                  <p class="img_area"><img src="http://dummyimage.com/300x200/999/fff.png" width="240" height="160" /></p>
+                  <div class="text_area">
+                    <h1>header(h1)</h1>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text(p)</p>
+                  </div>
+                </div>
+
+                <div class="cell">
+                  <p class="img_area"><img src="http://dummyimage.com/300x200/999/fff.png" width="240" height="160" /></p>
+                  <div class="text_area">
+                    <h1>header(h1)</h1>
+                    <p>ever since the 1500s, when an unknown printer took a galley of type(p)</p>
+                  </div>
+                </div>
+
+                <div class="cell">
+                  <p class="img_area"><img src="http://dummyimage.com/300x200/999/fff.png" width="240" height="160" /></p>
+                  <div class="text_area">
+                    <h1>header(h1)</h1>
+                    <p>ever since the 1500s, when an unknown printer took a galley of type(p)</p>
+                  </div>
+                </div>
+
+              </div>
+
+
+
+              <h3>画像をフロートさせるタイプ</h3>
+              <p>クラス .float_img を付けるだけ。小さい画像を文中に食い込ませるレイアウトにしたいときに</p>
+              <div class="grid_block float_img cells3">
+
+                <div class="cell">
+                  <p>
+                    <img src="http://dummyimage.com/80x80/999/fff.png" width="80" height="80" />
+                    Sample of no header. Lorem Ipsum is simply dummy text of the printing and typesetting industry.(p)
+                  </p>
+                </div>
+
+                <div class="cell">
+                  <h1>header(h1)</h1>
+                  <p>
+                    <img src="http://dummyimage.com/80x80/999/fff.png" width="80" height="80" />
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum(p)
+                  </p>
+                </div>
+
+                <div class="cell">
+                  <img src="http://dummyimage.com/80x80/999/fff.png" width="80" height="80" />
+                  <div>
+                		<h1>header h1</h1>
+                		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum(p)
+                  	</p>
+                  </div>
+                </div>
+
+              </div>
+            </section>
+
+
+            <section>
+              <h2>スマートフォン表示時、2 or 3カラムに</h2>
+              <p>何段であっても、クラス .mobile_2col or .mobile_3col を付けるだけで、モバイル表示時に１段ではなく２(３)段となる</p>
+
+              <h3>基本サンプル モバイル表示時2カラム</h3>
+              <div class="grid_block mobile_2col cells5">
+
+                <div class="cell">
+                  <h1>header(h1)</h1>
+                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum(p)</p>
+                </div>
+
+                <div class="cell">
+                  <h1>header(h1)</h1>
+                  <p>ever since the 1500s, when an unknown(p)</p>
+                </div>
+
+                <div class="cell">
+                  <h1>header(h1)</h1>
+                  <p>ever since the 1500s, when an unknown(p)</p>
+                </div>
+
+                <div class="cell">
+                  <h1>header(h1)</h1>
+                  <p>ever since the 1500s, when an unknown(p)</p>
+                </div>
+
+                <div class="cell">
+                  <h1>header(h1)</h1>
+                  <p>ever since the 1500s, when an unknown(p)</p>
+                </div>
+
+              </div>
+
+
+              <h3>基本サンプル モバイル表示時3カラム</h3>
+              <p>幅が狭いのでテキストは厳しいかも。微小テキスト使用、メニューアイコン（画像）、連番など</p>
+              <div class="grid_block mobile_3col cells5">
+
+                <div class="cell">
+                  <h1>header(h1)</h1>
+                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum(p)</p>
+                </div>
+
+                <div class="cell">
+                  <h1>header(h1)</h1>
+                  <p>ever since the 1500s, when an unknown(p)</p>
+                </div>
+
+                <div class="cell">
+                  <h1>header(h1)</h1>
+                  <p>ever since the 1500s, when an unknown(p)</p>
+                </div>
+
+                <div class="cell">
+                  <h1>header(h1)</h1>
+                  <p>ever since the 1500s, when an unknown(p)</p>
+                </div>
+
+                <div class="cell">
+                  <h1>header(h1)</h1>
+                  <p>ever since the 1500s, when an unknown(p)</p>
+                </div>
+
+              </div>
+
+
+              <h3>画像を含むグリッドのサンプル</h3>
+              <p>カラム幅が小さ過ぎるので、段組のまま画像小さくなるタイプや画像がフロートするレイアウトは適していない</p>
+              <div class="grid_block mobile_2col cells3">
+
+                <div class="cell">
+                  <p class="img_area"><img src="http://dummyimage.com/300x200/999/fff.png" width="240" height="160" /></p>
+                  <div class="text_area">
+                    <h1>header(h1)</h1>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text(p)</p>
+                  </div>
+                </div>
+
+                <div class="cell">
+                  <p class="img_area"><img src="http://dummyimage.com/300x200/999/fff.png" width="240" height="160" /></p>
+                  <div class="text_area">
+                    <h1>header(h1)</h1>
+                    <p>ever since the 1500s, when an unknown printer took a galley of type(p)</p>
+                  </div>
+                </div>
+
+                <div class="cell">
+                  <p class="img_area"><img src="http://dummyimage.com/300x200/999/fff.png" width="240" height="160" /></p>
+                  <div class="text_area">
+                    <h1>header(h1)</h1>
+                    <p>ever since the 1500s, when an unknown printer took a galley of type(p)</p>
+                  </div>
+                </div>
+
+              </div>
+            </section>
+
+
+          <!--/.article_body-->
+          </div>
+
+
+        </article>
+
+      <!--/#page_body-->
+      </div>
+
+
+    <!-- /#wrapper -->
+    </div>
+
+
+  <!-- ./#container -->
+  </div>
+
+
+  <script src="//code.jquery.com/jquery-latest.js"></script>
+  <script>window.jQuery || document.write('<script src="../../js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+
+  <!-- <script src="../../js/main.min.js"></script> -->
+  <script>
+    // !!グリッドブロックレイアウトでごとに高さを揃える（※要素をセットして実行）
+    // -------------------------------------
+    //../../js/main.min.js 内に設置して使用（設置済）
+    //列IE7/8も対応
+    /*! Equal Height Blocks in Rows by CHRIS COYIER(CSS Tricks) を改変したもの
+    http://css-tricks.com/equal-height-blocks-in-rows/
+    http://codepen.io/micahgodbolt/full/FgqLc
+    It's been modified into a function called at page load and then each time the page is resized.
+    One large modification was to remove the set height before each new calculation. */
+    var equalheight = function(container) {
+
+      var currentTallest = 0,
+        currentRowStart = 0,
+        rowDivs = [],
+        $el,
+        topPosition = 0;
+
+      $(container).each(function() {
+
+        $el = $(this);
+        $($el).height('auto'); //added
+        topPosition = $el.position().top;
+
+        var currentDiv;
+
+        if (currentRowStart !== topPosition) {
+
+          // we just came to a new row.  Set all the heights on the completed row
+          for (currentDiv = 0; currentDiv < rowDivs.length; currentDiv++) {
+            rowDivs[currentDiv].height(currentTallest);
+          }
+
+          // set the variables for the new row
+          rowDivs.length = 0; // empty the array
+          currentRowStart = topPosition;
+          currentTallest = $el.height();
+          rowDivs.push($el);
+        }
+        else {
+          // another div on the current row.  Add it to the list and check if it's taller
+          rowDivs.push($el);
+          currentTallest = (currentTallest < $el.height()) ? ($el.height()) : (currentTallest);
+        }
+        // do the last row
+        for (currentDiv = 0; currentDiv < rowDivs.length; currentDiv++) {
+          rowDivs[currentDiv].height(currentTallest);
+        }
+      });
+    };
+
+    // excute when the page is roaded/resized
+    // 適用したい要素をセット
+    $(window).load(function() {
+      equalheight('.grid_block .cell');
+    });
+    //スマートフォンは全1カラムにする場合に処理させない
+    /*
+    $(window).load(function() {
+      if($('body').width() >= 481){
+        equalheight('.grid_block .cell');
+      }
+    });
+    */
+
+    //リサイズ時は、Timerを使いリサイズ終了時のみ処理
+    //参考：http://kadoppe.com/archives/2012/02/jquery-window-resize-event.html）
+    var timer_equalheight = false;
+    $(window).resize(function() {
+      if (timer_equalheight !== false) {
+        clearTimeout(timer_equalheight);
+      }
+      timer_equalheight = setTimeout(function() {
+        equalheight('.grid_block .cell');
+      }, 200);
+    });
+    //スマートフォンは全1カラムにする場合に処理させない
+    /*
+    var timer_equalheight = false;
+    $(window).resize(function() {
+      if (timer_equalheight !== false) {
+        clearTimeout(timer_equalheight);
+      }
+      timer_equalheight = setTimeout(function() {
+        if($('body').width() >= 481){
+          equalheight('.grid_block .cell');
+        }
+      }, 200);
+    });
+    */
+
+  </script>
+
+
+  <!--[if lte IE 7]>
+  <script src="../js/imgSizer/imgSizer_min.js"></script>
+  <![endif]-->
+
+  <!--[if (gte IE 6)&(lte IE 8)]>
+  <script src="../js/selectivizr-min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.1.0/respond.min.js"></script>
+  <![endif]-->
+
+  <!--[if lt IE 10]>
+  <script src="../js/PIE.js"></script>
+  <script>
+    $(function() {
+      if (window.PIE) {
+        $('.button').each(function() { PIE.attach(this); });
+      }
+    });
+  </script>
+  <![endif]-->
+
+
+  <script>
+    //サンプル用。装飾CSSのON/OFF切替えボタン
+    $(function(){
+      var isDecorated = true;
+
+      $('#deco_css_toggle_button').click(function(){
+        if(isDecorated){
+          $('#deco_css').remove();
+          isDecorated = false;
+        }
+        else {
+          $('head').append('<link id="deco_css" rel="stylesheet" type="text/css" href="../style.css" />');
+          isDecorated = true;
+          document.location.reload(true);
+        }
+      });
+    });
+  </script>
+
+
+</body>
+
+</html>

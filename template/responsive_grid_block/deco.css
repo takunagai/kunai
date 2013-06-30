@@ -1,0 +1,19 @@
+/*装飾用CSS*/
+.grid_block {
+  background-image:url(data:image/gif;base64,R0lGODlhEAAQAIAAAP///8zMzCH5BAAAAAAALAAAAAAQABAAAAIfhG+hq4jM3IFLJhoswNly/XkcBpIiVaInlLJr9FZWAQA7);
+  padding: 15px 15px 0;
+}
+
+  .grid_block .cell {
+    border: 1px solid #CCC;
+    background: rgba(255, 255, 255, 0.7) !important;
+       -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+       -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+            border-radius: 5px;
+  }
+    .grid_block h1 {
+      color: #842535;
+    }

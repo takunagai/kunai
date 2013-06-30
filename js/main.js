@@ -380,6 +380,76 @@ $(function() {
 });
 
 
+
+// !!グリッドブロックレイアウトでごとに高さを揃える（※要素をセットして実行）
+// -------------------------------------
+//列IE7/8も対応
+/*! Equal Height Blocks in Rows by CHRIS COYIER(CSS Tricks) を改変したもの
+http://css-tricks.com/equal-height-blocks-in-rows/
+http://codepen.io/micahgodbolt/full/FgqLc
+It's been modified into a function called at page load and then each time the page is resized.
+One large modification was to remove the set height before each new calculation. */
+var equalheight = function(container) {
+
+  var currentTallest = 0,
+    currentRowStart = 0,
+    rowDivs = [],
+    $el,
+    topPosition = 0;
+
+  $(container).each(function() {
+
+    $el = $(this);
+    $($el).height('auto'); //added
+    topPosition = $el.position().top;
+
+    var currentDiv;
+
+    if (currentRowStart !== topPosition) {
+
+      // we just came to a new row.  Set all the heights on the completed row
+      for (currentDiv = 0; currentDiv < rowDivs.length; currentDiv++) {
+        rowDivs[currentDiv].height(currentTallest);
+      }
+
+      // set the variables for the new row
+      rowDivs.length = 0; // empty the array
+      currentRowStart = topPosition;
+      currentTallest = $el.height();
+      rowDivs.push($el);
+    }
+    else {
+      // another div on the current row.  Add it to the list and check if it's taller
+      rowDivs.push($el);
+      currentTallest = (currentTallest < $el.height()) ? ($el.height()) : (currentTallest);
+    }
+    // do the last row
+    for (currentDiv = 0; currentDiv < rowDivs.length; currentDiv++) {
+      rowDivs[currentDiv].height(currentTallest);
+    }
+  });
+};
+
+// excute when the page is roaded/resized
+// 適用したい要素をセット
+$(window).load(function() {
+  equalheight('.grid_block .cell');
+});
+
+//リサイズ時は、Timerを使いリサイズ終了時のみ処理
+/*! 参考:http://kadoppe.com/archives/2012/02/jquery-window-resize-event.html */
+var timer_equalheight = false;
+$(window).resize(function() {
+  if (timer_equalheight !== false) {
+    clearTimeout(timer_equalheight);
+  }
+  timer_equalheight = setTimeout(function() {
+    equalheight('.grid_block .cell');
+  }, 200);
+});
+
+
+
 // !!メニュー表示/非表示 #sidebar（モバイル幅のみ表示）
 // -------------------------------------
 $(function(){

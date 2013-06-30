@@ -1,0 +1,164 @@
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  *behavior: url(../js/vendor/boxsizing.htc);
+}
+
+img {
+  max-width: 100% !important;
+  height: auto !important;
+  width: auto\9;
+}
+
+.clearfix, .grid_block,
+.grid_block .cell {
+  *zoom: 1;
+}
+.clearfix:before, .grid_block:before,
+.grid_block .cell:before, .clearfix:after, .grid_block:after,
+.grid_block .cell:after {
+  display: block;
+  height: 0;
+  visibility: hidden;
+  content: "\0020";
+}
+.clearfix:after, .grid_block:after,
+.grid_block .cell:after {
+  clear: both;
+}
+
+/* - - - - - - - ここまで全体に定義済→統合時に削除 - - - - - - - */
+.grid_block,
+.grid_block .cell {
+  *zoom: 1;
+}
+
+.grid_block .cell {
+  margin-top: 0;
+  margin-bottom: 20px;
+  padding: 15px;
+}
+.grid_block .cell .img_area {
+  margin-top: 0;
+  text-align: center;
+}
+.grid_block li.cell {
+  background: none;
+  padding-left: 15px !important;
+}
+.grid_block h1 {
+  margin: 1em 0 0.5em;
+}
+.grid_block h1:first-child {
+  margin-top: 0;
+}
+.grid_block p:first-child {
+  margin-top: 0;
+}
+.grid_block p:last-child {
+  margin-bottom: 0;
+}
+.grid_block.float_img .cell h1 {
+  word-break: break-all !important;
+}
+.grid_block.float_img .cell img {
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  vertical-align: bottom;
+}
+.grid_block li.cell {
+  padding-left: 0;
+  list-style: none;
+}
+
+@media only screen and (max-width: 480px) {
+  .grid_block .cell {
+    clear: left;
+  }
+
+  .grid_block.minimize_img .cell {
+    clear: left;
+  }
+  .grid_block.minimize_img .cell .img_area {
+    float: left;
+    max-width: 40% !important;
+    margin-right: 20px;
+  }
+  .grid_block.minimize_img .cell .text_area {
+    overflow: hidden;
+    _zoom: 1;
+    _height: 1%;
+  }
+
+  .grid_block.mobile_2col .cell,
+  .grid_block.mobile_3col .cell {
+    clear: none;
+    float: left;
+    margin-left: 2%;
+  }
+
+  .grid_block.mobile_2col .cell {
+    width: 49%;
+    width: 48%\9;
+  }
+  .grid_block.mobile_2col .cell:nth-child(2n+1) {
+    margin-left: 0;
+  }
+
+  .grid_block.mobile_3col .cell {
+    width: 32%;
+    width: 31%\9;
+  }
+  .grid_block.mobile_3col .cell:nth-child(3n+1) {
+    margin-left: 0;
+  }
+}
+@media only screen and (min-width: 481px) {
+  .grid_block .cell {
+    float: left;
+    margin-left: 2%;
+  }
+  .grid_block.cells2 .cell {
+    width: 49%;
+    width: 48%\9;
+  }
+  .grid_block.cells3 .cell {
+    width: 32%;
+    width: 31%\9;
+  }
+  .grid_block.cells4 .cell {
+    width: 23.5%;
+    width: 21%\9;
+  }
+  .grid_block.cells5 .cell {
+    width: 18.4%;
+    width: 18%\9;
+  }
+  .grid_block.cells2 .cell:nth-child(2n+1), .grid_block.cells3 .cell:nth-child(3n+1), .grid_block.cells4 .cell:nth-child(4n+1), .grid_block.cells5 .cell:nth-child(5n+1) {
+    margin-left: 0;
+  }
+  .grid_block.cells3 .cell.cellx2 {
+    width: 66%;
+    width: 62%\9;
+  }
+  .grid_block.cells4 .cell.cellx2 {
+    width: 49%;
+    width: 41%\9;
+  }
+  .grid_block.cells5 .cell.cellx2 {
+    width: 38.8%;
+    width: 36%\9;
+  }
+  .grid_block.cells4 .cell.cellx3 {
+    width: 74.5%;
+    width: 63%\9;
+  }
+  .grid_block.cells5 .cell.cellx3 {
+    width: 59.2%;
+    width: 54%\9;
+  }
+}

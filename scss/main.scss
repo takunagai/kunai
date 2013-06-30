@@ -27,7 +27,7 @@
  -------------------------------------------------------
  [備考]
   1.SCSSで記述
-  2._nomarize.scss, _css3.scss, _font_awesome.scss を読み込みマージ
+  2._nomarize.scss, _css3.scss, WebFontCSS(_font_awesome.scss etc.)を読み込みマージ
   3.見出し用コメントはCodaのコードナビゲーターに表示されるよう "!" 付きで記述
   4.★★が付いてるとこは未解決の課題。不具合あるかも
   5.コーティング規約 http://stack3.com/tools/coding_rule.html
@@ -207,6 +207,21 @@ $mq_l:  "only screen and (min-width:801px)";
           box-sizing: border-box;
   *behavior: url(../js/vendor/boxsizing.htc);//※★★CSSからでなくHTMLからのパス
   //IE6&7, サーバーによっては.htaccessに'AddType text/x-component .htc'を追記
+}
+
+/*画像と動画の最大幅を画面幅に*/
+img {
+  max-width: 100% !important;
+  height: auto !important;
+  width: auto\9;//IE6-8 but and 9.. :(
+  /*or -ms-interpolation-mode: bicubic;*/
+}
+
+.video embed,
+.video object,
+.video iframe {/*埋込動画の最適化*/
+  width: 100% !important;
+  height: auto !important;
 }
 
 /*ページ基本
@@ -478,7 +493,7 @@ a {
 /*外部リンクのマーカー（記事部のみ、画像は除く）*/
 article a[href^="http"] {
   padding-right: 14px;
-  background: url(../img_common/ico_external_link.png) no-repeat right top;
+  background: url(../img_common/ico_external_link.gif) no-repeat right top;
 }
 article a[href^="http"] img {
   padding-right: 0;
@@ -699,11 +714,11 @@ a:active img {
 //よくある質問（FAQ,Q&A）
 %listmarker_faq_question {
   padding-left: 16px;
-  background: url(../img_common/lm_faq_q.png) no-repeat left 0.5em;
+  background: url(../img_common/lm_faq_q.png) no-repeat left 0.4em;
 }
 %listmarker_faq_answer {
   padding-left: 16px;
-  background: url(../img_common/lm_faq_a.png) no-repeat left 0.5em;
+  background: url(../img_common/lm_faq_a.png) no-repeat left 0.4em;
 }
 /*警告*/
 %listmarker_caution {
@@ -722,7 +737,7 @@ a:active img {
 /*横並びリスト*/
 %base_float {
   float: left;
-  @extend clearfix;
+  @extend .clearfix;
 }
 
 
@@ -735,15 +750,15 @@ a:active img {
 .framed_d,
 .framed_e {
   margin: 1em 0;
-  padding: 10px;
+  padding: 15px;
 }
 .framed_a {
-  @include box-shadow(0,2px,1px,rgba(0,0,0,0.3));
-  margin: 1em 0 2em;
+  border: 1px solid #CCC;
+  @include box-shadow(0,1px,2px,rgba(0,0,0,0.3));
   background: rgba(255,255,255,0.4) !important;
+  @include rounded_corners(5px);
 }
 .framed_b {
-  margin: 1em 20px 2em !important;
   border: 1px solid #999;
 }
 .framed_c {
@@ -756,12 +771,16 @@ a:active img {
 }
 .framed_e {
   background-color: #FFF;
-  border: 1px solid #999;
-  h1 {//マイナスマージンとpaddingでゼロになるようにする
-    margin: -10px -10px 5px -10px !important;
+  border: 1px solid $color_1;
+  h1 {
+    margin: 0 -15px 5px -15px !important;//マイナスマージンと枠のpaddingでゼロになるようにする
+    &:first-child {margin-top: -15px !important;}
     padding: 3px 10px !important;
-    background-color: #999;
+    background-color: $color_1;
     color: #FFF;
+  }
+  h2 {
+    @include font_size(14);
   }
 }
 //コンテンツ本文内
@@ -772,23 +791,41 @@ article {
   .framed_d,
   .framed_e {
     h1 {
-      font-size: 1em;
-      &:first-child {margin-top: 0;}
+      margin: 1.5em 0 1em 0;
+      @include font_size(14);
+      &:first-child {margin-top: .5em;}
     }
-    h2 {
-      background: none;;
-      font-size: 1em;
-    }
-    h3 {
+    h2, h3 {
+      margin: 1em 0 .75em !important;
+      padding: 0;
+      @include font_size(12);
       background: none;
       border: none;
-      margin-left: 0;
-      font-size: 1em;
+    }
+    h2 {
+      color: $color_base !important;
+      line-height: 1;
+      text-shadow:   none;
+      box-shadow:    none;
+      border-radius: none;
+    }
+    h3 {
+      //使うなら要スタイリング
+    }
+    p,ul,ol,dl {
+
+    }
+    p.text_area {
+      margin-top: 0 !important;
     }
     p,ul,ol,dl,
+    .text_area,
     ul:last-child li,
     ol:last-child li,
     dl:last-child dd {
+      &:first-child {
+        margin-top: 0 !important;
+      }
       &:last-child {
         margin-bottom: 0 !important;
       }
@@ -905,7 +942,7 @@ $color_balloon_frame_end:   #b8e7ff;
 //★★未
 
 
-/* 等幅段組レイアウト */
+/* 等幅段組レイアウト → 次項の改を参照 */
 /*====================================*/
 
 /* 幅可変 */
@@ -918,24 +955,23 @@ $color_balloon_frame_end:   #b8e7ff;
 /* %指定でも可能か要検討 */
 
 /* 共通 */
-$width_column_margin:   0;
-$width_column_padding: 2%;
+$gutter_width2:   2%;//幅を考慮する必要がある
+$column_padding: 2%;//box-sizing: border-box;してるので考慮しなくていい
 
 /*スタイリング*/
 .col_horizontal {
   @extend .clearfix;
   margin-bottom: 1em;
+  padding-left: 0;//ul用
   width: auto;
    .col {
      float: left;
      margin-top: 0 !important;
-     margin-right: $width_column_margin;
-     margin-bottom: $width_column_margin;
-     padding: $width_column_padding;
-     border-right: dotted 1px $color_1;
-     border-bottom: dotted 1px $color_1;
+     margin-right:  $gutter_width2;
+     margin-bottom: $gutter_width2;
+     padding:       $column_padding;
      min-height: 100px; _height: 100px;
-     //@extend .framed_a;
+     @extend .framed_a;
      //@extend .paper_shadow;
      h1,h2 {
        &:first-child {
@@ -952,6 +988,7 @@ $width_column_padding: 2%;
        background: none;
        margin-bottom: 0.3em;
        padding-left: 10px;
+       color: $color_base !important;
        @include font_size(14);
      }
      p,li {
@@ -967,17 +1004,21 @@ $width_column_padding: 2%;
 
 /*PC,Tablet*/
 @media #{$mq_ml} {
-  .col_horizontal.col2 .col {width: 47.9%;}//47
-  .col_horizontal.col3 .col {width: 30.4%;}//29
-  .col_horizontal.col4 .col {width: 21.8%;}//20.5
-  .col_horizontal.col5 .col {width: 16.6%;}//15
+  .col_horizontal.col2 .col {width: (100% - ($gutter_width2 * 1)) / 2;}
+  .col_horizontal.col3 .col {width: (100% - ($gutter_width2 * 2)) / 3;}
+  .col_horizontal.col4 .col {width: (100% - ($gutter_width2 * 3)) / 4;}
+  .col_horizontal.col5 .col {width: (100% - ($gutter_width2 * 4)) / 5;}
+  //.col_horizontal.col2 .col {width: 47.9%;}//47
+  //.col_horizontal.col3 .col {width: 30.4%;}//29
+  //.col_horizontal.col4 .col {width: 21.8%;}//20.5
+  //.col_horizontal.col5 .col {width: 16.6%;}//15
 
   /*n段組のn+1列（最初の列）*/
   .col_horizontal.col2 .col:nth-child(2n+1),
   .col_horizontal.col3 .col:nth-child(3n+1),
   .col_horizontal.col4 .col:nth-child(4n+1),
   .col_horizontal.col5 .col:nth-child(5n+1) {
-    padding-left: 0;
+    //padding-left: 0;
     clear: left;
   }
   /*n段組のn列（最後の列）*/
@@ -987,7 +1028,7 @@ $width_column_padding: 2%;
   .col_horizontal.col5 .col:nth-child(5n) {
     border-right: none;
     margin-right: 0;
-    padding-right: 0;
+    //padding-right: 0;
   }
 }
 
@@ -1002,7 +1043,7 @@ $width_column_padding: 2%;
   }
   .col_horizontal.col4 .col,
   .col_horizontal.col5 .col {
-    width: 47.5%;
+    width: (100% - ($gutter_width2 * 1)) / 2;;
     &:nth-child(2n) {
       border-right: none;
       margin-right: 0;
@@ -1014,6 +1055,145 @@ $width_column_padding: 2%;
     }
   }
 }
+
+
+/* 等幅段組レイアウト 改 */
+/*====================================*/
+//Setting
+$gutter_width:   2%;//幅を考慮する必要がある
+$cell_padding: 15px;//box-sizing: border-box;してるので考慮しなくていい
+
+//Common
+.grid_block,
+.grid_block .cell {
+  *zoom: 1;
+  @extend .clearfix;
+}
+
+//ul.grid_block {padding-left: 0;}
+.grid_block {
+  .cell {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding: $cell_padding;
+    .img_area {
+      margin-top: 0;
+      text-align: center;
+    }
+  }
+  li.cell {
+    background: none;
+    padding-left: $cell_padding !important;
+  }
+
+  //以下 h1 と p 大元のSCSSで指定済なら不要
+  h1 {
+    margin: 1em 0 0.5em;
+    &:first-child {margin-top: 0;}
+  }
+  p {
+    &:first-child {margin-top: 0;}
+    &:last-child {margin-bottom: 0;}
+  }
+
+  &.float_img .cell {
+    h1 {
+      word-break: break-all !important;//not working.. :(
+    }
+    img {
+      float: left;
+      margin-right: 10px;
+      margin-bottom: 5px;
+      vertical-align: bottom;
+    }
+  }
+  li.cell {
+    padding-left: 0;
+    list-style: none;
+  }
+
+}
+
+//引数nカラム時の1カラムの幅を計算するミックスイン
+@mixin cellWidth($cellNum: 2) {
+  width: (100% - ($gutter_width * ($cellNum - 1))) / $cellNum;
+}
+
+//Smartphone
+@media only screen and (max-width: 480px) {
+  .grid_block .cell {
+    clear: left;
+  }
+  .grid_block.minimize_img .cell {
+    clear: left;
+    .img_area {
+      float: left;
+      max-width: 40% !important;//適宜調整
+      margin-right: 20px;
+    }
+    .text_area {
+      overflow: hidden;
+      _zoom: 1;_height: 1%;//IE6
+    }
+  }
+  .grid_block.mobile_2col .cell,
+  .grid_block.mobile_3col .cell {
+    clear: none;
+    float: left;
+    margin-left: $gutter_width;
+  }
+  .grid_block.mobile_2col .cell {
+    @include cellWidth(2); width: 48%\9;//後者はIE6-8、適宜調整
+    &:nth-child(2n+1) {margin-left: 0;}
+  }
+  .grid_block.mobile_3col .cell {
+    @include cellWidth(3); width: 31%\9;//後者はIE6-8、適宜調整
+    &:nth-child(3n+1) {margin-left: 0;}
+  }
+}
+
+//Tablet & Desktop
+@media only screen and (min-width: 481px) {
+  .grid_block {
+    .cell {
+      float: left;
+      margin-left: $gutter_width;
+    }
+
+    &.cells2 .cell {@include cellWidth(2); width: 48%\9}//後者はIE6-8、適宜調整
+    &.cells3 .cell {@include cellWidth(3); width: 31.5%\9}
+    &.cells4 .cell {@include cellWidth(4); width: 23%\9}
+    &.cells5 .cell {@include cellWidth(5); width: 18%\9}
+    //以下、上記のミックスインに入れない方がドライなCSSになる
+    &.cells2 .cell:nth-child(2n+1),
+    &.cells3 .cell:nth-child(3n+1),
+    &.cells4 .cell:nth-child(4n+1),
+    &.cells5 .cell:nth-child(5n+1) {
+      margin-left: 0;
+    }
+  }
+}
+
+//装飾
+.grid_block {
+  padding: 0px;
+}
+  .grid_block .cell {
+    @extend .framed_d;
+    //border: 1px solid #CCC;
+    //background: rgba(255, 255, 255, 0.7) !important;
+    //   -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    //-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    //        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    //   -moz-border-radius: 5px;
+    //-webkit-border-radius: 5px;
+    //        border-radius: 5px;
+  }
+    .grid_block h1 {
+      //@include font_size(16);
+      //color: #842535;
+    }
+
 
 
 
@@ -1039,6 +1219,7 @@ $bottom_margin_width: 3px;//画像の下余白
   h2,h3,h4,h5,h6 {
     margin-left: 0 !important;
     margin-right: 0 !important;
+    &:first-child {margin-top: 0 !important;}
   }
 }
 
@@ -1120,16 +1301,15 @@ q {
   // Grayscale gradient
   background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%3F%3E%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20version%3D%221.0%22%3E%3Cdefs%3E%3ClinearGradient%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%22100%25%22%20id%3D%22g%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22rgb%28255%2C255%2C255%29%22%20stop-opacity%3D%220.1%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22rgb%280%2C0%2C0%29%22%20stop-opacity%3D%220.1%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20fill%3D%22url%28%23g%29%22%20width%3D%22100%25%22%20height%3D%22100%25%22/%3E%3C/svg%3E");
   //デコード：<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.0"><defs><linearGradient x1="0" y1="0" x2="0" y2="100%" id="g"><stop offset="0" stop-color="rgb(128,128,128)" stop-opacity="0.1"/><stop offset="1" stop-color="rgb(0,0,0)" stop-opacity="0.1"/></linearGradient></defs><rect x="0" y="0" fill="url(#g)" width="100%" height="100%"/></svg>
-  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
-  background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
+  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.2));
+  background-image:         linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.2));
 
-  // Extend gradient to the outer edge of the border
+  //グラデーションをボーダーまで適用させる（通常はされない）
   background-origin: border-box;
-
-  // RGBa border
   border: 1px solid rgba(0, 0, 0, 0.1);
 
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(255, 255, 255, 0.3) inset;//横、下、ぼけ、影色
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3),
+              0 1px 2px rgba(255, 255, 255, 0.3) inset;//横、下、ぼけ、影色
   @include rounded_corners(3px);
   @include inline-block;
   margin: 0.5em 0.5em 0 0;
@@ -1142,22 +1322,54 @@ q {
   &:focus {
     background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%3F%3E%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20version%3D%221.0%22%3E%3Cdefs%3E%3ClinearGradient%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%22100%25%22%20id%3D%22g%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22rgb%28128%2C128%2C128%29%22%20stop-opacity%3D%220.1%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22rgb%280%2C0%2C0%29%22%20stop-opacity%3D%220.1%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20fill%3D%22url%28%23g%29%22%20width%3D%22100%25%22%20height%3D%22100%25%22/%3E%3C/svg%3E");
     //デコード：<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.0"><defs><linearGradient x1="0" y1="0" x2="0" y2="100%" id="g"><stop offset="0" stop-color="rgb(128,128,128)" stop-opacity="0.1"/><stop offset="1" stop-color="rgb(0,0,0)" stop-opacity="0.1"/></linearGradient></defs><rect x="0" y="0" fill="url(#g)" width="100%" height="100%"/></svg>
-    background-image: -webkit-linear-gradient(rgba(128, 128, 128, 0.1), rgba(0, 0, 0, 0.1));
-    background-image: linear-gradient(rgba(128, 128, 128, 0.1), rgba(0, 0, 0, 0.1));
+    background-image: -webkit-linear-gradient(rgba(128, 128, 128, 0.1), rgba(0, 0, 0, 0.4));
+    background-image:         linear-gradient(rgba(128, 128, 128, 0.1), rgba(0, 0, 0, 0.4));
   }
   &:active {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
   }
 }
 
+//全ボタン共通
 .button,
 .button_colored,
 .button_strong,
-.button_pill,
-a.button,
-a.button_colored,
-a.button_strong,
-a.button_pill {
+.button_round {
+  @extend %button;
+  &.large {
+    font-size: 125%;
+  }
+  &.small {
+    font-size: .8em;
+  }
+  &.fullwidth {
+    display: block;
+    width: 100%;
+  }
+  &.selected {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset, 0 -1px rgba(255, 255, 255, 0.1) inset;
+    font-weight: bold;
+    &,
+    &:hover,
+    &:focus {
+      background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%3F%3E%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20version%3D%221.0%22%3E%3Cdefs%3E%3ClinearGradient%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%22100%25%22%20id%3D%22g%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22rgb%280%2C0%2C0%29%22%20stop-opacity%3D%220.25%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22rgb%280%2C0%2C0%29%22%20stop-opacity%3D%220.1%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20fill%3D%22url%28%23g%29%22%20width%3D%22100%25%22%20height%3D%22100%25%22/%3E%3C/svg%3E");
+      background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.1));
+      background-image:         linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.1));
+    }
+  }
+  &.disabled {
+    cursor: default;
+    opacity: .7 !important;
+    &,
+    &:hover,
+    &:focus {
+      background-image: none;
+    }
+    &,
+    &:active {
+      box-shadow: none;
+    }
+  }
   small {
     display: block;
     @include font_size(10);
@@ -1165,98 +1377,66 @@ a.button_pill {
   }
 }
 
-a.button,
-a.button_colored,
-a.button_strong,
-a.button_pill {
-  text-decoration: none;
+a {
+  &.button,
+  &.button_colored,
+  &.button_strong,
+  &.button_round {
+    text-decoration: none;
+  }
+  &:hover,
+  &:visited {
+    &.button {
+      color: $color_base;
+    }
+    &.button_colored,
+    &.button_strong,
+    &.button_round {
+      color: white;
+    }
+  }
 }
 
+//ボタン個別設定
 .button {
-  @extend %button;
   @include letterpress_dark(1);
-  background-color: white;
-  color: black;
+  background-color: white !important;
+  color: $color_base;
 }
-
+.button_colored,
+.button_strong,
+.button_round {
+  @include letterpress_light();
+  color: white;
+}
 .button_colored {
-  @extend %button;
-  @include letterpress_light();
-  background-color: #690;
-  color: white;
+  background-color: #690 !important;
 }
-
 .button_strong {
-  @extend %button;
-  @include letterpress_light();
-  background-color: #C00;
-  color: white;
+  background-color: #C00 !important;
 }
-
-.button_pill {
-  @extend %button;
-  @include letterpress_light();
-  background-color: #09F;
+.button_round {
+  background-color: #09F !important;
   border-radius: 99em;
-  color: white;
 }
 
-.button.large,
-.button_colored.large,
-.button_strong.large,
-.button_pill.large {
-  font-size: 125%;
-}
+//★★要る？（上の &.disabled と同じもの）
+//[disabled] {
+//  @include letterpress_dark();
+//  background-color: gainsboro;
+//  color: gray;
+//  cursor: default;
+//  &,
+//  &:hover,
+//  &:focus {
+//    background-image: none;
+//  }
+//  &,
+//  &:active {
+//    box-shadow: none;
+//  }
+//}
 
-.button.small,
-.button_colored.small,
-.button_strong.small,
-.button_pill.small {
-  font-size: .8em;
-}
-
-.button.fullwidth,
-.button_colored.fullwidth,
-.button_strong.fullwidth,
-.button_pill.fullwidth {
-  display: block;
-  width: 100%;
-}
-
-.button.selected,
-.button_colored.selected,
-.button_strong.selected,
-.button_pill.selected {
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset, 0 -1px rgba(255, 255, 255, 0.1) inset;
-  font-weight: bold;
-  &,
-  &:hover,
-  &:focus {
-    background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%3F%3E%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20version%3D%221.0%22%3E%3Cdefs%3E%3ClinearGradient%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%22100%25%22%20id%3D%22g%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22rgb%280%2C0%2C0%29%22%20stop-opacity%3D%220.25%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22rgb%280%2C0%2C0%29%22%20stop-opacity%3D%220.1%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20fill%3D%22url%28%23g%29%22%20width%3D%22100%25%22%20height%3D%22100%25%22/%3E%3C/svg%3E");
-    background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.1));
-    background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.1));
-  }
-}
-
-[disabled],
-.button.disabled,
-.button_colored.disabled,
-.button_strong.disabled,
-.button_pill.disabled {
-  @include letterpress_dark();
-  background-color: gainsboro;
-  color: gray;
-  cursor: default;
-  &,
-  &:hover,
-  &:focus {
-    background-image: none;
-  }
-  &,
-  &:active {
-    box-shadow: none;
-  }
-}
 
 //ボタングループ（a タグでなく button タグで）
 //横並び
@@ -1309,14 +1489,16 @@ a.button_pill {
 .label {
   display: inline-block; _display: inline; _zoom: 1;
   margin: 0px 2px 3px;
-  padding: 2px 4px;
-  @include box-shadow(0px,1px,2px,#999);
+  padding: 2px 4px 1px;
+  @include box-shadow(0px,1px,1px,#CCC);
+  @include rounded_corners(2px);
   vertical-align: text-top;
-  background-color: #CCC;
-  color: #333;
+  background-color: #E7E7E7;
+  color: $color_base;
   @include font_size(10);
   line-height: 1;
   text-decoration: none;
+  -webkit-font-smoothing: subpixel-antialiased;//Safari(Mac,iOS)で文字を細めにだと見づらいので
 }
 //カラー
 .label_red {
@@ -1355,14 +1537,13 @@ a.button_pill {
 /*====================================*/
 .alert {
   margin: 1em 0;
-  padding: 10px;
-  outline: solid 1px $color_2_deep;
+  padding: 5px 10px;
+  //outline: solid 1px $color_2_deep;
   background-color:  $color_2_pale;
   color:             $color_2_deep;
-  font-weight: bold;
 }
 .alert.strong {
-  outline-color:     $color_warning;
+  //outline-color:     $color_warning;
   background-color:  $color_warning_pale;
   color:             $color_warning;
 }
@@ -1498,15 +1679,15 @@ li.L1,li.L3,li.L5,li.L7,li.L9 {}
 /*====================================*/
 
 /*変数*/
-$color_table_line: #666;/*テーブルの線*/
-$color_th_text: #333;/*thのテキスト*/
-$color_th_link_text: #333;/*thのリンクテキスト*/
-$color_th_bg: #CCC;/*thの背景*/
-$color_td_text: #333;/*tdのテキスト*/
-$color_td_bg_1: #FFF;/*tdの背景*/
-$color_td_bg_2: #E7E7E7;/*tdの背景2*/
-$color_row_th_highlight_bg: #BBD;/*特定行の色付け th*/
-$color_row_td_highlight_bg: #CCE;/*特定行の色付け td*/
+$color_table_line:           #666;/*テーブルの線*/
+$color_th_text:              #333;/*thのテキスト*/
+$color_th_link_text:         #333;/*thのリンクテキスト*/
+$color_th_bg:                #CCC;/*thの背景*/
+$color_td_text:              #333;/*tdのテキスト*/
+$color_td_bg_1:              #FFF;/*tdの背景*/
+$color_td_bg_2:              #E7E7E7;/*tdの背景2*/
+$color_row_th_highlight_bg:  #BBD;/*特定行の色付け th*/
+$color_row_td_highlight_bg:  #CCE;/*特定行の色付け td*/
 $color_cell_th_highlight_bg: #BBD;/*特定セルの色付け th or td*/
 $color_cell_td_highlight_bg: #CCE;/*特定セルの色付け th or td*/
 
@@ -1757,8 +1938,15 @@ hr.style_c {//中央に記号文字
 }
 
 /*====================================*/
-/* !!★★フォーム */
+/* !!フォーム */
 /*====================================*/
+
+label {
+  margin-top: 1.5em !important;
+  margin-bottom: .5em;
+  display: block;
+  font-weight: bold;
+}
 
 input, textarea, select, button {
   margin: 0;
@@ -1768,7 +1956,8 @@ button, input {
   *overflow: visible;
   line-height: normal;
 }
-button::-moz-focus-inner, input::-moz-focus-inner {
+button::-moz-focus-inner,
+input::-moz-focus-inner {
   padding: 0;
   border: 0;
 }
@@ -1989,17 +2178,40 @@ section.article_summary {
       margin-left: 0.5em;
       @include font_size(12);
       font-weight: normal;
-      color: $color_gray_deep;
+      color: $color_base;
       -webkit-font-smoothing: antialiased;
     }
   }
   //h1は.article_header内
   h2 {
-    padding: 7px 10px;
-    background-color: $color_1;
+    $h2_grade_start: $color_1_pale;
+    $h2_grade_end:   $color_1;
+    $h2_listmarker: url(../img_common/lm_dot_1.png) no-repeat 10px center;
+
+    margin-top: 2em !important;
+    padding: 10px 10px 10px 24px;
     color: #FFF;
     @include font_size(16);
-    @include rounded_corners(3px);
+    text-shadow: 0 -1px 1px rgba(0,0,0,.5), 0 1px 1px rgba(255,255,255,.5);
+    line-height: 1.4;
+
+         background: $h2_listmarker, -webkit-linear-gradient(top,$h2_grade_start,$h2_grade_end);
+         background: $h2_listmarker, -webkit-gradient(linear,left top,
+                                                left bottom,from($h2_grade_start),
+                                                                              to($h2_grade_end));
+         background: $h2_listmarker,    -moz-linear-gradient(top,$h2_grade_start,$h2_grade_end);
+         background: $h2_listmarker,      -o-linear-gradient(top,$h2_grade_start,$h2_grade_end);
+         background: $h2_listmarker,     -ms-linear-gradient(top,$h2_grade_start,$h2_grade_end);
+         background: $h2_listmarker,   linear-gradient(to bottom,$h2_grade_start,$h2_grade_end);
+    -pie-background: $h2_listmarker,             linear-gradient($h2_grade_start,$h2_grade_end);
+
+    -webkit-box-shadow: inset 0 -1px 1px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.5);
+       -moz-box-shadow: inset 0 -1px 1px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.5);
+            box-shadow: inset 0 -1px 1px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.5);
+       -pie-box-shadow: #666 0px 1px 2px;//IE6-8
+
+    border: 1px solid $h2_grade_end;
+    @include rounded_corners(4px);
   }
   h3 {
     border-bottom: 4px solid $color_1;
@@ -2039,9 +2251,15 @@ section.article_summary {
   p.caution      {@extend %listmarker_caution;}
 
   /*リスト*/
-  ul,ol,dl      {margin: 1em 0;}
+  ul,ol,dl      {
+    margin: 1em 0;
+    padding-left: 1em;
+  }
   li ul         {margin-top: 0;}
-  ul li         {@extend %listmarker_a;}
+  ul li {
+    @extend %listmarker_a;
+    list-style-type: none;
+  }
   ul.parent li  {@extend %listmarker_b;}
   ul.check li   {@extend %listmarker_check;}
   ul.pdf li     {@extend %listmarker_pdf;}
@@ -2060,7 +2278,7 @@ section.article_summary {
   dd {margin-left: 1em;}
 
   ol {
-    margin-left: 2em;
+    margin-left: 1em;
     li{
       list-style-type: decimal;
     }
@@ -2074,13 +2292,13 @@ section.article_summary {
     margin-left: .5em;//デフォルト消し
     li {
       position: relative;
-      margin: 0 0 1.3em 2em;
+      margin: 0 0 1.3em 1em;
       padding: 0px 8px;
       &:before {
         content: counter(li);
         counter-increment: li;//インクリメント
         position: absolute;
-        top: 0;
+        top: -.3em;
         left: -2em;
         width: 2em;
         padding: 3px 0;
@@ -2650,18 +2868,6 @@ $first_section_margin_width: 10px;//本文の左右外の余白
     背景画像1枚で全体を覆う指定　body{background-size:cover;}
     */
   }
-  img {/* 画像をフレキシブルに → モバイル用画像を用意して処理：http://www.yasuhisa.com/could/article/responsive-design/ */
-    max-width: 100% !important;
-    height: auto !important;
-    width: auto\9; /*ie8*/
-    /*or -ms-interpolation-mode: bicubic;*/
-  }
-  .video embed,
-  .video object,
-  .video iframe {/*埋込動画の最適化*/
-    width: 100% !important;
-    height: auto !important;
-  }
   .social_media_buttons {
     li {//★★
       display: inline;
@@ -2708,7 +2914,7 @@ $first_section_margin_width: 10px;//本文の左右外の余白
             //width: 45%;
             //float: left;
             padding: 7px 5px;
-            color: #333;
+            color: $color_base;
             background-color: #E7E7E7;
             margin-bottom: 1px;
             text-decoration: none;

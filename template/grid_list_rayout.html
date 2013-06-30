@@ -49,191 +49,221 @@
 
           <header class="article_header">
             <h1 class="article_title">未★★グリッド状に並ぶレイアウト</h1>
-            <p>高さを揃えるスクリプトを使う（実行が必要。function.js に記述？）。段違いでも全てのブロックの高さを揃えたい時は jquery.tile.js で</p>
-            <p>分岐処理で、スマートフォンなど、1段になる時は、上記スクリプトは動かさないように</p>
-            <p>スマートフォン表示時には、3段以下は1段、4段以上は2段になる。</p>
+            <ul>
+              <li>列ごとに高さを揃えるスクリプトを使う（実行が必要で下部に記述 → ★★function.js に記述）。全てのブロックの高さを揃えたい時は jquery.tile.js 使う</li>
+              <li>スマートフォン表示時には、3段以下は1段、4段以上は2段になる。</li>
+              <li>★★responsive_grid_block参照して修正</li>
+              <li>★★スマートフォンサイズの表示でテキストずれるのを修正</li>
+            </ul>
           </header>
 
 
           <div class="article_body">
 
 
-						<section>
-							<h2>段組レイアウト(h2)</h2>
-							<h3>section使用 2段</h3>
-							<div class="col_horizontal col2">
-								<section class="col">
-									<h1>見出し(.col_horizontal.col4>section.col>h1)</h1>
-									<p>本文です(.col_horizontal.col4>section.col>p)</p>
-								</section>
-								<section class="col">
-									<h1>見出し(h1)</h1>
-									<p>本文です。ここに文章が入ります。ここに文章が入ります。ここに文章が入ります。(p)</p>
-								</section>
-								<section class="col">
-									<h1>見出し(h1)</h1>
-									<h2>見出し(h2)</h2>
-									<p>本文です(p)</p>
-								</section>
-								<section class="col">
-									<h1>見出し。ここに文章が入ります。(h1)</h1>
-									<p>本文です(p)</p>
-									<ul>
-										<li>リスト項目1</li>
-										<li>リスト項目2</li>
-									</ul>
-								</section>
-							</div>
-						</section>
+            <section>
+              <h2>段組レイアウト(h2)</h2>
+              <h3>section使用 2段</h3>
+              <div class="col_horizontal col2">
+                <section class="col">
+                  <h1>見出し(.col_horizontal.col4>section.col>h1)</h1>
+                  <p>本文です(.col_horizontal.col4>section.col>p)</p>
+                </section>
+                <section class="col">
+                  <h1>見出し(h1)</h1>
+                  <p>本文です。ここに文章が入ります。ここに文章が入ります。ここに文章が入ります。(p)</p>
+                </section>
+                <section class="col">
+                  <h1>見出し(h1)</h1>
+                  <h2>見出し(h2)</h2>
+                  <p>本文です(p)</p>
+                </section>
+                <section class="col">
+                  <h1>見出し。ここに文章が入ります。(h1)</h1>
+                  <p>本文です(p)</p>
+                  <ul>
+                    <li>リスト項目1</li>
+                    <li>リスト項目2</li>
+                  </ul>
+                </section>
+              </div>
+            </section>
 
-						<section>
-							<h2>段組レイアウト(h2)</h2>
-							<h3>section使用 4段</h3>
-							<div class="col_horizontal col4">
-								<section class="col">
-									<h1>見出し(.col_horizontal.col4>section.col>h1)</h1>
-									<p>本文です(.col_horizontal.col4>section.col>p)</p>
-								</section>
-								<section class="col">
-									<h1>見出し(h1)</h1>
-									<p>本文です。ここに文章が入ります。ここに文章が入ります。ここに文章が入ります。(p)</p>
-								</section>
-								<section class="col">
-									<h1>見出し(h1)</h1>
-									<h2>見出し(h2)</h2>
-									<p>本文です(p)</p>
-								</section>
-								<section class="col">
-									<h1>見出し。ここに文章が入ります。(h1)</h1>
-									<p>本文です(p)</p>
-									<ul>
-										<li>リスト項目1</li>
-										<li>リスト項目2</li>
-									</ul>
-								</section>
-							</div>
+            <section>
+              <h2>段組レイアウト(h2)</h2>
+              <h3>li 使用 3段</h3>
+              <ul class="col_horizontal col3">
+                <li class="col">
+                  <h1>見出し(.col_horizontal.col4>li.col>h1)</h1>
+                  <p>本文です(.col_horizontal.col4>li.col>p)</p>
+                </li>
+                <li class="col">
+                  <h1>見出し(.col_horizontal.col4>li.col>h1)</h1>
+                  <p>本文です(.col_horizontal.col4>li.col>p)</p>
+                </li>
+                <li class="col">
+                  <h1>見出し(.col_horizontal.col4>li.col>h1)</h1>
+                  <p>本文です(.col_horizontal.col4>li.col>p)</p>
+                </li>
+                <li class="col">
+                  <h1>見出し(.col_horizontal.col4>li.col>h1)</h1>
+                  <p>本文です(.col_horizontal.col4>li.col>p)</p>
+                </li>
+                <li class="col">
+                  <h1>見出し(.col_horizontal.col4>li.col>h1)</h1>
+                  <p>本文です(.col_horizontal.col4>li.col>p)</p>
+                </li>
+              </ul>
+            </section>
 
-							<h3>サンプル_画像サムネイル風</h3>
-							<p>★色々と問題</p>
-							<div class="col_horizontal col4">
-								<section class="col">
-									<p><img src="../img_common/dummy_image.png" width="150" height="100" /></p>
-									<p>説明文です</p>
-								</section>
-								<section class="col">
-									<p><img src="../img_common/dummy_image.png" width="150" height="100" /></p>
-									<p>説明文です説明文です説明文です</p>
-								</section>
-								<section class="col">
-									<img src="../img_common/dummy_image.png" width="150" height="100" />
-									<p>説明文です</p>
-								</section>
-								<section class="col">
-									<img src="../img_common/dummy_image.png" width="150" height="100" />
-									<p>説明文です</p>
-								</section>
-								<section class="col">
-									<img src="../img_common/dummy_image.png" width="150" height="100" />
-									<p>説明文です</p>
-								</section>
-								<section class="col">
-									<img src="../img_common/dummy_image.png" width="150" height="100" />
-									<p>説明文です</p>
-								</section>
-								<section class="col">
-									<img src="../img_common/dummy_image.png" width="150" height="100" />
-									<p>説明文です</p>
-								</section>
-								<section class="col">
-									<img src="../img_common/dummy_image.png" width="150" height="100" />
-									<p>説明文です</p>
-								</section>
-							</div>
+            <section>
+              <h2>段組レイアウト(h2)</h2>
+              <h3>section使用 4段</h3>
+              <div class="col_horizontal col4">
+                <section class="col">
+                  <h1>見出し(.col_horizontal.col4>section.col>h1)</h1>
+                  <p>本文です(.col_horizontal.col4>section.col>p)</p>
+                </section>
+                <section class="col">
+                  <h1>見出し(h1)</h1>
+                  <p>本文です。ここに文章が入ります。ここに文章が入ります。ここに文章が入ります。(p)</p>
+                </section>
+                <section class="col">
+                  <h1>見出し(h1)</h1>
+                  <h2>見出し(h2)</h2>
+                  <p>本文です(p)</p>
+                </section>
+                <section class="col">
+                  <h1>見出し。ここに文章が入ります。(h1)</h1>
+                  <p>本文です(p)</p>
+                  <ul>
+                    <li>リスト項目1</li>
+                    <li>リスト項目2</li>
+                  </ul>
+                </section>
+              </div>
 
-							<h3>section使用 5段</h3>
-							<div class="col_horizontal col5">
-								<section class="col">
-									<h1>見出し(.col_horizontal.col4>section.col>h1)</h1>
-									<p>本文です(.col_horizontal.col4>section.col>p)</p>
-								</section>
-								<section class="col">
-									<h1>見出し(h1)</h1>
-									<p>本文です。ここに文章が入ります。ここに文章が入ります。ここに文章が入ります。(p)</p>
-								</section>
-								<section class="col">
-									<h1>見出し(h1)</h1>
-									<h2>見出し(h2)</h2>
-									<p>本文です(p)</p>
-								</section>
-								<section class="col">
-									<h1>見出し。ここに文章が入ります。(h1)</h1>
-									<p>本文です(p)</p>
-									<ul>
-										<li>リスト項目1</li>
-										<li>リスト項目2</li>
-									</ul>
-								</section>
-								<section class="col">
-									<h1>見出し(h1)</h1>
-									<p>本文です(p)</p>
-								</section><section class="col">
-									<h1>見出し(.col_horizontal.col4>section.col>h1)</h1>
-									<p>本文です(.col_horizontal.col4>section.col>p)</p>
-								</section>
-								<section class="col">
-									<h1>見出し(h1)</h1>
-									<p>本文です。ここに文章が入ります。ここに文章が入ります。ここに文章が入ります。(p)</p>
-								</section>
-								<section class="col">
-									<h1>見出し(h1)</h1>
-									<h2>見出し(h2)</h2>
-									<p>本文です(p)</p>
-								</section>
-								<section class="col">
-									<h1>見出し。ここに文章が入ります。(h1)</h1>
-									<p>本文です(p)</p>
-									<ul>
-										<li>リスト項目1</li>
-										<li>リスト項目2</li>
-									</ul>
-								</section>
-								<section class="col">
-									<h1>見出し(h1)</h1>
-									<p>本文です(p)</p>
-								</section>
-							</div>
+              <h3>サンプル_画像サムネイル風</h3>
+              <p>★色々と問題</p>
+              <div class="col_horizontal col4">
+                <section class="col">
+                  <p><img src="../img_common/dummy_image.png" width="150" height="100" /></p>
+                  <p>説明文です</p>
+                </section>
+                <section class="col">
+                  <p><img src="../img_common/dummy_image.png" width="150" height="100" /></p>
+                  <p>説明文です説明文です説明文です</p>
+                </section>
+                <section class="col">
+                  <img src="../img_common/dummy_image.png" width="150" height="100" />
+                  <p>説明文です</p>
+                </section>
+                <section class="col">
+                  <img src="../img_common/dummy_image.png" width="150" height="100" />
+                  <p>説明文です</p>
+                </section>
+                <section class="col">
+                  <img src="../img_common/dummy_image.png" width="150" height="100" />
+                  <p>説明文です</p>
+                </section>
+                <section class="col">
+                  <img src="../img_common/dummy_image.png" width="150" height="100" />
+                  <p>説明文です</p>
+                </section>
+                <section class="col">
+                  <img src="../img_common/dummy_image.png" width="150" height="100" />
+                  <p>説明文です</p>
+                </section>
+                <section class="col">
+                  <img src="../img_common/dummy_image.png" width="150" height="100" />
+                  <p>説明文です</p>
+                </section>
+              </div>
+
+              <h3>section使用 5段</h3>
+              <div class="col_horizontal col5">
+                <section class="col">
+                  <h1>見出し(.col_horizontal.col4>section.col>h1)</h1>
+                  <p>本文です(.col_horizontal.col4>section.col>p)</p>
+                </section>
+                <section class="col">
+                  <h1>見出し(h1)</h1>
+                  <p>本文です。ここに文章が入ります。ここに文章が入ります。ここに文章が入ります。(p)</p>
+                </section>
+                <section class="col">
+                  <h1>見出し(h1)</h1>
+                  <h2>見出し(h2)</h2>
+                  <p>本文です(p)</p>
+                </section>
+                <section class="col">
+                  <h1>見出し。ここに文章が入ります。(h1)</h1>
+                  <p>本文です(p)</p>
+                  <ul>
+                    <li>リスト項目1</li>
+                    <li>リスト項目2</li>
+                  </ul>
+                </section>
+                <section class="col">
+                  <h1>見出し(h1)</h1>
+                  <p>本文です(p)</p>
+                </section><section class="col">
+                  <h1>見出し(.col_horizontal.col4>section.col>h1)</h1>
+                  <p>本文です(.col_horizontal.col4>section.col>p)</p>
+                </section>
+                <section class="col">
+                  <h1>見出し(h1)</h1>
+                  <p>本文です。ここに文章が入ります。ここに文章が入ります。ここに文章が入ります。(p)</p>
+                </section>
+                <section class="col">
+                  <h1>見出し(h1)</h1>
+                  <h2>見出し(h2)</h2>
+                  <p>本文です(p)</p>
+                </section>
+                <section class="col">
+                  <h1>見出し。ここに文章が入ります。(h1)</h1>
+                  <p>本文です(p)</p>
+                  <ul>
+                    <li>リスト項目1</li>
+                    <li>リスト項目2</li>
+                  </ul>
+                </section>
+                <section class="col">
+                  <h1>見出し(h1)</h1>
+                  <p>本文です(p)</p>
+                </section>
+              </div>
 
 
 
-							<div class="img_text_parallel">
-							    <img class="img_area" src="http://wpdotorg.files.wordpress.com/2008/11/boat.jpg" alt="代替えテキスト" width="200" height="150" />
-							    <p class="text_area">写真の下に文字が回り込まないレイアウトです。ここに文章が入ります。ここに文章が入ります。ここに文章が入ります。</p>
-							</div>
-
-							<h3>リスト使用 3段(h2)</h3>
-							<div class="col_horizontal col3 img_text_parallel">
-								<ul class="col_horizontal_inner">
-									<li class="col">
-  								  <p class="img_area"><a href="#"><img src="" alt="" width="175" height="250" /></a></p>
-  								  <div class="text_area">
-										  <h1>見出し(h1)</h1>
-										  <p>本文です。本文です。ここに文章が入ります。ここに文章が入ります。ここに文章が入ります。(p)</p>
-  								  </div>
-									</li>
-									<li class="col">
-  								  <p class="img_area"><a href="#"><img src="" alt="" width="175" height="250" /></a></p>
-  								  <div class="text_area">
-										  <h1>見出し(h1)</h1>
-										  <p>本文です。本文です。ここに文章が入ります。ここに文章が入ります。ここに文章が入ります。(p)</p>
-  								  </div>
-									</li>
-								</ul>
-							</div>
-						</section>
 
 
-					<!--/.article_body-->
-					</div>
+              <h3>★★写真の下に文字が回り込まないレイアウトと組合せ(h2)</h3>
+
+              <h4>段組なし</h4>
+              <div class="img_text_parallel">
+                <img class="img_area" src="http://wpdotorg.files.wordpress.com/2008/11/boat.jpg" alt="代替えテキスト" width="200" height="150" />
+                <p class="text_area">写真の下に文字が回り込まないレイアウトです。ここに文章が入ります。ここに文章が入ります。ここに文章が入ります。</p>
+              </div>
+
+              <h4>段組み</h4>
+              <ul class="col_horizontal col2 img_text_parallel">
+                <li class="col">
+                  <img class="img_area" src="http://wpdotorg.files.wordpress.com/2008/11/boat.jpg" alt="代替えテキスト" width="160" />
+                  <p class="text_area">本文です。本文です。ここに文章が入ります。ここに文章が入ります。ここに文章が入ります。(p)</p>
+                </li>
+                <li class="col">
+                  <p class="img_area"><a href="#"><img src="http://wpdotorg.files.wordpress.com/2008/11/boat.jpg" alt="" width="160" /></a></p>
+                  <div class="text_area">
+                    <h1>見出し(h1)</h1>
+                    <p>本文です。本文です。ここに文章が入ります。ここに文章が入ります。ここに文章が入ります。(p)</p>
+                  </div>
+                </li>
+              </ul>
+            </section>
+
+
+          <!--/.article_body-->
+          </div>
 
 
         </article>
@@ -320,6 +350,14 @@
     // excute when the page is roaded/resized
     // 適用したい要素をセット
     $(window).load(function() {
+      equalheight('.col_horizontal .col');
+    });
+    $(window).resize(function() {
+      equalheight('.col_horizontal .col');
+    });
+    /*
+    //スマートフォン非対応の場合
+    $(window).load(function() {
       if($('body').width() >= 481){
         equalheight('.col_horizontal .col');
       }
@@ -329,6 +367,7 @@
         equalheight('.col_horizontal .col');
       }
     });
+    */
   </script>
 
 

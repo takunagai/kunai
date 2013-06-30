@@ -18,12 +18,15 @@ b {
 	float: right;
 	width: 30%;
 	margin: .5em 0 .5em 1em;
+	/*以下装飾用*/
+	padding: 15px;
 	font-family:"ヒラギノ明朝 Pro W6", "Hiragino Mincho Pro", "HGS明朝E", "ＭＳ Ｐ明朝", serif;
-	font-weight: bold;
 	font-size: 1.25em;
+	font-weight: bold;
+	-webkit-font-smoothing: subpixel-antialiased;/*Safariでより目立たせるため*/
 	line-height: 1.4;
 	color: maroon;
-	-webkit-font-smoothing: subpixel-antialiased;
+	background-color: #E7E7E7;
 }
   </style>
 </head>
@@ -34,7 +37,7 @@ b {
 <h1>data属性を利用して本文の一部を抜き出し表示して目立たせる。要jQuery</h1>
 <p>参考元：<a href="http://miekd.com/articles/pull-quotes-with-html5-and-css/">http://miekd.com/articles/pull-quotes-with-html5-and-css/</a><br />
 参考本：<a href="http://codepen.io/aarongustafson/pen/zxKdh">http://codepen.io/aarongustafson/pen/zxKdh</a></p>
-<p>お客様の声を一部抜き出して目立たせる時などに使えるかも。要IE8以下検証。要jQuery。スマートフォンサイズだと幅が狭くなりすぎて厳しいので非表示の方がいいか（JavaScriptで幅判定が良さそう？）</p>
+<p>お客様の声を一部抜き出して目立たせる時などに使えるかも。要IE8以下検証。要jQuery。スマートフォンサイズだと幅が狭くなりすぎて厳しいので非表示（JavaScriptに幅判定して分岐する処理？）または float 解除か？</p>
 
 <hr />
 

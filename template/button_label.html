@@ -56,56 +56,58 @@
 
             <section>
               <h2>ボタン New</h2>
-              <p>
-                SVGを使用したボタン。ボーダーをグレースケールの RGBA で<br />
-                ★★クラス名や細かい設定など調整。対応はIE９以降。IE8対応できるか？
-              </p>
-              <p>参考元：<a href="http://terkel.jp/archives/2012/11/gradients-and-borders-using-grayscale-rgba/">http://terkel.jp/archives/2012/11/gradients-and-borders-using-grayscale-rgba/</a></p>
-              <p>ボタンのデザインは <a href="http://css3button.net/">CSS3 Button Generator</a> などで直感的に調整できる。</p>
+              <ul>
+                <li>SVG（ここではグレースケールのRGBA）で立体感を出したボタン。透過グレーグラデーションなので地色は何でもO.K.</li>
+                <li>参考元：<a href="http://terkel.jp/archives/2012/11/gradients-and-borders-using-grayscale-rgba/">http://terkel.jp/archives/2012/11/gradients-and-borders-using-grayscale-rgba/</a></li>
+                <li>ボタンのデザインは <a href="http://css3button.net/">CSS3 Button Generator</a> などで直感的に調整できる。</li>
+                <li><a href="http://code.google.com/p/svg-edit/">SVC作成ツール svg-edit</a>（demoでも作れる）</li>
+                <li>★★IE8対応にこれにCSSハックでIE8以下のみ画像読み込ませる方法はいいかも。<a href="http://code-plus.jp/css-and-css3/bg-svg-with-png-fallback/">IE9未満はpng、それ以外はsvgを表示</a></li>
+              </ul>
 
               <h3>button タグ</h3>
               <h4>種類</h4>
               <button class="button">button.button</button>
               <button class="button_colored">.button_colored</button>
               <button class="button_strong">.button_strong</button>
-              <button class="button_pill">.button_pill</button>
+              <button class="button_round">.button_round</button>
               <h4>小さいボタン</h4>
               <button class="button small">.button.small</button>
               <button class="button_colored small">.button_colored.small</button>
               <button class="button_strong small">.button_strong.small</button>
-              <button class="button_pill small">.button_pill.small</button>
+              <button class="button_round small">.button_round.small</button>
               <h4>大きいボタン</h4>
               <button class="button large">.button.large</button>
               <button class="button_colored large">.button_colored.large</button>
               <button class="button_strong large">.button_strong.large</button>
-              <button class="button_pill large">.button_pill.large</button>
+              <button class="button_round large">.button_round.large</button>
               <h4>選択状態</h4>
               <button class="button selected">button.selected</button>
               <button class="button_colored selected">.button_colored.selected</button>
               <button class="button_strong selected">.button_strong.selected</button>
-              <button class="button_pill selected">.button_pill.selected</button>
+              <button class="button_round selected">.button_round.selected</button>
               <h4>Disable</h4>
               <button class="button disabled">.button.disabled</button>
               <button class="button_colored disabled">.button_colored.disabled</button>
               <button class="button_strong disabled">.button_strong.disabled</button>
-              <button class="button_pill disabled">.button_pill.disabled</button>
+              <button class="button_round disabled">.button_round.disabled</button>
               <h4>幅いっぱい</h4>
               <button class="button fullwidth">.button.fullwidth</button>
               <button class="button_colored fullwidth">.button_colored.fullwidth</button>
               <button class="button_strong fullwidth">.button_strong.fullwidth</button>
-              <button class="button_pill fullwidth">.button_pill.fullwidth</button>
+              <button class="button_round fullwidth">.button_round.fullwidth</button>
 
               <h3>a タグ</h3>
               <a href="#" class="button">a.button</a>
               <a href="#" class="button_colored">a.button_colored</a>
               <a href="#" class="button_strong">a.button_strong</a>
-              <a href="#" class="button_pill">a.button_pill</a>
+              <a href="#" class="button_round">a.button_round</a>
+              <a href="http://google.com/" class="button_colored">外部サイト</a>
 
               <h3>補足付きボタン</h3>
               <button class="button large">.button.large<small>補足説明が入ります(small)</small></button>
               <button class="button_colored large">.button_colored.large<small>補足説明が入ります(small)</small></button>
               <button class="button_strong large">.button_strong.large<small>補足説明が入ります(small)</small></button>
-              <button class="button_pill large">.button_pill.large<small>補足説明が入ります(small)</small></button>
+              <button class="button_round large">.button_round.large<small>補足説明が入ります(small)</small></button>
 
               <h3>ボタングループ 横並び</h3>
               <div class="button_group">
@@ -117,10 +119,10 @@
               <div class="button_group">
                 <button class="button selected">Selected</button>
                 <button class="button">Enabled</button>
-                <button class="button" disabled>Disabled</button>
+                <button class="button disabled">Disabled</button>
               </div>
 
-              <h3>ボタングループ 横並び</h3>
+              <h3>ボタングループ 縦並び</h3>
               <div class="button_group_vertical">
                 <button class="button">First</button>
                 <button class="button">Middle</button>
@@ -130,10 +132,15 @@
               <div class="button_group_vertical">
                 <button class="button selected">Selected</button>
                 <button class="button">Enabled</button>
-                <button class="button" disabled>Disabled</button>
+                <button class="button disabled">Disabled</button>
               </div>
             </section>
 
+            <h3>アイコンWebフォントとの併用</h3>
+            <button class="button"><i class="icon-information_white"></i> もっと詳しく</button>
+            <button class="button_colored large"><i class="icon-mail"></i> メールを送る</button>
+            <button class="button large"><i class="icon-list icon2x"></i> 一覧を見る</button>
+            <button class="button_strong large"><i class="icon-download icon2x"></i> ダウンロード<small>Zip(25.6KB)</small></button>
 
 
             <section>
@@ -141,6 +148,7 @@
               <p>
                 ラベルのサンプル<span class="label">ラベル</span>です。<br />
                 <span class="label">span.label</span>
+                <a href="../index.html"><span class="label">リンク付き</span></a>
                 <span class="label_red">span.label_red</span>
                 <span class="label_orange">span.label_orange</span>
                 <span class="label_yellow">span.label_yellow</span>
@@ -154,10 +162,26 @@
 
             <section>
               <h2>アラート(h2)</h2>
+
+              <h3>一行単位（p要素）</h3>
               <section>
                 <p class="alert">アラートが表示されます。</p>
                 <p class="alert strong">アラートが表示されます。</p>
               </section>
+
+              <h3>ブロック単位（section要素、div要素）</h3>
+              <section class="alert">
+                <ul>
+                  <li>アラートが表示されます。</li>
+                  <li>アラートが表示されます。</li>
+                </ul>
+              </section>
+              <div class="alert">
+                <ul>
+                  <li>アラートが表示されます。</li>
+                  <li>アラートが表示されます。</li>
+                </ul>
+              </div>
             </section>
 
 

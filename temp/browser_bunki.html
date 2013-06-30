@@ -3,30 +3,48 @@
 <head>
 	<meta charset="utf-8" />
   <title>条件付きコメントでブラウザごとに分岐させる旧IE対策</title>
+
   <!--[if (gte IE 6)&(lte IE 8)]>
-    <script src="//code.jquery.com/jquery-latest.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-git.min.js"></script>
   <![endif]-->
   <!--[if (!IE)|(IE 9)]><!-->
-    <script src="//code.jquery.com/jquery-2.0.0b2.min.js"></script>
+    <script src="http://code.jquery.com/jquery-2.0.0b2.min.js"></script>
   <!--<![endif]-->
+
+  <!--[if (!IE)|(gte IE 8)]><!--><link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/normalize/2.1.0/normalize.css" media="all" /><!--<![endif]-->
+  <!--[if lte IE 7]><link rel="stylesheet" href="http://necolas.github.io/normalize.css/1.1.0/normalize.css" media="all" /><![endif]-->
 </head>
 
 
 <body>
 
   <h1>条件付きコメントでブラウザごとに分岐させる旧IE対策</h1>
-  <p>実用的なもののみ載せた。サンプルコード下のグレー枠の箇所に表示される。テストはIE10のF12開発者メニューのブラウザモードでバージョンを切り替えることで行った（実ブラウザは未検証）</p>
-  <p>IE10の標準モードとQuirksモードは条件付きコメントをサポートしておらず、IEとはみなさず他のモダンブラウザ扱いとみなすこと。IEではないという条件にも関わらず、IE10は真となるのでややこしい。[if gte IE 9]としても適用されないので注意。</p>
-  <p>IE以外のブラウザのみ適用させる場合の記述は形式が異なっているので注意。<a href="http://ja.wikipedia.org/wiki/条件付きコメント">条件付きコメント - Wikipedia</a> のダウンレベルから見える条件付きコメントの項が参考になった。</p>
-  <p>★★<a href="">» 条件付きコメントとPolyfill</a></p>
+  <ul>
+    <li>実用的なもののみ載せた。サンプルコード下のグレー枠の箇所に表示される。テストはIE10のF12開発者メニューのブラウザモードでバージョンを切り替えることで行った（実ブラウザは未検証）</li>
+    <li>条件 IE はIE10を含まない（= !IE はIE10を含む）。つまり、[if gte IE 9]としても適用されないので注意。IE10の標準モードとQuirksモードは条件付きコメントをサポートしておらず、条件付きコメントに関しては、IEではなく他のモダンブラウザと同じとみなすこと。</li>
+    <li>IE以外のブラウザのみ適用させる場合の記述は形式が微妙に異なっているので注意。<a href="http://ja.wikipedia.org/wiki/条件付きコメント">条件付きコメント - Wikipedia</a> のダウンレベルから見える条件付きコメントの項が参考になった。</li>
+    <li>★★作る<a href="">» 条件付きコメントとPolyfill</a></li>
+  </ul>
 
-  <h2>IE10とその他モダンブラウザにはjQuery2.0、旧いIEにはjQuery1.9xを読みこませる</h2>
+
+
+  <h2>IE10とその他モダンブラウザにはjQuery2.0、旧いIEにはjQuery1.9x と migrate.jsを読みこませる</h2>
   <pre><code>&lt;!--[if (gte IE 6)&amp;(lte IE 8)]&gt;
   &lt;script src=&quot;//code.jquery.com/jquery-latest.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;//code.jquery.com/jquery-migrate-git.min.js&quot;&gt;&lt;/script&gt;
 &lt;![endif]--&gt;
 &lt;!--[if (!IE)|(IE 9)]&gt;&lt;!--&gt;
   &lt;script src=&quot;//code.jquery.com/jquery-2.0.0b2.min.js&quot;&gt;&lt;/script&gt;
 &lt;!--&lt;![endif]--&gt;</code></pre>
+
+
+
+  <h2>IE8以上とモダンブラウザ（IE10含む）には normalize.css(v2.x)、IE7以下には normalize.css(v1.1)を読みこませる</h2>
+  <p>★★要テスト。<a href="http://necolas.github.io/normalize.css/">normalize.css</a></p>
+  <pre><code>&lt;!--[if (!IE)|(gte IE 8)]&gt;&lt;!--&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;//cdnjs.cloudflare.com/ajax/libs/normalize/2.1.0/normalize.css&quot; media=&quot;all&quot; /&gt;&lt;!--&lt;![endif]--&gt;
+&lt;!--[if lte IE 7]&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;http://necolas.github.io/normalize.css/1.1.0/normalize.css&quot; media=&quot;all&quot; /&gt;&lt;![endif]--&gt;</code></pre>
+
 
 
   <h2>IE8以下（IE6/7/8）のみ適用</h2>

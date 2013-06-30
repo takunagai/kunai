@@ -134,6 +134,7 @@
   <script>window.jQuery || document.write('<script src="../js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
   <script src="../js/plugins.js"></script>
   <script src="../js/main.min.js"></script>
+  <script src="../js/vendor/prettyprint.js"></script>
 
   <script>
     //Androidの場合のみ iscroll-lite.js を読みこませる
@@ -144,65 +145,6 @@
   </script>
 
 
-  <script>
-    //列ごとに高さを揃える。IE7/8も対応
-    /* Equal Height Blocks in Rows by CHRIS COYIER(CSS Tricks)
-    http://css-tricks.com/equal-height-blocks-in-rows/
-    http://codepen.io/micahgodbolt/full/FgqLc
-    It's been modified into a function called at page load and then each time the page is resized.
-    One large modification was to remove the set height before each new calculation. */
-    equalheight = function(container) {
-
-      var currentTallest = 0,
-        currentRowStart = 0,
-        rowDivs = new Array(),
-        $el,
-        topPosition = 0;
-
-      $(container).each(function() {
-
-        $el = $(this);
-        $($el).height('auto'); // added
-        topPostion = $el.position().top;
-
-        if (currentRowStart != topPostion) {
-
-          // we just came to a new row.  Set all the heights on the completed row
-          for (currentDiv = 0; currentDiv < rowDivs.length; currentDiv++) {
-            rowDivs[currentDiv].height(currentTallest);
-          }
-
-          // set the variables for the new row
-          rowDivs.length = 0; // empty the array
-          currentRowStart = topPostion;
-          currentTallest = $el.height();
-          rowDivs.push($el);
-        }
-        else {
-          // another div on the current row.  Add it to the list and check if it's taller
-          rowDivs.push($el);
-          currentTallest = (currentTallest < $el.height()) ? ($el.height()) : (currentTallest);
-        }
-        // do the last row
-        for (currentDiv = 0; currentDiv < rowDivs.length; currentDiv++) {
-          rowDivs[currentDiv].height(currentTallest);
-        }
-      });
-    }
-
-    // excute when the page is roaded/resized
-    // 適用したい要素をセット
-    $(window).load(function() {
-      if($('body').width() >= 481){
-        equalheight('.col_horizontal .col');
-      }
-    });
-    $(window).resize(function() {
-      if($('body').width() >= 481){
-        equalheight('.col_horizontal .col');
-      }
-    });
-  </script>
 
 
   <!-- * * * Polyfils for old IE * * * -->

@@ -1,0 +1,165 @@
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  *behavior: url(../js/vendor/boxsizing.htc);
+}
+
+img {
+  max-width: 100% !important;
+  height: auto !important;
+  width: auto\9;//IE6-8 but and 9.. :(
+}
+
+.clearfix {
+  *zoom: 1;
+  &:before,&:after {
+    display: block;
+    height: 0;
+    visibility: hidden;
+    content: "\0020";//space
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+$mq_s:  "only screen and (max-width:532px)";
+$mq_sm: "only screen and (max-width:800px)";
+$mq_m:  "only screen and (min-width:533px) and (max-width:800px)";
+$mq_ml: "only screen and (min-width:533px)";
+$mq_l:  "only screen and (min-width:801px)";
+//使用 @media #{$mq_s} {}
+
+/* - - - - - - - ここまで全体に定義済→統合時に削除 - - - - - - - */
+
+//Setting
+$gutter_width:   2%;//幅を考慮する必要がある
+$cell_padding: 15px;//box-sizing: border-box;してるので考慮しなくていい
+
+//Common
+.grid_block,
+.grid_block .cell {
+  *zoom: 1;
+  @extend .clearfix;
+}
+
+//ul.grid_block {padding-left: 0;}
+.grid_block {
+  .cell {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding: $cell_padding;
+    .img_area {
+      margin-top: 0;
+      text-align: center;
+    }
+  }
+  li.cell {
+    background: none;
+    padding-left: $cell_padding !important;
+  }
+
+  //以下 h1 と p 大元のSCSSで指定済なら不要
+  h1 {
+    margin: 1em 0 0.5em;
+    &:first-child {margin-top: 0;}
+  }
+  p {
+    &:first-child {margin-top: 0;}
+    &:last-child {margin-bottom: 0;}
+  }
+
+  &.float_img .cell {
+    h1 {
+      word-break: break-all !important;//not working.. :(
+    }
+    img {
+      float: left;
+      margin-right: 10px;
+      margin-bottom: 5px;
+      vertical-align: bottom;
+    }
+  }
+  li.cell {
+    padding-left: 0;
+    list-style: none;
+  }
+
+}
+
+//引数nカラム時の1カラムの幅を計算するミックスイン
+@mixin cellWidth($cellNum) {
+  width: (100% - ($gutter_width * ($cellNum - 1))) / $cellNum;
+}
+@mixin cellx2Width($cellNum) {
+  width: ((100% - ($gutter_width * ($cellNum - 1))) / $cellNum) * 2 + $gutter_width;
+}
+@mixin cellx3Width($cellNum) {
+  width: ((100% - ($gutter_width * ($cellNum - 1))) / $cellNum) * 3 + ($gutter_width * 2);
+}
+
+//Smartphone
+@media only screen and (max-width: 480px) {
+  .grid_block .cell {
+    clear: left;
+  }
+  .grid_block.minimize_img .cell {
+    clear: left;
+    .img_area {
+      float: left;
+      max-width: 40% !important;//適宜調整
+      margin-right: 20px;
+    }
+    .text_area {
+      overflow: hidden;
+      _zoom: 1;_height: 1%;//IE6
+    }
+  }
+  .grid_block.mobile_2col .cell,
+  .grid_block.mobile_3col .cell {
+    clear: none;
+    float: left;
+    margin-left: $gutter_width;
+  }
+  .grid_block.mobile_2col .cell {
+    @include cellWidth(2); width: 48%\9;//後者はIE6-8、適宜調整
+    &:nth-child(2n+1) {margin-left: 0;}
+  }
+  .grid_block.mobile_3col .cell {
+    @include cellWidth(3); width: 31%\9;//後者はIE6-8、適宜調整
+    &:nth-child(3n+1) {margin-left: 0;}
+  }
+}
+
+//Tablet & Desktop
+@media only screen and (min-width: 481px) {
+  .grid_block {
+    .cell {
+      float: left;
+      margin-left: $gutter_width;
+    }
+
+    &.cells2 .cell {@include cellWidth(2); width: 48%\9}//後者はIE6-8、適宜調整
+    &.cells3 .cell {@include cellWidth(3); width: 31%\9}
+    &.cells4 .cell {@include cellWidth(4); width: 21%\9}
+    &.cells5 .cell {@include cellWidth(5); width: 18%\9}
+    //以下、上記のミックスインに入れない方がドライなCSSになる
+    &.cells2 .cell:nth-child(2n+1),
+    &.cells3 .cell:nth-child(3n+1),
+    &.cells4 .cell:nth-child(4n+1),
+    &.cells5 .cell:nth-child(5n+1) {
+      margin-left: 0;
+    }
+    //2つのボックスを融合
+    &.cells3 .cell.cellx2 {@include cellx2Width(3); width: 62%\9}
+    &.cells4 .cell.cellx2 {@include cellx2Width(4); width: 41%\9}
+    &.cells5 .cell.cellx2 {@include cellx2Width(5); width: 36%\9}
+    //3つのボックスを融合
+
+    &.cells4 .cell.cellx3 {@include cellx3Width(4); width: 63%\9}
+    &.cells5 .cell.cellx3 {@include cellx3Width(5); width: 54%\9}
+  }
+}

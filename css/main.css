@@ -25,7 +25,7 @@
  -------------------------------------------------------
  [備考]
   1.SCSSで記述
-  2._nomarize.scss, _css3.scss, _font_awesome.scss を読み込みマージ
+  2._nomarize.scss, _css3.scss, WebFontCSS(_font_awesome.scss etc.)を読み込みマージ
   3.見出し用コメントはCodaのコードナビゲーターに表示されるよう "!" 付きで記述
   4.★★が付いてるとこは未解決の課題。不具合あるかも
   5.コーティング規約 http://stack3.com/tools/coding_rule.html
@@ -1193,6 +1193,22 @@ i, .icon {
   *behavior: url(../js/vendor/boxsizing.htc);
 }
 
+/*画像と動画の最大幅を画面幅に*/
+img {
+  max-width: 100% !important;
+  height: auto !important;
+  width: auto\9;
+  /*or -ms-interpolation-mode: bicubic;*/
+}
+
+.video embed,
+.video object,
+.video iframe {
+  /*埋込動画の最適化*/
+  width: 100% !important;
+  height: auto !important;
+}
+
 /*ページ基本
 ----------------------------------- */
 .chromeframe {
@@ -1410,7 +1426,7 @@ a:visited {
 /*外部リンクのマーカー（記事部のみ、画像は除く）*/
 article a[href^="http"] {
   padding-right: 14px;
-  background: url(../img_common/ico_external_link.png) no-repeat right top;
+  background: url(../img_common/ico_external_link.gif) no-repeat right top;
 }
 
 article a[href^="http"] img {
@@ -1592,19 +1608,23 @@ a:active img {
 /*====================================*/
 /*clearfix
 ----------------------------------- */
-.clearfix, #container, .col_horizontal, .img_text_parallel,
+.clearfix, #container, .col_horizontal, .grid_block,
+.grid_block .cell, .img_text_parallel,
 .text_img_parallel, #hatena-bookmark-widget0.hatena-bookmark-widget-notheme, #unav, #main_menu, #topic_path, #footer_sections {
   *zoom: 1;
 }
-.clearfix:before, #container:before, .col_horizontal:before, .img_text_parallel:before,
-.text_img_parallel:before, #hatena-bookmark-widget0.hatena-bookmark-widget-notheme:before, #unav:before, #main_menu:before, #topic_path:before, #footer_sections:before, .clearfix:after, #container:after, .col_horizontal:after, .img_text_parallel:after,
+.clearfix:before, #container:before, .col_horizontal:before, .grid_block:before,
+.grid_block .cell:before, .img_text_parallel:before,
+.text_img_parallel:before, #hatena-bookmark-widget0.hatena-bookmark-widget-notheme:before, #unav:before, #main_menu:before, #topic_path:before, #footer_sections:before, .clearfix:after, #container:after, .col_horizontal:after, .grid_block:after,
+.grid_block .cell:after, .img_text_parallel:after,
 .text_img_parallel:after, #hatena-bookmark-widget0.hatena-bookmark-widget-notheme:after, #unav:after, #main_menu:after, #topic_path:after, #footer_sections:after {
   display: block;
   height: 0;
   visibility: hidden;
   content: "\0020";
 }
-.clearfix:after, #container:after, .col_horizontal:after, .img_text_parallel:after,
+.clearfix:after, #container:after, .col_horizontal:after, .grid_block:after,
+.grid_block .cell:after, .img_text_parallel:after,
 .text_img_parallel:after, #hatena-bookmark-widget0.hatena-bookmark-widget-notheme:after, #unav:after, #main_menu:after, #topic_path:after, #footer_sections:after {
   clear: both;
 }
@@ -1655,13 +1675,13 @@ section.article_summary ul.pdf li {
 article .faq_question,
 section.article_summary .faq_question {
   padding-left: 16px;
-  background: url(../img_common/lm_faq_q.png) no-repeat left 0.5em;
+  background: url(../img_common/lm_faq_q.png) no-repeat left 0.4em;
 }
 
 article .faq_answer,
 section.article_summary .faq_answer {
   padding-left: 16px;
-  background: url(../img_common/lm_faq_a.png) no-repeat left 0.5em;
+  background: url(../img_common/lm_faq_a.png) no-repeat left 0.4em;
 }
 
 /*警告*/
@@ -1683,7 +1703,7 @@ section.article_summary ul.caution li {
 /*横並びリスト*/
 /* 枠内記事・囲み記事 */
 /*====================================*/
-.framed_a, #infomation_pagetop,
+.framed_a, .col_horizontal .col, #infomation_pagetop,
 .framed_b,
 #hatena-bookmark-widget0.hatena-bookmark-widget-notheme,
 #table_of_contents,
@@ -1698,22 +1718,25 @@ section.article_summary ul.caution li {
 .tweeted_comments,
 .facebook_comments,
 .framed_d,
+.grid_block .cell,
 .framed_e {
   margin: 1em 0;
-  padding: 10px;
+  padding: 15px;
 }
 
-.framed_a, #infomation_pagetop {
-  -moz-box-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
-  margin: 1em 0 2em;
+.framed_a, .col_horizontal .col, #infomation_pagetop {
+  border: 1px solid #CCC;
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   background: rgba(255, 255, 255, 0.4) !important;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
 }
 
 .framed_b, #hatena-bookmark-widget0.hatena-bookmark-widget-notheme, #table_of_contents, #improved, #pages_of_reference, .reactions, .next_previous,
 .related_articles, .related_books, .ad_1 {
-  margin: 1em 20px 2em !important;
   border: 1px solid #999;
 }
 
@@ -1727,16 +1750,23 @@ section.article_summary ul.caution li {
 
 .framed_e {
   background-color: #FFF;
-  border: 1px solid #999;
+  border: 1px solid #265984;
 }
 .framed_e h1 {
-  margin: -10px -10px 5px -10px !important;
+  margin: 0 -15px 5px -15px !important;
   padding: 3px 10px !important;
-  background-color: #999;
+  background-color: #265984;
   color: #FFF;
 }
+.framed_e h1:first-child {
+  margin-top: -15px !important;
+}
+.framed_e h2 {
+  font-size: 14px;
+  font-size: 1.4rem;
+}
 
-article .framed_a h1, article #infomation_pagetop h1,
+article .framed_a h1, article .col_horizontal .col h1, .col_horizontal article .col h1, article #infomation_pagetop h1,
 article .framed_b h1,
 article #hatena-bookmark-widget0.hatena-bookmark-widget-notheme h1,
 article #table_of_contents h1,
@@ -1751,10 +1781,14 @@ article .framed_c h1,
 article .tweeted_comments h1,
 article .facebook_comments h1,
 article .framed_d h1,
+article .grid_block .cell h1,
+.grid_block article .cell h1,
 article .framed_e h1 {
-  font-size: 1em;
+  margin: 1.5em 0 1em 0;
+  font-size: 14px;
+  font-size: 1.4rem;
 }
-article .framed_a h1:first-child, article #infomation_pagetop h1:first-child,
+article .framed_a h1:first-child, article .col_horizontal .col h1:first-child, .col_horizontal article .col h1:first-child, article #infomation_pagetop h1:first-child,
 article .framed_b h1:first-child,
 article #hatena-bookmark-widget0.hatena-bookmark-widget-notheme h1:first-child,
 article #table_of_contents h1:first-child,
@@ -1769,10 +1803,54 @@ article .framed_c h1:first-child,
 article .tweeted_comments h1:first-child,
 article .facebook_comments h1:first-child,
 article .framed_d h1:first-child,
+article .grid_block .cell h1:first-child,
+.grid_block article .cell h1:first-child,
 article .framed_e h1:first-child {
-  margin-top: 0;
+  margin-top: .5em;
 }
-article .framed_a h2, article #infomation_pagetop h2,
+article .framed_a h2, article .col_horizontal .col h2, .col_horizontal article .col h2, article #infomation_pagetop h2, article .framed_a h3, article .col_horizontal .col h3, .col_horizontal article .col h3, article #infomation_pagetop h3,
+article .framed_b h2,
+article #hatena-bookmark-widget0.hatena-bookmark-widget-notheme h2,
+article #table_of_contents h2,
+article #improved h2,
+article #pages_of_reference h2,
+article .reactions h2,
+article .next_previous h2,
+article .related_articles h2,
+article .related_books h2,
+article .ad_1 h2,
+article .framed_b h3,
+article #hatena-bookmark-widget0.hatena-bookmark-widget-notheme h3,
+article #table_of_contents h3,
+article #improved h3,
+article #pages_of_reference h3,
+article .reactions h3,
+article .next_previous h3,
+article .related_articles h3,
+article .related_books h3,
+article .ad_1 h3,
+article .framed_c h2,
+article .tweeted_comments h2,
+article .facebook_comments h2,
+article .framed_c h3,
+article .tweeted_comments h3,
+article .facebook_comments h3,
+article .framed_d h2,
+article .grid_block .cell h2,
+.grid_block article .cell h2,
+article .framed_d h3,
+article .grid_block .cell h3,
+.grid_block article .cell h3,
+article .framed_e h2,
+article .framed_e h3 {
+  margin: 1em 0 .75em !important;
+  padding: 0;
+  font-size: 12px;
+  font-size: 1.2rem;
+  background: none;
+  border: none;
+}
+article .framed_a h2, article .col_horizontal .col h2, .col_horizontal article .col h2, article #infomation_pagetop h2,
 article .framed_b h2,
 article #hatena-bookmark-widget0.hatena-bookmark-widget-notheme h2,
 article #table_of_contents h2,
@@ -1787,37 +1865,206 @@ article .framed_c h2,
 article .tweeted_comments h2,
 article .facebook_comments h2,
 article .framed_d h2,
+article .grid_block .cell h2,
+.grid_block article .cell h2,
 article .framed_e h2 {
-  background: none;
-  font-size: 1em;
+  color: #333333 !important;
+  line-height: 1;
+  text-shadow: none;
+  box-shadow: none;
+  border-radius: none;
 }
-article .framed_a h3, article #infomation_pagetop h3,
-article .framed_b h3,
-article #hatena-bookmark-widget0.hatena-bookmark-widget-notheme h3,
-article #table_of_contents h3,
-article #improved h3,
-article #pages_of_reference h3,
-article .reactions h3,
-article .next_previous h3,
-article .related_articles h3,
-article .related_books h3,
-article .ad_1 h3,
-article .framed_c h3,
-article .tweeted_comments h3,
-article .facebook_comments h3,
-article .framed_d h3,
-article .framed_e h3 {
-  background: none;
-  border: none;
-  margin-left: 0;
-  font-size: 1em;
+article .framed_a p.text_area, article .col_horizontal .col p.text_area, .col_horizontal article .col p.text_area, article #infomation_pagetop p.text_area,
+article .framed_b p.text_area,
+article #hatena-bookmark-widget0.hatena-bookmark-widget-notheme p.text_area,
+article #table_of_contents p.text_area,
+article #improved p.text_area,
+article #pages_of_reference p.text_area,
+article .reactions p.text_area,
+article .next_previous p.text_area,
+article .related_articles p.text_area,
+article .related_books p.text_area,
+article .ad_1 p.text_area,
+article .framed_c p.text_area,
+article .tweeted_comments p.text_area,
+article .facebook_comments p.text_area,
+article .framed_d p.text_area,
+article .grid_block .cell p.text_area,
+.grid_block article .cell p.text_area,
+article .framed_e p.text_area {
+  margin-top: 0 !important;
 }
-article .framed_a p:last-child, article #infomation_pagetop p:last-child, article .framed_a ul:last-child, article #infomation_pagetop ul:last-child, article .framed_a ol:last-child, article #infomation_pagetop ol:last-child, article .framed_a dl:last-child, article #infomation_pagetop dl:last-child,
+article .framed_a p:first-child, article .col_horizontal .col p:first-child, .col_horizontal article .col p:first-child, article #infomation_pagetop p:first-child, article .framed_a ul:first-child, article .col_horizontal .col ul:first-child, .col_horizontal article .col ul:first-child, article #infomation_pagetop ul:first-child, article .framed_a ol:first-child, article .col_horizontal .col ol:first-child, .col_horizontal article .col ol:first-child, article #infomation_pagetop ol:first-child, article .framed_a dl:first-child, article .col_horizontal .col dl:first-child, .col_horizontal article .col dl:first-child, article #infomation_pagetop dl:first-child,
+article .framed_a .text_area:first-child,
+article .col_horizontal .col .text_area:first-child,
+.col_horizontal article .col .text_area:first-child,
+article #infomation_pagetop .text_area:first-child,
+article .framed_a ul:last-child li:first-child,
+article .col_horizontal .col ul:last-child li:first-child,
+.col_horizontal article .col ul:last-child li:first-child,
+article #infomation_pagetop ul:last-child li:first-child,
+article .framed_a ol:last-child li:first-child,
+article .col_horizontal .col ol:last-child li:first-child,
+.col_horizontal article .col ol:last-child li:first-child,
+article #infomation_pagetop ol:last-child li:first-child,
+article .framed_a dl:last-child dd:first-child,
+article .col_horizontal .col dl:last-child dd:first-child,
+.col_horizontal article .col dl:last-child dd:first-child,
+article #infomation_pagetop dl:last-child dd:first-child,
+article .framed_b p:first-child,
+article #hatena-bookmark-widget0.hatena-bookmark-widget-notheme p:first-child,
+article #table_of_contents p:first-child,
+article #improved p:first-child,
+article #pages_of_reference p:first-child,
+article .reactions p:first-child,
+article .next_previous p:first-child,
+article .related_articles p:first-child,
+article .related_books p:first-child,
+article .ad_1 p:first-child,
+article .framed_b ul:first-child,
+article #hatena-bookmark-widget0.hatena-bookmark-widget-notheme ul:first-child,
+article #table_of_contents ul:first-child,
+article #improved ul:first-child,
+article #pages_of_reference ul:first-child,
+article .reactions ul:first-child,
+article .next_previous ul:first-child,
+article .related_articles ul:first-child,
+article .related_books ul:first-child,
+article .ad_1 ul:first-child,
+article .framed_b ol:first-child,
+article #hatena-bookmark-widget0.hatena-bookmark-widget-notheme ol:first-child,
+article #table_of_contents ol:first-child,
+article #improved ol:first-child,
+article #pages_of_reference ol:first-child,
+article .reactions ol:first-child,
+article .next_previous ol:first-child,
+article .related_articles ol:first-child,
+article .related_books ol:first-child,
+article .ad_1 ol:first-child,
+article .framed_b dl:first-child,
+article #hatena-bookmark-widget0.hatena-bookmark-widget-notheme dl:first-child,
+article #table_of_contents dl:first-child,
+article #improved dl:first-child,
+article #pages_of_reference dl:first-child,
+article .reactions dl:first-child,
+article .next_previous dl:first-child,
+article .related_articles dl:first-child,
+article .related_books dl:first-child,
+article .ad_1 dl:first-child,
+article .framed_b .text_area:first-child,
+article #hatena-bookmark-widget0.hatena-bookmark-widget-notheme .text_area:first-child,
+article #table_of_contents .text_area:first-child,
+article #improved .text_area:first-child,
+article #pages_of_reference .text_area:first-child,
+article .reactions .text_area:first-child,
+article .next_previous .text_area:first-child,
+article .related_articles .text_area:first-child,
+article .related_books .text_area:first-child,
+article .ad_1 .text_area:first-child,
+article .framed_b ul:last-child li:first-child,
+article #hatena-bookmark-widget0.hatena-bookmark-widget-notheme ul:last-child li:first-child,
+article #table_of_contents ul:last-child li:first-child,
+article #improved ul:last-child li:first-child,
+article #pages_of_reference ul:last-child li:first-child,
+article .reactions ul:last-child li:first-child,
+article .next_previous ul:last-child li:first-child,
+article .related_articles ul:last-child li:first-child,
+article .related_books ul:last-child li:first-child,
+article .ad_1 ul:last-child li:first-child,
+article .framed_b ol:last-child li:first-child,
+article #hatena-bookmark-widget0.hatena-bookmark-widget-notheme ol:last-child li:first-child,
+article #table_of_contents ol:last-child li:first-child,
+article #improved ol:last-child li:first-child,
+article #pages_of_reference ol:last-child li:first-child,
+article .reactions ol:last-child li:first-child,
+article .next_previous ol:last-child li:first-child,
+article .related_articles ol:last-child li:first-child,
+article .related_books ol:last-child li:first-child,
+article .ad_1 ol:last-child li:first-child,
+article .framed_b dl:last-child dd:first-child,
+article #hatena-bookmark-widget0.hatena-bookmark-widget-notheme dl:last-child dd:first-child,
+article #table_of_contents dl:last-child dd:first-child,
+article #improved dl:last-child dd:first-child,
+article #pages_of_reference dl:last-child dd:first-child,
+article .reactions dl:last-child dd:first-child,
+article .next_previous dl:last-child dd:first-child,
+article .related_articles dl:last-child dd:first-child,
+article .related_books dl:last-child dd:first-child,
+article .ad_1 dl:last-child dd:first-child,
+article .framed_c p:first-child,
+article .tweeted_comments p:first-child,
+article .facebook_comments p:first-child,
+article .framed_c ul:first-child,
+article .tweeted_comments ul:first-child,
+article .facebook_comments ul:first-child,
+article .framed_c ol:first-child,
+article .tweeted_comments ol:first-child,
+article .facebook_comments ol:first-child,
+article .framed_c dl:first-child,
+article .tweeted_comments dl:first-child,
+article .facebook_comments dl:first-child,
+article .framed_c .text_area:first-child,
+article .tweeted_comments .text_area:first-child,
+article .facebook_comments .text_area:first-child,
+article .framed_c ul:last-child li:first-child,
+article .tweeted_comments ul:last-child li:first-child,
+article .facebook_comments ul:last-child li:first-child,
+article .framed_c ol:last-child li:first-child,
+article .tweeted_comments ol:last-child li:first-child,
+article .facebook_comments ol:last-child li:first-child,
+article .framed_c dl:last-child dd:first-child,
+article .tweeted_comments dl:last-child dd:first-child,
+article .facebook_comments dl:last-child dd:first-child,
+article .framed_d p:first-child,
+article .grid_block .cell p:first-child,
+.grid_block article .cell p:first-child,
+article .framed_d ul:first-child,
+article .grid_block .cell ul:first-child,
+.grid_block article .cell ul:first-child,
+article .framed_d ol:first-child,
+article .grid_block .cell ol:first-child,
+.grid_block article .cell ol:first-child,
+article .framed_d dl:first-child,
+article .grid_block .cell dl:first-child,
+.grid_block article .cell dl:first-child,
+article .framed_d .text_area:first-child,
+article .grid_block .cell .text_area:first-child,
+.grid_block article .cell .text_area:first-child,
+article .framed_d ul:last-child li:first-child,
+article .grid_block .cell ul:last-child li:first-child,
+.grid_block article .cell ul:last-child li:first-child,
+article .framed_d ol:last-child li:first-child,
+article .grid_block .cell ol:last-child li:first-child,
+.grid_block article .cell ol:last-child li:first-child,
+article .framed_d dl:last-child dd:first-child,
+article .grid_block .cell dl:last-child dd:first-child,
+.grid_block article .cell dl:last-child dd:first-child,
+article .framed_e p:first-child,
+article .framed_e ul:first-child,
+article .framed_e ol:first-child,
+article .framed_e dl:first-child,
+article .framed_e .text_area:first-child,
+article .framed_e ul:last-child li:first-child,
+article .framed_e ol:last-child li:first-child,
+article .framed_e dl:last-child dd:first-child {
+  margin-top: 0 !important;
+}
+article .framed_a p:last-child, article .col_horizontal .col p:last-child, .col_horizontal article .col p:last-child, article #infomation_pagetop p:last-child, article .framed_a ul:last-child, article .col_horizontal .col ul:last-child, .col_horizontal article .col ul:last-child, article #infomation_pagetop ul:last-child, article .framed_a ol:last-child, article .col_horizontal .col ol:last-child, .col_horizontal article .col ol:last-child, article #infomation_pagetop ol:last-child, article .framed_a dl:last-child, article .col_horizontal .col dl:last-child, .col_horizontal article .col dl:last-child, article #infomation_pagetop dl:last-child,
+article .framed_a .text_area:last-child,
+article .col_horizontal .col .text_area:last-child,
+.col_horizontal article .col .text_area:last-child,
+article #infomation_pagetop .text_area:last-child,
 article .framed_a ul:last-child li:last-child,
+article .col_horizontal .col ul:last-child li:last-child,
+.col_horizontal article .col ul:last-child li:last-child,
 article #infomation_pagetop ul:last-child li:last-child,
 article .framed_a ol:last-child li:last-child,
+article .col_horizontal .col ol:last-child li:last-child,
+.col_horizontal article .col ol:last-child li:last-child,
 article #infomation_pagetop ol:last-child li:last-child,
 article .framed_a dl:last-child dd:last-child,
+article .col_horizontal .col dl:last-child dd:last-child,
+.col_horizontal article .col dl:last-child dd:last-child,
 article #infomation_pagetop dl:last-child dd:last-child,
 article .framed_b p:last-child,
 article #hatena-bookmark-widget0.hatena-bookmark-widget-notheme p:last-child,
@@ -1859,6 +2106,16 @@ article .next_previous dl:last-child,
 article .related_articles dl:last-child,
 article .related_books dl:last-child,
 article .ad_1 dl:last-child,
+article .framed_b .text_area:last-child,
+article #hatena-bookmark-widget0.hatena-bookmark-widget-notheme .text_area:last-child,
+article #table_of_contents .text_area:last-child,
+article #improved .text_area:last-child,
+article #pages_of_reference .text_area:last-child,
+article .reactions .text_area:last-child,
+article .next_previous .text_area:last-child,
+article .related_articles .text_area:last-child,
+article .related_books .text_area:last-child,
+article .ad_1 .text_area:last-child,
 article .framed_b ul:last-child li:last-child,
 article #hatena-bookmark-widget0.hatena-bookmark-widget-notheme ul:last-child li:last-child,
 article #table_of_contents ul:last-child li:last-child,
@@ -1901,6 +2158,9 @@ article .facebook_comments ol:last-child,
 article .framed_c dl:last-child,
 article .tweeted_comments dl:last-child,
 article .facebook_comments dl:last-child,
+article .framed_c .text_area:last-child,
+article .tweeted_comments .text_area:last-child,
+article .facebook_comments .text_area:last-child,
 article .framed_c ul:last-child li:last-child,
 article .tweeted_comments ul:last-child li:last-child,
 article .facebook_comments ul:last-child li:last-child,
@@ -1911,16 +2171,34 @@ article .framed_c dl:last-child dd:last-child,
 article .tweeted_comments dl:last-child dd:last-child,
 article .facebook_comments dl:last-child dd:last-child,
 article .framed_d p:last-child,
+article .grid_block .cell p:last-child,
+.grid_block article .cell p:last-child,
 article .framed_d ul:last-child,
+article .grid_block .cell ul:last-child,
+.grid_block article .cell ul:last-child,
 article .framed_d ol:last-child,
+article .grid_block .cell ol:last-child,
+.grid_block article .cell ol:last-child,
 article .framed_d dl:last-child,
+article .grid_block .cell dl:last-child,
+.grid_block article .cell dl:last-child,
+article .framed_d .text_area:last-child,
+article .grid_block .cell .text_area:last-child,
+.grid_block article .cell .text_area:last-child,
 article .framed_d ul:last-child li:last-child,
+article .grid_block .cell ul:last-child li:last-child,
+.grid_block article .cell ul:last-child li:last-child,
 article .framed_d ol:last-child li:last-child,
+article .grid_block .cell ol:last-child li:last-child,
+.grid_block article .cell ol:last-child li:last-child,
 article .framed_d dl:last-child dd:last-child,
+article .grid_block .cell dl:last-child dd:last-child,
+.grid_block article .cell dl:last-child dd:last-child,
 article .framed_e p:last-child,
 article .framed_e ul:last-child,
 article .framed_e ol:last-child,
 article .framed_e dl:last-child,
+article .framed_e .text_area:last-child,
 article .framed_e ul:last-child li:last-child,
 article .framed_e ol:last-child li:last-child,
 article .framed_e dl:last-child dd:last-child {
@@ -1928,14 +2206,14 @@ article .framed_e dl:last-child dd:last-child {
 }
 
 /*★★紙がめくれたようなドロップシャドウ*/
-.paper_shadow, .framed_d, blockquote {
+.paper_shadow, .framed_d, .grid_block .cell, blockquote {
   position: relative;
   background: #ffffee url(../img_common/bg2.png) repeat;
   -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
 }
-.paper_shadow:before, .framed_d:before, blockquote:before, .paper_shadow:after, .framed_d:after, blockquote:after {
+.paper_shadow:before, .framed_d:before, .grid_block .cell:before, blockquote:before, .paper_shadow:after, .framed_d:after, .grid_block .cell:after, blockquote:after {
   position: absolute;
   width: 40%;
   height: 10px;
@@ -1953,7 +2231,7 @@ article .framed_e dl:last-child dd:last-child {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
   z-index: -1;
 }
-.paper_shadow:after, .framed_d:after, blockquote:after {
+.paper_shadow:after, .framed_d:after, .grid_block .cell:after, blockquote:after {
   left: auto;
   right: 12px;
   -webkit-transform: skew(5deg) rotate(5deg);
@@ -2003,7 +2281,7 @@ article .framed_e dl:last-child dd:last-child {
 /*====================================*/
 /* 水平横並びメニュー（画像） */
 /*====================================*/
-/* 等幅段組レイアウト */
+/* 等幅段組レイアウト → 次項の改を参照 */
 /*====================================*/
 /* 幅可変 */
 /* 幅固定_等幅水平floatボックス */
@@ -2014,16 +2292,15 @@ article .framed_e dl:last-child dd:last-child {
 /*スタイリング*/
 .col_horizontal {
   margin-bottom: 1em;
+  padding-left: 0;
   width: auto;
 }
 .col_horizontal .col {
   float: left;
   margin-top: 0 !important;
-  margin-right: 0;
-  margin-bottom: 0;
+  margin-right: 2%;
+  margin-bottom: 2%;
   padding: 2%;
-  border-right: dotted 1px #265984;
-  border-bottom: dotted 1px #265984;
   min-height: 100px;
   _height: 100px;
 }
@@ -2041,6 +2318,7 @@ article .framed_e dl:last-child dd:last-child {
   background: none;
   margin-bottom: 0.3em;
   padding-left: 10px;
+  color: #333333 !important;
   font-size: 14px;
   font-size: 1.4rem;
 }
@@ -2054,19 +2332,19 @@ article .framed_e dl:last-child dd:last-child {
 /*PC,Tablet*/
 @media only screen and (min-width: 533px) {
   .col_horizontal.col2 .col {
-    width: 47.9%;
+    width: 49%;
   }
 
   .col_horizontal.col3 .col {
-    width: 30.4%;
+    width: 32%;
   }
 
   .col_horizontal.col4 .col {
-    width: 21.8%;
+    width: 23.5%;
   }
 
   .col_horizontal.col5 .col {
-    width: 16.6%;
+    width: 18.4%;
   }
 
   /*n段組のn+1列（最初の列）*/
@@ -2074,7 +2352,6 @@ article .framed_e dl:last-child dd:last-child {
   .col_horizontal.col3 .col:nth-child(3n+1),
   .col_horizontal.col4 .col:nth-child(4n+1),
   .col_horizontal.col5 .col:nth-child(5n+1) {
-    padding-left: 0;
     clear: left;
   }
 
@@ -2085,7 +2362,6 @@ article .framed_e dl:last-child dd:last-child {
   .col_horizontal.col5 .col:nth-child(5n) {
     border-right: none;
     margin-right: 0;
-    padding-right: 0;
   }
 }
 /*Smart Phone 2,3段は1段に、4,5段は2段に*/
@@ -2100,7 +2376,7 @@ article .framed_e dl:last-child dd:last-child {
 
   .col_horizontal.col4 .col,
   .col_horizontal.col5 .col {
-    width: 47.5%;
+    width: 49%;
   }
   .col_horizontal.col4 .col:nth-child(2n),
   .col_horizontal.col5 .col:nth-child(2n) {
@@ -2114,6 +2390,123 @@ article .framed_e dl:last-child dd:last-child {
     padding-left: 0;
   }
 }
+/* 等幅段組レイアウト 改 */
+/*====================================*/
+.grid_block,
+.grid_block .cell {
+  *zoom: 1;
+}
+
+.grid_block .cell {
+  margin-top: 0;
+  margin-bottom: 20px;
+  padding: 15px;
+}
+.grid_block .cell .img_area {
+  margin-top: 0;
+  text-align: center;
+}
+.grid_block li.cell {
+  background: none;
+  padding-left: 15px !important;
+}
+.grid_block h1 {
+  margin: 1em 0 0.5em;
+}
+.grid_block h1:first-child {
+  margin-top: 0;
+}
+.grid_block p:first-child {
+  margin-top: 0;
+}
+.grid_block p:last-child {
+  margin-bottom: 0;
+}
+.grid_block.float_img .cell h1 {
+  word-break: break-all !important;
+}
+.grid_block.float_img .cell img {
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  vertical-align: bottom;
+}
+.grid_block li.cell {
+  padding-left: 0;
+  list-style: none;
+}
+
+@media only screen and (max-width: 480px) {
+  .grid_block .cell {
+    clear: left;
+  }
+
+  .grid_block.minimize_img .cell {
+    clear: left;
+  }
+  .grid_block.minimize_img .cell .img_area {
+    float: left;
+    max-width: 40% !important;
+    margin-right: 20px;
+  }
+  .grid_block.minimize_img .cell .text_area {
+    overflow: hidden;
+    _zoom: 1;
+    _height: 1%;
+  }
+
+  .grid_block.mobile_2col .cell,
+  .grid_block.mobile_3col .cell {
+    clear: none;
+    float: left;
+    margin-left: 2%;
+  }
+
+  .grid_block.mobile_2col .cell {
+    width: 49%;
+    width: 48%\9;
+  }
+  .grid_block.mobile_2col .cell:nth-child(2n+1) {
+    margin-left: 0;
+  }
+
+  .grid_block.mobile_3col .cell {
+    width: 32%;
+    width: 31%\9;
+  }
+  .grid_block.mobile_3col .cell:nth-child(3n+1) {
+    margin-left: 0;
+  }
+}
+@media only screen and (min-width: 481px) {
+  .grid_block .cell {
+    float: left;
+    margin-left: 2%;
+  }
+  .grid_block.cells2 .cell {
+    width: 49%;
+    width: 48%\9;
+  }
+  .grid_block.cells3 .cell {
+    width: 32%;
+    width: 31.5%\9;
+  }
+  .grid_block.cells4 .cell {
+    width: 23.5%;
+    width: 23%\9;
+  }
+  .grid_block.cells5 .cell {
+    width: 18.4%;
+    width: 18%\9;
+  }
+  .grid_block.cells2 .cell:nth-child(2n+1), .grid_block.cells3 .cell:nth-child(3n+1), .grid_block.cells4 .cell:nth-child(4n+1), .grid_block.cells5 .cell:nth-child(5n+1) {
+    margin-left: 0;
+  }
+}
+.grid_block {
+  padding: 0px;
+}
+
 /* テキストが画像の下に回り込まないレイアウト（左右対応） */
 /*-------------------------------------------- */
 /*---余白設定---*/
@@ -2142,6 +2535,14 @@ article .framed_e dl:last-child dd:last-child {
 .text_img_parallel h6 {
   margin-left: 0 !important;
   margin-right: 0 !important;
+}
+.img_text_parallel h2:first-child, .img_text_parallel h3:first-child, .img_text_parallel h4:first-child, .img_text_parallel h5:first-child, .img_text_parallel h6:first-child,
+.text_img_parallel h2:first-child,
+.text_img_parallel h3:first-child,
+.text_img_parallel h4:first-child,
+.text_img_parallel h5:first-child,
+.text_img_parallel h6:first-child {
+  margin-top: 0 !important;
 }
 
 @media only screen and (min-width: 533px) {
@@ -2211,10 +2612,13 @@ q:before, q:after {
 /*====================================*/
 /* !!ボタン */
 /*====================================*/
-.button, #article_list section p:last-child a, .button_colored, .button_strong, .button_pill {
+.button, #article_list section p:last-child a,
+.button_colored,
+.button_strong,
+.button_round {
   background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%3F%3E%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20version%3D%221.0%22%3E%3Cdefs%3E%3ClinearGradient%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%22100%25%22%20id%3D%22g%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22rgb%28255%2C255%2C255%29%22%20stop-opacity%3D%220.1%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22rgb%280%2C0%2C0%29%22%20stop-opacity%3D%220.1%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20fill%3D%22url%28%23g%29%22%20width%3D%22100%25%22%20height%3D%22100%25%22/%3E%3C/svg%3E");
-  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
-  background-image: linear, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1);
+  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.2));
+  background-image: linear, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.2);
   background-origin: border-box;
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(255, 255, 255, 0.3) inset;
@@ -2232,91 +2636,53 @@ q:before, q:after {
   white-space: nowrap;
   cursor: pointer;
 }
-.button a, #article_list section p:last-child a a, .button_colored a, .button_strong a, .button_pill a {
+.button a, #article_list section p:last-child a a,
+.button_colored a,
+.button_strong a,
+.button_round a {
   display: block;
 }
-.button:hover, #article_list section p:last-child a:hover, .button_colored:hover, .button_strong:hover, .button_pill:hover, .button:focus, #article_list section p:last-child a:focus, .button_colored:focus, .button_strong:focus, .button_pill:focus {
+.button:hover, #article_list section p:last-child a:hover,
+.button_colored:hover,
+.button_strong:hover,
+.button_round:hover, .button:focus, #article_list section p:last-child a:focus,
+.button_colored:focus,
+.button_strong:focus,
+.button_round:focus {
   background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%3F%3E%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20version%3D%221.0%22%3E%3Cdefs%3E%3ClinearGradient%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%22100%25%22%20id%3D%22g%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22rgb%28128%2C128%2C128%29%22%20stop-opacity%3D%220.1%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22rgb%280%2C0%2C0%29%22%20stop-opacity%3D%220.1%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20fill%3D%22url%28%23g%29%22%20width%3D%22100%25%22%20height%3D%22100%25%22/%3E%3C/svg%3E");
-  background-image: -webkit-linear-gradient(rgba(128, 128, 128, 0.1), rgba(0, 0, 0, 0.1));
-  background-image: linear, rgba(128, 128, 128, 0.1), rgba(0, 0, 0, 0.1);
+  background-image: -webkit-linear-gradient(rgba(128, 128, 128, 0.1), rgba(0, 0, 0, 0.4));
+  background-image: linear, rgba(128, 128, 128, 0.1), rgba(0, 0, 0, 0.4);
 }
-.button:active, #article_list section p:last-child a:active, .button_colored:active, .button_strong:active, .button_pill:active {
+.button:active, #article_list section p:last-child a:active,
+.button_colored:active,
+.button_strong:active,
+.button_round:active {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
-}
-
-.button small, #article_list section p:last-child a small,
-.button_colored small,
-.button_strong small,
-.button_pill small,
-a.button small,
-#article_list section p:last-child a small,
-a.button_colored small,
-a.button_strong small,
-a.button_pill small {
-  display: block;
-  font-size: 10px;
-  font-size: 1rem;
-  font-weight: normal;
-}
-
-a.button, #article_list section p:last-child a,
-a.button_colored,
-a.button_strong,
-a.button_pill {
-  text-decoration: none;
-}
-
-.button, #article_list section p:last-child a {
-  text-shadow: 0 1px white;
-  background-color: white;
-  color: black;
-}
-
-.button_colored {
-  text-shadow: 0 -1px rgba(0, 0, 0, 0.25);
-  background-color: #690;
-  color: white;
-}
-
-.button_strong {
-  text-shadow: 0 -1px rgba(0, 0, 0, 0.25);
-  background-color: #C00;
-  color: white;
-}
-
-.button_pill {
-  text-shadow: 0 -1px rgba(0, 0, 0, 0.25);
-  background-color: #09F;
-  border-radius: 99em;
-  color: white;
 }
 
 .button.large, #article_list section p:last-child a.large,
 .button_colored.large,
 .button_strong.large,
-.button_pill.large {
+.button_round.large {
   font-size: 125%;
 }
-
 .button.small, #article_list section p:last-child a.small,
 .button_colored.small,
 .button_strong.small,
-.button_pill.small {
+.button_round.small {
   font-size: .8em;
 }
-
 .button.fullwidth, #article_list section p:last-child a.fullwidth,
 .button_colored.fullwidth,
 .button_strong.fullwidth,
-.button_pill.fullwidth {
+.button_round.fullwidth {
   display: block;
   width: 100%;
 }
-
 .button.selected, #article_list section p:last-child a.selected,
 .button_colored.selected,
 .button_strong.selected,
-.button_pill.selected {
+.button_round.selected {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset, 0 -1px rgba(255, 255, 255, 0.1) inset;
   font-weight: bold;
 }
@@ -2327,55 +2693,85 @@ a.button_pill {
 .button_strong.selected,
 .button_strong.selected:hover,
 .button_strong.selected:focus,
-.button_pill.selected,
-.button_pill.selected:hover,
-.button_pill.selected:focus {
+.button_round.selected,
+.button_round.selected:hover,
+.button_round.selected:focus {
   background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%3F%3E%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20version%3D%221.0%22%3E%3Cdefs%3E%3ClinearGradient%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%22100%25%22%20id%3D%22g%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22rgb%280%2C0%2C0%29%22%20stop-opacity%3D%220.25%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22rgb%280%2C0%2C0%29%22%20stop-opacity%3D%220.1%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20fill%3D%22url%28%23g%29%22%20width%3D%22100%25%22%20height%3D%22100%25%22/%3E%3C/svg%3E");
   background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.1));
   background-image: linear, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.1);
 }
-
-[disabled],
-.button.disabled,
-#article_list section p:last-child a.disabled,
+.button.disabled, #article_list section p:last-child a.disabled,
 .button_colored.disabled,
 .button_strong.disabled,
-.button_pill.disabled {
-  text-shadow: 0 1px rgba(255, 255, 255, 0.5);
-  background-color: gainsboro;
-  color: gray;
+.button_round.disabled {
   cursor: default;
+  opacity: .7 !important;
 }
-[disabled], [disabled]:hover, [disabled]:focus,
-.button.disabled,
-#article_list section p:last-child a.disabled,
-.button.disabled:hover,
-#article_list section p:last-child a.disabled:hover,
-.button.disabled:focus,
-#article_list section p:last-child a.disabled:focus,
+.button.disabled, #article_list section p:last-child a.disabled, .button.disabled:hover, #article_list section p:last-child a.disabled:hover, .button.disabled:focus, #article_list section p:last-child a.disabled:focus,
 .button_colored.disabled,
 .button_colored.disabled:hover,
 .button_colored.disabled:focus,
 .button_strong.disabled,
 .button_strong.disabled:hover,
 .button_strong.disabled:focus,
-.button_pill.disabled,
-.button_pill.disabled:hover,
-.button_pill.disabled:focus {
+.button_round.disabled,
+.button_round.disabled:hover,
+.button_round.disabled:focus {
   background-image: none;
 }
-[disabled], [disabled]:active,
-.button.disabled,
-#article_list section p:last-child a.disabled,
-.button.disabled:active,
-#article_list section p:last-child a.disabled:active,
+.button.disabled, #article_list section p:last-child a.disabled, .button.disabled:active, #article_list section p:last-child a.disabled:active,
 .button_colored.disabled,
 .button_colored.disabled:active,
 .button_strong.disabled,
 .button_strong.disabled:active,
-.button_pill.disabled,
-.button_pill.disabled:active {
+.button_round.disabled,
+.button_round.disabled:active {
   box-shadow: none;
+}
+.button small, #article_list section p:last-child a small,
+.button_colored small,
+.button_strong small,
+.button_round small {
+  display: block;
+  font-size: 10px;
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+a.button, #article_list section p:last-child a, a.button_colored, a.button_strong, a.button_round {
+  text-decoration: none;
+}
+a:hover.button, #article_list section p:last-child a:hover, a:visited.button, #article_list section p:last-child a:visited {
+  color: #333333;
+}
+a:hover.button_colored, a:hover.button_strong, a:hover.button_round, a:visited.button_colored, a:visited.button_strong, a:visited.button_round {
+  color: white;
+}
+
+.button, #article_list section p:last-child a {
+  text-shadow: 0 1px white;
+  background-color: white !important;
+  color: #333333;
+}
+
+.button_colored,
+.button_strong,
+.button_round {
+  text-shadow: 0 -1px rgba(0, 0, 0, 0.25);
+  color: white;
+}
+
+.button_colored {
+  background-color: #690 !important;
+}
+
+.button_strong {
+  background-color: #C00 !important;
+}
+
+.button_round {
+  background-color: #09F !important;
+  border-radius: 99em;
 }
 
 .button_group {
@@ -2425,17 +2821,21 @@ a.button_pill {
   _display: inline;
   _zoom: 1;
   margin: 0px 2px 3px;
-  padding: 2px 4px;
-  -moz-box-shadow: 0px 1px 2px #999999;
-  -webkit-box-shadow: 0px 1px 2px #999999;
-  box-shadow: 0px 1px 2px #999999;
+  padding: 2px 4px 1px;
+  -moz-box-shadow: 0px 1px 1px #cccccc;
+  -webkit-box-shadow: 0px 1px 1px #cccccc;
+  box-shadow: 0px 1px 1px #cccccc;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
   vertical-align: text-top;
-  background-color: #CCC;
-  color: #333;
+  background-color: #E7E7E7;
+  color: #333333;
   font-size: 10px;
   font-size: 1rem;
   line-height: 1;
   text-decoration: none;
+  -webkit-font-smoothing: subpixel-antialiased;
 }
 
 .label_red {
@@ -2476,15 +2876,12 @@ a.button_pill {
 /*====================================*/
 .alert {
   margin: 1em 0;
-  padding: 10px;
-  outline: solid 1px #445a69;
+  padding: 5px 10px;
   background-color: #c3dae9;
   color: #445a69;
-  font-weight: bold;
 }
 
 .alert.strong {
-  outline-color: red;
   background-color: #ffcccc;
   color: red;
 }
@@ -2878,8 +3275,15 @@ hr.style_c:after {
 }
 
 /*====================================*/
-/* !!★★フォーム */
+/* !!フォーム */
 /*====================================*/
+label {
+  margin-top: 1.5em !important;
+  margin-bottom: .5em;
+  display: block;
+  font-weight: bold;
+}
+
 input, textarea, select, button {
   margin: 0;
   vertical-align: middle;
@@ -2890,7 +3294,8 @@ button, input {
   line-height: normal;
 }
 
-button::-moz-focus-inner, input::-moz-focus-inner {
+button::-moz-focus-inner,
+input::-moz-focus-inner {
   padding: 0;
   border: 0;
 }
@@ -3206,14 +3611,28 @@ section.article_summary h6 small {
 }
 article h2,
 section.article_summary h2 {
-  padding: 7px 10px;
-  background-color: #265984;
+  margin-top: 2em !important;
+  padding: 10px 10px 10px 24px;
   color: #FFF;
   font-size: 16px;
   font-size: 1.6rem;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
+  text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.5), 0 1px 1px rgba(255, 255, 255, 0.5);
+  line-height: 1.4;
+  background: url(../img_common/lm_dot_1.png) no-repeat 10px center, -webkit-linear-gradient(top, #92acc1, #265984);
+  background: url(../img_common/lm_dot_1.png) no-repeat 10px center, -webkit-gradient(linear, left top, left bottom, from(#92acc1), to(#265984));
+  background: url(../img_common/lm_dot_1.png) no-repeat 10px center, -moz-linear-gradient(top, #92acc1, #265984);
+  background: url(../img_common/lm_dot_1.png) no-repeat 10px center, -o-linear-gradient(top, #92acc1, #265984);
+  background: url(../img_common/lm_dot_1.png) no-repeat 10px center, -ms-linear-gradient(top, #92acc1, #265984);
+  background: url(../img_common/lm_dot_1.png) no-repeat 10px center, linear, to bottom, #92acc1, #265984;
+  -pie-background: url(../img_common/lm_dot_1.png) no-repeat 10px center, linear, #92acc1, #265984;
+  -webkit-box-shadow: inset 0 -1px 1px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  -moz-box-shadow: inset 0 -1px 1px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  box-shadow: inset 0 -1px 1px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  -pie-box-shadow: #666 0px 1px 2px;
+  border: 1px solid #265984;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
 }
 article h3,
 section.article_summary h3 {
@@ -3253,10 +3672,15 @@ section.article_summary ul,
 section.article_summary ol,
 section.article_summary dl {
   margin: 1em 0;
+  padding-left: 1em;
 }
 article li ul,
 section.article_summary li ul {
   margin-top: 0;
+}
+article ul li,
+section.article_summary ul li {
+  list-style-type: none;
 }
 article li,
 section.article_summary li {
@@ -3278,7 +3702,7 @@ section.article_summary dd {
 }
 article ol,
 section.article_summary ol {
-  margin-left: 2em;
+  margin-left: 1em;
 }
 article ol li,
 section.article_summary ol li {
@@ -3292,7 +3716,7 @@ section.article_summary ol.emphasize {
 article ol.emphasize li,
 section.article_summary ol.emphasize li {
   position: relative;
-  margin: 0 0 1.3em 2em;
+  margin: 0 0 1.3em 1em;
   padding: 0px 8px;
 }
 article ol.emphasize li:before,
@@ -3300,7 +3724,7 @@ section.article_summary ol.emphasize li:before {
   content: counter(li);
   counter-increment: li;
   position: absolute;
-  top: 0;
+  top: -0.3em;
   left: -2em;
   width: 2em;
   padding: 3px 0;
@@ -3837,23 +4261,6 @@ address li {
     */
   }
 
-  img {
-    /* 画像をフレキシブルに → モバイル用画像を用意して処理：http://www.yasuhisa.com/could/article/responsive-design/ */
-    max-width: 100% !important;
-    height: auto !important;
-    width: auto\9;
-    /*ie8*/
-    /*or -ms-interpolation-mode: bicubic;*/
-  }
-
-  .video embed,
-  .video object,
-  .video iframe {
-    /*埋込動画の最適化*/
-    width: 100% !important;
-    height: auto !important;
-  }
-
   .social_media_buttons li {
     display: inline;
   }
@@ -3899,7 +4306,7 @@ address li {
   #menu_modal_window_dialog #side_menu li a {
     display: block;
     padding: 7px 5px;
-    color: #333;
+    color: #333333;
     background-color: #E7E7E7;
     margin-bottom: 1px;
     text-decoration: none;

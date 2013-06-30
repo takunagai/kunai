@@ -55,51 +55,63 @@
           <div class="article_body">
 
 
-						<section>
-							<h2>フォーム(h2)</h2>
-							<p>説明が入ります。(p)</p>
-							<fieldset>
-								<legend>グループのタイトル(fieldset>legend)</legend>
-								<form>
-									<label for="text_field">テキストフィールド:</label>
-									<input id="text_field" type="text" />
-									<br />
-									<label for="text_area">テキストエリア:</label>
-									<textarea name="name" cols="30" rows="3">ここに入力して下さい。</textarea>
-									<br />
-									<label for="select_element">セレクトボックス:</label>
-									<select name="blood">
-										<option value="A">A型</option>
-										<option value="B">B型</option>
-										<option value="AB">AB型</option>
-										<option value="O">O型</option>
-									</select>
-									<br />
-									<label for="radio_buttons">ラジオボタン:</label>
-									<input class="radio" type="radio" name="radio_button" value="radio_1" /> ラジオボタン 1
-									<input class="radio" type="radio" name="radio_button" value="radio_2" /> ラジオボタン 2
-									<input class="radio" type="radio" name="radio_button" value="radio_3" /> ラジオボタン 3
-									<br />
-									<label for="checkboxes">チェックボックス:</label>
-									<input class="checkbox" type="checkbox" name="checkboxes" value="check_1" /> チェックボックス 1
-									<input class="checkbox" type="checkbox" name="checkboxes" value="check_2" /> チェックボックス 2
-									<input class="checkbox" type="checkbox" name="checkboxes" value="check_3" /> チェックボックス 3
-									<br />
-									<label for="password">パスワード:</label>
-									<input class="password" type="password" name="password" />
-									<br />
-									<label for="file">ファイル送信:</label>
-									<input class="file" type="file" name="file" />
-									<br />
-									<input class="button" type="reset" value="Clear" />
-									<input class="button" type="submit" value="Submit" />
-								</form>
-							</fieldset>
-						</section>
+            <section>
+              <h2>フォーム(h2)</h2>
+              <p>説明が入ります。(p)</p>
+
+              <fieldset>
+                <legend>グループのタイトル(fieldset>legend)</legend>
+                <form>
+                  <p>
+                    <label for="text_field"><i class="icon-pen"></i> テキストフィールド</label>
+                    <input id="text_field" type="text" />
+                  </p>
+                  <p>
+                    <label for="text_area"><i class="icon-pen"></i> テキストエリア</label>
+                    <textarea name="name" cols="30" rows="3">ここに入力して下さい。</textarea>
+                  </p>
+                  <p>
+                    <label for="select_element"><i class="icon-pen"></i> セレクトボックス</label>
+                    <select name="blood">
+                      <option value="A">A型</option>
+                      <option value="B">B型</option>
+                      <option value="AB">AB型</option>
+                      <option value="O">O型</option>
+                    </select>
+                  </p>
+                  <p>
+                    <label for="radio_buttons"><i class="icon-pen"></i> ラジオボタン</label>
+                    <input class="radio" type="radio" name="radio_button" value="radio_1" /> ラジオボタン 1<br />
+                    <input class="radio" type="radio" name="radio_button" value="radio_2" /> ラジオボタン 2<br />
+                    <input class="radio" type="radio" name="radio_button" value="radio_3" /> ラジオボタン 3
+                  </p>
+                  <p>
+                    <label for="checkboxes"><i class="icon-pen"></i> チェックボックス</label>
+                    <input class="checkbox" type="checkbox" name="checkboxes" value="check_1" /> チェックボックス 1<br />
+                    <input class="checkbox" type="checkbox" name="checkboxes" value="check_2" /> チェックボックス 2<br />
+                    <input class="checkbox" type="checkbox" name="checkboxes" value="check_3" /> チェックボックス 3
+                  </p>
+                  <p>
+                    <label for="password"><i class="icon-pen"></i> パスワード</label>
+                    <input class="password" type="password" name="password" />
+                  </p>
+                  <p>
+                    <label for="file"><i class="icon-pen "></i> ファイル送信</label>
+                    <input class="file" type="file" name="file" />
+                  </p>
+                  <p class="align_center">
+                    <button type="reset" class="button large">リセットする
+                    <small>入力内容をクリア</small></button>
+                    <button type="submit" class="button_colored large">入力内容を決定<small>確認画面へ</small></button>
+                  </p>
+                </form>
+              </fieldset>
+
+            </section>
 
 
-					<!--/.article_body-->
-					</div>
+          <!--/.article_body-->
+          </div>
 
 
         </article>

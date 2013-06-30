@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>サンプル：本文のCSSフォント指定</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+
+  <style>
+    div {border: 1px solid gray; padding: 0 1em;}
+    p {font-size: 16px;}
+    .gothic_a {
+      font-family: Verdana, Roboto, 'Droid Sans', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic ProN', sans-serif;
+}
+    .gothic_b {
+      font-family:  'Helvetica Neue', Helvetica, Arial, Roboto, 'Droid Sans', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic ProN', sans-serif;
+    }
+    .gothic_b2 {
+      font-family: HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, Roboto, 'Droid Sans', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic ProN', sans-serif;
+    }
+    .gothic_c {
+      font-family: 'Gill Sans', Arial, Roboto, 'Droid Sans', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic ProN', sans-serif;
+    }
+    .gothic_d {
+      font-family: Roboto, 'Droid Sans', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic ProN', sans-serif;
+    }
+    .mincho {
+      font-family: Georgia, 'ヒラギノ明朝 Pro W3', 'Hiragino Mincho ProN', 'MS P 明朝', 'MS PMincho', serif;
+    }
+  </style>
+
+</head>
+
+
+<body>
+
+  <h1>サンプル：本文のCSSフォント指定</h1>
+  <p>フォントサイズは 16px。日本語のみ、英語のみ、混在の３種を各指定ごとに。</p>
+
+
+  <h2>ゴシック体 A</h2>
+  <code>font-family: Verdana, Roboto, 'Droid Sans', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic ProN', sans-serif;</code>
+  <div class="gothic_a">
+    <p>かっこうは療のまね扉らが助けを考える晩たござい。またあんまり生意気って晩たでし。生意気たます方たはたすると、それなど楽長をつけれものたまし。</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis naostrud exercitation.</p>
+    <p>しすぎ Lorem みんなも鼠をipsum よかっなてdolor 一生けん命の町の sit amet, 手あたりを consectetur 弾く第十沓たちの adipisicing elit かっこうになっていでした。</p>
+  </div>
+
+
+  <h2>ゴシック体 B</h2>
+  <p>日本語指定は A と同じ。欧文を Verdana ではなく、Helvetica（Mac, iOS）/ Arial（Windows）に。詰まった感じになり一行あたりの文字数が多くなる。</p>
+  <code>font-family: 'Helvetica Neue', Helvetica, Arial, Roboto, 'Droid Sans', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic ProN', sans-serif;</code>
+  <div class="gothic_b">
+    <p>かっこうは療のまね扉らが助けを考える晩たござい。またあんまり生意気って晩たでし。生意気たます方たはたすると、それなど楽長をつけれものたまし。</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis naostrud exercitation.</p>
+    <p>しすぎ Lorem みんなも鼠をipsum よかっなてdolor 一生けん命の町の sit amet, 手あたりを consectetur 弾く第十沓たちの adipisicing elit かっこうになっていでした。</p>
+  </div>
+
+
+  <h2>ゴシック体 B 欧文細字</h2>
+  <p>Helvetica Neue を Helvetica Neue Light 変えると Mac と iOS で細字になりイメージが変わる。</p>
+  <code>font-family: HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, Roboto, 'Droid Sans', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic ProN', sans-serif;</code>
+  <div class="gothic_b2">
+    <p>かっこうは療のまね扉らが助けを考える晩たござい。またあんまり生意気って晩たでし。生意気たます方たはたすると、それなど楽長をつけれものたまし。</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis naostrud exercitation.</p>
+    <p>しすぎ Lorem みんなも鼠をipsum よかっなてdolor 一生けん命の町の sit amet, 手あたりを consectetur 弾く第十沓たちの adipisicing elit かっこうになっていでした。</p>
+  </div>
+
+
+  <h2>ゴシック体 C</h2>
+  <p>Gill Sans。一回り小さい。かわいい書体だけど、日本語と混在させたらその小ささが目立ち過ぎるかも。</p>
+  <code>font-family: 'Gill Sans', Arial, Roboto, 'Droid Sans', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic ProN', sans-serif;</code>
+  <div class="gothic_c">
+    <p>かっこうは療のまね扉らが助けを考える晩たござい。またあんまり生意気って晩たでし。生意気たます方たはたすると、それなど楽長をつけれものたまし。</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis naostrud exercitation.</p>
+    <p>しすぎ Lorem みんなも鼠をipsum よかっなてdolor 一生けん命の町の sit amet, 手あたりを consectetur 弾く第十沓たちの adipisicing elit かっこうになっていでした。</p>
+  </div>
+
+
+  <h2>ゴシック体 D</h2>
+  <p>欧文書体の指定なし。日本語フォントの従属欧文が適用される。</p>
+  <code>font-family: 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic ProN', sans-serif;</code>
+  <div class="gothic_d">
+    <p>かっこうは療のまね扉らが助けを考える晩たござい。またあんまり生意気って晩たでし。生意気たます方たはたすると、それなど楽長をつけれものたまし。</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis naostrud exercitation.</p>
+    <p>しすぎ Lorem みんなも鼠をipsum よかっなてdolor 一生けん命の町の sit amet, 手あたりを consectetur 弾く第十沓たちの adipisicing elit かっこうになっていでした。</p>
+  </div>
+
+
+  <h2>明朝体</h2>
+  <code>font-family: Georgia, 'Droid Sans', 'ヒラギノ明朝 Pro W3', 'Hiragino Mincho ProN', 'MS P 明朝', 'MS PMincho', serif;</code>
+  <div class="mincho">
+    <p>かっこうは療のまね扉らが助けを考える晩たござい。またあんまり生意気って晩たでし。生意気たます方たはたすると、それなど楽長をつけれものたまし。</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis naostrud exercitation.</p>
+    <p>しすぎ Lorem みんなも鼠をipsum よかっなてdolor 一生けん命の町の sit amet, 手あたりを consectetur 弾く第十沓たちの adipisicing elit かっこうになっていでした。</p>
+  </div>
+
+
+
+
+</body>
+
+</html>
