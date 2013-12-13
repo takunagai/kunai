@@ -686,6 +686,19 @@ a:active img {
           user-select:none;
 }
 
+/*
+*/
+%hide {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  margin: -1px;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  border: 0;
+}
+
 /*リストマーカー（継承用）
 -------------------------------------------------*/
 //リスト限定ではない。見出し冒頭にマークを付ける場合などにも使用
@@ -1980,6 +1993,21 @@ input[type="search"]::-webkit-search-cancel-button {
 textarea {
   overflow: auto;
 }
+.label_checkbox {
+  display:inline-block;
+  font-size:.875em;
+  line-height:2em;
+  font-weight:400!important;
+}
+.label_checkbox input[type="checkbox"] {
+  float:left;
+  font-size:inherit;
+  margin:.5em .5em 0 0;
+}
+.label_checkbox input[type="checkbox"]:focus + span,
+.label_checkbox input[type="checkbox"]:checked + span {
+  color:#528fcc;
+}
 
 
 
@@ -2073,74 +2101,86 @@ textarea {
 
 #main_menu  {
   @extend .clearfix;
-  li {
-    a {
-      display: block;
-      background-color: $color_1;
-      color: #FFF;
-      text-decoration: none;
-      @include vgradient($color_1,$color_1_deep);
-      text-shadow: -1px -1px 0 $color_gray_deep;
-      @extend %user_select_none;
-      &:hover  {@include vgradient($color_1_pale,$color_1);}
-      &:active {@include vgradient($color_1_deep,$color_1_deep);}
-    }
+  ul {
+    padding-left: 0;
   }
-}
-
-@media #{$mq_s} {
-  #main_menu  {
-    li {
+    ul li {
+      a {
+        display: block;
+        color: #FFF;
+        text-decoration: none;
+        @extend %user_select_none;
+      }
+      ul {display: none;}//★★一時的に隠す
+    }
+    & > ul > li {//1階層目
       @include inline_block;
-      width: 49.75%;
-      margin-right: .5%;
-      margin-bottom: 1px;
-      &:nth-child(2n+1) {
-        clear: left;
+      > a {
+        @include vgradient($color_1,$color_1_deep);
+        border:    1px solid $color_1_pale;//lighter
+        border-right-color : $color_1_deep;//darker
+        border-bottom-color: $color_1_deep;//darker
+        &:hover  {@include vgradient($color_1_pale,$color_1);}
+        &:active {@include vgradient($color_1_deep,$color_1_deep);}
       }
-      &:nth-child(2n) {
-        margin-right: 0 !important;
-      }
+    }
+  @media #{$mq_s} {
+    #toggle_main_menu {
+
+    }
+    li {
+      width: 50%;
+      //&:nth-child(2n+1) {clear: left;}
+      //&:nth-child(2n) {margin-right: 0 !important;}
       a {
         padding: 5px;
-        small {
-          display: none;
-        }
+        //small {display: none;}
       }
     }
   }
-}
+  @media #{$mq_ml} {
+    #toggle_main_menu {display: none;}
 
-@media #{$mq_ml} {
-  #main_menu {
+    $gnav_num: 6;//メインメニューの個数
+    $gnav_li_width: 100%/$gnav_num;//各メニューの幅を計算
+    margin-left : -30px;
+    margin-right: -30px;
+
     li {
-      @include inline_block;
-      width: 16.55%;
-      margin: 0 1px 1px 0;
+      width: $gnav_li_width;
       text-align: center;
-      &:last-child {margin-right: 0 !important;}
-      &:first-child a {@include rounded_corners_left(5px);}
-      &:last-child a {@include rounded_corners_right(5px);}
+      //&:last-child {}
       a {
-        padding: 5px;
-        small {
+        padding: 7px 0;
+        small {//メニュー項目に補足を付ける場合
           display: block;
-          margin-top: -3px;
-          font-weight: normal;
-          color: $color_1_pale;
-          @include font_size(11);
-          letter-spacing: .1em;
+        //  margin-top: -3px;
+        //  font-weight: normal;
+        //  color: $color_1_pale;
+        //  @include font_size(11);
+        //  letter-spacing: .1em;
         }
       }
+      &:first-child a {
+        @include rounded_corners(3px);//★★効かない
+      }
+      &:hover {
+        ul {display: block;}
+      }
     }
-    *:first-child+html #gnav li {//IE7用
-      width: 16%;
+    //以下IE7用
+    *:first-child+html #main_menu li {
+      //width: 16%;
     }
-    *:first-child+html #gnav li a {//IE7用
-      border: 1px solid red !important;
+    *:first-child+html #main_menu li a {
+      //border: 1px solid red !important;
     }
   }
 }
+
+
+
+
 
 /*パンくずリスト
 ----------------------------------- */

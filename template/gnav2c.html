@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8" />
+  <title>多階層対応ドロップダウンメインメニューC</title>
+  <style>
+    /* clearfix SassやLESS使うなら継承で */
+    #main_menu:after {
+      height: 0;
+      visibility: hidden;
+      content: ".";
+      display: block;
+      clear: both;
+    }
+    /* ul,liの余白消す。リセットCSSに含むなら削除、そうでなければ下に統合 */
+    #main_menu ul {
+      padding: 0;
+      list-style-type: none;
+    }
+      #main_menu li {
+        padding-left: 0;
+      }
+    /* ナビゲーション */
+    #main_menu {
+      _zoom: 1;
+    }
+    #main_menu ul {}
+      #main_menu > ul > li {
+        float: left;
+      }
+      #main_menu li {
+        position: relative;
+        width: 160px;/* %指定だと継承して2階層目以降に影響するので注意 */
+        *display: inline;
+        *zoom: 1;
+      }
+      /* --- ここから追加 --- */
+      #main_menu li.parent_li > a:after {
+        content: url('../img_common/lm_arrow_4.png');/*Data URI にする？*/
+        /*retina対応参考：http://terkel.jp/archives/2013/02/nir-for-retina-images/*/
+      }
+      /* 背景画像使う場合、上記に変わって
+      #main_menu li.parent_li a {
+        padding-right: 14px !important;
+      }
+#main_menu li.parent_li > a {
+        background: #666 url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAMAAAAM7l6QAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABVQTFRFu+j/uuf/uuj/uOf/uOb/uef/////1b9bHgAAAAd0Uk5T////////ABpLA0YAAADZSURBVHjafJELEsQgCEO1wdz/yAtBrd1anU79PBIRivloMeBTrCz/8assJhIIcabPzGOBRsex1Fmo4JEYLnTcLP0yRjufXFIZOC8etCE3qZX5bd1s5idtmKdlD8ooH1xx97PpwxvPOzGdOLHM7OFdyUVtWbGeesNCQ23zMSrXxRXLWLWCglZtf7eXElF4XxY+8d2moE9tPkxXI7z/tGmOUZMXVceyHHg5d3Nkzhc3ePTKCre4Z125x3nznkq9zXlJ7ZNmvz+p+l15wPjWhvlB6/hIWY6UPwEGAD6TEhch7k2WAAAAAElFTkSuQmCC") no-repeat right center;
+      }
+*/
+      /* --- ここまで追加 --- */
+      #main_menu li a {
+        /* position: relative; */
+        display: block;
+        padding: 5px;
+        text-align: center;
+        font-weight: bold;
+        text-decoration: none;
+        white-space: nowrap;
+        color: #FFF;
+        background-color: #666;
+        border: 1px solid #999;
+        border-right-color:  #333;
+        border-bottom-color: #333;
+      }
+      #main_menu li a:hover {
+        background-color: #999;
+      }
+        #main_menu ul ul {/* 2階層目以降を非表示 → jQueryで表示 */
+          display: none;
+          *zoom: 1;
+          *position: relative;
+        }
+          #main_menu ul ul li ul {/* 3階層目のul */
+            position: absolute;
+            left: 160px;/* 幅と揃える */
+            top: 0;
+          }
+    @media screen and (max-width: 800px) {
+      body {
+        margin: 0;
+        padding: 0;
+        position: relative;
+      }
+      #main_menu {
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+
+      #main_menu ul {
+        width: 100%;
+      }
+      #main_menu > ul > li {
+        float: none;
+      }
+      #main_menu li {
+        width: 100%;
+      }
+      #main_menu > li {
+        float: none;
+      }
+      #main_menu li a {
+        text-align: left;
+      }
+      #main_menu > li.hover > ul ,
+      #main_menu li li.hover ul {
+        position: static;
+      }
+        #main_menu > ul >li > ul > li > a  {/* 2階層目のul */
+          background-color: green;
+        }
+          #main_menu ul ul li ul {/* 3階層目のul */
+            position: static;
+            left: 0px;
+          }
+          #main_menu ul ul li ul a {/* 3階層目のul */
+            background-color: aqua;
+          }
+    }
+  </style>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script>
+</head>
+
+
+<body>
+
+<h1>多階層対応ドロップダウンメインメニューC</h1>
+<ul>
+  <li>レスポンシブに対応させていく</li>
+</ul>
+
+
+<ul>
+  <li>要jQuery, modernizer, selectivizr</li>
+  <li>項目名が長いと一定以上の長さ以降は隠れる（項目名で調整）</li>
+  <li><a href="http://ascii.jp/elem/000/000/475/475908/">jQueryで作る多階層ドロップダウンメニュー - ASCII.jp</a> を改変
+    <ul>
+      <li>clearfixとリセットの箇所を分離（使用時の環境に対応しやすいよう）</li>
+      <li>selectivizrで旧IEでもCSS3セレクタを使えるようにし、HTMLを簡略化</li>
+      <li>クラス名変更</li>
+      <li>IE6/7用CSSハックを短いものに置き換え（バリデーション無視）</li>
+      <li>その他いくつか</li>
+    </ul>
+  </li>
+
+</ul>
+
+<h2>サンプル</h2>
+<nav id="main_menu" role="navigation">
+  <a id="toggle_main_menu" class="button" href="#">Menu</a>
+  <ul>
+    <li><a href="#">メニューA</a>
+      <ul>
+        <li><a href="#">サブメニューA</a></li>
+        <li><a href="#">サブメニューA</a></li>
+        <li><a href="#">サブメニューA</a>
+          <ul>
+            <li><a href="#">サブメニューA2</a></li>
+            <li><a href="#">サブメニューA2</a></li>
+            <li><a href="#">サブメニューA2</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li><!--
+    --><li><a href="#">メニューBサブメニューBサブメニューB</a>
+      <ul>
+        <li><a href="#">サブメニューB</a></li>
+        <li><a href="#">サブメニューB</a>
+          <ul>
+            <li><a href="#">サブメニューB2</a></li>
+            <li><a href="#">サブメニューB2</a></li>
+            <li><a href="#">サブメニューB2</a>
+              <ul>
+                <li><a href="#">サブメニューB3</a></li>
+                <li><a href="#">サブメニューB3</a></li>
+                <li><a href="#">サブメニューB3</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#">サブメニューB</a></li>
+      </ul>
+    </li><!--
+    --><li><a href="#">メニューC</a>
+      <ul>
+        <li><a href="#">サブメニューC</a>
+          <ul>
+            <li><a href="#">サブメニューC2</a></li>
+            <li><a href="#">サブメニューC2</a></li>
+            <li><a href="#">サブメニューC2</a></li>
+          </ul>
+        </li>
+        <li><a href="#">サブメニューC</a></li>
+        <li><a href="#">サブメニューC</a></li>
+      </ul>
+    </li><!--
+    --><li><a href="#">メニューD</a><!--
+    --><li><a href="#">メニューE</a><!--
+    --><li><a href="#">メニューF</a>
+  </ul>
+</nav>
+
+
+<script>
+  $(function(){
+    //子要素に ul があれば開閉可能マーク ※追加
+    $('#main_menu ul li:has(ul)').addClass('parent_li');;
+    //ロールオーバー処理
+    $('#main_menu li').hover(function(){
+      $('>ul:not(:animated)',this).slideDown('fast')
+    },
+    function(){
+      $('>ul',this).slideUp('fast');
+    })
+  })
+</script>
+</body>
+</html>

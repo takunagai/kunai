@@ -1567,7 +1567,7 @@ a:active img {
   background: -o-linear-gradient(top, #999999 0%, #333333 100%);
   background: -ms-linear-gradient(top, #999999 0%, #333333 100%);
   background: linear, top, #999999 0%, #333333 100%;
-  -pie-background: linear, #999999, #333333;
+  -pie-background: linear, false, #999999, #333333;
 }
 
 #mixin_sample_2 {
@@ -1631,7 +1631,7 @@ a:active img {
 
 /*選択させない（ボタンなどに適用）
 ----------------------------------- */
-#main_menu li a, #page_scroll_top a,
+#main_menu ul li a, #page_scroll_top a,
 #page_scroll_up a,
 #page_scroll_down a,
 #page_scroll_bottom a {
@@ -2618,7 +2618,7 @@ q:before, q:after {
 .button_round {
   background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%3F%3E%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20version%3D%221.0%22%3E%3Cdefs%3E%3ClinearGradient%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%22100%25%22%20id%3D%22g%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22rgb%28255%2C255%2C255%29%22%20stop-opacity%3D%220.1%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22rgb%280%2C0%2C0%29%22%20stop-opacity%3D%220.1%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20fill%3D%22url%28%23g%29%22%20width%3D%22100%25%22%20height%3D%22100%25%22/%3E%3C/svg%3E");
   background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.2));
-  background-image: linear, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.2);
+  background-image: linear, false, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.2);
   background-origin: border-box;
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(255, 255, 255, 0.3) inset;
@@ -2651,7 +2651,7 @@ q:before, q:after {
 .button_round:focus {
   background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%3F%3E%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20version%3D%221.0%22%3E%3Cdefs%3E%3ClinearGradient%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%22100%25%22%20id%3D%22g%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22rgb%28128%2C128%2C128%29%22%20stop-opacity%3D%220.1%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22rgb%280%2C0%2C0%29%22%20stop-opacity%3D%220.1%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20fill%3D%22url%28%23g%29%22%20width%3D%22100%25%22%20height%3D%22100%25%22/%3E%3C/svg%3E");
   background-image: -webkit-linear-gradient(rgba(128, 128, 128, 0.1), rgba(0, 0, 0, 0.4));
-  background-image: linear, rgba(128, 128, 128, 0.1), rgba(0, 0, 0, 0.4);
+  background-image: linear, false, rgba(128, 128, 128, 0.1), rgba(0, 0, 0, 0.4);
 }
 .button:active, #article_list section p:last-child a:active,
 .button_colored:active,
@@ -2698,7 +2698,7 @@ q:before, q:after {
 .button_round.selected:focus {
   background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%3F%3E%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20version%3D%221.0%22%3E%3Cdefs%3E%3ClinearGradient%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%22100%25%22%20id%3D%22g%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22rgb%280%2C0%2C0%29%22%20stop-opacity%3D%220.25%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22rgb%280%2C0%2C0%29%22%20stop-opacity%3D%220.1%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20fill%3D%22url%28%23g%29%22%20width%3D%22100%25%22%20height%3D%22100%25%22/%3E%3C/svg%3E");
   background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.1));
-  background-image: linear, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.1);
+  background-image: linear, false, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.1);
 }
 .button.disabled, #article_list section p:last-child a.disabled,
 .button_colored.disabled,
@@ -3323,6 +3323,24 @@ textarea {
   overflow: auto;
 }
 
+.label_checkbox {
+  display: inline-block;
+  font-size: .875em;
+  line-height: 2em;
+  font-weight: 400!important;
+}
+
+.label_checkbox input[type="checkbox"] {
+  float: left;
+  font-size: inherit;
+  margin: .5em .5em 0 0;
+}
+
+.label_checkbox input[type="checkbox"]:focus + span,
+.label_checkbox input[type="checkbox"]:checked + span {
+  color: #528fcc;
+}
+
 /*====================================*/
 /* !!ページ最上部の帯 */
 /*====================================*/
@@ -3432,11 +3450,28 @@ textarea {
 
 /*グローバルナビゲーション
 ----------------------------------- */
-#main_menu li a {
+#main_menu ul {
+  padding-left: 0;
+}
+#main_menu ul li a {
   display: block;
-  background-color: #265984;
   color: #FFF;
   text-decoration: none;
+}
+#main_menu ul li ul {
+  display: none;
+}
+#main_menu > ul > li {
+  display: inline-block;
+  vertical-align: baseline;
+  *display: inline;
+  *vertical-align: auto;
+  *zoom: 1;
+}
+#main_menu > ul > li a {
+  display: block;
+}
+#main_menu > ul > li > a {
   background: #265984;
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #265984), color-stop(100%, #132c42));
   background: -webkit-linear-gradient(top, #265984 0%, #132c42 100%);
@@ -3444,10 +3479,12 @@ textarea {
   background: -o-linear-gradient(top, #265984 0%, #132c42 100%);
   background: -ms-linear-gradient(top, #265984 0%, #132c42 100%);
   background: linear, top, #265984 0%, #132c42 100%;
-  -pie-background: linear, #265984, #132c42;
-  text-shadow: -1px -1px 0 #333333;
+  -pie-background: linear, false, #265984, #132c42;
+  border: 1px solid #92acc1;
+  border-right-color: #132c42;
+  border-bottom-color: #132c42;
 }
-#main_menu li a:hover {
+#main_menu > ul > li > a:hover {
   background: #92acc1;
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #92acc1), color-stop(100%, #265984));
   background: -webkit-linear-gradient(top, #92acc1 0%, #265984 100%);
@@ -3455,9 +3492,9 @@ textarea {
   background: -o-linear-gradient(top, #92acc1 0%, #265984 100%);
   background: -ms-linear-gradient(top, #92acc1 0%, #265984 100%);
   background: linear, top, #92acc1 0%, #265984 100%;
-  -pie-background: linear, #92acc1, #265984;
+  -pie-background: linear, false, #92acc1, #265984;
 }
-#main_menu li a:active {
+#main_menu > ul > li > a:active {
   background: #132c42;
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #132c42), color-stop(100%, #132c42));
   background: -webkit-linear-gradient(top, #132c42 0%, #132c42 100%);
@@ -3465,88 +3502,44 @@ textarea {
   background: -o-linear-gradient(top, #132c42 0%, #132c42 100%);
   background: -ms-linear-gradient(top, #132c42 0%, #132c42 100%);
   background: linear, top, #132c42 0%, #132c42 100%;
-  -pie-background: linear, #132c42, #132c42;
+  -pie-background: linear, false, #132c42, #132c42;
 }
-
 @media only screen and (max-width: 532px) {
   #main_menu li {
-    display: inline-block;
-    vertical-align: baseline;
-    *display: inline;
-    *vertical-align: auto;
-    *zoom: 1;
-    width: 49.75%;
-    margin-right: .5%;
-    margin-bottom: 1px;
-  }
-  #main_menu li a {
-    display: block;
-  }
-  #main_menu li:nth-child(2n+1) {
-    clear: left;
-  }
-  #main_menu li:nth-child(2n) {
-    margin-right: 0 !important;
+    width: 50%;
   }
   #main_menu li a {
     padding: 5px;
-  }
-  #main_menu li a small {
-    display: none;
   }
 }
 @media only screen and (min-width: 533px) {
+  #main_menu {
+    margin-left: -30px;
+    margin-right: -30px;
+  }
+  #main_menu #toggle_main_menu {
+    display: none;
+  }
   #main_menu li {
-    display: inline-block;
-    vertical-align: baseline;
-    *display: inline;
-    *vertical-align: auto;
-    *zoom: 1;
-    width: 16.55%;
-    margin: 0 1px 1px 0;
+    width: 16.66667%;
     text-align: center;
   }
   #main_menu li a {
-    display: block;
-  }
-  #main_menu li:last-child {
-    margin-right: 0 !important;
-  }
-  #main_menu li:first-child a {
-    -webkit-border-top-left-radius: 5px;
-    -moz-border-radius-topleft: 5px;
-    border-top-left-radius: 5px;
-    -webkit-border-bottom-left-radius: 5px;
-    -moz-border-radius-bottomleft: 5px;
-    border-bottom-left-radius: 5px;
-  }
-  #main_menu li:last-child a {
-    -webkit-border-top-right-radius: 5px;
-    -moz-border-radius-topright: 5px;
-    border-top-right-radius: 5px;
-    -webkit-border-bottom-right-radius: 5px;
-    -moz-border-radius-bottomright: 5px;
-    border-bottom-right-radius: 5px;
-  }
-  #main_menu li a {
-    padding: 5px;
+    padding: 7px 0;
   }
   #main_menu li a small {
     display: block;
-    margin-top: -3px;
-    font-weight: normal;
-    color: #92acc1;
-    font-size: 11px;
-    font-size: 1.1rem;
-    letter-spacing: .1em;
   }
-  #main_menu *:first-child + html #gnav li {
-    width: 16%;
+  #main_menu li:first-child a {
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
   }
-  #main_menu *:first-child + html #gnav li a {
-    border: 1px solid red !important;
+  #main_menu li:hover ul {
+    display: block;
   }
 }
+
 /*パンくずリスト
 ----------------------------------- */
 #topic_path li {
@@ -3624,7 +3617,7 @@ section.article_summary h2 {
   background: url(../img_common/lm_dot_1.png) no-repeat 10px center, -o-linear-gradient(top, #92acc1, #265984);
   background: url(../img_common/lm_dot_1.png) no-repeat 10px center, -ms-linear-gradient(top, #92acc1, #265984);
   background: url(../img_common/lm_dot_1.png) no-repeat 10px center, linear, to bottom, #92acc1, #265984;
-  -pie-background: url(../img_common/lm_dot_1.png) no-repeat 10px center, linear, #92acc1, #265984;
+  -pie-background: url(../img_common/lm_dot_1.png) no-repeat 10px center, linear, false, #92acc1, #265984;
   -webkit-box-shadow: inset 0 -1px 1px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.5);
   -moz-box-shadow: inset 0 -1px 1px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.5);
   box-shadow: inset 0 -1px 1px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.5);
@@ -4023,7 +4016,7 @@ section.article_summary figure {
     background: -o-linear-gradient(top, #e7e7e7 0%, #cccccc 100%);
     background: -ms-linear-gradient(top, #e7e7e7 0%, #cccccc 100%);
     background: linear, top, #e7e7e7 0%, #cccccc 100%;
-    -pie-background: linear, #e7e7e7, #cccccc;
+    -pie-background: linear, false, #e7e7e7, #cccccc;
   }
 }
 #side_banner li {
